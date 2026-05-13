@@ -13,7 +13,31 @@ OKVED_NAME_COLUMN_INDEX = 1
 
 # === Утилиты ===
 def _normalize_text(text: str) -> str:
-    return re.sub(r'\s+', ' ', text).strip().lower()
+    """
+    Базовая нормализация: очистка пробелов и приведение к нижнему регистру.
+    """
+    if not text:
+        return ""
+    # Приводим к нижнему регистру и нормализуем пробелы
+    text = text.lower().strip()
+    # Заменяем ё на е (для русского языка)
+    text = text.replace('ё', 'е')
+    # Удаляем множественные пробелы
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+
+
+def canonical_okved(code: str) -> str:
+    """
+    Приводит код ОКВЭД к единому каноническому виду.
+    Правила:
+    1. Убираем пробелы по краям.
+    2. Приводим к верхнему регистру.
+    Никакой магии - только очистка от человеческого фактора.
+    """
+    if not code:
+        return ""
+    return str(code).strip().upper()
 
 
 def get_cleaned_cell_text(cell: _Cell) -> str:
@@ -147,52 +171,88 @@ def load_column_mapping(filepath):
 def get_table_name(table: Table, known_table_names):
     ignore_phrases = ['продолжение таблицы', 'таблица', 'график', 'рис.', 'рис', 'по всей форме', 'приложение', 'форма',
                       'лист', 'страница', 'тысяч рублей', 'на конец года']
-    
+
     # Собираем все параграфы выше таблицы, чтобы выбрать наиболее подходящий заголовок.
-    candidates = []
+    exact_matches = []  # Точные совпадения (имеют приоритет)
+    partial_matches = []  # Частичные совпадения
     para_count = 0
     MAX_PARAS_TO_CHECK = 20
     prev_elem = table._element.getprevious()
+    
+    # Накопимаем параграфы для объединения многострочных заголовков
+    para_buffer = []
 
     while prev_elem is not None and para_count < MAX_PARAS_TO_CHECK:
         if prev_elem.tag.endswith('p'):
             text = (prev_elem.text or "").strip()
             prev_elem = prev_elem.getprevious()
             para_count += 1
+            
             if not text:
+                # Если встретили пустой параграф, проверяем накопленный буфер
+                if para_buffer:
+                    combined_text = " ".join(reversed(para_buffer))
+                    combined_norm = _normalize_text(combined_text)
+                    if not any(phrase in combined_norm for phrase in ignore_phrases):
+                        for known_title in known_table_names:
+                            known_norm = _normalize_text(known_title)
+                            if combined_norm == known_norm:
+                                score = len(known_norm) / (para_count + 1)
+                                exact_matches.append((score, known_title, para_count))
+                para_buffer = []
                 continue
 
             text_norm = _normalize_text(text)
             if any(phrase in text_norm for phrase in ignore_phrases):
+                para_buffer = []
                 continue
-
+            
+            # Добавляем параграф в буфер
+            para_buffer.append(text)
+            
+            # Проверяем каждый параграф отдельно
             for known_title in known_table_names:
                 known_norm = _normalize_text(known_title)
-                if text_norm == known_norm or text_norm in known_norm or known_norm in text_norm:
-                    score = len(known_norm)
-                    candidates.append((score, known_title, text_norm))
+                if text_norm == known_norm:
+                    # Точное совпадение
+                    score = len(known_norm) / (para_count + 1)
+                    exact_matches.append((score, known_title, para_count))
+                elif text_norm in known_norm or known_norm in text_norm:
+                    # Частичное совпадение
+                    score = len(known_norm) / (para_count + 1)
+                    partial_matches.append((score, known_title, para_count))
+            
+            # Проверяем объединенные параграфы (буфер из последних 2 параграфов)
+            if len(para_buffer) >= 2:
+                combined_text = " ".join(reversed(para_buffer[:2]))
+                combined_norm = _normalize_text(combined_text)
+                for known_title in known_table_names:
+                    known_norm = _normalize_text(known_title)
+                    if combined_norm == known_norm:
+                        # Точное совпадение после объединения
+                        score = len(known_norm) / (para_count + 1)
+                        exact_matches.append((score, known_title, para_count))
 
         else:
             prev_elem = prev_elem.getprevious()
             para_count += 1
+            para_buffer = []  # Сбрасываем буфер при встречке не-параграфа
 
-    if candidates:
-        candidates.sort(reverse=True)
-        best_title = candidates[0][1]
-        print(f"🔍 Заголовок найден: {best_title}")
+    # Приоритет: точные совпадения > частичные совпадения
+    if exact_matches:
+        exact_matches.sort(reverse=True)
+        best_title = exact_matches[0][1]
+        print(f"🔍 Заголовок найден (точное совпадение): {best_title}")
+        return best_title
+    
+    if partial_matches:
+        partial_matches.sort(reverse=True)
+        best_title = partial_matches[0][1]
+        print(f"🔍 Заголовок найден (частичное совпадение): {best_title}")
         return best_title
 
     print("⚠️ Заголовок не распознан")
     return None
-
-    
-    # Fallback: определяем по содержимому таблицы
-    collected_texts = []
-    for row in table.rows[:5]:
-        for cell in row.cells[:3]:
-            txt = get_cleaned_cell_text(cell)
-            if txt:
-                collected_texts.append(txt)
     combined = _normalize_text(" ".join(collected_texts))
     for known_title in known_table_names:
         if _normalize_text(known_title) in combined or combined in _normalize_text(known_title):
@@ -236,9 +296,12 @@ def get_excel_data(excel_path, okved_codes_set):
         if row.empty or pd.isna(row.iloc[OKVED_CODE_COLUMN_INDEX]):
             continue
 
-        okved_code = str(row.iloc[OKVED_CODE_COLUMN_INDEX]).strip()
-        if not okved_code:
+        okved_code_raw = str(row.iloc[OKVED_CODE_COLUMN_INDEX]).strip()
+        if not okved_code_raw:
             continue
+        
+        # Применяем канонизацию кода ОКВЭД
+        okved_code = canonical_okved(okved_code_raw)
 
         # 🔍 Если фильтрация включена — пропускаем лишние
         if okved_codes_set and okved_code not in okved_codes_set:

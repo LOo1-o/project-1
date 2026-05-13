@@ -174,16 +174,4 @@ def clean_excel_value_for_word(value: Union[str, int, float], force_decimal: boo
     return value_str
 
 
-def compare_with_template(original: str, normalized: str) -> dict:
-    """
-    Сравнивает оригинальное и нормализованное значение для отладки.
-    
-    Returns:
-        Словарь с информацией о изменениях
-    """
-    return {
-        "original": original,
-        "normalized": normalized,
-        "changed": original.strip() != normalized,
-        "spaces_removed": original.count(" ") != normalized.count(" "),
-    }
+
