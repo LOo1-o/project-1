@@ -67,10 +67,10 @@ def load_column_mapping_v2(filepath) -> Tuple[Dict[str, str], Dict[str, Tuple[st
     
     Returns:
         - word_to_indicator: название показателя → код индикатора
-        - indicator_to_excel: код индикатора → (колонка 2022, колонка 2023)
+        - indicator_to_excel: код индикатора → (колонка 202Х, колонка 202Х)
         - indicator_to_file: код индикатора → файл Excel
         - file_word_to_indicator: (файл, название) → код индикатора
-        - indicator_keywords: код индикатора → {year_2022: [...], year_2023: [...]} 
+        - indicator_keywords: код индикатора → {year_202Х: [...], year_202Х: [...]} 
     """
     word_to_indicator = {}
     indicator_to_excel = {}
@@ -282,6 +282,31 @@ def _is_connective_header(text: str) -> bool:
 def _extract_keywords_for_year(base_name: str, suffix: str, year: str) -> str:
     """Извлекает ключевые слова из базового названия и суффикса для поиска в Excel.
     
+    Эти ключевые слова используются для "умного" поиска нужной колонки в Excel,
+    когда жесткий индекс может быть неправильным или устаревшим.
+    
+    Процесс:
+    1. Ищем год в суффиксе через regex (202X) - явный год из Excel
+    2. Если год не найден, используем условное преобразование:
+       - year='22' → добавляем '2022'
+       - year='23' → добавляем '2023'
+    3. Добавляем маркер периода:
+       - year='22' → 'предыдущий' или 'начало'
+       - year='23' → 'конец' или 'отчетный'
+    4. Добавляем базовое название показателя как универсальный ключ
+    
+    Пример:
+        base_name = "Валюта баланса"
+        suffix = "на конец предыдущего года"
+        year = "22"
+        
+        Результат: '"2022","предыдущий","Валюта баланса"'
+    
+    Эти ключевые слова затем:
+    - Сохраняются в column_mapping_v2.csv
+    - Загружаются в memory при предварительной загрузке Excel
+    - Используются при поиске колонок в функции _find_column_smart()
+    
     Возвращает строку в формате: "слово1","слово2","слово3"
     """
     keywords = []
@@ -330,6 +355,26 @@ def _extract_keywords_for_year(base_name: str, suffix: str, year: str) -> str:
 
 
 def _infer_mapping_from_excel(excel_path: Path) -> list:
+    """Динамически извлекает маппинг показателей из Excel файла.
+    
+    Анализирует структуру Excel:
+    1. Находит строку заголовка с 'Код' и 'Наименование'
+    2. Для каждого столбца определяет:
+       - Базовое название (header)
+       - Суффикс/подзаголовок, в котором может быть год (202X) или период
+       - Год/период на основе текста суффикса
+    3. Генерирует ключевые слова для каждого показателя
+    
+    Результат:
+        [(filename, indicator_name, code, col_22, col_23, keywords_2022, keywords_2023), ...]
+    
+    Где:
+    - col_22, col_23 — номера колонок (1-based), использованные для каждого года
+    - keywords_2022, keywords_2023 — ключевые слова для "умного" поиска в Excel
+    
+    Эти ключевые слова позволяют пересчитывать колонки автоматически,
+    если структура Excel изменилась, но суть показателей и периодов осталась.
+    """
     df = pd.read_excel(excel_path, header=None)
     header_row = _find_excel_header_row(df)
     if header_row is None:
@@ -417,7 +462,14 @@ def build_column_mapping_v2_from_excel(excel_dir: Path, table_source_mapping: di
     rows = []
     seen_codes = set()
 
-    for filename in sorted(set(table_source_mapping.values())):
+    unique_files = []
+    seen_files = set()
+    for filename in table_source_mapping.values():
+        if filename not in seen_files:
+            seen_files.add(filename)
+            unique_files.append(filename)
+
+    for filename in unique_files:
         excel_path = excel_dir / filename
         if not excel_path.exists():
             print(f"⚠️ Excel файл не найден: {filename}")
@@ -448,3 +500,33 @@ def build_column_mapping_v2_from_excel(excel_dir: Path, table_source_mapping: di
             writer.writerow(row)
 
     print(f"✅ Сгенерирован column_mapping_v2: {output_path} ({len(rows)} строк)")
+
+
+def ensure_column_mapping_v2(excel_dir: Path, table_source_mapping: dict, output_path: Path):
+    """Гарантирует, что column_mapping_v2 содержит все источники из table_source_data_mapping.csv."""
+    output_path = Path(output_path)
+    if not output_path.exists():
+        print(f"⚠️ Файл {output_path} не найден. Генерируем column_mapping_v2.csv из Excel...")
+        build_column_mapping_v2_from_excel(excel_dir, table_source_mapping, output_path)
+        return
+
+    existing_sources = set()
+    try:
+        _, _, _, file_word_to_indicator, _ = load_column_mapping_v2(output_path)
+        existing_sources = {file for file, _ in file_word_to_indicator.keys()}
+    except Exception as exc:
+        print(f"⚠️ Не удалось считать существующий файл column_mapping_v2.csv: {exc}")
+        print("    Регенерируем файл заново.")
+        build_column_mapping_v2_from_excel(excel_dir, table_source_mapping, output_path)
+        return
+
+    expected_sources = set(table_source_mapping.values())
+    missing_sources = sorted(expected_sources - existing_sources)
+    if missing_sources:
+        print("⚠️ Найдены отсутствующие Excel-источники в column_mapping_v2.csv:")
+        for src in missing_sources:
+            print(f"   - {src}")
+        print("    Регенерируем column_mapping_v2 из Excel на основе table_source_data_mapping.csv...")
+        build_column_mapping_v2_from_excel(excel_dir, table_source_mapping, output_path)
+    else:
+        print(f"✅ column_mapping_v2 уже содержит все источники из {len(expected_sources)} файла(ов).")

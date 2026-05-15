@@ -1,6 +1,7 @@
 # confic.py
 import csv
 import re
+from difflib import SequenceMatcher
 
 import pandas as pd
 from docx.table import _Cell, Table
@@ -170,7 +171,7 @@ def load_column_mapping(filepath):
 # === Поиск названия таблицы ===
 def get_table_name(table: Table, known_table_names):
     ignore_phrases = ['продолжение таблицы', 'таблица', 'график', 'рис.', 'рис', 'по всей форме', 'приложение', 'форма',
-                      'лист', 'страница', 'тысяч рублей', 'на конец года']
+                      'лист', 'страница', 'раздел', 'тысяч рублей', 'на конец года']
 
     # Собираем все параграфы выше таблицы, чтобы выбрать наиболее подходящий заголовок.
     exact_matches = []  # Точные совпадения (имеют приоритет)
@@ -251,15 +252,37 @@ def get_table_name(table: Table, known_table_names):
         print(f"🔍 Заголовок найден (частичное совпадение): {best_title}")
         return best_title
 
+    # Fuzzy-match fallback: ищем наиболее близкое название таблицы
+    candidate_texts = []
+    prev_elem = table._element.getprevious()
+    para_count = 0
+    while prev_elem is not None and para_count < MAX_PARAS_TO_CHECK:
+        if prev_elem.tag.endswith('p'):
+            text = (prev_elem.text or "").strip()
+            if text:
+                text_norm = _normalize_text(text)
+                if not any(phrase in text_norm for phrase in ignore_phrases):
+                    candidate_texts.append(text_norm)
+        prev_elem = prev_elem.getprevious()
+        para_count += 1
+
+    combined_text = _normalize_text(" ".join(reversed(candidate_texts)))
+    if combined_text:
+        best_match = None
+        best_score = 0.0
+        for known_title in known_table_names:
+            known_norm = _normalize_text(known_title)
+            score = SequenceMatcher(None, combined_text, known_norm).ratio()
+            if score > best_score:
+                best_score = score
+                best_match = known_title
+
+        if best_match and best_score >= 0.75:
+            print(f"🔍 Заголовок найден (fuzzy match {best_score:.2f}): {best_match}")
+            return best_match
+
     print("⚠️ Заголовок не распознан")
     return None
-    combined = _normalize_text(" ".join(collected_texts))
-    for known_title in known_table_names:
-        if _normalize_text(known_title) in combined or combined in _normalize_text(known_title):
-            print(f"🔍 Заголовок найден внутри таблицы: {known_title}")
-            return known_title
-    print("⚠️ Не удалось определить заголовок таблицы.")
-    return ""
 
 
 # === Загрузка Excel-данных ===

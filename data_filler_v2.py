@@ -105,8 +105,8 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 keywords_2023 = indicator_keywords.get(indicator, {}).get('2023', [])
                 
                 # === ЭТАП 1: Динамический поиск колонок по году ===
-                col_idx_2022 = _find_column_smart(df, col_22_hardcode, "2022", keywords_2022)
-                col_idx_2023 = _find_column_smart(df, col_23_hardcode, "2023", keywords_2023)
+                col_idx_2022 = _find_column_smart(df, col_22_hardcode, "2022", keywords_2022, debug=False)
+                col_idx_2023 = _find_column_smart(df, col_23_hardcode, "2023", keywords_2023, debug=False)
                 
                 # === ЭТАП 2: Нечеткий поиск строк (экспериментально) ===
                 if use_fuzzy_match:
@@ -172,43 +172,102 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
     return master_data, stats
 
 
-def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords: list) -> Optional[int]:
+def _map_year_to_suffix(year: str) -> str:
     """
-    Умный поиск колонки: сначала жесткий индекс, потом ключевые слова, потом год.
+    Переводит год в двухзначный суффикс.
+
+    Примеры:
+        2023 -> 23
+        2024 -> 24
+        23   -> 23
+        24   -> 24
+    """
+    if not year or not year.isdigit():
+        return None
+    if len(year) == 4 and year.startswith('20'):
+        return year[-2:]
+    if len(year) == 2:
+        return year
+    return None
+
+
+def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords: list, debug=False) -> Optional[int]:
+    """
+    Умный поиск колонки с ОБРАТНЫМИ приоритетами (Problem #2 fix).
+    
+    НОВАЯ ВЕРСИЯ (более стабильная):
+    Приоритет:
+    1️⃣ Поиск по ключевым словам + году (самый надежный способ)
+    2️⃣ Поиск ТОЛЬКО по ключевым словам (если год не указан)
+    3️⃣ Поиск по году (fallback, если есть ключевые слова но они не нашли)
+    4️⃣ Жесткий индекс (только как последний resort)
+    
+    Причина переворота:
+    - Жесткий индекс ЗАВИСИТ от порядка столбцов в Excel
+    - Если Excel переупорядочивается, индекс становится неправильным
+    - Ключевые слова (название столбца) более стабильны
     
     Args:
         df: DataFrame
-        hardcode_idx: Жесткий индекс из column_mapping.csv (приоритет)
+        hardcode_idx: Жесткий индекс из column_mapping.csv (fallback)
         year: Год для поиска ("2022" или "2023")
-        keywords: Список ключевых слов для поиска
+        keywords: Список ключевых слов для поиска (надежный способ)
+        debug: Выводить подробные логи
     
     Returns:
         Индекс колонки или None
     """
-    # 1️⃣ Сначала используем жесткий индекс, если он есть
+    if debug:
+        print(f"   🔍 [_find_column_smart] keywords={keywords}, year={year}, hardcode_idx={hardcode_idx}")
+    
+    # 1️⃣ ПРИОРИТЕТ 1: Ключевые слова + год (самый надежный)
+    if keywords and year:
+        for keyword in keywords:
+            for col_idx, header in enumerate(df.iloc[0]):
+                header_str = str(header).strip().lower()
+                keyword_lower = keyword.lower()
+                year_str = str(year)
+                # Ищем оба: ключевое слово И год в одном столбце
+                if keyword_lower in header_str and year_str in header_str:
+                    if debug:
+                        print(f"   ✅ [1] Найден по ключевому слову + год: col {col_idx}")
+                    return col_idx
+    
+    # 2️⃣ ПРИОРИТЕТ 2: Только ключевые слова (если год не помог)
+    if keywords:
+        for keyword in keywords:
+            for col_idx, header in enumerate(df.iloc[0]):
+                header_str = str(header).strip().lower()
+                keyword_lower = keyword.lower()
+                if keyword_lower in header_str:
+                    if debug:
+                        print(f"   ✅ [2] Найден по ключевому слову: col {col_idx}")
+                    return col_idx
+    
+    # 3️⃣ ПРИОРИТЕТ 3: Только по году (если ключевые слова не нашли)
+    if year:
+        for col_idx, header in enumerate(df.iloc[0]):
+            header_str = str(header).strip()
+            if year in header_str:
+                if debug:
+                    print(f"   ✅ [3] Найден по году: col {col_idx}")
+                return col_idx
+    
+    # 4️⃣ ПРИОРИТЕТ 4: Жесткий индекс как fallback (только если все else сработало)
     if hardcode_idx and hardcode_idx.strip():
         try:
             idx = int(hardcode_idx) - 1  # CSV использует 1-based индексы
             if 0 <= idx < len(df.columns):
+                if debug:
+                    print(f"   ✅ [4] Использован жесткий индекс: col {idx}")
                 return idx
         except ValueError:
             pass
     
-    # 2️⃣ Пытаемся найти по ключевым словам
-    if keywords:
-        for keyword in keywords:
-            for col_idx, header in enumerate(df.iloc[0]):
-                header_str = str(header).strip()
-                if keyword.lower() in header_str.lower():
-                    return col_idx
-    
-    # 3️⃣ Пытаемся найти по году (только если жесткий индекс был указан, но не найден)
-    if hardcode_idx and hardcode_idx.strip():
-        for col_idx, header in enumerate(df.iloc[0]):
-            header_str = str(header).strip()
-            if year in header_str:
-                return col_idx
-    
+    if debug:
+        print(f"   ❌ [_find_column_smart] Колонка не найдена!")
+    return None
+
     return None
 
 
@@ -267,12 +326,22 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                                 log.append(f"⚠️ Ошибка формата тега: {full_tag}")
                                 continue
                             
-                            # Парсируем OKVED код и индикатор
+                            # Парсируем OKVED код и индикатор (с поддержкой реальных годов 202X)
                             year_suffix = None
-                            if parts[-1] in ("22", "23"):
-                                year_suffix = parts[-1]
-                                indicator = parts[-2]
-                                okved_parts = parts[:-2]
+                            if len(parts) > 1:
+                                last_part = parts[-1]
+                                # Проверяем, является ли последний элемент годом (202X или двухзначным годом)
+                                if last_part.isdigit() and (len(last_part) == 4 or len(last_part) == 2):
+                                    year_suffix = _map_year_to_suffix(last_part)
+                                    if year_suffix:
+                                        indicator = parts[-2]
+                                        okved_parts = parts[:-2]
+                                    else:
+                                        indicator = parts[-1]
+                                        okved_parts = parts[:-1]
+                                else:
+                                    indicator = parts[-1]
+                                    okved_parts = parts[:-1]
                             else:
                                 indicator = parts[-1]
                                 okved_parts = parts[:-1]
@@ -292,20 +361,23 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                                 # Это простой код типа "85" или "A"
                                 okved_code = canonical_okved(okved_raw)
                             
-                            indicator_key = f"{indicator}_{year_suffix}" if year_suffix else indicator
+                            # Обрабатываем год: преобразуем реальный год (202X) в условный код (22/23)
+                            lookup_suffix = year_suffix
+                            indicator_key = f"{indicator}_{lookup_suffix}" if lookup_suffix else indicator
                             
                             # Ищем значение в master_data по каноническому ключу
                             value = master_data.get(okved_code, {}).get(indicator_key)
                             
-                            if value is None and not year_suffix:
+                            if value is None and not lookup_suffix:
                                 # Если год не указан в теге, пробуем найти с суффиксами года
                                 value = master_data.get(okved_code, {}).get(f"{indicator}_22")
                                 if value is None:
                                     value = master_data.get(okved_code, {}).get(f"{indicator}_23")
                             
-                            if value is None:
-                                # Если 2023 не найдена, пробуем 2022 (fallback)
-                                if year_suffix == "23":
+                            if value is None and lookup_suffix:
+                                # Если прямой год не найден, пробуем fallback на относительные годы
+                                value = master_data.get(okved_code, {}).get(f"{indicator}_23")
+                                if value is None:
                                     value = master_data.get(okved_code, {}).get(f"{indicator}_22")
                             
                             # Применяем финальную нормализацию

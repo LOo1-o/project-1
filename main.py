@@ -11,10 +11,15 @@ from config_v2 import (
     build_column_mapping_v2_from_excel,
     validate_table_source_mapping,
 )
+from validation import (
+    print_validation_report,
+    validate_table_registry,
+)
 from logic import (
     generate_word_template,
     collect_okved_codes_from_template,
-    compare_okved_sets
+    compare_okved_sets,
+    find_unfilled_tags
 )
 from data_filler_v2 import (
     pre_load_all_excel_data_v2,
@@ -22,8 +27,8 @@ from data_filler_v2 import (
 )
 
 
-def main(input_template_override=None, output_file_override=None):
-    print("\n🚀 === НАЧАЛО РАБОТЫ (v2.0 с умными тегами) ===")
+def main(input_template_override=None, output_file_override=None, debug=False):
+    print("\n🚀 === НАЧАЛО РАБОТЫ (v2.1 со стабилизацией) ===")
 
     # 📁 Пути
     # base_dir = Path(r"C:\Users\41.Bogatyrevaee\PycharmProjects\pythonProject18")
@@ -49,6 +54,14 @@ def main(input_template_override=None, output_file_override=None):
     table_mapping = load_table_source_map(table_mapping_file)
     validate_table_source_mapping(table_mapping, excel_dir)
 
+    registry_validation = validate_table_registry(table_mapping_file, excel_dir)
+    if registry_validation['errors']:
+        print_validation_report(registry_validation)
+        print("\n❌ Остановка из-за критических ошибок валидации.")
+        return
+    if registry_validation['warnings']:
+        print_validation_report(registry_validation)
+
     if not column_mapping_file.exists():
         print(f"⚠️ Файл {column_mapping_file} не найден. Генерируем column_mapping_v2.csv из Excel...")
         build_column_mapping_v2_from_excel(excel_dir, table_mapping, column_mapping_file)
@@ -58,8 +71,8 @@ def main(input_template_override=None, output_file_override=None):
     print("✅ Справочники успешно загружены.")
 
     # === ШАГ 2: Генерация шаблона Word с тегами ===
-    print("\n=== ШАГ 2: Генерация шаблона Word с умными тегами ===")
-    generate_word_template(input_word_file, okved_file, table_mapping_file, column_mapping_file, template_word_file)
+    print("\n=== ШАГ 2: Генерация шаблона Word с умными тегами (НОВАЯ ВЕРСИЯ) ===")
+    generate_word_template(input_word_file, okved_file, table_mapping_file, column_mapping_file, template_word_file, debug=debug)
     print(f"📄 Шаблон с тегами сохранен: {template_word_file}")
 
     # === ШАГ 3: Предварительная загрузка данных из Excel ===
@@ -87,7 +100,14 @@ def main(input_template_override=None, output_file_override=None):
     doc.save(final_word_file)
     print(f"📘 Заполненный документ сохранён: {final_word_file}")
 
-    # === ШАГ 5: Диагностика и сверка ===
+    # === ШАГ 5: Анализ незаполненных тегов ===
+    remaining_tags = find_unfilled_tags(final_word_file, start_table_number=2)
+    if remaining_tags:
+        print(f"⚠️ Найдено {len(remaining_tags)} незаполненных тегов, начиная со второй таблицы.")
+    else:
+        print("✅ Незаполненных тегов, начиная со второй таблицы, не найдено.")
+
+    # === ШАГ 6: Диагностика и сверка ===
     print("\n=== ШАГ 5: Диагностика и сверка ===")
     template_codes = collect_okved_codes_from_template(template_word_file)
     excel_codes = set(master_data.keys())
