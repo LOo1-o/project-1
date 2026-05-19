@@ -22,6 +22,55 @@ from smart_loader import (
     get_cell_value_safely
 )
 from data_normalizer import clean_excel_value_for_word
+from table_manager import TableManager
+
+
+_YEAR_RE = re.compile(r"\b(20\d{2})\b")
+
+
+def _extract_report_year_from_excel(df: pd.DataFrame) -> Optional[int]:
+    """Находит отчетный год в верхних строках Excel-файла."""
+    if df.empty:
+        return None
+
+    max_rows = min(10, len(df))
+    years = []
+    for row_idx in range(max_rows):
+        for value in df.iloc[row_idx].tolist():
+            text = str(value)
+            years.extend(int(match.group(1)) for match in _YEAR_RE.finditer(text))
+
+    return max(years) if years else None
+
+
+def _detect_year_suffix_for_column(df: pd.DataFrame, col_idx: Optional[int], default_suffix: str) -> str:
+    """
+    Определяет фактический двухзначный год для столбца.
+
+    В T24-файлах в шапке обычно указан только отчетный год файла (например, 2024),
+    а в строке столбца — "предыдущего года" / "отчетного года". Поэтому нельзя
+    жестко сохранять значения как *_22 / *_23: для T24 это должны быть *_23 / *_24.
+    """
+    if col_idx is None or df.empty or col_idx >= len(df.columns):
+        return default_suffix
+
+    report_year = _extract_report_year_from_excel(df)
+    previous_year = report_year - 1 if report_year else None
+
+    max_rows = min(12, len(df))
+    column_text = " ".join(str(df.iloc[row_idx, col_idx]).lower() for row_idx in range(max_rows))
+
+    explicit_years = [int(match.group(1)) for match in _YEAR_RE.finditer(column_text)]
+    if explicit_years:
+        return str(explicit_years[-1])[-2:]
+
+    if report_year:
+        if 'предыдущ' in column_text or 'начало' in column_text:
+            return str(previous_year)[-2:]
+        if 'отчет' in column_text or 'текущ' in column_text or 'конец' in column_text:
+            return str(report_year)[-2:]
+
+    return default_suffix
 
 
 def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict, 
@@ -135,6 +184,8 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 # === ЭТАП 1: Динамический поиск колонок по году ===
                 col_idx_2022 = _find_column_smart(df, col_22_hardcode, "2022", keywords_2022)
                 col_idx_2023 = _find_column_smart(df, col_23_hardcode, "2023", keywords_2023)
+                suffix_2022 = _detect_year_suffix_for_column(df, col_idx_2022, "22")
+                suffix_2023 = _detect_year_suffix_for_column(df, col_idx_2023, "23")
                 
                 # === ЭТАП 2: Нечеткий поиск строк (экспериментально) ===
                 if use_fuzzy_match:
@@ -360,8 +411,41 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
     log = []
     
     tag_regex = re.compile(r"\{\{([^}]+)\}\}")
+    known_okved_codes = set(master_data.keys())
+
+    def parse_okved_tag(full_tag: str):
+        raw_tag = full_tag[len("OKVED_"):] if full_tag.startswith("OKVED_") else full_tag
+        parts = raw_tag.split("_")
+        if len(parts) < 2:
+            return None, None, None
+
+        # OKVED-код может быть составным (101_АГ), а код показателя может сам
+        # содержать подчеркивания из-за дедупликации (например, KolOrgEdi_2).
+        # Поэтому границу ищем по известным OKVED-кодам из master_data, а не по
+        # последнему фрагменту строки.
+        for split_idx in range(len(parts) - 1, 0, -1):
+            okved_candidate = canonical_okved("_".join(parts[:split_idx]).replace("_", "."))
+            if okved_candidate not in known_okved_codes:
+                continue
+
+            indicator_parts = parts[split_idx:]
+            if not indicator_parts:
+                continue
+
+            year_suffix = None
+            if re.fullmatch(r"\d{2}", indicator_parts[-1]):
+                year_suffix = indicator_parts[-1]
+                indicator_parts = indicator_parts[:-1]
+
+            if not indicator_parts:
+                continue
+
+            return okved_candidate, "_".join(indicator_parts), year_suffix
+
+        return None, None, None
     
-    for table in doc.tables:
+    table_manager = TableManager(doc)
+    for table in table_manager.iter_tables():
         for row in table.rows:
             for cell in row.cells:
                 for paragraph in cell.paragraphs:
