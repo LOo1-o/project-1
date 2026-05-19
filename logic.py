@@ -13,9 +13,9 @@ from config import (
     get_table_name,
     canonical_okved
 )
+from mo import load_mo_map, find_mo_code, canonical_mo
 from config_v2 import load_column_mapping_v2
 from docx import Document
-from table_registry import TableRegistry
 
 TAG_REGEX = re.compile(r"{{([^}]+?)_([0-9]+)}}")
 YEAR_PATTERN = re.compile(r'\b(20\d{2})\b')
@@ -48,8 +48,8 @@ def _normalize_match_text(text: str) -> str:
     return normalized
 
 
-def _find_year_header_row(table, min_year_cells=2, max_search_rows=20):
-    """Находит последнюю строку заголовка с годами (например, 202х/202х) в таблице."""
+def _find_year_header_row(table, min_year_cells=2, max_search_rows=40):
+    """Находит последнюю строку заголовка с годами (например, 2022/2023) в таблице."""
     candidates = []
     for row_idx, row in enumerate(table.rows[:max_search_rows]):
         row_years = [get_cleaned_cell_text(cell).strip() for cell in row.cells]
@@ -77,94 +77,18 @@ def _find_header_row_by_indicators(table, source_word_to_indicator, max_search_r
     return best_match if best_score > 0 else (None, None)
 
 
-def _find_header_rows(table, source_word_to_indicator, max_search_rows=80, debug=False):
-    """
-    Адаптивный поиск строк заголовков таблицы (year или indicator rows).
-    
-    НОВАЯ ВЕРСИЯ (Problem #4 fix):
-    - Автоматически определяет критерии на основе содержания таблицы
-    - Поддерживает одногодовые таблицы
-    - Использует гибкую иерархию приоритетов
-    
-    Алгоритм:
-    1. Собираем статистику по строкам (года, индикаторы)
-    2. Определяем, одно- или многолетние данные
-    3. Применяем соответствующие критерии:
-       - Многолетние (≥2): (year_count >= 2) OR (indicator_score >= 2)
-       - Одногодовые (=1): (year_count >= 1) OR (indicator_score >= 1)
-       - Очень слабые: (indicator_score >= 1) (fallback)
-    
-    Args:
-        table: Таблица из Document
-        source_word_to_indicator: Маппинг имён показателей на коды
-        max_search_rows: Максимально строк для поиска
-        debug: Выводить подробные логи
-    
-    Returns:
-        Отсортированный список индексов строк заголовков
-    """
+def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
+    """Собирает все строки заголовков таблицы (year или indicator rows)."""
     normalized_names = [_normalize_match_text(name) for name in source_word_to_indicator.keys()]
-    
-    # Собираем статистику по строкам
-    row_stats = []
+    headers = []
     for row_idx, row in enumerate(table.rows[:max_search_rows]):
         row_years = [get_cleaned_cell_text(cell).strip() for cell in row.cells]
         year_count = sum(1 for year in row_years if _extract_year(year))
         row_texts = [_normalize_match_text(get_cleaned_cell_text(cell)) for cell in row.cells]
         indicator_score = sum(1 for cell_text in row_texts for name in normalized_names if name and name in cell_text)
-        row_stats.append({
-            'row_idx': row_idx,
-            'year_count': year_count,
-            'indicator_score': indicator_score,
-            'is_potential_header': False,
-            'method': None
-        })
-    
-    # Определяем максимальное количество лет в таблице
-    max_year_count = max([s['year_count'] for s in row_stats], default=0)
-    max_indicator_score = max([s['indicator_score'] for s in row_stats], default=0)
-    
-    if debug:
-        print(f"   🔍 [_find_header_rows DEBUG] max_year_count={max_year_count}, max_indicator_score={max_indicator_score}")
-    
-    # СТРАТЕГИЯ 1: Многолетние таблицы (есть хотя бы 2 года в одной строке)
-    if max_year_count >= 2:
-        threshold_years = 2
-        threshold_indicators = 2
-        if debug:
-            print(f"   🔍 [Стратегия 1] Многолетние данные обнаружены (до {max_year_count} лет)")
-    # СТРАТЕГИЯ 2: Одногодовые таблицы (1 год максимум)
-    elif max_year_count == 1:
-        threshold_years = 1
-        threshold_indicators = 1
-        if debug:
-            print(f"   🔍 [Стратегия 2] Одногодовые данные (1 год максимум)")
-    # СТРАТЕГИЯ 3: Очень слабые таблицы (нет лет совсем, только индикаторы)
-    else:
-        threshold_years = 0
-        threshold_indicators = 1
-        if debug:
-            print(f"   🔍 [Стратегия 3] Fallback: нет явных лет, полагаемся на индикаторы (score >= 1)")
-    
-    # Применяем критерии
-    headers = []
-    for stat in row_stats:
-        # Критерий: (года ИЛИ индикаторы) в зависимости от стратегии
-        if stat['year_count'] >= threshold_years or stat['indicator_score'] >= threshold_indicators:
-            stat['is_potential_header'] = True
-            if stat['year_count'] >= threshold_years:
-                stat['method'] = f"year_count={stat['year_count']}"
-            else:
-                stat['method'] = f"indicator_score={stat['indicator_score']}"
-            headers.append(stat['row_idx'])
-            if debug:
-                print(f"   🔍 [Заголовок {stat['row_idx']}] {stat['method']}")
-    
-    if debug and not headers:
-        print(f"   ⚠️ [_find_header_rows DEBUG] Ни один заголовок не найден! Пытаемся fallback...")
-    
+        if year_count >= 2 or indicator_score >= 2:
+            headers.append(row_idx)
     return sorted(set(headers))
-
 
 
 def _compute_section_mapping(table, header_idx, source_word_to_indicator):
@@ -303,165 +227,108 @@ def get_continuation_table_number(table):
     return None
 
 
-def determine_table_source(table, registry: TableRegistry, file_word_to_indicator, debug=False):
-    """
-    Определяет источник таблицы с явной иерархией приоритетов.
-    
-    НОВЫЙ СПОСОБ (использует TableRegistry вместо позиционной зависимости).
-    
-    Приоритеты:
-    1. Метка "Продолжение таблицы N" (самый надежный способ) → registry.get_source_by_position()
-    2. Точное совпадение названия таблицы → registry.get_by_name(threshold=1.0)
-    3. Частичное совпадение названия (>=0.90) → registry.get_by_name(threshold=0.90)
-    4. Авто-определение по содержимому → auto_detect_table_source()
-    5. Не определяем → None
-    
-    Args:
-        table: Таблица из Document
-        registry: TableRegistry для безопасного доступа к маппингам
-        file_word_to_indicator: Маппинг (файл, название) → индикатор
-        debug: Выводить подробные логи
-    
-    Returns:
-        (source_file, method) где source_file = "T24_000000_...", method = "метод определения"
-    """
-    source = None
-    method = None
-    
-    # 1️⃣ Метка продолжения (самая надежная)
-    continuation_number = get_continuation_table_number(table)
-    if continuation_number:
-        continuation_source = registry.get_source_by_position(continuation_number)
-        if continuation_source:
-            method = f"continuation_marker(table_{continuation_number})"
-            if debug:
-                print(f"🔍 [1] Метка продолжения таблицы {continuation_number} → {continuation_source}")
-            return continuation_source, method
-    
-    # 2️⃣ Точное совпадение названия
-    table_title = get_table_name(table, registry.name_to_id.keys())
-    if table_title:
-        table_data = registry.get_by_name(table_title, threshold=1.0)
-        if table_data:
-            source = table_data['source']
-            method = f"exact_title_match({table_data['position']})"
-            if debug:
-                print(f"🔍 [2] Точное совпадение названия (таблица {table_data['position']}) → {source}")
-            return source, method
-    
-    # 3️⃣ Частичное совпадение названия
-    if table_title:
-        table_data = registry.get_by_name(table_title, threshold=0.90)
-        if table_data:
-            source = table_data['source']
-            method = f"fuzzy_title_match({table_data['position']}, 0.90)"
-            if debug:
-                print(f"🔍 [3] Частичное совпадение названия (таблица {table_data['position']}, сходство ~90%) → {source}")
-            return source, method
-    
-    # 4️⃣ Авто-определение по содержимому
-    source = auto_detect_table_source(table, registry.registry, file_word_to_indicator)
-    if source:
-        method = "content_auto_detection"
-        if debug:
-            print(f"🔍 [4] Авто-определение по содержимому → {source}")
-        return source, method
-    
-    # 5️⃣ Не определяем
-    if debug:
-        print(f"❌ [5] Не удалось определить источник таблицы")
-    return None, "failed"
-
+def get_table_source_by_number(table_source_mapping, table_number):
+    if table_number < 1 or table_number > len(table_source_mapping):
+        return None
+    return list(table_source_mapping.values())[table_number - 1]
 
 
 # ==========================================================
 # === ГЕНЕРАЦИЯ ШАБЛОНА ====================================
 # ==========================================================
-def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_path, column_mapping_path, output_doc_path, debug=False):
+def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_path, column_mapping_path, output_doc_path, mo_map_path: Path = None):
     """
-    Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}}.
-    
-    НОВАЯ ВЕРСИЯ (использует TableRegistry для стабильности):
-    - Защита от сдвига индексов при изменении маппинга
-    - Явная иерархия приоритетов определения источника
-    - Подробное логирование в DEBUG режиме
+    Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}} и {{MO_<code>_<indicator>[_22|_23]}}.
+    Расширенный поиск заголовков по первым 5 строкам таблицы.
     """
-    print("\n--- ШАГ 2: Генерация шаблона с умными тегами (v2.1 - со стабилизацией) ---")
-    
-    # Загружаем справочники
+    print("\n--- ШАГ 2: Генерация шаблона с умными тегами ---")
     _, name_to_okved_cleaned = load_okved_map(okved_map_path)
-    registry = TableRegistry(table_source_mapping_path)  # ← НОВОЕ: Реестр таблиц
+    _, mo_name_to_mo_cleaned = ({}, {})
+    if mo_map_path is not None:
+        _, mo_name_to_mo_cleaned = load_mo_map(mo_map_path)
+
+    table_source_mapping = load_table_source_map(table_source_mapping_path)
+    mo_source_files = {src for src in table_source_mapping.values() if 'mo' in src.lower()}
     word_to_indicator, _, indicator_to_file, file_word_to_indicator, _ = load_column_mapping_v2(column_mapping_path)
-    
-    if debug:
-        print("\n🔍 DEBUG РЕЖИМ ВКЛЮЧЕН")
-        registry.print_summary()
-    
     doc = Document(input_doc_path)
     total_tags = 0
     current_source_file = None
-    method_for_current = None  # Способ определения источника
-    
+    normalized_title_to_src = {k: v for k, v in table_source_mapping.items()}
+
     for t_index, table in enumerate(doc.tables):
         print(f"\n📄 Таблица {t_index + 1}")
-        
-        # НОВЫЙ ПОДХОД: Используем determine_table_source с иерархией приоритетов
-        source_file, method = determine_table_source(table, registry, file_word_to_indicator, debug=debug)
-        
-        if source_file:
-            current_source_file = source_file
-            method_for_current = method
-            print(f"✅ Источник определен: {source_file} ({method})")
-        else:
-            # Fallback: используем предыдущий источник только если есть хотя бы одна таблица до этого
-            if current_source_file:
-                print(f"ℹ️ Источник не определен, используем предыдущий: {current_source_file}")
+
+        # 0. Определение источника данных по названию таблицы
+        table_title = get_table_name(table, table_source_mapping.keys())
+        if table_title:
+            table_title_norm = _normalize_text(table_title)
+            if table_title_norm in normalized_title_to_src:
+                current_source_file = normalized_title_to_src[table_title_norm]
+                print(f"🔍 Источник таблицы: {current_source_file}")
             else:
-                print(f"⚠️ Источник не определен и нет предыдущего источника. Пропускаем таблицу.")
-                continue
-        
+                print(f"⚠️ Не найден источник для заголовка таблицы: '{table_title}'")
+
+        continuation_number = get_continuation_table_number(table)
+        if continuation_number:
+            continuation_source = get_table_source_by_number(table_source_mapping, continuation_number)
+            if continuation_source:
+                if current_source_file and current_source_file != continuation_source:
+                    print(f"🔁 Источник по метке продолжения таблицы {continuation_number} ({continuation_source}) отличается от источника заголовка ({current_source_file}). Предпочитаем продолжение таблицы.")
+                current_source_file = continuation_source
+                print(f"🔁 Источник по метке продолжения таблицы {continuation_number}: {current_source_file}")
+
+        if not current_source_file:
+            print(f"   → Пытаемся определить по содержимому таблицы...")
+            detected = auto_detect_table_source(table, table_source_mapping, file_word_to_indicator)
+            if detected:
+                current_source_file = detected
+                print(f"   ✓ Автоматически определен источник: {current_source_file}")
+            else:
+                print("ℹ️ Заголовок таблицы не определён, используем предыдущий источник")
+
         if not current_source_file:
             print("⚠️ Источник не определён. Пропускаем таблицу.")
             continue
-        
+
         # Используем file_word_to_indicator для правильного маппирования по (файл, слово)
         source_word_to_indicator = {
             name: indicator
             for (file, name), indicator in file_word_to_indicator.items()
             if file == current_source_file
         }
-        
+
         if not source_word_to_indicator:
             print(f"⚠️ Нет показателей для источника {current_source_file}. Пропускаем таблицу.")
             continue
-        
+
         # DEBUG для таблицы 17
-        if t_index + 1 == 17 and debug:
+        if t_index + 1 == 17:
             print(f"   DEBUG: Таблица 17")
             print(f"   Источник: {current_source_file}")
             print(f"   Показатели ({len(source_word_to_indicator)}):")
             for name, indicator in list(source_word_to_indicator.items())[:5]:
                 print(f"      {name} → {indicator}")
-        
-        header_rows = _find_header_rows(table, source_word_to_indicator, debug=debug)
+
+        header_rows = _find_header_rows(table, source_word_to_indicator)
         section_ranges = []
         for header_idx in header_rows:
             mapping = _compute_section_mapping(table, header_idx, source_word_to_indicator)
             if mapping:
                 section_ranges.append((header_idx, mapping))
-        
+
         mapped_sections = []
         col_to_indicator_map = {}
         if not section_ranges:
             # Fallback: старая логика для нестандартных таблиц.
             print(f"   🔄 Fallback: используем старую логику для таблицы {t_index + 1}")
             base_indicator_map = {}
+            # Ищем строку заголовка по явным названиям показателей, если она не на первой позиции.
             header_row, header_row_idx = _find_header_row_by_indicators(table, source_word_to_indicator, max_search_rows=20)
             if header_row is not None:
                 print(f"   🔍 Fallback: используем строку заголовка {header_row_idx + 1} для поиска показателей")
             else:
                 header_row = table.rows[1] if len(table.rows) > 1 else table.rows[0]
-            
+
             for i, cell in enumerate(header_row.cells):
                 header_text = _normalize_text(get_cleaned_cell_text(cell))
                 if header_text:
@@ -472,7 +339,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                             break
             
             print(f"   📈 base_indicator_map: {base_indicator_map}")
-            
+
             year_row, year_row_idx = _find_year_header_row(table)
             if year_row:
                 for i, cell in enumerate(year_row.cells):
@@ -492,7 +359,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             if not col_to_indicator_map:
                 print("⚠️ Заголовки не найдены. Пропускаем таблицу.")
                 continue
-            
+
             mapped_sections = [(0, len(table.rows), col_to_indicator_map)]
         else:
             section_ranges.sort(key=lambda x: x[0])
@@ -500,11 +367,11 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 start = header_idx + 1
                 end = section_ranges[idx + 1][0] if idx + 1 < len(section_ranges) else len(table.rows)
                 mapped_sections.append((start, end, mapping))
-        
+
         if not mapped_sections:
             print("⚠️ Заголовки не найдены. Пропускаем таблицу.")
             continue
-        
+
         # 4. Вставка тегов в строки с кодами ОКВЭД
         for row_idx, row in enumerate(table.rows):
             mapping = None
@@ -514,91 +381,69 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                     break
             if mapping is None:
                 continue
-            
+
             first_cell_text = get_cleaned_cell_text(row.cells[0])
             okved_code = find_okved_code(first_cell_text, name_to_okved_cleaned)
-            if not okved_code:
+            mo_code = None
+            if not okved_code and current_source_file and current_source_file.lower().endswith('.xlsx') and current_source_file.lower().find('mo') != -1:
+                mo_code = find_mo_code(first_cell_text, mo_name_to_mo_cleaned)
+
+            if not okved_code and not mo_code:
                 continue
-            
-            # Применяем канонизацию к коду ОКВЭД перед созданием тега
-            okved_canonical = canonical_okved(okved_code)
-            okved_tag_part = okved_canonical.replace('.', '_')
-            
+
+            if okved_code:
+                prefix = "OKVED"
+                code_value = canonical_okved(okved_code)
+            else:
+                prefix = "MO"
+                code_value = canonical_mo(mo_code)
+
+            code_tag_part = code_value.replace('.', '_')
+
             for col_idx, indicator_spec in mapping.items():
                 if col_idx < len(row.cells):
                     indicator, year = indicator_spec
                     if year:
-                        tag = f"{{{{OKVED_{okved_tag_part}_{indicator}_{year}}}}}"
+                        tag = f"{{{{{prefix}_{code_tag_part}_{indicator}_{year}}}}}"
                     else:
-                        tag = f"{{{{OKVED_{okved_tag_part}_{indicator}}}}}"
+                        tag = f"{{{{{prefix}_{code_tag_part}_{indicator}}}}}"
                     # Очищаем ячейку перед вставкой тега
                     for p in row.cells[col_idx].paragraphs:
                         p.text = " "
                     if row.cells[col_idx].paragraphs:
                         row.cells[col_idx].paragraphs[0].text = tag
                     total_tags += 1
-                    if debug:
-                        print(f"   🏷️ Строка {row_idx + 1}: вставлен тег {tag}")
-    
+                    print(f"   🏷️ Строка {row_idx + 1}: вставлен тег {tag}")
+
     doc.save(output_doc_path)
     print(f"\n✅ Шаблон с тегами сохранён: {output_doc_path}")
     print(f"🔢 Всего вставлено тегов: {total_tags}")
-    if debug:
-        print(f"ℹ️ DEBUG режим завершен")
-
 
 
 # ==========================================================
 # === ДИАГНОСТИКА И ПОМОЩНЫЕ ==============================
 # ==========================================================
-def find_unfilled_tags(doc_path, start_table_number: int = 1, start_table_title: str = None,
-                        table_source_mapping: dict = None):
-    """Диагностика незаполненных тегов.
-
-    Args:
-        doc_path: путь к документу .docx.
-        start_table_number: номер таблицы, с которой начинать анализ (1-based).
-        start_table_title: точное название таблицы, с которой начать анализ.
-        table_source_mapping: маппинг названий таблиц → источников, используемый для определения таблицы по заголовку.
-    """
+def find_unfilled_tags(doc_path):
+    """Диагностика незаполненных тегов."""
     doc = Document(doc_path)
-    unfilled_tags = {}
+    unfilled_tags = set()
+    for para in doc.paragraphs:
+        matches = TAG_REGEX.findall(para.text)
+        for code, index in matches:
+            unfilled_tags.add(f"{{{{{code}_{index}}}}}")
 
-    def collect_paragraphs(paragraphs):
-        for para in paragraphs:
-            matches = TAG_REGEX.findall(para.text)
-            for tag in matches:
-                unfilled_tags.setdefault(f"{{{{{tag}}}}}", 0)
-                unfilled_tags[f"{{{{{tag}}}}}"] += 1
-
-    def collect_table(table):
+    for table in doc.tables:
         for row in table.rows:
             for cell in row.cells:
-                collect_paragraphs(cell.paragraphs)
-                for nested_table in cell.tables:
-                    collect_table(nested_table)
+                for para in cell.paragraphs:
+                    matches = TAG_REGEX.findall(para.text)
+                    for code, index in matches:
+                        unfilled_tags.add(f"{{{{{code}_{index}}}}}")
 
-    # Всегда анализируем теги из обычных параграфов документа.
-    collect_paragraphs(doc.paragraphs)
-
-    if start_table_title and table_source_mapping:
-        for idx, table in enumerate(doc.tables, start=1):
-            title = get_table_name(table, table_source_mapping.keys())
-            if title and title.strip().lower() == start_table_title.strip().lower():
-                start_table_number = idx
-                break
-
-    start_index = max(1, start_table_number)
-    for idx, table in enumerate(doc.tables, start=1):
-        if idx < start_index:
-            continue
-        collect_table(table)
-
-    total_tags = sum(unfilled_tags.values())
-    print(f"\n🔍 Незаполненные теги (начиная с таблицы {start_index}): {total_tags}")
-    for tag, count in sorted(unfilled_tags.items()):
-        print(f" - {tag} ({count} раз)")
-    return set(unfilled_tags.keys())
+    print(f"\n🔍 Незаполненные теги: {len(unfilled_tags)}")
+    for tag in sorted(unfilled_tags):
+        print(f" - {tag}")
+    return unfilled_tags
 
 
 def _extract_okved_code_from_tag(raw_tag: str) -> Optional[str]:

@@ -67,10 +67,10 @@ def load_column_mapping_v2(filepath) -> Tuple[Dict[str, str], Dict[str, Tuple[st
     
     Returns:
         - word_to_indicator: название показателя → код индикатора
-        - indicator_to_excel: код индикатора → (колонка 202Х, колонка 202Х)
+        - indicator_to_excel: код индикатора → (колонка 2022, колонка 2023)
         - indicator_to_file: код индикатора → файл Excel
         - file_word_to_indicator: (файл, название) → код индикатора
-        - indicator_keywords: код индикатора → {year_202Х: [...], year_202Х: [...]} 
+        - indicator_keywords: код индикатора → {year_2022: [...], year_2023: [...]} 
     """
     word_to_indicator = {}
     indicator_to_excel = {}
@@ -201,12 +201,19 @@ def _detect_year_by_text(text: str) -> str:
 
 
 def _find_excel_header_row(df: pd.DataFrame) -> int:
-    for idx in range(min(20, len(df))):
+    candidates = []
+    for idx in range(min(40, len(df))):
         row = df.iloc[idx, :10].astype(str).fillna('').str.lower().tolist()
         joined = ' '.join(row)
         if 'код' in joined and 'наименование' in joined:
             return idx
-    return None
+        if 'наименование' in joined:
+            # Если есть только «Наименование», но нет явного «Код»,
+            # это всё ещё может быть строка заголовка.
+            if any(cell and 'наименование' not in cell for cell in row):
+                candidates.append(idx)
+
+    return candidates[0] if candidates else None
 
 
 def _transliterate_to_latin(text: str) -> str:
@@ -277,6 +284,25 @@ def _is_connective_header(text: str) -> bool:
         'в том числе',
         'в том числе:'
     }
+
+
+def _is_metric_suffix(text: str) -> bool:
+    if not isinstance(text, str):
+        return False
+    return _normalize_text(text) in {
+        'длительность 1 оборота',
+        'средний срок погашения'
+    }
+
+
+def _simplify_metric_suffix(base_name: str, suffix: str) -> str:
+    normalized_suffix = _normalize_text(suffix)
+    if normalized_suffix == 'длительность 1 оборота':
+        # Упрощаем наименования, чтобы не добавлять лишние единицы измерения
+        return 'длительность' if _normalize_text(base_name) == 'запасы' else ''
+    if normalized_suffix == 'средний срок погашения':
+        return ''
+    return suffix
 
 
 def _extract_keywords_for_year(base_name: str, suffix: str, year: str) -> str:
@@ -383,46 +409,74 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
 
     headers = df.iloc[header_row].astype(str).fillna('').tolist()
     subheaders = df.iloc[header_row + 1].astype(str).fillna('').tolist() if header_row + 1 < len(df) else [''] * len(headers)
+    footer_row = df.iloc[header_row + 2].astype(str).fillna('').tolist() if header_row + 2 < len(df) else [''] * len(headers)
+    max_header_idx = max(
+        [i for i, v in enumerate(headers) if str(v).strip()] +
+        [i for i, v in enumerate(subheaders) if str(v).strip()] +
+        [i for i, v in enumerate(footer_row) if str(v).strip()] +
+        [0]
+    )
 
-    current_base = ''
+    current_group_label = None
     current_indicator_name = None
     groups = {}
     col_metadata = {}  # Сохраняем метаданные для каждого столбца (базовое имя, суффикс)
-    
-    for col_idx in range(2, len(headers)):
-        raw_header = str(headers[col_idx]).strip()
+
+    first_header = _normalize_text(str(headers[0])) if headers else ''
+    second_header = _normalize_text(str(headers[1])) if len(headers) > 1 else ''
+    start_col = 2 if 'код' in first_header or (first_header == 'код' and second_header == 'наименование') else 1
+
+    current_base = str(headers[start_col]).strip() if start_col < len(headers) else ''
+
+    for col_idx in range(start_col, max_header_idx + 1):
+        raw_header = str(headers[col_idx] if col_idx < len(headers) else '').strip()
         suffix = str(subheaders[col_idx]).strip()
         year = _detect_year_by_text(suffix)
+        code_source = None
 
         if raw_header:
             if _is_connective_header(raw_header):
                 if not current_base or not suffix:
                     continue
-                indicator_name = f"{current_base} {raw_header} {suffix}".strip()
+                current_group_label = f"{current_base} {raw_header.strip(':')}".strip()
+                indicator_name = suffix
+                code_source = indicator_name
             else:
                 current_base = raw_header
+                current_group_label = None
                 if suffix and not year:
-                    indicator_name = f"{current_base} {suffix}".strip()
+                    if _is_metric_suffix(suffix):
+                        suffix_part = _simplify_metric_suffix(current_base, suffix)
+                        indicator_name = f"{current_base} {suffix_part}".strip() if suffix_part else current_base
+                        code_source = f"{current_base} {suffix}".strip()
+                    else:
+                        indicator_name = f"{current_base} {suffix}".strip()
+                        code_source = indicator_name
                 else:
                     indicator_name = current_base
+                    code_source = current_base
         elif suffix:
             if not current_base:
                 continue
-            if year:
+            if current_group_label:
+                indicator_name = suffix
+            elif year:
                 indicator_name = current_indicator_name or current_base
             else:
                 indicator_name = f"{current_base} {suffix}".strip()
+            code_source = indicator_name
         else:
             if not current_indicator_name:
                 continue
             indicator_name = current_indicator_name
+            code_source = indicator_name
 
         current_indicator_name = indicator_name
         group_key = _normalize_text(indicator_name)
         if group_key not in groups:
             groups[group_key] = {
                 'name': indicator_name,
-                'code': _slugify_indicator_code(indicator_name, excel_path.stem),
+                'code': _slugify_indicator_code(code_source or indicator_name, excel_path.stem),
                 'cols': {'22': None, '23': None},
                 'keywords_2022': [],
                 'keywords_2023': []
@@ -444,6 +498,7 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
                 groups[group_key]['cols']['22'] = str(col_idx + 1)
             else:
                 groups[group_key]['cols']['23'] = str(col_idx + 1)
+
 
     rows = []
     for group in groups.values():
