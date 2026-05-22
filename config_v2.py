@@ -10,12 +10,52 @@ import csv
 import re
 import pandas as pd
 from pathlib import Path
-from typing import Dict, Tuple, Optional, List
+from typing import Dict, Tuple, Optional, List, Set
 
 # === Константы ===
 EMPTY_CELL_MARKER = "—"
 OKVED_CODE_COLUMN_INDEX = 0
 OKVED_NAME_COLUMN_INDEX = 1
+
+# === Конфигурируемые метрические суффиксы (загружаются из CSV) ===
+_METRIC_SUFFIXES: Set[str] = set()
+
+def _load_metric_suffixes(config_path: Optional[Path] = None) -> Set[str]:
+    """Загружает конфигурацию метрических суффиксов из CSV.
+    
+    Файл должен содержать два столбца:
+    - Метрический суффикс
+    - Тип метрики
+    
+    Если файл не найден, возвращает пустое множество (система будет работать без метрик).
+    """
+    global _METRIC_SUFFIXES
+    
+    if config_path is None:
+        config_path = Path(__file__).parent / "input" / "mappings" / "metrics_config.csv"
+    
+    config_path = Path(config_path)
+    _METRIC_SUFFIXES = set()
+    
+    if not config_path.exists():
+        print(f"⚠️ Файл конфигурации метрик не найден: {config_path}")
+        print("   Система будет работать без метрических суффиксов.")
+        return _METRIC_SUFFIXES
+    
+    try:
+        with open(config_path, encoding='utf-8-sig', newline='') as f:
+            reader = csv.reader(f, delimiter=';')
+            next(reader, None)  # Пропускаем заголовок
+            for row in reader:
+                if row and row[0].strip():
+                    metric = _normalize_text(row[0].strip())
+                    _METRIC_SUFFIXES.add(metric)
+        
+        print(f"✅ Загружены {len(_METRIC_SUFFIXES)} метрических суффиксов из {config_path.name}")
+    except Exception as e:
+        print(f"⚠️ Ошибка при загрузке метрик: {e}")
+    
+    return _METRIC_SUFFIXES
 
 
 # === Утилиты ===
@@ -287,21 +327,43 @@ def _is_connective_header(text: str) -> bool:
 
 
 def _is_metric_suffix(text: str) -> bool:
+    """Проверяет, является ли текст метрическим суффиксом.
+    
+    Использует конфигурацию из metrics_config.csv вместо жесткой привязки.
+    """
     if not isinstance(text, str):
         return False
-    return _normalize_text(text) in {
-        'длительность 1 оборота',
-        'средний срок погашения'
-    }
+    
+    # Если конфиг не загружен, загружаем его
+    if not _METRIC_SUFFIXES:
+        _load_metric_suffixes()
+    
+    normalized = _normalize_text(text)
+    return normalized in _METRIC_SUFFIXES
 
 
 def _simplify_metric_suffix(base_name: str, suffix: str) -> str:
+    """Упрощает метрический суффикс для использования в названии показателя.
+    
+    Конфигурируемая система: все метрические суффиксы должны быть удалены из имени,
+    так как они используются только для кодирования, а не для отображения.
+    
+    Проверяет конфигурацию из metrics_config.csv.
+    """
+    if not isinstance(suffix, str):
+        return suffix
+    
     normalized_suffix = _normalize_text(suffix)
-    if normalized_suffix == 'длительность 1 оборота':
-        # Упрощаем наименования, чтобы не добавлять лишние единицы измерения
-        return 'длительность' if _normalize_text(base_name) == 'запасы' else ''
-    if normalized_suffix == 'средний срок погашения':
+    
+    # Если конфиг не загружен, загружаем его
+    if not _METRIC_SUFFIXES:
+        _load_metric_suffixes()
+    
+    # Если это известный метрический суффикс, удаляем его из имени
+    if normalized_suffix in _METRIC_SUFFIXES:
         return ''
+    
+    # Иначе, оставляем суффикс как есть
     return suffix
 
 
@@ -559,6 +621,9 @@ def build_column_mapping_v2_from_excel(excel_dir: Path, table_source_mapping: di
 
 def ensure_column_mapping_v2(excel_dir: Path, table_source_mapping: dict, output_path: Path):
     """Гарантирует, что column_mapping_v2 содержит все источники из table_source_data_mapping.csv."""
+    # Загружаем конфиг метрик
+    _load_metric_suffixes()
+    
     output_path = Path(output_path)
     if not output_path.exists():
         print(f"⚠️ Файл {output_path} не найден. Генерируем column_mapping_v2.csv из Excel...")

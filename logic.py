@@ -234,7 +234,7 @@ def get_table_source_by_number(table_source_mapping, table_number):
 
 
 # ==========================================================
-# === ГЕНЕРАЦИЯ ШАБЛОНА ====================================
+# === ОСНОВНАЯ ЛОГИКА ======================================
 # ==========================================================
 def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_path, column_mapping_path, output_doc_path, mo_map_path: Path = None):
     """
@@ -342,15 +342,25 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
 
             year_row, year_row_idx = _find_year_header_row(table)
             if year_row:
+                last_year_code = None
                 for i, cell in enumerate(year_row.cells):
                     raw_year_text = get_cleaned_cell_text(cell).strip()
                     indicator = base_indicator_map.get(i)
                     if indicator is None:
                         continue
                     year_text = _extract_year(raw_year_text)
-                    if not year_text:
-                        continue
-                    col_to_indicator_map[i] = (indicator, year_text[-2:])
+                    if year_text:
+                        last_year_code = year_text[-2:]
+                        col_to_indicator_map[i] = (indicator, last_year_code)
+                    else:
+                        # В некоторых шаблонах год в колонке может отсутствовать.
+                        # Не пропускаем показатель: используем последний найденный год
+                        # в пределах той же шапки, либо сохраняем без года.
+                        col_to_indicator_map[i] = (indicator, last_year_code)
+                        print(
+                            f"   ⚠️ Нет года в колонке {i} fallback-шапки; "
+                            f"используем год {last_year_code if last_year_code else 'None'} для {indicator}"
+                        )
             else:
                 for i, indicator in base_indicator_map.items():
                     col_to_indicator_map[i] = (indicator, None)
@@ -458,24 +468,41 @@ def _extract_okved_code_from_tag(raw_tag: str) -> Optional[str]:
     if parts[-1] in ("22", "23"):
         parts = parts[:-1]
 
-    if not parts:
-        return None
+    if len(parts) >= 3:
+        code_parts = parts[:-1]
+        if len(code_parts) >= 2 and code_parts[0].isdigit() and code_parts[1].isdigit():
+            return f"{code_parts[0]}.{code_parts[1]}"
+        return "_".join(code_parts)
 
-    okved_parts = [parts[0]]
-    for part in parts[1:]:
-        if part.isdigit() or (part.isalpha() and part.isupper()):
-            okved_parts.append(part)
-            continue
-        # Если встречаем часть, которая выглядит как индикатор, останавливаемся.
-        break
+    return None
 
-    okved_raw = "_".join(okved_parts)
-    if not okved_raw:
-        return None
 
-    if "." in okved_raw or any(c.isalpha() for c in okved_raw):
-        return canonical_okved(okved_raw.replace("_", "."))
-    return canonical_okved(okved_raw)
+def save_unfilled_tags_to_excel(tags: set, output_excel_path: str, template_doc_path: str = None):
+    """
+    Сохраняет незаполненные теги в Excel с дополнительной информацией:
+    - tag: сам тег
+    - status: status='missing' if there is no data
+    - indicator_code: код показателя из тега
+    - okved_code: extracted OKVED code
+    - okved_name: наименование ОКВЭД (если найдено)
+    - table_source: источник таблицы
+    """
+    import pandas as pd
+
+    rows = []
+    for tag in sorted(tags):
+        raw = tag.strip('{}')
+        okved_code = _extract_okved_code_from_tag(raw)
+        rows.append({
+            'tag': tag,
+            'status': 'missing',
+            'okved_code': okved_code,
+        })
+
+    df = pd.DataFrame(rows)
+    Path(output_excel_path).parent.mkdir(parents=True, exist_ok=True)
+    df.to_excel(output_excel_path, index=False)
+    print(f"📄 Отчёт о незаполненных тегах сохранён: {output_excel_path}")
 
 
 def collect_okved_codes_from_template(doc_path):
