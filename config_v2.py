@@ -64,6 +64,26 @@ def _normalize_text(text: str) -> str:
     return re.sub(r'\s+', ' ', text).strip().lower()
 
 
+def _normalize_mapping_label(text: str) -> str:
+    """Нормализует подписи показателей для column_mapping_v2.
+
+    Убирает артефакты переносов/верстки из Excel-шапок:
+    - множественные пробелы;
+    - пробелы около скобок;
+    - разрывы слов через дефис с пробелами (``дру- гие`` -> ``другие``).
+    """
+    if not isinstance(text, str):
+        return ""
+    value = text.replace("\n", " ").replace("\r", " ")
+    # Склеиваем разрывы слов вида "дру- гие" / "дру - гие"
+    value = re.sub(r'([A-Za-zА-Яа-яЁё])\s*-\s*([A-Za-zА-Яа-яЁё])', r'\1\2', value)
+    # Убираем лишние пробелы вокруг скобок
+    value = re.sub(r'\(\s+', '(', value)
+    value = re.sub(r'\s+\)', ')', value)
+    # Схлопываем пробелы
+    value = re.sub(r'\s+', ' ', value).strip()
+    return value
+
 def _read_csv_robustly(filepath, header_row=0):
     """Читает CSV с несколькими попытками кодировки"""
     encodings = ['utf-8-sig', 'windows-1251', 'cp1251', 'utf-8', 'latin1']
@@ -131,12 +151,12 @@ def load_column_mapping_v2(filepath) -> Tuple[Dict[str, str], Dict[str, Tuple[st
                 continue
 
             excel_file = str(row[0]).strip() if len(row) > 0 else ''
-            word_name = str(row[1]).strip() if len(row) > 1 else ''
+            word_name = _normalize_mapping_label(str(row[1])) if len(row) > 1 else ''
             indicator = str(row[2]).strip() if len(row) > 2 else ''
             col_22 = str(row[3]).strip() if len(row) > 3 else ''
             col_23 = str(row[4]).strip() if len(row) > 4 else ''
-            kw_2022 = str(row[5]).strip() if len(row) > 5 else ''
-            kw_2023 = str(row[6]).strip() if len(row) > 6 else ''
+            kw_2022 = _normalize_mapping_label(str(row[5])) if len(row) > 5 else ''
+            kw_2023 = _normalize_mapping_label(str(row[6])) if len(row) > 6 else ''
 
             if col_22.lower() == 'nan':
                 col_22 = ''
@@ -491,8 +511,8 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
     current_base = str(headers[start_col]).strip() if start_col < len(headers) else ''
 
     for col_idx in range(start_col, max_header_idx + 1):
-        raw_header = str(headers[col_idx] if col_idx < len(headers) else '').strip()
-        suffix = str(subheaders[col_idx]).strip()
+        raw_header = _normalize_mapping_label(str(headers[col_idx] if col_idx < len(headers) else ''))
+        suffix = _normalize_mapping_label(str(subheaders[col_idx]))
         year = _detect_year_by_text(suffix)
         code_source = None
 
@@ -500,7 +520,7 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
             if _is_connective_header(raw_header):
                 if not current_base or not suffix:
                     continue
-                current_group_label = f"{current_base} {raw_header.strip(':')}".strip()
+                current_group_label = _normalize_mapping_label(f"{current_base} {raw_header.strip(':')}".strip())
                 indicator_name = suffix
                 code_source = indicator_name
             else:
@@ -509,10 +529,10 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
                 if suffix and not year:
                     if _is_metric_suffix(suffix):
                         suffix_part = _simplify_metric_suffix(current_base, suffix)
-                        indicator_name = f"{current_base} {suffix_part}".strip() if suffix_part else current_base
-                        code_source = f"{current_base} {suffix}".strip()
+                        indicator_name = _normalize_mapping_label(f"{current_base} {suffix_part}".strip()) if suffix_part else current_base
+                        code_source = _normalize_mapping_label(f"{current_base} {suffix}".strip())
                     else:
-                        indicator_name = f"{current_base} {suffix}".strip()
+                        indicator_name = _normalize_mapping_label(f"{current_base} {suffix}".strip())
                         code_source = indicator_name
                 else:
                     indicator_name = current_base
@@ -525,8 +545,8 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
             elif year:
                 indicator_name = current_indicator_name or current_base
             else:
-                indicator_name = f"{current_base} {suffix}".strip()
-            code_source = indicator_name
+                indicator_name = _normalize_mapping_label(f"{current_base} {suffix}".strip())
+                code_source = indicator_name
         else:
             if not current_indicator_name:
                 continue
@@ -620,10 +640,12 @@ def build_column_mapping_v2_from_excel(excel_dir: Path, table_source_mapping: di
 
 
 def ensure_column_mapping_v2(excel_dir: Path, table_source_mapping: dict, output_path: Path):
-    """Гарантирует, что column_mapping_v2 содержит все источники из table_source_data_mapping.csv."""
+    """Гарантирует наличие column_mapping_v2.csv.
+    Важно: если файл уже существует, он НЕ пересобирается автоматически.
+    """
     # Загружаем конфиг метрик
     _load_metric_suffixes()
-    
+
     output_path = Path(output_path)
     if not output_path.exists():
         print(f"⚠️ Файл {output_path} не найден. Генерируем column_mapping_v2.csv из Excel...")
@@ -635,9 +657,8 @@ def ensure_column_mapping_v2(excel_dir: Path, table_source_mapping: dict, output
         _, _, _, file_word_to_indicator, _ = load_column_mapping_v2(output_path)
         existing_sources = {file for file, _ in file_word_to_indicator.keys()}
     except Exception as exc:
-        print(f"⚠️ Не удалось считать существующий файл column_mapping_v2.csv: {exc}")
-        print("    Регенерируем файл заново.")
         build_column_mapping_v2_from_excel(excel_dir, table_source_mapping, output_path)
+        print("    Файл существует, автоматическую регенерацию пропускаем.")
         return
 
     expected_sources = set(table_source_mapping.values())
@@ -646,7 +667,6 @@ def ensure_column_mapping_v2(excel_dir: Path, table_source_mapping: dict, output
         print("⚠️ Найдены отсутствующие Excel-источники в column_mapping_v2.csv:")
         for src in missing_sources:
             print(f"   - {src}")
-        print("    Регенерируем column_mapping_v2 из Excel на основе table_source_data_mapping.csv...")
-        build_column_mapping_v2_from_excel(excel_dir, table_source_mapping, output_path)
+        print("    Файл уже существует, автоматическую регенерацию пропускаем.")
     else:
         print(f"✅ column_mapping_v2 уже содержит все источники из {len(expected_sources)} файла(ов).")

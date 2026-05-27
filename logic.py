@@ -34,7 +34,7 @@ def _normalize_match_text(text: str) -> str:
     1. Применяем базовую нормализацию (_normalize_text)
     2. Удаляем специальные символы, оставляя только цифры и буквы
     3. Схлопываем множественные пробелы
-    
+
     Используется для поиска совпадений названий показателей в заголовках.
     """
     if not text:
@@ -196,7 +196,7 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator):
 # ==========================================================
 def auto_detect_table_source(table, table_source_mapping, file_word_to_indicator):
     """
-    Автоматически определяет источник Excel файла для таблицы 
+    Автоматически определяет источник Excel файла для таблицы
     по её содержимому (по ключевым показателям из одного файла).
     """
     # Собираем текст из первых 5 строк таблицы
@@ -205,7 +205,7 @@ def auto_detect_table_source(table, table_source_mapping, file_word_to_indicator
         for row in table.rows[:5]
         for cell in row.cells
     ])
-    
+
     # Пробуем найти текстовые совпадения показателей в таблице
     for (excel_file, indicator_name), indicator in file_word_to_indicator.items():
         if indicator_name.lower() in table_content:
@@ -236,7 +236,8 @@ def get_table_source_by_number(table_source_mapping, table_number):
 # ==========================================================
 # === ОСНОВНАЯ ЛОГИКА ======================================
 # ==========================================================
-def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_path, column_mapping_path, output_doc_path, mo_map_path: Path = None):
+def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_path, column_mapping_path,
+                           output_doc_path, mo_map_path: Path = None):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}} и {{MO_<code>_<indicator>[_22|_23]}}.
     Расширенный поиск заголовков по первым 5 строкам таблицы.
@@ -273,7 +274,8 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             continuation_source = get_table_source_by_number(table_source_mapping, continuation_number)
             if continuation_source:
                 if current_source_file and current_source_file != continuation_source:
-                    print(f"🔁 Источник по метке продолжения таблицы {continuation_number} ({continuation_source}) отличается от источника заголовка ({current_source_file}). Предпочитаем продолжение таблицы.")
+                    print(
+                        f"🔁 Источник по метке продолжения таблицы {continuation_number} ({continuation_source}) отличается от источника заголовка ({current_source_file}). Предпочитаем продолжение таблицы.")
                 current_source_file = continuation_source
                 print(f"🔁 Источник по метке продолжения таблицы {continuation_number}: {current_source_file}")
 
@@ -323,21 +325,46 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             print(f"   🔄 Fallback: используем старую логику для таблицы {t_index + 1}")
             base_indicator_map = {}
             # Ищем строку заголовка по явным названиям показателей, если она не на первой позиции.
-            header_row, header_row_idx = _find_header_row_by_indicators(table, source_word_to_indicator, max_search_rows=20)
+            header_row, header_row_idx = _find_header_row_by_indicators(table, source_word_to_indicator,
+                                                                        max_search_rows=20)
             if header_row is not None:
                 print(f"   🔍 Fallback: используем строку заголовка {header_row_idx + 1} для поиска показателей")
             else:
                 header_row = table.rows[1] if len(table.rows) > 1 else table.rows[0]
+                header_row_idx = 1 if len(table.rows) > 1 else 0
 
+            # 1) Основная стратегия: маппинг только по верхней строке заголовка (row0-first)
+            # 2) Если не сработало, fallback: объединяем верхнюю строку с соседней (row0+row1)
             for i, cell in enumerate(header_row.cells):
                 header_text = _normalize_text(get_cleaned_cell_text(cell))
-                if header_text:
-                    for name, indicator in source_word_to_indicator.items():
-                        if name in header_text:
-                            base_indicator_map[i] = indicator
-                            print(f"   🔍 Fallback: столбец {i}, текст '{header_text[:50]}' → {indicator}")
-                            break
-            
+                if not header_text:
+                    continue
+                for name, indicator in source_word_to_indicator.items():
+                    if name in header_text:
+                        base_indicator_map[i] = indicator
+                        print(f"   🔍 Fallback row0: столбец {i}, текст '{header_text[:50]}' → {indicator}")
+                        break
+
+            if not base_indicator_map and header_row_idx is not None:
+                next_row_idx = header_row_idx + 1
+                if next_row_idx < len(table.rows):
+                    next_row = table.rows[next_row_idx]
+                    for i, cell in enumerate(header_row.cells):
+                        primary = _normalize_text(get_cleaned_cell_text(cell))
+                        secondary = _normalize_text(get_cleaned_cell_text(next_row.cells[i])) if i < len(
+                            next_row.cells) else ""
+                        composed = _normalize_text(" ".join(part for part in [primary, secondary] if part))
+                        if not composed:
+                            continue
+                        for name, indicator in source_word_to_indicator.items():
+                            if name in composed:
+                                base_indicator_map[i] = indicator
+                                print(
+                                    f"   🔍 Fallback row0+row1: столбец {i}, "
+                                    f"текст '{composed[:70]}' → {indicator}"
+                                )
+                                break
+
             print(f"   📈 base_indicator_map: {base_indicator_map}")
 
             year_row, year_row_idx = _find_year_header_row(table)
@@ -364,7 +391,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             else:
                 for i, indicator in base_indicator_map.items():
                     col_to_indicator_map[i] = (indicator, None)
-            
+
             print(f"   📊 col_to_indicator_map: {col_to_indicator_map}")
             if not col_to_indicator_map:
                 print("⚠️ Заголовки не найдены. Пропускаем таблицу.")
@@ -395,7 +422,8 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             first_cell_text = get_cleaned_cell_text(row.cells[0])
             okved_code = find_okved_code(first_cell_text, name_to_okved_cleaned)
             mo_code = None
-            if not okved_code and current_source_file and current_source_file.lower().endswith('.xlsx') and current_source_file.lower().find('mo') != -1:
+            if not okved_code and current_source_file and current_source_file.lower().endswith(
+                    '.xlsx') and current_source_file.lower().find('mo') != -1:
                 mo_code = find_mo_code(first_cell_text, mo_name_to_mo_cleaned)
 
             if not okved_code and not mo_code:
