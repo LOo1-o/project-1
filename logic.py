@@ -1,4 +1,5 @@
 # logic.py
+from difflib import SequenceMatcher
 from pathlib import Path
 import re
 from typing import Optional
@@ -26,6 +27,38 @@ def _extract_year(text: str) -> Optional[str]:
         return None
     match = YEAR_PATTERN.search(text)
     return match.group(1) if match else None
+
+
+def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: float = 0.80) -> str:
+    """
+    Ищет наилучшее совпадение заголовка с использованием Fuzzy Matching.
+    Возвращает код индикатора или None.
+    """
+    best_match = None
+    best_score = 0.0
+
+    for name_norm, indicator in normalized_name_map.items():
+        if not name_norm:
+            continue
+
+        # 1. Сначала проверяем точное вхождение (как было)
+        if name_norm in target_text or target_text in name_norm:
+            return indicator
+
+        # 2. Нечеткое сравнение (Fuzzy Match)
+        score = SequenceMatcher(None, target_text, name_norm).ratio()
+        if score > best_score:
+            best_score = score
+            best_match = indicator
+
+    if best_score >= threshold:
+        return best_match
+
+    # Диагностика: выводим в лог, если показатель почти нашелся, но не дотянул до порога
+    if target_text and len(target_text) > 5 and best_score > 0.50:
+        print(f"   ⚠️ [Fuzzy Miss] Ожидалось похожее, но Score={best_score:.2f} для '{target_text[:50]}...'")
+
+    return None
 
 
 def _normalize_match_text(text: str) -> str:
