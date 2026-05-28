@@ -169,12 +169,22 @@ def load_column_mapping(filepath):
 
 # === Поиск названия таблицы ===
 def get_table_name(table: Table, known_table_names):
+    """Находит название таблицы по параграфам выше неё.
+    
+    Поддерживает:
+    - Точные совпадения (приоритет)
+    - Частичные совпадения (одно в другом)
+    - Нечеткие совпадения через fuzzy match (для опечаток)
+    """
+    from difflib import SequenceMatcher
+    
     ignore_phrases = ['продолжение таблицы', 'таблица', 'график', 'рис.', 'рис', 'по всей форме', 'приложение', 'форма',
                       'лист', 'страница', 'тысяч рублей', 'на конец года']
 
     # Собираем все параграфы выше таблицы, чтобы выбрать наиболее подходящий заголовок.
     exact_matches = []  # Точные совпадения (имеют приоритет)
     partial_matches = []  # Частичные совпадения
+    fuzzy_matches = []  # Нечеткие совпадения (для опечаток)
     para_count = 0
     MAX_PARAS_TO_CHECK = 20
     prev_elem = table._element.getprevious()
@@ -221,6 +231,11 @@ def get_table_name(table: Table, known_table_names):
                     # Частичное совпадение
                     score = len(known_norm) / (para_count + 1)
                     partial_matches.append((score, known_title, para_count))
+                else:
+                    # Нечеткое совпадение (для опечаток)
+                    similarity = SequenceMatcher(None, text_norm, known_norm).ratio()
+                    if similarity >= 0.80:  # Порог для нечеткого совпадения
+                        fuzzy_matches.append((similarity * len(known_norm) / (para_count + 1), known_title, para_count))
             
             # Проверяем объединенные параграфы (буфер из последних 2 параграфов)
             if len(para_buffer) >= 2:
@@ -238,7 +253,7 @@ def get_table_name(table: Table, known_table_names):
             para_count += 1
             para_buffer = []  # Сбрасываем буфер при встречке не-параграфа
 
-    # Приоритет: точные совпадения > частичные совпадения
+    # Приоритет: точные совпадения > частичные совпадения > нечеткие совпадения
     if exact_matches:
         exact_matches.sort(reverse=True)
         best_title = exact_matches[0][1]
@@ -250,16 +265,15 @@ def get_table_name(table: Table, known_table_names):
         best_title = partial_matches[0][1]
         print(f"🔍 Заголовок найден (частичное совпадение): {best_title}")
         return best_title
+    
+    if fuzzy_matches:
+        fuzzy_matches.sort(reverse=True)
+        best_title = fuzzy_matches[0][1]
+        print(f"🔍 Заголовок найден (нечеткое совпадение): {best_title}")
+        return best_title
 
     print("⚠️ Заголовок не распознан")
     return None
-    combined = _normalize_text(" ".join(collected_texts))
-    for known_title in known_table_names:
-        if _normalize_text(known_title) in combined or combined in _normalize_text(known_title):
-            print(f"🔍 Заголовок найден внутри таблицы: {known_title}")
-            return known_title
-    print("⚠️ Не удалось определить заголовок таблицы.")
-    return ""
 
 
 # === Загрузка Excel-данных ===
