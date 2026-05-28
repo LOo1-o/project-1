@@ -10,7 +10,7 @@ import csv
 import re
 import pandas as pd
 from pathlib import Path
-from typing import Dict, Tuple, Optional, List, Set
+from typing import Dict, Tuple, Optional, Set
 
 # === Константы ===
 EMPTY_CELL_MARKER = "—"

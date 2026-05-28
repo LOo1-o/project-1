@@ -33,7 +33,7 @@ def normalize_text(text: str) -> str:
     return text
 
 
-def fuzzy_match(target: str, candidates: List[str], threshold: float = 0.80) -> Tuple[Optional[str], float]:
+'''def fuzzy_match(target: str, candidates: List[str], threshold: float = 0.80) -> Tuple[Optional[str], float]:
     """
     Нечеткое совпадение: ищет лучшее совпадение в списке кандидатов.
     
@@ -75,7 +75,46 @@ def fuzzy_match(target: str, candidates: List[str], threshold: float = 0.80) -> 
         return best_match, best_score
     
     return None, 0.0
+'''
 
+
+def fuzzy_match(target: str, candidates: List[str], threshold: float = 0.80) -> Tuple[Optional[str], float]:
+    if not target or not candidates:
+        return None, 0.0
+
+    target_norm = normalize_text(target)
+    target_tokens = set(target_norm.split())
+    if not target_norm:
+        return None, 0.0
+
+    best_match = None
+    best_score = 0.0
+
+    for cand in candidates:
+        cand_norm = normalize_text(cand)
+        if not cand_norm:
+            continue
+
+        # Standard structural matcher
+        match_score = SequenceMatcher(None, target_norm, cand_norm).ratio()
+
+        # Profile token-based fallback match
+        cand_tokens = set(cand_norm.split())
+        if target_tokens and cand_tokens:
+            intersection = target_tokens.intersection(cand_tokens)
+            token_score = len(intersection) / max(len(target_tokens), len(cand_tokens))
+            # Blend metrics or use max safely
+            combined_score = max(match_score, token_score)
+        else:
+            combined_score = match_score
+
+        if combined_score > best_score:
+            best_score = combined_score
+            best_match = cand
+
+    if best_score >= threshold:
+        return best_match, best_score
+    return None, 0.0
 
 def find_column_by_year(df: pd.DataFrame, year: str, year_markers: List[str] = None) -> Tuple[Optional[int], Optional[str]]:
     """

@@ -77,6 +77,23 @@ def _find_header_row_by_indicators(table, source_word_to_indicator, max_search_r
     return best_match if best_score > 0 else (None, None)
 
 
+def _build_composed_header_for_column(table, base_row_idx: int, col_idx: int, depth: int = 2) -> str:
+    parts = []
+    seen = set()
+    for offset in range(max(1, depth)):
+        row_idx = base_row_idx + offset
+        if row_idx >= len(table.rows):
+            break
+        if col_idx >= len(table.rows[row_idx].cells):
+            continue
+        part = _normalize_match_text(get_cleaned_cell_text(table.rows[row_idx].cells[col_idx]))
+        if not part or part in seen:
+            continue
+        seen.add(part)
+        parts.append(part)
+    return " ".join(parts).strip()
+
+
 def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
     """Собирает все строки заголовков таблицы (year или indicator rows)."""
     normalized_names = [_normalize_match_text(name) for name in source_word_to_indicator.keys()]
@@ -237,7 +254,8 @@ def get_table_source_by_number(table_source_mapping, table_number):
 # === ОСНОВНАЯ ЛОГИКА ======================================
 # ==========================================================
 def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_path, column_mapping_path,
-                           output_doc_path, mo_map_path: Path = None):
+                           output_doc_path,
+                           mo_map_path: Path = None, validation_log_path: Path = None):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}} и {{MO_<code>_<indicator>[_22|_23]}}.
     Расширенный поиск заголовков по первым 5 строкам таблицы.
@@ -253,6 +271,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     word_to_indicator, _, indicator_to_file, file_word_to_indicator, _ = load_column_mapping_v2(column_mapping_path)
     doc = Document(input_doc_path)
     total_tags = 0
+    validation_log = []
     current_source_file = None
     normalized_title_to_src = {k: v for k, v in table_source_mapping.items()}
 
@@ -335,32 +354,34 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
 
             # 1) Основная стратегия: маппинг только по верхней строке заголовка (row0-first)
             # 2) Если не сработало, fallback: объединяем верхнюю строку с соседней (row0+row1)
+            normalized_name_map = {
+                _normalize_match_text(name): indicator
+                for name, indicator in source_word_to_indicator.items()
+            }
+
             for i, cell in enumerate(header_row.cells):
-                header_text = _normalize_text(get_cleaned_cell_text(cell))
+                header_text = _normalize_match_text(get_cleaned_cell_text(cell))
                 if not header_text:
                     continue
-                for name, indicator in source_word_to_indicator.items():
-                    if name in header_text:
+                for name_norm, indicator in normalized_name_map.items():
+                    if name_norm and name_norm in header_text:
                         base_indicator_map[i] = indicator
                         print(f"   🔍 Fallback row0: столбец {i}, текст '{header_text[:50]}' → {indicator}")
                         break
 
             if not base_indicator_map and header_row_idx is not None:
-                next_row_idx = header_row_idx + 1
-                if next_row_idx < len(table.rows):
-                    next_row = table.rows[next_row_idx]
+                for depth in (2, 3):
+                    if base_indicator_map:
+                        break
                     for i, cell in enumerate(header_row.cells):
-                        primary = _normalize_text(get_cleaned_cell_text(cell))
-                        secondary = _normalize_text(get_cleaned_cell_text(next_row.cells[i])) if i < len(
-                            next_row.cells) else ""
-                        composed = _normalize_text(" ".join(part for part in [primary, secondary] if part))
+                        composed = _build_composed_header_for_column(table, header_row_idx, i, depth=depth)
                         if not composed:
                             continue
-                        for name, indicator in source_word_to_indicator.items():
-                            if name in composed:
+                        for name_norm, indicator in normalized_name_map.items():
+                            if name_norm and name_norm in composed:
                                 base_indicator_map[i] = indicator
                                 print(
-                                    f"   🔍 Fallback row0+row1: столбец {i}, "
+                                    f"   🔍 Fallback row0+... (depth={depth}): столбец {i}, "
                                     f"текст '{composed[:70]}' → {indicator}"
                                 )
                                 break
@@ -395,6 +416,12 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             print(f"   📊 col_to_indicator_map: {col_to_indicator_map}")
             if not col_to_indicator_map:
                 print("⚠️ Заголовки не найдены. Пропускаем таблицу.")
+                expected = sorted(set(source_word_to_indicator.values()))
+                if expected:
+                    validation_log.append(
+                        f"[TABLE {t_index + 1}] source={current_source_file} status=NO_HEADERS expected_indicators={len(expected)} "
+                        f"sample={expected[:10]}"
+                    )
                 continue
 
             mapped_sections = [(0, len(table.rows), col_to_indicator_map)]
@@ -408,6 +435,18 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         if not mapped_sections:
             print("⚠️ Заголовки не найдены. Пропускаем таблицу.")
             continue
+
+        matched_indicators = set()
+        for _, _, section_map in mapped_sections:
+            for indicator, _ in section_map.values():
+                matched_indicators.add(indicator)
+        expected_indicators = set(source_word_to_indicator.values())
+        missing_indicators = sorted(expected_indicators - matched_indicators)
+        if missing_indicators:
+            validation_log.append(
+                f"[TABLE {t_index + 1}] source={current_source_file} matched={len(matched_indicators)}/{len(expected_indicators)} "
+                f"missing_sample={missing_indicators[:15]}"
+            )
 
         # 4. Вставка тегов в строки с кодами ОКВЭД
         for row_idx, row in enumerate(table.rows):
@@ -456,6 +495,12 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     doc.save(output_doc_path)
     print(f"\n✅ Шаблон с тегами сохранён: {output_doc_path}")
     print(f"🔢 Всего вставлено тегов: {total_tags}")
+    if validation_log_path:
+        validation_log_path = Path(validation_log_path)
+        validation_log_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(validation_log_path, 'w', encoding='utf-8') as f:
+            f.write('\n'.join(validation_log))
+        print(f"🧪 Лог валидации маппинга сохранён: {validation_log_path}")
 
 
 # ==========================================================

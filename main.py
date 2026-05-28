@@ -65,6 +65,7 @@ def main(input_template_override=None, output_file_override=None):
         column_mapping_file,
         template_word_file,
         mo_map_path=mo_file,
+        validation_log_path=output_dir / "mapping_validation_log.txt",
     )
     print(f"📄 Шаблон с тегами сохранен: {template_word_file}")
 
