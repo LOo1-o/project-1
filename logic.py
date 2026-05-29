@@ -110,7 +110,7 @@ def _find_header_row_by_indicators(table, source_word_to_indicator, max_search_r
     return best_match if best_score > 0 else (None, None)
 
 
-def _build_composed_header_for_column(table, base_row_idx: int, col_idx: int, depth: int = 2) -> str:
+def _build_composed_header_for_column(table, base_row_idx: int, col_idx: int, depth: int = 4) -> str:
     parts = []
     seen = set()
     for offset in range(max(1, depth)):
@@ -119,11 +119,16 @@ def _build_composed_header_for_column(table, base_row_idx: int, col_idx: int, de
             break
         if col_idx >= len(table.rows[row_idx].cells):
             continue
-        part = _normalize_match_text(get_cleaned_cell_text(table.rows[row_idx].cells[col_idx]))
+
+        # Читаем ячейку, меняем переносы на пробелы, чтобы они не терялись при нормализации
+        raw_text = get_cleaned_cell_text(table.rows[row_idx].cells[col_idx]).replace('\n', ' ')
+        part = _normalize_match_text(raw_text)
+
         if not part or part in seen:
             continue
         seen.add(part)
         parts.append(part)
+
     return " ".join(parts).strip()
 
 
@@ -187,12 +192,8 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator):
             composed_header = " ".join(parts)
             composed_header_norm = _normalize_match_text(composed_header)
 
-            best_match = None
-            best_len = 0
-            for name_norm, indicator in normalized_name_map.items():
-                if name_norm and name_norm in composed_header_norm and len(name_norm) > best_len:
-                    best_match = indicator
-                    best_len = len(name_norm)
+            # Используем Fuzzy-поиск вместо жесткого вхождения
+            best_match = _fuzzy_match_header(composed_header_norm, normalized_name_map, threshold=0.80)
 
             if best_match:
                 last_indicator = best_match
@@ -217,12 +218,9 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator):
             header_text = _normalize_match_text(get_cleaned_cell_text(cell))
             if not header_text:
                 continue
-            best_match = None
-            best_len = 0
-            for name_norm, indicator in normalized_name_map.items():
-                if name_norm and name_norm in header_text and len(name_norm) > best_len:
-                    best_match = indicator
-                    best_len = len(name_norm)
+
+            best_match = _fuzzy_match_header(header_text, normalized_name_map, threshold=0.80)
+
             if best_match:
                 col_to_indicator_map[i] = (best_match, None)
                 print(f"   🔍 Индикаторный заголовок: столбец {i}, текст '{header_text[:50]}' -> {best_match}")
