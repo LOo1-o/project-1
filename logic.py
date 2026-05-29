@@ -2,6 +2,7 @@
 from pathlib import Path
 import re
 from typing import Optional
+from difflib import SequenceMatcher
 from config import (
     get_excel_data,
     load_okved_map,
@@ -16,6 +17,82 @@ from config import (
 from mo import load_mo_map, find_mo_code, canonical_mo
 from config_v2 import load_column_mapping_v2
 from docx import Document
+
+# --- НОВЫЙ УНИВЕРСАЛЬНЫЙ MATCHER (Priority #1) ---
+def smart_match(target: str, candidate: str) -> float:
+    """
+    Гибридный алгоритм сравнения заголовков.
+    Комбинирует:
+    1. Token overlap (порядок слов не важен)
+    2. Sequence matching (порядок слов важен)
+    3. Substring bonus (полное вхождение)
+    """
+    if not target or not candidate:
+        return 0.0
+
+    t_norm = _normalize_match_text(target)
+    c_norm = _normalize_match_text(candidate)
+
+    # 1. Точное совпадение
+    if t_norm == c_norm:
+        return 1.0
+
+    t_tokens = set(t_norm.split())
+    c_tokens = set(c_norm.split())
+
+    # Фильтруем стоп-слова (короткие), чтобы не засорять токены
+    t_tokens = {t for t in t_tokens if len(t) > 2}
+    c_tokens = {c for c in c_tokens if len(c) > 2}
+
+    if not t_tokens or not c_tokens:
+        return 0.0
+
+    # 2. Token Overlap Score (Jaccard-like, но нормализованный по максимуму)
+    intersection = t_tokens.intersection(c_tokens)
+    token_score = len(intersection) / max(len(t_tokens), len(c_tokens))
+
+    # 3. Sequence Matcher Score (учитывает порядок)
+    seq_score = SequenceMatcher(None, t_norm, c_norm).ratio()
+
+    # 4. Substring Bonus (если одно полностью внутри другого)
+    substring_bonus = 0.0
+    if t_norm in c_norm or c_norm in t_norm:
+        substring_bonus = 0.15
+
+    # Итоговая оценка: максимизируем между токенами и последовательностью + бонус
+    final_score = max(token_score, seq_score) + substring_bonus
+    return min(final_score, 1.0)
+
+
+def find_indicator_in_text(text: str, normalized_name_map: dict, threshold: float = 0.75):
+    """
+    Ищет наилучшее совпадение показателя в тексте заголовка.
+    Возвращает объект indicator или None.
+    """
+    if not text:
+        return None
+    
+    best_match = None
+    best_score = 0.0
+
+    for name_norm, indicator in normalized_name_map.items():
+        if not name_norm:
+            continue
+        
+        score = smart_match(name_norm, text)
+        
+        if score > best_score:
+            best_score = score
+            best_match = indicator
+
+    if best_score >= threshold:
+        return best_match
+    
+    # Логирование почти-совпадений для отладки (раскомментировать при необходимости)
+    # if text and len(text) > 5 and best_score > 0.40:
+    #     print(f"   ⚠️ [Miss] Score={best_score:.2f} | '{text[:40]}...' vs '{best_match.name if best_match else 'N/A'}'")
+         
+    return None
 
 TAG_REGEX = re.compile(r"{{([^}]+?)_([0-9]+)}}")
 YEAR_PATTERN = re.compile(r'\b(20\d{2})\b')
@@ -48,6 +125,38 @@ def _normalize_match_text(text: str) -> str:
     return normalized
 
 
+def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: float = 0.80):
+    """
+    Ищет наилучшее совпадение заголовка с использованием Fuzzy Matching.
+    Возвращает код индикатора или None.
+    """
+    best_match = None
+    best_score = 0.0
+
+    for name_norm, indicator in normalized_name_map.items():
+        if not name_norm:
+            continue
+        
+        # 1. Сначала проверяем точное вхождение (как было)
+        if name_norm in target_text or target_text in name_norm:
+            return indicator
+        
+        # 2. Нечеткое сравнение (Fuzzy Match)
+        score = SequenceMatcher(None, target_text, name_norm).ratio()
+        if score > best_score:
+            best_score = score
+            best_match = indicator
+
+    if best_score >= threshold:
+        return best_match
+    
+    # Диагностика: выводим в лог, если показатель почти нашелся, но не дотянул до порога
+    if target_text and len(target_text) > 5 and best_score > 0.50:
+        print(f"   ⚠️ [Fuzzy Miss] Ожидалось похожее, но Score={best_score:.2f} для '{target_text[:50]}...'")
+         
+    return None
+
+
 def _find_year_header_row(table, min_year_cells=2, max_search_rows=40):
     """Находит последнюю строку заголовка с годами (например, 2022/2023) в таблице."""
     candidates = []
@@ -77,7 +186,7 @@ def _find_header_row_by_indicators(table, source_word_to_indicator, max_search_r
     return best_match if best_score > 0 else (None, None)
 
 
-def _build_composed_header_for_column(table, base_row_idx: int, col_idx: int, depth: int = 2) -> str:
+def _build_composed_header_for_column(table, base_row_idx: int, col_idx: int, depth: int = 4) -> str:
     parts = []
     seen = set()
     for offset in range(max(1, depth)):
@@ -86,11 +195,16 @@ def _build_composed_header_for_column(table, base_row_idx: int, col_idx: int, de
             break
         if col_idx >= len(table.rows[row_idx].cells):
             continue
-        part = _normalize_match_text(get_cleaned_cell_text(table.rows[row_idx].cells[col_idx]))
+        
+        # Читаем ячейку, меняем переносы на пробелы, чтобы они не терялись при нормализации
+        raw_text = get_cleaned_cell_text(table.rows[row_idx].cells[col_idx]).replace('\n', ' ')
+        part = _normalize_match_text(raw_text)
+        
         if not part or part in seen:
             continue
         seen.add(part)
         parts.append(part)
+        
     return " ".join(parts).strip()
 
 
@@ -116,7 +230,8 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator):
 
     col_to_indicator_map = {}
     if has_years:
-        header_start = max(0, header_idx - 6)
+        # Увеличиваем глубину поиска заголовков с 6 до 12 для сложных многострочных таблиц
+        header_start = max(0, header_idx - 12)
         header_rows_filled = []
         for row in table.rows[header_start:header_idx]:
             row_values = []
@@ -154,12 +269,8 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator):
             composed_header = " ".join(parts)
             composed_header_norm = _normalize_match_text(composed_header)
 
-            best_match = None
-            best_len = 0
-            for name_norm, indicator in normalized_name_map.items():
-                if name_norm and name_norm in composed_header_norm and len(name_norm) > best_len:
-                    best_match = indicator
-                    best_len = len(name_norm)
+            # Используем Fuzzy-поиск вместо жесткого вхождения
+            best_match = find_indicator_in_text(composed_header_norm, normalized_name_map, threshold=0.75)
 
             if best_match:
                 last_indicator = best_match
@@ -184,12 +295,9 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator):
             header_text = _normalize_match_text(get_cleaned_cell_text(cell))
             if not header_text:
                 continue
-            best_match = None
-            best_len = 0
-            for name_norm, indicator in normalized_name_map.items():
-                if name_norm and name_norm in header_text and len(name_norm) > best_len:
-                    best_match = indicator
-                    best_len = len(name_norm)
+            
+            best_match = find_indicator_in_text(header_text, normalized_name_map, threshold=0.75)
+            
             if best_match:
                 col_to_indicator_map[i] = (best_match, None)
                 print(f"   🔍 Индикаторный заголовок: столбец {i}, текст '{header_text[:50]}' -> {best_match}")
@@ -363,28 +471,31 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 header_text = _normalize_match_text(get_cleaned_cell_text(cell))
                 if not header_text:
                     continue
-                for name_norm, indicator in normalized_name_map.items():
-                    if name_norm and name_norm in header_text:
-                        base_indicator_map[i] = indicator
-                        print(f"   🔍 Fallback row0: столбец {i}, текст '{header_text[:50]}' → {indicator}")
-                        break
+                
+                # Попытка найти показатель через нечеткий поиск
+                matched_indicator = find_indicator_in_text(header_text, normalized_name_map, threshold=0.75)
+                
+                if matched_indicator:
+                    base_indicator_map[i] = matched_indicator
+                    print(f"   🔍 Fallback row0 (smart): столбец {i}, текст '{header_text[:50]}' → {matched_indicator}")
 
             if not base_indicator_map and header_row_idx is not None:
-                for depth in (2, 3):
+                for depth in (2, 3, 4):
                     if base_indicator_map:
                         break
                     for i, cell in enumerate(header_row.cells):
                         composed = _build_composed_header_for_column(table, header_row_idx, i, depth=depth)
                         if not composed:
                             continue
-                        for name_norm, indicator in normalized_name_map.items():
-                            if name_norm and name_norm in composed:
-                                base_indicator_map[i] = indicator
-                                print(
-                                    f"   🔍 Fallback row0+... (depth={depth}): столбец {i}, "
-                                    f"текст '{composed[:70]}' → {indicator}"
-                                )
-                                break
+                        
+                        matched_indicator = find_indicator_in_text(composed, normalized_name_map, threshold=0.75)
+                        
+                        if matched_indicator:
+                            base_indicator_map[i] = matched_indicator
+                            print(
+                                f"   🔍 Fallback composed (smart, depth={depth}): столбец {i}, "
+                                f"текст '{composed[:70]}' → {matched_indicator}"
+                            )
 
             print(f"   📈 base_indicator_map: {base_indicator_map}")
 
