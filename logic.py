@@ -65,8 +65,9 @@ def _normalize_match_text(text: str) -> str:
     """
     Нормализация текста для сравнения показателей:
     1. Применяем базовую нормализацию (_normalize_text)
-    2. Удаляем специальные символы, оставляя только цифры и буквы
-    3. Схлопываем множественные пробелы
+    2. Удаляем скобки, но сохраняем пробелы (важно для многословных названий)
+    3. Удаляем все спецсимволы, оставляя только цифры и буквы
+    4. Схлопываем множественные пробелы
 
     Используется для поиска совпадений названий показателей в заголовках.
     """
@@ -74,9 +75,17 @@ def _normalize_match_text(text: str) -> str:
         return ""
     # Сначала применяем базовую нормализацию
     normalized = _normalize_text(text)
+    # Заменяем скобки и их содержимое на пробелы (сохраняем границы слов)
+    # Это важно, потому что "текст (в скобках)" должен совпадать с "текст в скобках"
+    def _remove_brackets_preserve_words(s: str) -> str:
+        # Заменяем скобки на пробелы: (content) -> content
+        s = re.sub(r"[\(\[\<]", " ", s)
+        s = re.sub(r"[\)\]\>]", " ", s)
+        return s
+    normalized = _remove_brackets_preserve_words(normalized)
     # Удаляем все символы кроме цифр, букв (Cyrillic/Latin) и пробелов
     normalized = re.sub(r'[^\d\w\s]', ' ', normalized, flags=re.UNICODE)
-    # Удаляем лишние пробелы (на случай, если было много спецсимволов подряд)
+    # Удаляем лишние пробелы
     normalized = re.sub(r'\s+', ' ', normalized).strip()
     return normalized
 
@@ -136,13 +145,27 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
     """Собирает все строки заголовков таблицы (year или indicator rows)."""
     normalized_names = [_normalize_match_text(name) for name in source_word_to_indicator.keys()]
     headers = []
-    for row_idx, row in enumerate(table.rows[:max_search_rows]):
+    rows = table.rows[:max_search_rows]
+    for row_idx in range(len(rows)):
+        row = rows[row_idx]
         row_years = [get_cleaned_cell_text(cell).strip() for cell in row.cells]
         year_count = sum(1 for year in row_years if _extract_year(year))
         row_texts = [_normalize_match_text(get_cleaned_cell_text(cell)) for cell in row.cells]
         indicator_score = sum(1 for cell_text in row_texts for name in normalized_names if name and name in cell_text)
-        if year_count >= 2 or indicator_score >= 2:
+
+        # Также пробуем объединить текущую строку с следующей — часто заголовок разбит
+        combined_score = 0
+        if row_idx + 1 < len(rows):
+            next_row = rows[row_idx + 1]
+            next_texts = [_normalize_match_text(get_cleaned_cell_text(cell)) for cell in next_row.cells]
+            combined_texts = [((a + ' ' + b).strip()) for a, b in zip(row_texts, next_texts)]
+            combined_score = sum(1 for cell_text in combined_texts for name in normalized_names if name and name in cell_text)
+
+        if year_count >= 2 or indicator_score >= 2 or combined_score >= 2:
             headers.append(row_idx)
+            if combined_score >= 2:
+                # Помечаем и следующую строку как часть шапки
+                headers.append(row_idx + 1)
     return sorted(set(headers))
 
 
@@ -195,12 +218,28 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator):
             # Используем Fuzzy-поиск вместо жесткого вхождения
             best_match = _fuzzy_match_header(composed_header_norm, normalized_name_map, threshold=0.80)
 
+            # Fuzzy-fallback для случаев с переносами, дефисами и неявными формулировками
+            if not best_match and composed_header_norm:
+                fuzzy_score = 0.0
+                fuzzy_match = None
+                for name_norm, indicator in normalized_name_map.items():
+                    if not name_norm:
+                        continue
+                    score = SequenceMatcher(None, name_norm, composed_header_norm).ratio()
+                    if score > fuzzy_score:
+                        fuzzy_score = score
+                        fuzzy_match = indicator
+                if fuzzy_score >= 0.75:
+                    best_match = fuzzy_match
+                    print(f"   🔍 fuzzy match {fuzzy_score:.2f} для '{composed_header[:80]}' -> {best_match}")
+
             if best_match:
                 last_indicator = best_match
             elif last_indicator and not composed_header_norm:
                 best_match = last_indicator
 
             if not best_match:
+                print(f"   ⚠️ Нет match для колонки {i} ('{composed_header[:80]}')")
                 continue
 
             # Используем сокращенный год из Word: 2023 -> 23, 2024 -> 24
@@ -214,8 +253,16 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator):
             _normalize_match_text(name): indicator
             for name, indicator in source_word_to_indicator.items()
         }
+        # Попробуем использовать не только одну строку, но и составной заголовок
+        next_row_texts = []
+        if header_idx + 1 < len(table.rows):
+            next_row_texts = [_normalize_match_text(get_cleaned_cell_text(cell)) for cell in table.rows[header_idx + 1].cells]
+
         for i, cell in enumerate(header_row.cells):
-            header_text = _normalize_match_text(get_cleaned_cell_text(cell))
+            base_text = _normalize_match_text(get_cleaned_cell_text(cell))
+            next_text = next_row_texts[i] if i < len(next_row_texts) else ''
+            # Составной заголовок: базовый + подзаголовок
+            header_text = (base_text + ' ' + next_text).strip()
             if not header_text:
                 continue
 
@@ -343,23 +390,35 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             continue
 
         # Используем file_word_to_indicator для правильного маппирования по (файл, слово)
-        source_word_to_indicator = {
+        all_file_entries = {
             name: indicator
             for (file, name), indicator in file_word_to_indicator.items()
             if file == current_source_file
         }
 
+        # Приоритет: если в текущей таблице из Word встречаются названия показателей —
+        # используем только их (Word главный источник). В противном случае — все записи из Excel.
+        # NOTE: Расширяем диапазон на 20 строк, чтобы захватить все заголовки (включая сложные многострочные)
+        table_content = ' '.join([
+            get_cleaned_cell_text(cell)
+            for row in table.rows[:20]
+            for cell in row.cells
+        ])
+        table_content_norm = _normalize_match_text(table_content)
+
+        source_word_to_indicator = {}
+        for name, indicator in all_file_entries.items():
+            name_norm = _normalize_match_text(name)
+            if name_norm and name_norm in table_content_norm:
+                source_word_to_indicator[name] = indicator
+
+        if not source_word_to_indicator:
+            # fallback на все показатели из Excel, если в Word ничего не найдено
+            source_word_to_indicator = all_file_entries.copy()
+
         if not source_word_to_indicator:
             print(f"⚠️ Нет показателей для источника {current_source_file}. Пропускаем таблицу.")
             continue
-
-        # DEBUG для таблицы 17
-        if t_index + 1 == 17:
-            print(f"   DEBUG: Таблица 17")
-            print(f"   Источник: {current_source_file}")
-            print(f"   Показатели ({len(source_word_to_indicator)}):")
-            for name, indicator in list(source_word_to_indicator.items())[:5]:
-                print(f"      {name} → {indicator}")
 
         header_rows = _find_header_rows(table, source_word_to_indicator)
         section_ranges = []
