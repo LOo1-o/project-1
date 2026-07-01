@@ -1416,120 +1416,236 @@
 ℹ️ Отсутствующие данные: OKVED_84_VneAkt_2_24 → [-]
 ℹ️ Отсутствующие данные: OKVED_101_АГ_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_101_АГ_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_101_АГ_VToChiIzOboAktZap_23 → 89626197
+✅ Заполнено: OKVED_101_АГ_VToChiIzOboAktZap_24 → 89626197
 ℹ️ Отсутствующие данные: OKVED_A_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_A_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_A_VToChiIzOboAktZap_23 → 31198622
+✅ Заполнено: OKVED_A_VToChiIzOboAktZap_24 → 31198622
 ℹ️ Отсутствующие данные: OKVED_01_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_01_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_01_VToChiIzOboAktZap_23 → 1324134
+✅ Заполнено: OKVED_01_VToChiIzOboAktZap_24 → 1324134
 ℹ️ Отсутствующие данные: OKVED_03_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_03_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_03_VToChiIzOboAktZap_23 → 29874488
+✅ Заполнено: OKVED_03_VToChiIzOboAktZap_24 → 29874488
 ℹ️ Отсутствующие данные: OKVED_B_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_B_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_B_VToChiIzOboAktZap_23 → 18686258
+✅ Заполнено: OKVED_B_VToChiIzOboAktZap_24 → 18686258
 ℹ️ Отсутствующие данные: OKVED_07_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_07_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_07_VToChiIzOboAktZap_23 → 18686258
+✅ Заполнено: OKVED_07_VToChiIzOboAktZap_24 → 18686258
 ℹ️ Отсутствующие данные: OKVED_C_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_C_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_C_VToChiIzOboAktZap_23 → 5561159
+✅ Заполнено: OKVED_C_VToChiIzOboAktZap_24 → 5561159
 ℹ️ Отсутствующие данные: OKVED_10_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_10_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_10_VToChiIzOboAktZap_23 → 4274807
+✅ Заполнено: OKVED_10_VToChiIzOboAktZap_24 → 4274807
 ℹ️ Отсутствующие данные: OKVED_11_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_11_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_11_VToChiIzOboAktZap_23 → 149849
+✅ Заполнено: OKVED_11_VToChiIzOboAktZap_24 → 149849
 ℹ️ Отсутствующие данные: OKVED_32_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_32_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_32_VToChiIzOboAktZap_23 → 21145
+✅ Заполнено: OKVED_32_VToChiIzOboAktZap_24 → 21145
 ℹ️ Отсутствующие данные: OKVED_33_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_33_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_33_VToChiIzOboAktZap_23 → 1115358
+✅ Заполнено: OKVED_33_VToChiIzOboAktZap_24 → 1115358
 ℹ️ Отсутствующие данные: OKVED_35_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_35_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_35_VToChiIzOboAktZap_23 → 10430632
+✅ Заполнено: OKVED_35_VToChiIzOboAktZap_24 → 10430632
 ℹ️ Отсутствующие данные: OKVED_35_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_35_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_35_VToChiIzOboAktZap_23 → 10430632
+✅ Заполнено: OKVED_35_VToChiIzOboAktZap_24 → 10430632
 ℹ️ Отсутствующие данные: OKVED_E_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_E_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_E_VToChiIzOboAktZap_23 → 731826
+✅ Заполнено: OKVED_E_VToChiIzOboAktZap_24 → 731826
 ℹ️ Отсутствующие данные: OKVED_36_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_36_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_36_VToChiIzOboAktZap_23 → 691708
+✅ Заполнено: OKVED_36_VToChiIzOboAktZap_24 → 691708
 ℹ️ Отсутствующие данные: OKVED_38_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_38_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_38_VToChiIzOboAktZap_23 → 40118
+✅ Заполнено: OKVED_38_VToChiIzOboAktZap_24 → 40118
 ℹ️ Отсутствующие данные: OKVED_F_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_F_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_F_VToChiIzOboAktZap_23 → 12221670
+✅ Заполнено: OKVED_F_VToChiIzOboAktZap_24 → 12221670
 ℹ️ Отсутствующие данные: OKVED_41_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_41_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_41_VToChiIzOboAktZap_23 → 10107352
+✅ Заполнено: OKVED_41_VToChiIzOboAktZap_24 → 10107352
 ℹ️ Отсутствующие данные: OKVED_42_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_42_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_42_VToChiIzOboAktZap_23 → 2072742
+✅ Заполнено: OKVED_42_VToChiIzOboAktZap_24 → 2072742
 ℹ️ Отсутствующие данные: OKVED_43_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_43_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_43_VToChiIzOboAktZap_23 → 41576
+✅ Заполнено: OKVED_43_VToChiIzOboAktZap_24 → 41576
 ℹ️ Отсутствующие данные: OKVED_G_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_G_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_G_VToChiIzOboAktZap_23 → 5893319
+✅ Заполнено: OKVED_G_VToChiIzOboAktZap_24 → 5893319
 ℹ️ Отсутствующие данные: OKVED_46_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_46_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_46_VToChiIzOboAktZap_23 → 4698018
+✅ Заполнено: OKVED_46_VToChiIzOboAktZap_24 → 4698018
 ℹ️ Отсутствующие данные: OKVED_47_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_47_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_47_VToChiIzOboAktZap_23 → 1195301
+✅ Заполнено: OKVED_47_VToChiIzOboAktZap_24 → 1195301
 ℹ️ Отсутствующие данные: OKVED_H_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_H_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_H_VToChiIzOboAktZap_23 → 1121939
+✅ Заполнено: OKVED_H_VToChiIzOboAktZap_24 → 1121939
 ℹ️ Отсутствующие данные: OKVED_49_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_49_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_49_VToChiIzOboAktZap_23 → 14580
+✅ Заполнено: OKVED_49_VToChiIzOboAktZap_24 → 14580
 ℹ️ Отсутствующие данные: OKVED_50_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_50_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_50_VToChiIzOboAktZap_23 → 354556
+✅ Заполнено: OKVED_50_VToChiIzOboAktZap_24 → 354556
 ℹ️ Отсутствующие данные: OKVED_51_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_51_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_51_VToChiIzOboAktZap_23 → 388741
+✅ Заполнено: OKVED_51_VToChiIzOboAktZap_24 → 388741
 ℹ️ Отсутствующие данные: OKVED_52_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_52_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_52_VToChiIzOboAktZap_23 → 364062
+✅ Заполнено: OKVED_52_VToChiIzOboAktZap_24 → 364062
 ℹ️ Отсутствующие данные: OKVED_I_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_I_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_I_VToChiIzOboAktZap_23 → 230724
+✅ Заполнено: OKVED_I_VToChiIzOboAktZap_24 → 230724
 ℹ️ Отсутствующие данные: OKVED_55_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_55_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_55_VToChiIzOboAktZap_23 → 230050
+✅ Заполнено: OKVED_55_VToChiIzOboAktZap_24 → 230050
 ℹ️ Отсутствующие данные: OKVED_56_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_56_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_56_VToChiIzOboAktZap_23 → 674
+✅ Заполнено: OKVED_56_VToChiIzOboAktZap_24 → 674
 ℹ️ Отсутствующие данные: OKVED_J_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_J_OboAkt_2_24 → [-]
+ℹ️ Отсутствующие данные: OKVED_J_VToChiIzOboAktZap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_J_VToChiIzOboAktZap_24 → [-]
 ℹ️ Отсутствующие данные: OKVED_63_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_63_OboAkt_2_24 → [-]
+ℹ️ Отсутствующие данные: OKVED_63_VToChiIzOboAktZap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_63_VToChiIzOboAktZap_24 → [-]
 ℹ️ Отсутствующие данные: OKVED_K_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_K_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_K_VToChiIzOboAktZap_23 → 13
+✅ Заполнено: OKVED_K_VToChiIzOboAktZap_24 → 13
 ℹ️ Отсутствующие данные: OKVED_64_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_64_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_64_VToChiIzOboAktZap_23 → 13
+✅ Заполнено: OKVED_64_VToChiIzOboAktZap_24 → 13
 ℹ️ Отсутствующие данные: OKVED_L_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_L_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_L_VToChiIzOboAktZap_23 → 184364
+✅ Заполнено: OKVED_L_VToChiIzOboAktZap_24 → 184364
 ℹ️ Отсутствующие данные: OKVED_68_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_68_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_68_VToChiIzOboAktZap_23 → 184364
+✅ Заполнено: OKVED_68_VToChiIzOboAktZap_24 → 184364
 ℹ️ Отсутствующие данные: OKVED_M_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_M_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_M_VToChiIzOboAktZap_23 → 3251803
+✅ Заполнено: OKVED_M_VToChiIzOboAktZap_24 → 3251803
 ℹ️ Отсутствующие данные: OKVED_69_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_69_OboAkt_2_24 → [-]
+ℹ️ Отсутствующие данные: OKVED_69_VToChiIzOboAktZap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_69_VToChiIzOboAktZap_24 → [-]
 ℹ️ Отсутствующие данные: OKVED_70_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_70_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_70_VToChiIzOboAktZap_23 → 7184
+✅ Заполнено: OKVED_70_VToChiIzOboAktZap_24 → 7184
 ℹ️ Отсутствующие данные: OKVED_71_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_71_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_71_VToChiIzOboAktZap_23 → 3244406
+✅ Заполнено: OKVED_71_VToChiIzOboAktZap_24 → 3244406
 ℹ️ Отсутствующие данные: OKVED_74_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_74_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_74_VToChiIzOboAktZap_23 → 213
+✅ Заполнено: OKVED_74_VToChiIzOboAktZap_24 → 213
 ℹ️ Отсутствующие данные: OKVED_N_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_N_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_N_VToChiIzOboAktZap_23 → 107527
+✅ Заполнено: OKVED_N_VToChiIzOboAktZap_24 → 107527
 ℹ️ Отсутствующие данные: OKVED_77_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_77_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_77_VToChiIzOboAktZap_23 → 25913
+✅ Заполнено: OKVED_77_VToChiIzOboAktZap_24 → 25913
 ℹ️ Отсутствующие данные: OKVED_79_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_79_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_79_VToChiIzOboAktZap_23 → 572
+✅ Заполнено: OKVED_79_VToChiIzOboAktZap_24 → 572
 ℹ️ Отсутствующие данные: OKVED_81_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_81_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_81_VToChiIzOboAktZap_23 → 80907
+✅ Заполнено: OKVED_81_VToChiIzOboAktZap_24 → 80907
 ℹ️ Отсутствующие данные: OKVED_82_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_82_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_82_VToChiIzOboAktZap_23 → 135
+✅ Заполнено: OKVED_82_VToChiIzOboAktZap_24 → 135
 ℹ️ Отсутствующие данные: OKVED_O_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_O_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_O_VToChiIzOboAktZap_23 → 3855
+✅ Заполнено: OKVED_O_VToChiIzOboAktZap_24 → 3855
 ℹ️ Отсутствующие данные: OKVED_84_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_84_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_84_VToChiIzOboAktZap_23 → 3855
+✅ Заполнено: OKVED_84_VToChiIzOboAktZap_24 → 3855
 ℹ️ Отсутствующие данные: OKVED_85_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_85_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_85_VToChiIzOboAktZap_23 → 802
+✅ Заполнено: OKVED_85_VToChiIzOboAktZap_24 → 802
 ℹ️ Отсутствующие данные: OKVED_85_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_85_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_85_VToChiIzOboAktZap_23 → 802
+✅ Заполнено: OKVED_85_VToChiIzOboAktZap_24 → 802
 ℹ️ Отсутствующие данные: OKVED_Q_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_Q_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_Q_VToChiIzOboAktZap_23 → 11
+✅ Заполнено: OKVED_Q_VToChiIzOboAktZap_24 → 11
 ℹ️ Отсутствующие данные: OKVED_88_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_88_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_88_VToChiIzOboAktZap_23 → 11
+✅ Заполнено: OKVED_88_VToChiIzOboAktZap_24 → 11
 ℹ️ Отсутствующие данные: OKVED_R_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_R_OboAkt_2_24 → [-]
+ℹ️ Отсутствующие данные: OKVED_R_VToChiIzOboAktZap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_R_VToChiIzOboAktZap_24 → [-]
 ℹ️ Отсутствующие данные: OKVED_93_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_93_OboAkt_2_24 → [-]
+ℹ️ Отсутствующие данные: OKVED_93_VToChiIzOboAktZap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_93_VToChiIzOboAktZap_24 → [-]
 ℹ️ Отсутствующие данные: OKVED_S_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_S_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_S_VToChiIzOboAktZap_23 → 1673
+✅ Заполнено: OKVED_S_VToChiIzOboAktZap_24 → 1673
 ℹ️ Отсутствующие данные: OKVED_94_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_94_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_94_VToChiIzOboAktZap_23 → 1625
+✅ Заполнено: OKVED_94_VToChiIzOboAktZap_24 → 1625
 ℹ️ Отсутствующие данные: OKVED_96_OboAkt_2_23 → [-]
 ℹ️ Отсутствующие данные: OKVED_96_OboAkt_2_24 → [-]
+✅ Заполнено: OKVED_96_VToChiIzOboAktZap_23 → 48
+✅ Заполнено: OKVED_96_VToChiIzOboAktZap_24 → 48
 ✅ Заполнено: OKVED_101_АГ_VToChiIzOboAktKraFinVlo(zIskDenEkv_23 → 30346595
 ✅ Заполнено: OKVED_101_АГ_VToChiIzOboAktKraFinVlo(zIskDenEkv_24 → 30346595
 ℹ️ Отсутствующие данные: OKVED_101_АГ_OboAkt_2_23 → [-]
