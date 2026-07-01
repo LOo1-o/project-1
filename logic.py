@@ -215,25 +215,8 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator):
             composed_header = " ".join(parts)
             composed_header_norm = _normalize_match_text(composed_header)
 
-            # Если в Word есть составной заголовок, попробуем сначала матчить
-            # по короткой форме (после ':' или после 'в том числе'), затем — fuzzy
-            short_candidate = None
-            if ':' in composed_header_norm:
-                short_candidate = composed_header_norm.split(':')[-1].strip()
-            elif 'в том числе' in composed_header_norm:
-                parts = composed_header_norm.split('в том числе')
-                short_candidate = parts[-1].strip() if parts else None
-
-            best_match = None
-            if short_candidate:
-                for name_norm, indicator in normalized_name_map.items():
-                    if short_candidate and name_norm and short_candidate in name_norm:
-                        best_match = indicator
-                        break
-
             # Используем Fuzzy-поиск вместо жесткого вхождения
-            if not best_match:
-                best_match = _fuzzy_match_header(composed_header_norm, normalized_name_map, threshold=0.80)
+            best_match = _fuzzy_match_header(composed_header_norm, normalized_name_map, threshold=0.80)
 
             # Fuzzy-fallback для случаев с переносами, дефисами и неявными формулировками
             if not best_match and composed_header_norm:
@@ -283,27 +266,7 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator):
             if not header_text:
                 continue
 
-            # Если в Word есть составной заголовок (например, содержит ':' или 'в том числе'),
-            # попробуем сначала матчить короткую форму (после двоеточия / после фразы) —
-            # часто в Word показывают короткий лейбл, а в CSV хранится длинная фраза.
-            header_text_norm = _normalize_match_text(header_text)
-            short_candidate = None
-            if ':' in header_text_norm:
-                short_candidate = header_text_norm.split(':')[-1].strip()
-            elif 'в том числе' in header_text_norm:
-                # берём то, что после 'в том числе' — чаще всего это конкретный показатель
-                parts = header_text_norm.split('в том числе')
-                short_candidate = parts[-1].strip() if parts else None
-
-            best_match = None
-            if short_candidate:
-                for name_norm, indicator in normalized_name_map.items():
-                    if short_candidate and name_norm and short_candidate in name_norm:
-                        best_match = indicator
-                        break
-
-            if not best_match:
-                best_match = _fuzzy_match_header(header_text_norm, normalized_name_map, threshold=0.80)
+            best_match = _fuzzy_match_header(header_text, normalized_name_map, threshold=0.80)
 
             if best_match:
                 col_to_indicator_map[i] = (best_match, None)
