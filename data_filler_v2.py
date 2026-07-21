@@ -26,6 +26,17 @@ from table_manager import TableManager
 
 
 _YEAR_RE = re.compile(r"\b(20\d{2})\b")
+_SOFT_WRAP_HYPHEN_RE = re.compile(r"(?<=\w)-\s*(?=\w)", re.UNICODE)
+
+
+def _dewrap_hyphen(text: str) -> str:
+    """
+    Убирает "мягкий" перенос слова, который Excel вставляет в узкой ячейке
+    (например, "преды-дущего" вместо "предыдущего"). Без этого маркеры периода
+    вроде "предыдущ"/"отчет" не находятся как подстрока и суффикс года
+    ошибочно откатывается на дефолт вместо реально определённого года.
+    """
+    return _SOFT_WRAP_HYPHEN_RE.sub("", text)
 
 
 def _extract_report_year_from_excel(df: pd.DataFrame) -> Optional[int]:
@@ -67,7 +78,7 @@ def _detect_year_suffix_for_column(df: pd.DataFrame, col_idx: Optional[int], def
     previous_year = report_year - 1 if report_year else None
 
     max_rows = min(12, len(df))
-    column_text = " ".join(str(df.iloc[row_idx, col_idx]).lower() for row_idx in range(max_rows))
+    column_text = " ".join(_dewrap_hyphen(str(df.iloc[row_idx, col_idx]).lower()) for row_idx in range(max_rows))
 
     explicit_years = [int(match.group(1)) for match in _YEAR_RE.finditer(column_text)]
     if explicit_years:
