@@ -34,18 +34,35 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
     Ищет наилучшее совпадение заголовка с использованием Fuzzy Matching.
     Возвращает код индикатора или None.
     """
-    best_match = None
-    best_score = 0.0
+    if not target_text:
+        return None
 
+    # 1. Точное вхождение (в любую сторону). Среди ВСЕХ кандидатов с вхождением
+    # выбираем тот, у кого выше итоговый Ratio, а не первый попавшийся по порядку
+    # словаря. Это важно, когда одно название — префикс другого (например,
+    # "Себестоимость продаж" является префиксом "Себестоимость продаж с учетом
+    # коммерческих и управленческих расходов") — иначе порядок перебора мог бы
+    # случайно "перетянуть" короткую колонку на длинный показатель.
+    best_exact_match = None
+    best_exact_score = -1.0
     for name_norm, indicator in normalized_name_map.items():
         if not name_norm:
             continue
-
-        # 1. Сначала проверяем точное вхождение (как было)
         if name_norm in target_text or target_text in name_norm:
-            return indicator
+            score = SequenceMatcher(None, target_text, name_norm).ratio()
+            if score > best_exact_score:
+                best_exact_score = score
+                best_exact_match = indicator
 
-        # 2. Нечеткое сравнение (Fuzzy Match)
+    if best_exact_match is not None:
+        return best_exact_match
+
+    # 2. Нечеткое сравнение (Fuzzy Match) для случаев без точного вхождения
+    best_match = None
+    best_score = 0.0
+    for name_norm, indicator in normalized_name_map.items():
+        if not name_norm:
+            continue
         score = SequenceMatcher(None, target_text, name_norm).ratio()
         if score > best_score:
             best_score = score
@@ -83,11 +100,40 @@ def _normalize_match_text(text: str) -> str:
         s = re.sub(r"[\)\]\>]", " ", s)
         return s
     normalized = _remove_brackets_preserve_words(normalized)
+    # Убираем "мягкий" перенос слова Word (дефис без пробелов вокруг, например
+    # из-за узкой колонки таблицы: "себестои-мость" -> "себестоимость"). Иначе
+    # слово разбивается на два фрагмента и перестаёт совпадать с чистым названием
+    # показателя из column_mapping_v2.csv. Важно убрать дефис ДО замены прочих
+    # спецсимволов на пробел, иначе перенос уже станет пробелом и информация о
+    # том, что дефис не отделял слова, будет потеряна.
+    normalized = re.sub(r'(?<=\w)-(?=\w)', '', normalized, flags=re.UNICODE)
     # Удаляем все символы кроме цифр, букв (Cyrillic/Latin) и пробелов
     normalized = re.sub(r'[^\d\w\s]', ' ', normalized, flags=re.UNICODE)
     # Удаляем лишние пробелы
     normalized = re.sub(r'\s+', ' ', normalized).strip()
     return normalized
+
+
+def _text_matches_name(cell_text: str, name_norm: str, min_len: int = 5) -> bool:
+    """
+    Проверяет совпадение нормализованного названия показателя с текстом ячейки
+    в обе стороны.
+
+    column_mapping_v2.csv иногда хранит "составное" название показателя вместе
+    с названием группы столбцов из Excel (например, "Доходы и расходы по обычным
+    видам деятельности за отчетный период Выручка"), тогда как в самой ячейке
+    Word-таблицы отображается только короткая часть ("Выручка") — групповой
+    заголовок в таблице не повторяется. Поэтому helper должен ловить оба случая:
+    короткое название внутри длинного текста ячейки и короткий текст ячейки
+    внутри длинного составного названия.
+    """
+    if not name_norm or not cell_text:
+        return False
+    if name_norm in cell_text:
+        return True
+    if len(cell_text) >= min_len and cell_text in name_norm:
+        return True
+    return False
 
 
 def _find_year_header_row(table, min_year_cells=2, max_search_rows=40):
@@ -111,7 +157,7 @@ def _find_header_row_by_indicators(table, source_word_to_indicator, max_search_r
         score = 0
         for cell_text in row_texts:
             for normalized_name, _ in normalized_names:
-                if normalized_name and normalized_name in cell_text:
+                if _text_matches_name(cell_text, normalized_name):
                     score += 1
         if score > best_score:
             best_score = score
@@ -151,7 +197,7 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
         row_years = [get_cleaned_cell_text(cell).strip() for cell in row.cells]
         year_count = sum(1 for year in row_years if _extract_year(year))
         row_texts = [_normalize_match_text(get_cleaned_cell_text(cell)) for cell in row.cells]
-        indicator_score = sum(1 for cell_text in row_texts for name in normalized_names if name and name in cell_text)
+        indicator_score = sum(1 for cell_text in row_texts for name in normalized_names if _text_matches_name(cell_text, name))
 
         # Также пробуем объединить текущую строку с следующей — часто заголовок разбит
         combined_score = 0
@@ -159,7 +205,7 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
             next_row = rows[row_idx + 1]
             next_texts = [_normalize_match_text(get_cleaned_cell_text(cell)) for cell in next_row.cells]
             combined_texts = [((a + ' ' + b).strip()) for a, b in zip(row_texts, next_texts)]
-            combined_score = sum(1 for cell_text in combined_texts for name in normalized_names if name and name in cell_text)
+            combined_score = sum(1 for cell_text in combined_texts for name in normalized_names if _text_matches_name(cell_text, name))
 
         if year_count >= 2 or indicator_score >= 2 or combined_score >= 2:
             headers.append(row_idx)
@@ -169,7 +215,7 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
     return sorted(set(headers))
 
 
-def _compute_section_mapping(table, header_idx, source_word_to_indicator):
+def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None):
     """Вычисляет маппинг столбцов для данной секции таблицы."""
     year_row = table.rows[header_idx]
     year_texts = [get_cleaned_cell_text(cell).strip() for cell in year_row.cells]
@@ -253,9 +299,15 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator):
             _normalize_match_text(name): indicator
             for name, indicator in source_word_to_indicator.items()
         }
-        # Попробуем использовать не только одну строку, но и составной заголовок
+        # Попробуем использовать не только одну строку, но и составной заголовок.
+        # ВАЖНО: строку header_idx + 1 подмешиваем только если она сама распознана
+        # как заголовочная (входит в header_rows) — иначе, если header_idx оказался
+        # последней строкой шапки, next_row_texts протащит текст первой строки ДАННЫХ
+        # (например, числа или название ОКВЭД/МО), и это "зашумит" сравнение с
+        # названиями показателей, ломая совпадение по некоторым столбцам.
         next_row_texts = []
-        if header_idx + 1 < len(table.rows):
+        next_row_is_header = header_rows is None or (header_idx + 1) in header_rows
+        if header_idx + 1 < len(table.rows) and next_row_is_header:
             next_row_texts = [_normalize_match_text(get_cleaned_cell_text(cell)) for cell in table.rows[header_idx + 1].cells]
 
         for i, cell in enumerate(header_row.cells):
@@ -421,9 +473,10 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             continue
 
         header_rows = _find_header_rows(table, source_word_to_indicator)
+        header_rows_set = set(header_rows)
         section_ranges = []
         for header_idx in header_rows:
-            mapping = _compute_section_mapping(table, header_idx, source_word_to_indicator)
+            mapping = _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=header_rows_set)
             if mapping:
                 section_ranges.append((header_idx, mapping))
 
@@ -454,7 +507,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 if not header_text:
                     continue
                 for name_norm, indicator in normalized_name_map.items():
-                    if name_norm and name_norm in header_text:
+                    if _text_matches_name(header_text, name_norm):
                         base_indicator_map[i] = indicator
                         print(f"   🔍 Fallback row0: столбец {i}, текст '{header_text[:50]}' → {indicator}")
                         break
@@ -468,7 +521,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                         if not composed:
                             continue
                         for name_norm, indicator in normalized_name_map.items():
-                            if name_norm and name_norm in composed:
+                            if _text_matches_name(composed, name_norm):
                                 base_indicator_map[i] = indicator
                                 print(
                                     f"   🔍 Fallback row0+... (depth={depth}): столбец {i}, "

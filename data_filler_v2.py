@@ -33,8 +33,17 @@ def _extract_report_year_from_excel(df: pd.DataFrame) -> Optional[int]:
     if df.empty:
         return None
 
-    max_rows = min(10, len(df))
     years = []
+
+    # pd.read_excel(path) без header=None использует первую строку листа
+    # (например, "Баланс организаций за 2024 год") как df.columns, а не как
+    # строку данных — поэтому такой заголовок никогда не встретится в
+    # df.iloc[...] и год нужно дополнительно искать среди названий столбцов,
+    # иначе report_year всегда будет None.
+    for col in df.columns:
+        years.extend(int(match.group(1)) for match in _YEAR_RE.finditer(str(col)))
+
+    max_rows = min(10, len(df))
     for row_idx in range(max_rows):
         for value in df.iloc[row_idx].tolist():
             text = str(value)
@@ -206,29 +215,31 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                     if entity_key not in master_data:
                         master_data[entity_key] = {}
                     
-                    # Получаем значения за 2022 и 2023
-                    value_22 = None
+                    # Получаем значения по фактическим годам, определённым для каждой колонки
+                    # (suffix_2022/suffix_2023 — это реальный двузначный год, например "23"/"24" для T24-файлов,
+                    # а не всегда буквально "22"/"23" — см. _detect_year_suffix_for_column)
+                    value_prev = None
                     if col_idx_2022 is not None:
                         for idx, row in group.iterrows():
                             value = get_cell_value_safely(row, col_idx_2022)
                             if value:
                                 normalized = clean_excel_value_for_word(value, force_decimal=force_decimal)
-                                master_data[entity_key][f"{indicator}_22"] = normalized
-                                value_22 = normalized
+                                master_data[entity_key][f"{indicator}_{suffix_2022}"] = normalized
+                                value_prev = normalized
                                 stats['found_by_keyword' if keywords_2022 else 'found_by_hardcode'] += 1
                                 break
-                    
+
                     if col_idx_2023 is not None:
                         for idx, row in group.iterrows():
                             value = get_cell_value_safely(row, col_idx_2023)
                             if value:
                                 normalized = clean_excel_value_for_word(value, force_decimal=force_decimal)
-                                master_data[entity_key][f"{indicator}_23"] = normalized
+                                master_data[entity_key][f"{indicator}_{suffix_2023}"] = normalized
                                 stats['found_by_keyword' if keywords_2023 else 'found_by_hardcode'] += 1
                                 break
-                    elif value_22 is not None:
-                        # Если колонка 2023 не указана, но есть данные за 2022, используем их для 2023
-                        master_data[entity_key][f"{indicator}_23"] = value_22
+                    elif value_prev is not None:
+                        # Если колонка для второго года не указана, но есть данные за первый год, используем их и для второго года
+                        master_data[entity_key][f"{indicator}_{suffix_2023}"] = value_prev
                         stats['found_by_keyword' if keywords_2022 else 'found_by_hardcode'] += 1
         
         except Exception as e:
