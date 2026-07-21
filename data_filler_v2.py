@@ -161,7 +161,7 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 print(f"ℹ️ Автоопределена колонка с кодами в файле {filename}: {code_col_idx + 1}")
 
             df['__entity_key__'] = df.apply(
-                lambda row: _infer_entity_key(row, code_col_idx, is_mo_file, okved_codes_set, okved_name_to_code, mo_name_to_mo_cleaned),
+                lambda row: _infer_entity_key(row, code_col_idx, is_mo_file, okved_codes_set, okved_name_to_code, mo_name_to_mo_cleaned, mo_codes_set),
                 axis=1
             )
             df_filtered = df[df['__entity_key__'].notna()].copy()
@@ -170,7 +170,7 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
             if df_filtered.empty and code_col_idx is not None and code_col_idx != 0:
                 print(f"ℹ️ Автоопределенный столбец с кодами не дал результатов для {filename}. Попробуем первую колонку как имена.")
                 df['__entity_key__'] = df.apply(
-                    lambda row: _infer_entity_key(row, 0, is_mo_file, okved_codes_set, okved_name_to_code, mo_name_to_mo_cleaned),
+                    lambda row: _infer_entity_key(row, 0, is_mo_file, okved_codes_set, okved_name_to_code, mo_name_to_mo_cleaned, mo_codes_set),
                     axis=1
                 )
                 df_filtered = df[df['__entity_key__'].notna()].copy()
@@ -375,7 +375,8 @@ def _detect_code_column(df: pd.DataFrame, okved_codes_set: Set[str], mo_codes_se
 
 def _infer_entity_key(row: pd.Series, code_col_idx: int, is_mo_file: bool,
                       okved_codes_set: Set[str], okved_name_to_code: Dict[str, str],
-                      mo_name_to_code: Dict[str, str]) -> Optional[str]:
+                      mo_name_to_code: Dict[str, str],
+                      mo_codes_set: Optional[Set[str]] = None) -> Optional[str]:
     """Определяет ключ сущности по строке из Excel."""
     if code_col_idx is None or code_col_idx >= len(row):
         return None
@@ -389,7 +390,12 @@ def _infer_entity_key(row: pd.Series, code_col_idx: int, is_mo_file: bool,
 
     if is_mo_file:
         candidate = canonical_mo(raw_value)
-        if mo_name_to_code and candidate not in mo_name_to_code:
+        # ВАЖНО: mo_name_to_code — это словарь "название -> код", поэтому сам
+        # код (например, "30") в нём никогда не окажется как ключ. Проверять
+        # нужно членство в множестве кодов (mo_codes_set), иначе прямое
+        # совпадение по коду никогда не сработает и код всегда будет уходить
+        # в бесполезный поиск по имени через find_mo_code.
+        if mo_codes_set is not None and candidate not in mo_codes_set:
             candidate = find_mo_code(raw_value, mo_name_to_code)
         return candidate if candidate else None
 
@@ -422,21 +428,31 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
     log = []
     
     tag_regex = re.compile(r"\{\{([^}]+)\}\}")
-    known_okved_codes = set(master_data.keys())
+    # master_data ключи — это и коды ОКВЭД, и коды МО вперемешку (единый плоский словарь).
+    known_entity_codes = set(master_data.keys())
 
-    def parse_okved_tag(full_tag: str):
-        raw_tag = full_tag[len("OKVED_"):] if full_tag.startswith("OKVED_") else full_tag
-        parts = raw_tag.split("_")
-        if len(parts) < 2:
-            return None, None, None
+    def _canonicalize_entity_candidate(entity_raw: str, source_prefix: Optional[str]) -> str:
+        if source_prefix == "MO":
+            return canonical_mo(entity_raw)
+        if "." in entity_raw or any(c.isalpha() for c in entity_raw):
+            return canonical_okved(entity_raw.replace("_", "."))
+        return canonical_okved(entity_raw)
 
-        # OKVED-код может быть составным (101_АГ), а код показателя может сам
-        # содержать подчеркивания из-за дедупликации (например, KolOrgEdi_2).
-        # Поэтому границу ищем по известным OKVED-кодам из master_data, а не по
-        # последнему фрагменту строки.
+    def _split_entity_and_indicator(parts, source_prefix: Optional[str]):
+        """
+        Разбивает токены тега (после удаления префикса OKVED_/MO_) на код
+        сущности, код показателя и (опционально) год.
+
+        И код сущности (например, составной ОКВЭД "101_АГ"), и код показателя
+        (например, дедуп-суффиксированный при коллизии имён "ValBal_1") могут
+        сами содержать "_", поэтому предположение "перед годом всегда ровно
+        один токен показателя" ломается. Единственный надёжный способ найти
+        границу — перебрать точки разреза и проверить код сущности по
+        известным ключам master_data.
+        """
         for split_idx in range(len(parts) - 1, 0, -1):
-            okved_candidate = canonical_okved("_".join(parts[:split_idx]).replace("_", "."))
-            if okved_candidate not in known_okved_codes:
+            entity_candidate = _canonicalize_entity_candidate("_".join(parts[:split_idx]), source_prefix)
+            if entity_candidate not in known_entity_codes:
                 continue
 
             indicator_parts = parts[split_idx:]
@@ -444,17 +460,20 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                 continue
 
             year_suffix = None
-            if re.fullmatch(r"\d{2}", indicator_parts[-1]):
-                year_suffix = indicator_parts[-1]
-                indicator_parts = indicator_parts[:-1]
+            last_part = indicator_parts[-1]
+            if last_part.isdigit() and len(last_part) in (2, 4):
+                candidate_year = _map_year_to_suffix(last_part)
+                if candidate_year:
+                    year_suffix = candidate_year
+                    indicator_parts = indicator_parts[:-1]
 
             if not indicator_parts:
                 continue
 
-            return okved_candidate, "_".join(indicator_parts), year_suffix
+            return entity_candidate, "_".join(indicator_parts), year_suffix
 
         return None, None, None
-    
+
     table_manager = TableManager(doc)
     for table in table_manager.iter_tables():
         for row in table.rows:
@@ -481,12 +500,18 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                             log.append(f"⚠️ Ошибка формата тега: {full_tag}")
                             continue
 
-                        # Парсируем OKVED код и индикатор (с поддержкой реальных годов 202X)
-                        year_suffix = None
-                        if len(parts) > 1:
+                        # Разбираем код сущности (ОКВЭД/МО) и код показателя, проверяя
+                        # кандидатов по известным ключам master_data — иначе дедуп-суффикс
+                        # показателя (например, "ValBal_1") ошибочно принимается за часть
+                        # кода сущности или наоборот.
+                        entity_code, indicator, year_suffix = _split_entity_and_indicator(parts, source_prefix)
+
+                        if entity_code is None:
+                            # Сущности нет в master_data вообще (данные не загрузились ни
+                            # из одного файла) — используем старую наивную эвристику только
+                            # для того, чтобы тег корректно попал в лог/отчёт как "нет данных".
                             last_part = parts[-1]
-                            # Проверяем, является ли последний элемент годом (202X или двухзначным годом)
-                            if last_part.isdigit() and (len(last_part) == 4 or len(last_part) == 2):
+                            if last_part.isdigit() and len(last_part) in (2, 4):
                                 year_suffix = _map_year_to_suffix(last_part)
                                 if year_suffix:
                                     indicator = parts[-2]
@@ -497,20 +522,7 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                             else:
                                 indicator = parts[-1]
                                 okved_parts = parts[:-1]
-                        else:
-                            indicator = parts[-1]
-                            okved_parts = parts[:-1]
-
-                        # Собираем код из частей (с разделителями "_")
-                        entity_raw = "_".join(okved_parts)
-                        # Канонизируем код для поиска в master_data
-                        if source_prefix == "MO":
-                            entity_code = canonical_mo(entity_raw)
-                        else:
-                            if "." in entity_raw or any(c.isalpha() for c in entity_raw):
-                                entity_code = canonical_okved(entity_raw.replace("_", "."))
-                            else:
-                                entity_code = canonical_okved(entity_raw)
+                            entity_code = _canonicalize_entity_candidate("_".join(okved_parts), source_prefix)
 
                         # Обрабатываем год: преобразуем реальный год (202X) в условный код (22/23)
                         lookup_suffix = year_suffix
