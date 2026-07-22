@@ -7281,177 +7281,235 @@
 ✅ Заполнено: OKVED_93_KoeTekLikOt>=20KolOrg(ed → 1
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=20KolOrg(ed → 3
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=20KolOrg(ed → 3
+✅ Заполнено: OKVED_101_АГ_PostPoTekDeVsego → 541087473
 ✅ Заполнено: OKVED_101_АГ_OtProdDeVsego → 449116864
 ✅ Заполнено: OKVED_101_АГ_ArendPlDeVsego → 5189943
 ✅ Заполнено: OKVED_101_АГ_PrPostDeyt → 8483782
+✅ Заполнено: OKVED_A_PostPoTekDeVsego → 210052416
 ✅ Заполнено: OKVED_A_OtProdDeVsego → 171740242
 ✅ Заполнено: OKVED_A_ArendPlDeVsego → 3223073
 ✅ Заполнено: OKVED_A_PrPostDeyt → 3231799
+✅ Заполнено: OKVED_01_PostPoTekDeVsego → 3725030
 ✅ Заполнено: OKVED_01_OtProdDeVsego → 2587042
 ℹ️ Отсутствующие данные: OKVED_01_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_01_PrPostDeyt → [-]
+✅ Заполнено: OKVED_03_PostPoTekDeVsego → 206327386
 ✅ Заполнено: OKVED_03_OtProdDeVsego → 169153200
 ✅ Заполнено: OKVED_03_ArendPlDeVsego → 3223073
 ✅ Заполнено: OKVED_03_PrPostDeyt → 3231799
+✅ Заполнено: OKVED_B_PostPoTekDeVsego → 73666638
 ✅ Заполнено: OKVED_B_OtProdDeVsego → 62157697
 ✅ Заполнено: OKVED_B_ArendPlDeVsego → 362209
 ✅ Заполнено: OKVED_B_PrPostDeyt → 201975
+✅ Заполнено: OKVED_07_PostPoTekDeVsego → 73666638
 ✅ Заполнено: OKVED_07_OtProdDeVsego → 62157697
 ✅ Заполнено: OKVED_07_ArendPlDeVsego → 362209
 ✅ Заполнено: OKVED_07_PrPostDeyt → 201975
+✅ Заполнено: OKVED_C_PostPoTekDeVsego → 37633129
 ✅ Заполнено: OKVED_C_OtProdDeVsego → 26474100
 ✅ Заполнено: OKVED_C_ArendPlDeVsego → 198969
 ✅ Заполнено: OKVED_C_PrPostDeyt → 119952
+✅ Заполнено: OKVED_10_PostPoTekDeVsego → 34515447
 ✅ Заполнено: OKVED_10_OtProdDeVsego → 23513991
 ✅ Заполнено: OKVED_10_ArendPlDeVsego → 161928
 ✅ Заполнено: OKVED_10_PrPostDeyt → 78182
+✅ Заполнено: OKVED_11_PostPoTekDeVsego → 711501
 ✅ Заполнено: OKVED_11_OtProdDeVsego → 626854
 ✅ Заполнено: OKVED_11_ArendPlDeVsego → 33812
 ✅ Заполнено: OKVED_11_PrPostDeyt → 41770
+✅ Заполнено: OKVED_32_PostPoTekDeVsego → 123283
 ✅ Заполнено: OKVED_32_OtProdDeVsego → 122102
 ℹ️ Отсутствующие данные: OKVED_32_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_32_PrPostDeyt → [-]
+✅ Заполнено: OKVED_33_PostPoTekDeVsego → 2282898
 ✅ Заполнено: OKVED_33_OtProdDeVsego → 2211153
 ✅ Заполнено: OKVED_33_ArendPlDeVsego → 3229
 ℹ️ Отсутствующие данные: OKVED_33_PrPostDeyt → [-]
+✅ Заполнено: OKVED_35_PostPoTekDeVsego → 65911701
 ✅ Заполнено: OKVED_35_OtProdDeVsego → 55658294
 ✅ Заполнено: OKVED_35_ArendPlDeVsego → 97634
 ✅ Заполнено: OKVED_35_PrPostDeyt → 124732
+✅ Заполнено: OKVED_35_PostPoTekDeVsego → 65911701
 ✅ Заполнено: OKVED_35_OtProdDeVsego → 55658294
 ✅ Заполнено: OKVED_35_ArendPlDeVsego → 97634
 ✅ Заполнено: OKVED_35_PrPostDeyt → 124732
+✅ Заполнено: OKVED_E_PostPoTekDeVsego → 5305509
 ✅ Заполнено: OKVED_E_OtProdDeVsego → 2908106
 ℹ️ Отсутствующие данные: OKVED_E_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_E_PrPostDeyt → [-]
+✅ Заполнено: OKVED_36_PostPoTekDeVsego → 4129933
 ✅ Заполнено: OKVED_36_OtProdDeVsego → 2210219
 ℹ️ Отсутствующие данные: OKVED_36_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_36_PrPostDeyt → [-]
+✅ Заполнено: OKVED_38_PostPoTekDeVsego → 1175576
 ✅ Заполнено: OKVED_38_OtProdDeVsego → 697887
 ℹ️ Отсутствующие данные: OKVED_38_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_38_PrPostDeyt → [-]
+✅ Заполнено: OKVED_F_PostPoTekDeVsego → 21580194
 ✅ Заполнено: OKVED_F_OtProdDeVsego → 19967024
 ✅ Заполнено: OKVED_F_ArendPlDeVsego → 134
 ✅ Заполнено: OKVED_F_PrPostDeyt → 4961
+✅ Заполнено: OKVED_41_PostPoTekDeVsego → 16136200
 ✅ Заполнено: OKVED_41_OtProdDeVsego → 14829637
 ℹ️ Отсутствующие данные: OKVED_41_ArendPlDeVsego → [-]
 ✅ Заполнено: OKVED_41_PrPostDeyt → 16
+✅ Заполнено: OKVED_42_PostPoTekDeVsego → 5327910
 ✅ Заполнено: OKVED_42_OtProdDeVsego → 5028304
 ✅ Заполнено: OKVED_42_ArendPlDeVsego → 134
 ✅ Заполнено: OKVED_42_PrPostDeyt → 4738
+✅ Заполнено: OKVED_43_PostPoTekDeVsego → 116084
 ✅ Заполнено: OKVED_43_OtProdDeVsego → 109083
 ℹ️ Отсутствующие данные: OKVED_43_ArendPlDeVsego → [-]
 ✅ Заполнено: OKVED_43_PrPostDeyt → 207
+✅ Заполнено: OKVED_G_PostPoTekDeVsego → 93765675
 ✅ Заполнено: OKVED_G_OtProdDeVsego → 90613728
 ✅ Заполнено: OKVED_G_ArendPlDeVsego → 237284
 ✅ Заполнено: OKVED_G_PrPostDeyt → 354136
+✅ Заполнено: OKVED_46_PostPoTekDeVsego → 78532612
 ✅ Заполнено: OKVED_46_OtProdDeVsego → 75646552
 ✅ Заполнено: OKVED_46_ArendPlDeVsego → 200609
 ✅ Заполнено: OKVED_46_PrPostDeyt → 346175
+✅ Заполнено: OKVED_47_PostPoTekDeVsego → 15233063
 ✅ Заполнено: OKVED_47_OtProdDeVsego → 14967176
 ✅ Заполнено: OKVED_47_ArendPlDeVsego → 36675
 ✅ Заполнено: OKVED_47_PrPostDeyt → 7961
+✅ Заполнено: OKVED_H_PostPoTekDeVsego → 18234845
 ✅ Заполнено: OKVED_H_OtProdDeVsego → 13475669
 ✅ Заполнено: OKVED_H_ArendPlDeVsego → 277882
 ✅ Заполнено: OKVED_H_PrPostDeyt → 44878
+✅ Заполнено: OKVED_49_PostPoTekDeVsego → 534998
 ✅ Заполнено: OKVED_49_OtProdDeVsego → 464885
 ℹ️ Отсутствующие данные: OKVED_49_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_49_PrPostDeyt → [-]
+✅ Заполнено: OKVED_50_PostPoTekDeVsego → 3673049
 ✅ Заполнено: OKVED_50_OtProdDeVsego → 3146093
 ℹ️ Отсутствующие данные: OKVED_50_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_50_PrPostDeyt → [-]
+✅ Заполнено: OKVED_51_PostPoTekDeVsego → 5012957
 ✅ Заполнено: OKVED_51_OtProdDeVsego → 4810482
 ✅ Заполнено: OKVED_51_ArendPlDeVsego → 2575
 ✅ Заполнено: OKVED_51_PrPostDeyt → 29858
+✅ Заполнено: OKVED_52_PostPoTekDeVsego → 9013841
 ✅ Заполнено: OKVED_52_OtProdDeVsego → 5054209
 ✅ Заполнено: OKVED_52_ArendPlDeVsego → 275307
 ✅ Заполнено: OKVED_52_PrPostDeyt → 15020
+✅ Заполнено: OKVED_I_PostPoTekDeVsego → 1813634
 ✅ Заполнено: OKVED_I_OtProdDeVsego → 1626975
 ℹ️ Отсутствующие данные: OKVED_I_ArendPlDeVsego → [-]
 ✅ Заполнено: OKVED_I_PrPostDeyt → 64
+✅ Заполнено: OKVED_55_PostPoTekDeVsego → 1739031
 ✅ Заполнено: OKVED_55_OtProdDeVsego → 1554954
 ℹ️ Отсутствующие данные: OKVED_55_ArendPlDeVsego → [-]
 ✅ Заполнено: OKVED_55_PrPostDeyt → 64
+✅ Заполнено: OKVED_56_PostPoTekDeVsego → 74603
 ✅ Заполнено: OKVED_56_OtProdDeVsego → 72021
 ℹ️ Отсутствующие данные: OKVED_56_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_56_PrPostDeyt → [-]
+✅ Заполнено: OKVED_J_PostPoTekDeVsego → 140
 ℹ️ Отсутствующие данные: OKVED_J_OtProdDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_J_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_J_PrPostDeyt → [-]
+✅ Заполнено: OKVED_63_PostPoTekDeVsego → 140
 ℹ️ Отсутствующие данные: OKVED_63_OtProdDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_63_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_63_PrPostDeyt → [-]
+✅ Заполнено: OKVED_K_PostPoTekDeVsego → 6301524
 ✅ Заполнено: OKVED_K_OtProdDeVsego → 691
 ℹ️ Отсутствующие данные: OKVED_K_ArendPlDeVsego → [-]
 ✅ Заполнено: OKVED_K_PrPostDeyt → 4280868
+✅ Заполнено: OKVED_64_PostPoTekDeVsego → 6301524
 ✅ Заполнено: OKVED_64_OtProdDeVsego → 691
 ℹ️ Отсутствующие данные: OKVED_64_ArendPlDeVsego → [-]
 ✅ Заполнено: OKVED_64_PrPostDeyt → 4280868
+✅ Заполнено: OKVED_L_PostPoTekDeVsego → 3808359
 ✅ Заполнено: OKVED_L_OtProdDeVsego → 2968563
 ✅ Заполнено: OKVED_L_ArendPlDeVsego → 680698
 ✅ Заполнено: OKVED_L_PrPostDeyt → 115319
+✅ Заполнено: OKVED_68_PostPoTekDeVsego → 3808359
 ✅ Заполнено: OKVED_68_OtProdDeVsego → 2968563
 ✅ Заполнено: OKVED_68_ArendPlDeVsego → 680698
 ✅ Заполнено: OKVED_68_PrPostDeyt → 115319
+✅ Заполнено: OKVED_M_PostPoTekDeVsego → 1851448
 ✅ Заполнено: OKVED_M_OtProdDeVsego → 603280
 ✅ Заполнено: OKVED_M_ArendPlDeVsego → 42144
 ✅ Заполнено: OKVED_M_PrPostDeyt → 3640
+✅ Заполнено: OKVED_69_PostPoTekDeVsego → 565
 ✅ Заполнено: OKVED_69_OtProdDeVsego → 394
 ℹ️ Отсутствующие данные: OKVED_69_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_69_PrPostDeyt → [-]
+✅ Заполнено: OKVED_70_PostPoTekDeVsego → 1130463
 ✅ Заполнено: OKVED_70_OtProdDeVsego → 143706
 ✅ Заполнено: OKVED_70_ArendPlDeVsego → 19882
 ✅ Заполнено: OKVED_70_PrPostDeyt → 3640
+✅ Заполнено: OKVED_71_PostPoTekDeVsego → 703947
 ✅ Заполнено: OKVED_71_OtProdDeVsego → 442772
 ✅ Заполнено: OKVED_71_ArendPlDeVsego → 22260
 ℹ️ Отсутствующие данные: OKVED_71_PrPostDeyt → [-]
+✅ Заполнено: OKVED_74_PostPoTekDeVsego → 16473
 ✅ Заполнено: OKVED_74_OtProdDeVsego → 16408
 ✅ Заполнено: OKVED_74_ArendPlDeVsego → 2
 ℹ️ Отсутствующие данные: OKVED_74_PrPostDeyt → [-]
+✅ Заполнено: OKVED_N_PostPoTekDeVsego → 1093420
 ✅ Заполнено: OKVED_N_OtProdDeVsego → 879521
 ✅ Заполнено: OKVED_N_ArendPlDeVsego → 69916
 ✅ Заполнено: OKVED_N_PrPostDeyt → 1458
+✅ Заполнено: OKVED_77_PostPoTekDeVsego → 255920
 ✅ Заполнено: OKVED_77_OtProdDeVsego → 83153
 ✅ Заполнено: OKVED_77_ArendPlDeVsego → 69916
 ✅ Заполнено: OKVED_77_PrPostDeyt → 1458
+✅ Заполнено: OKVED_79_PostPoTekDeVsego → 38658
 ✅ Заполнено: OKVED_79_OtProdDeVsego → 4871
 ℹ️ Отсутствующие данные: OKVED_79_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_79_PrPostDeyt → [-]
+✅ Заполнено: OKVED_81_PostPoTekDeVsego → 786387
 ✅ Заполнено: OKVED_81_OtProdDeVsego → 779042
 ℹ️ Отсутствующие данные: OKVED_81_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_81_PrPostDeyt → [-]
+✅ Заполнено: OKVED_82_PostPoTekDeVsego → 12455
 ✅ Заполнено: OKVED_82_OtProdDeVsego → 12455
 ℹ️ Отсутствующие данные: OKVED_82_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_82_PrPostDeyt → [-]
+✅ Заполнено: OKVED_O_PostPoTekDeVsego → 10
 ✅ Заполнено: OKVED_O_OtProdDeVsego → 10
 ℹ️ Отсутствующие данные: OKVED_O_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_O_PrPostDeyt → [-]
+✅ Заполнено: OKVED_84_PostPoTekDeVsego → 10
 ✅ Заполнено: OKVED_84_OtProdDeVsego → 10
 ℹ️ Отсутствующие данные: OKVED_84_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_84_PrPostDeyt → [-]
+✅ Заполнено: OKVED_85_PostPoTekDeVsego → 8779
 ✅ Заполнено: OKVED_85_OtProdDeVsego → 6437
 ℹ️ Отсутствующие данные: OKVED_85_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_85_PrPostDeyt → [-]
+✅ Заполнено: OKVED_85_PostPoTekDeVsego → 8779
 ✅ Заполнено: OKVED_85_OtProdDeVsego → 6437
 ℹ️ Отсутствующие данные: OKVED_85_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_85_PrPostDeyt → [-]
+✅ Заполнено: OKVED_Q_PostPoTekDeVsego → 999
 ℹ️ Отсутствующие данные: OKVED_Q_OtProdDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_Q_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_Q_PrPostDeyt → [-]
+✅ Заполнено: OKVED_88_PostPoTekDeVsego → 999
 ℹ️ Отсутствующие данные: OKVED_88_OtProdDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_88_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_88_PrPostDeyt → [-]
+✅ Заполнено: OKVED_R_PostPoTekDeVsego → 428
 ℹ️ Отсутствующие данные: OKVED_R_OtProdDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_R_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_R_PrPostDeyt → [-]
+✅ Заполнено: OKVED_93_PostPoTekDeVsego → 428
 ℹ️ Отсутствующие данные: OKVED_93_OtProdDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_93_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_93_PrPostDeyt → [-]
+✅ Заполнено: OKVED_S_PostPoTekDeVsego → 58625
 ✅ Заполнено: OKVED_S_OtProdDeVsego → 36527
 ℹ️ Отсутствующие данные: OKVED_S_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_S_PrPostDeyt → [-]
+✅ Заполнено: OKVED_94_PostPoTekDeVsego → 51122
 ✅ Заполнено: OKVED_94_OtProdDeVsego → 31160
 ℹ️ Отсутствующие данные: OKVED_94_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_94_PrPostDeyt → [-]
+✅ Заполнено: OKVED_96_PostPoTekDeVsego → 7503
 ✅ Заполнено: OKVED_96_OtProdDeVsego → 5367
 ℹ️ Отсутствующие данные: OKVED_96_ArendPlDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_96_PrPostDeyt → [-]
@@ -7571,611 +7629,733 @@
 ℹ️ Отсутствующие данные: OKVED_94_PrPoFin → [-]
 ✅ Заполнено: OKVED_96_PostPoTekDeyt → -51
 ℹ️ Отсутствующие данные: OKVED_96_PrPoFin → [-]
+✅ Заполнено: OKVED_101_АГ_PostPoTekDeyt → 51087230
 ✅ Заполнено: OKVED_101_АГ_OtProdVneObAktKromeFinVlozh → 154632005
 ✅ Заполнено: OKVED_101_АГ_OtProdAkcOrgDolUch → 1525085
 ✅ Заполнено: OKVED_101_АГ_OtProdFinVlozh → 367718
 ✅ Заполнено: OKVED_101_АГ_ProdAkcOrgDolUch → 171666012
 ✅ Заполнено: OKVED_101_АГ_PrPostDeyt → 8483782
+✅ Заполнено: OKVED_A_PostPoTekDeyt → 24303752
 ✅ Заполнено: OKVED_A_OtProdVneObAktKromeFinVlozh → 28732258
 ✅ Заполнено: OKVED_A_OtProdAkcOrgDolUch → 1401335
 ✅ Заполнено: OKVED_A_OtProdFinVlozh → 367718
 ✅ Заполнено: OKVED_A_ProdAkcOrgDolUch → 14477067
 ✅ Заполнено: OKVED_A_PrPostDeyt → 3231799
+✅ Заполнено: OKVED_01_PostPoTekDeyt → -26522
 ✅ Заполнено: OKVED_01_OtProdVneObAktKromeFinVlozh → 70
 ℹ️ Отсутствующие данные: OKVED_01_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_01_OtProdFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_01_ProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_01_PrPostDeyt → [-]
+✅ Заполнено: OKVED_03_PostPoTekDeyt → 24330274
 ✅ Заполнено: OKVED_03_OtProdVneObAktKromeFinVlozh → 28732188
 ✅ Заполнено: OKVED_03_OtProdAkcOrgDolUch → 1401335
 ✅ Заполнено: OKVED_03_OtProdFinVlozh → 367718
 ✅ Заполнено: OKVED_03_ProdAkcOrgDolUch → 14477067
 ✅ Заполнено: OKVED_03_PrPostDeyt → 3231799
+✅ Заполнено: OKVED_B_PostPoTekDeyt → 30897922
 ✅ Заполнено: OKVED_B_OtProdVneObAktKromeFinVlozh → 28219094
 ✅ Заполнено: OKVED_B_OtProdAkcOrgDolUch → 3700
 ℹ️ Отсутствующие данные: OKVED_B_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_B_ProdAkcOrgDolUch → 36095728
 ✅ Заполнено: OKVED_B_PrPostDeyt → 201975
+✅ Заполнено: OKVED_07_PostPoTekDeyt → 30897922
 ✅ Заполнено: OKVED_07_OtProdVneObAktKromeFinVlozh → 28219094
 ✅ Заполнено: OKVED_07_OtProdAkcOrgDolUch → 3700
 ℹ️ Отсутствующие данные: OKVED_07_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_07_ProdAkcOrgDolUch → 36095728
 ✅ Заполнено: OKVED_07_PrPostDeyt → 201975
+✅ Заполнено: OKVED_C_PostPoTekDeyt → 2451431
 ✅ Заполнено: OKVED_C_OtProdVneObAktKromeFinVlozh → 3637196
 ✅ Заполнено: OKVED_C_OtProdAkcOrgDolUch → 76221
 ℹ️ Отсутствующие данные: OKVED_C_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_C_ProdAkcOrgDolUch → 3449231
 ✅ Заполнено: OKVED_C_PrPostDeyt → 119952
+✅ Заполнено: OKVED_10_PostPoTekDeyt → 3191856
 ✅ Заполнено: OKVED_10_OtProdVneObAktKromeFinVlozh → 3565876
 ✅ Заполнено: OKVED_10_OtProdAkcOrgDolUch → 76221
 ℹ️ Отсутствующие данные: OKVED_10_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_10_ProdAkcOrgDolUch → 3330231
 ✅ Заполнено: OKVED_10_PrPostDeyt → 78182
+✅ Заполнено: OKVED_11_PostPoTekDeyt → 45194
 ✅ Заполнено: OKVED_11_OtProdVneObAktKromeFinVlozh → 41770
 ℹ️ Отсутствующие данные: OKVED_11_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_11_OtProdFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_11_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_11_PrPostDeyt → 41770
+✅ Заполнено: OKVED_33_PostPoTekDeyt → -786089
 ✅ Заполнено: OKVED_33_OtProdVneObAktKromeFinVlozh → 29550
 ℹ️ Отсутствующие данные: OKVED_33_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_33_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_33_ProdAkcOrgDolUch → 119000
 ℹ️ Отсутствующие данные: OKVED_33_PrPostDeyt → [-]
+✅ Заполнено: OKVED_35_PostPoTekDeyt → -8671709
 ✅ Заполнено: OKVED_35_OtProdVneObAktKromeFinVlozh → 3568593
 ✅ Заполнено: OKVED_35_OtProdAkcOrgDolUch → 759
 ℹ️ Отсутствующие данные: OKVED_35_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_35_ProdAkcOrgDolUch → 41152786
 ✅ Заполнено: OKVED_35_PrPostDeyt → 124732
+✅ Заполнено: OKVED_35_PostPoTekDeyt → -8671709
 ✅ Заполнено: OKVED_35_OtProdVneObAktKromeFinVlozh → 3568593
 ✅ Заполнено: OKVED_35_OtProdAkcOrgDolUch → 759
 ℹ️ Отсутствующие данные: OKVED_35_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_35_ProdAkcOrgDolUch → 41152786
 ✅ Заполнено: OKVED_35_PrPostDeyt → 124732
+✅ Заполнено: OKVED_E_PostPoTekDeyt → 502839
 ✅ Заполнено: OKVED_E_OtProdVneObAktKromeFinVlozh → 860445
 ✅ Заполнено: OKVED_E_OtProdAkcOrgDolUch → 308
 ℹ️ Отсутствующие данные: OKVED_E_OtProdFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_E_ProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_E_PrPostDeyt → [-]
+✅ Заполнено: OKVED_36_PostPoTekDeyt → 427969
 ✅ Заполнено: OKVED_36_OtProdVneObAktKromeFinVlozh → 760910
 ✅ Заполнено: OKVED_36_OtProdAkcOrgDolUch → 308
 ℹ️ Отсутствующие данные: OKVED_36_OtProdFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_36_ProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_36_PrPostDeyt → [-]
+✅ Заполнено: OKVED_38_PostPoTekDeyt → 74870
 ✅ Заполнено: OKVED_38_OtProdVneObAktKromeFinVlozh → 99535
 ℹ️ Отсутствующие данные: OKVED_38_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_38_OtProdFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_38_ProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_38_PrPostDeyt → [-]
+✅ Заполнено: OKVED_F_PostPoTekDeyt → 2485022
 ✅ Заполнено: OKVED_F_OtProdVneObAktKromeFinVlozh → 1677172
 ℹ️ Отсутствующие данные: OKVED_F_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_F_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_F_ProdAkcOrgDolUch → 287282
 ✅ Заполнено: OKVED_F_PrPostDeyt → 4961
+✅ Заполнено: OKVED_41_PostPoTekDeyt → 2374166
 ✅ Заполнено: OKVED_41_OtProdVneObAktKromeFinVlozh → 907877
 ℹ️ Отсутствующие данные: OKVED_41_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_41_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_41_ProdAkcOrgDolUch → 57930
 ✅ Заполнено: OKVED_41_PrPostDeyt → 16
+✅ Заполнено: OKVED_42_PostPoTekDeyt → 103364
 ✅ Заполнено: OKVED_42_OtProdVneObAktKromeFinVlozh → 769088
 ℹ️ Отсутствующие данные: OKVED_42_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_42_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_42_ProdAkcOrgDolUch → 229352
 ✅ Заполнено: OKVED_42_PrPostDeyt → 4738
+✅ Заполнено: OKVED_43_PostPoTekDeyt → 7492
 ✅ Заполнено: OKVED_43_OtProdVneObAktKromeFinVlozh → 207
 ℹ️ Отсутствующие данные: OKVED_43_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_43_OtProdFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_43_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_43_PrPostDeyt → 207
+✅ Заполнено: OKVED_G_PostPoTekDeyt → 2883264
 ✅ Заполнено: OKVED_G_OtProdVneObAktKromeFinVlozh → 1931504
 ✅ Заполнено: OKVED_G_OtProdAkcOrgDolUch → 94
 ℹ️ Отсутствующие данные: OKVED_G_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_G_ProdAkcOrgDolUch → 307752
 ✅ Заполнено: OKVED_G_PrPostDeyt → 354136
+✅ Заполнено: OKVED_46_PostPoTekDeyt → 2014489
 ✅ Заполнено: OKVED_46_OtProdVneObAktKromeFinVlozh → 1913174
 ✅ Заполнено: OKVED_46_OtProdAkcOrgDolUch → 75
 ℹ️ Отсутствующие данные: OKVED_46_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_46_ProdAkcOrgDolUch → 302752
 ✅ Заполнено: OKVED_46_PrPostDeyt → 346175
+✅ Заполнено: OKVED_47_PostPoTekDeyt → 868775
 ✅ Заполнено: OKVED_47_OtProdVneObAktKromeFinVlozh → 18330
 ✅ Заполнено: OKVED_47_OtProdAkcOrgDolUch → 19
 ℹ️ Отсутствующие данные: OKVED_47_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_47_ProdAkcOrgDolUch → 5000
 ✅ Заполнено: OKVED_47_PrPostDeyt → 7961
+✅ Заполнено: OKVED_H_PostPoTekDeyt → 4880338
 ✅ Заполнено: OKVED_H_OtProdVneObAktKromeFinVlozh → 167861
 ✅ Заполнено: OKVED_H_OtProdAkcOrgDolUch → 14403
 ℹ️ Отсутствующие данные: OKVED_H_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_H_ProdAkcOrgDolUch → 20122
 ✅ Заполнено: OKVED_H_PrPostDeyt → 44878
+✅ Заполнено: OKVED_49_PostPoTekDeyt → 47246
 ✅ Заполнено: OKVED_49_OtProdVneObAktKromeFinVlozh → 9161
 ℹ️ Отсутствующие данные: OKVED_49_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_49_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_49_ProdAkcOrgDolUch → 9161
 ℹ️ Отсутствующие данные: OKVED_49_PrPostDeyt → [-]
+✅ Заполнено: OKVED_51_PostPoTekDeyt → 238025
 ✅ Заполнено: OKVED_51_OtProdVneObAktKromeFinVlozh → 30708
 ℹ️ Отсутствующие данные: OKVED_51_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_51_OtProdFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_51_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_51_PrPostDeyt → 29858
+✅ Заполнено: OKVED_52_PostPoTekDeyt → 3996926
 ✅ Заполнено: OKVED_52_OtProdVneObAktKromeFinVlozh → 127992
 ✅ Заполнено: OKVED_52_OtProdAkcOrgDolUch → 14403
 ℹ️ Отсутствующие данные: OKVED_52_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_52_ProdAkcOrgDolUch → 10961
 ✅ Заполнено: OKVED_52_PrPostDeyt → 15020
+✅ Заполнено: OKVED_I_PostPoTekDeyt → -738304
 ✅ Заполнено: OKVED_I_OtProdVneObAktKromeFinVlozh → 16240537
 ℹ️ Отсутствующие данные: OKVED_I_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_I_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_I_ProdAkcOrgDolUch → 87232
 ✅ Заполнено: OKVED_I_PrPostDeyt → 64
+✅ Заполнено: OKVED_55_PostPoTekDeyt → -735091
 ✅ Заполнено: OKVED_55_OtProdVneObAktKromeFinVlozh → 16240537
 ℹ️ Отсутствующие данные: OKVED_55_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_55_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_55_ProdAkcOrgDolUch → 87232
 ✅ Заполнено: OKVED_55_PrPostDeyt → 64
+✅ Заполнено: OKVED_K_PostPoTekDeyt → -3514631
 ✅ Заполнено: OKVED_K_OtProdVneObAktKromeFinVlozh → 68314909
 ℹ️ Отсутствующие данные: OKVED_K_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_K_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_K_ProdAkcOrgDolUch → 75105271
 ✅ Заполнено: OKVED_K_PrPostDeyt → 4280868
+✅ Заполнено: OKVED_64_PostPoTekDeyt → -3514631
 ✅ Заполнено: OKVED_64_OtProdVneObAktKromeFinVlozh → 68314909
 ℹ️ Отсутствующие данные: OKVED_64_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_64_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_64_ProdAkcOrgDolUch → 75105271
 ✅ Заполнено: OKVED_64_PrPostDeyt → 4280868
+✅ Заполнено: OKVED_L_PostPoTekDeyt → 212954
 ✅ Заполнено: OKVED_L_OtProdVneObAktKromeFinVlozh → 702663
 ✅ Заполнено: OKVED_L_OtProdAkcOrgDolUch → 27862
 ℹ️ Отсутствующие данные: OKVED_L_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_L_ProdAkcOrgDolUch → 64241
 ✅ Заполнено: OKVED_L_PrPostDeyt → 115319
+✅ Заполнено: OKVED_68_PostPoTekDeyt → 212954
 ✅ Заполнено: OKVED_68_OtProdVneObAktKromeFinVlozh → 702663
 ✅ Заполнено: OKVED_68_OtProdAkcOrgDolUch → 27862
 ℹ️ Отсутствующие данные: OKVED_68_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_68_ProdAkcOrgDolUch → 64241
 ✅ Заполнено: OKVED_68_PrPostDeyt → 115319
+✅ Заполнено: OKVED_M_PostPoTekDeyt → -4516577
 ✅ Заполнено: OKVED_M_OtProdVneObAktKromeFinVlozh → 3494
 ℹ️ Отсутствующие данные: OKVED_M_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_M_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_M_ProdAkcOrgDolUch → 132100
 ✅ Заполнено: OKVED_M_PrPostDeyt → 3640
+✅ Заполнено: OKVED_70_PostPoTekDeyt → -597712
 ✅ Заполнено: OKVED_70_OtProdVneObAktKromeFinVlozh → 23790
 ℹ️ Отсутствующие данные: OKVED_70_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_70_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_70_ProdAkcOrgDolUch → 51600
 ✅ Заполнено: OKVED_70_PrPostDeyt → 3640
+✅ Заполнено: OKVED_71_PostPoTekDeyt → -3918869
 ✅ Заполнено: OKVED_71_OtProdVneObAktKromeFinVlozh → 11150
 ℹ️ Отсутствующие данные: OKVED_71_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_71_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_71_ProdAkcOrgDolUch → 80500
 ℹ️ Отсутствующие данные: OKVED_71_PrPostDeyt → [-]
+✅ Заполнено: OKVED_N_PostPoTekDeyt → -18016
 ✅ Заполнено: OKVED_N_OtProdVneObAktKromeFinVlozh → 7352
 ✅ Заполнено: OKVED_N_OtProdAkcOrgDolUch → 403
 ℹ️ Отсутствующие данные: OKVED_N_OtProdFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_N_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_N_PrPostDeyt → 1458
+✅ Заполнено: OKVED_77_PostPoTekDeyt → -8668
 ✅ Заполнено: OKVED_77_OtProdVneObAktKromeFinVlozh → 1751
 ✅ Заполнено: OKVED_77_OtProdAkcOrgDolUch → 293
 ℹ️ Отсутствующие данные: OKVED_77_OtProdFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_77_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_77_PrPostDeyt → 1458
+✅ Заполнено: OKVED_79_PostPoTekDeyt → -11884
 ✅ Заполнено: OKVED_79_OtProdVneObAktKromeFinVlozh → 5601
 ✅ Заполнено: OKVED_79_OtProdAkcOrgDolUch → 110
 ℹ️ Отсутствующие данные: OKVED_79_OtProdFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_79_ProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_79_PrPostDeyt → [-]
+✅ Заполнено: OKVED_S_PostPoTekDeyt → -41960
 ✅ Заполнено: OKVED_S_OtProdVneObAktKromeFinVlozh → 537481
 ℹ️ Отсутствующие данные: OKVED_S_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_S_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_S_ProdAkcOrgDolUch → 487200
 ℹ️ Отсутствующие данные: OKVED_S_PrPostDeyt → [-]
+✅ Заполнено: OKVED_94_PostPoTekDeyt → -41909
 ✅ Заполнено: OKVED_94_OtProdVneObAktKromeFinVlozh → 537481
 ℹ️ Отсутствующие данные: OKVED_94_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_94_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_94_ProdAkcOrgDolUch → 487200
 ℹ️ Отсутствующие данные: OKVED_94_PrPostDeyt → [-]
+✅ Заполнено: OKVED_101_АГ_PlPoInvDeyt → 20131426
 ✅ Заполнено: OKVED_101_АГ_DolUch → 44382632
 ✅ Заполнено: OKVED_101_АГ_PrCenBum → 4240192
 ✅ Заполнено: OKVED_101_АГ_ProdAkcOrgDolUch → 171666012
 ✅ Заполнено: OKVED_101_АГ_PrPoFin → 163412827
 ✅ Заполнено: OKVED_101_АГ_Saldo → 3797655
+✅ Заполнено: OKVED_A_PlPoInvDeyt → 1524701
 ✅ Заполнено: OKVED_A_DolUch → 9500953
 ✅ Заполнено: OKVED_A_PrCenBum → 3425820
 ✅ Заполнено: OKVED_A_ProdAkcOrgDolUch → 14477067
 ✅ Заполнено: OKVED_A_PrPoFin → 58252853
 ✅ Заполнено: OKVED_A_Saldo → 1827303
+ℹ️ Отсутствующие данные: OKVED_01_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_01_DolUch → 864709
 ℹ️ Отсутствующие данные: OKVED_01_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_01_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_01_PrPoFin → 677820
 ✅ Заполнено: OKVED_01_Saldo → 106255
+✅ Заполнено: OKVED_03_PlPoInvDeyt → 1524701
 ✅ Заполнено: OKVED_03_DolUch → 8636244
 ✅ Заполнено: OKVED_03_PrCenBum → 3425820
 ✅ Заполнено: OKVED_03_ProdAkcOrgDolUch → 14477067
 ✅ Заполнено: OKVED_03_PrPoFin → 57575033
 ✅ Заполнено: OKVED_03_Saldo → 1721048
+ℹ️ Отсутствующие данные: OKVED_B_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_B_DolUch → 3388841
 ℹ️ Отсутствующие данные: OKVED_B_PrCenBum → [-]
 ✅ Заполнено: OKVED_B_ProdAkcOrgDolUch → 36095728
 ✅ Заполнено: OKVED_B_PrPoFin → 28860953
 ℹ️ Отсутствующие данные: OKVED_B_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_07_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_07_DolUch → 3388841
 ℹ️ Отсутствующие данные: OKVED_07_PrCenBum → [-]
 ✅ Заполнено: OKVED_07_ProdAkcOrgDolUch → 36095728
 ✅ Заполнено: OKVED_07_PrPoFin → 28860953
 ℹ️ Отсутствующие данные: OKVED_07_Saldo → [-]
+✅ Заполнено: OKVED_C_PlPoInvDeyt → 251351
 ✅ Заполнено: OKVED_C_DolUch → 727872
 ℹ️ Отсутствующие данные: OKVED_C_PrCenBum → [-]
 ✅ Заполнено: OKVED_C_ProdAkcOrgDolUch → 3449231
 ✅ Заполнено: OKVED_C_PrPoFin → 8784759
 ℹ️ Отсутствующие данные: OKVED_C_Saldo → [-]
+✅ Заполнено: OKVED_10_PlPoInvDeyt → 251351
 ✅ Заполнено: OKVED_10_DolUch → 694568
 ℹ️ Отсутствующие данные: OKVED_10_PrCenBum → [-]
 ✅ Заполнено: OKVED_10_ProdAkcOrgDolUch → 3330231
 ✅ Заполнено: OKVED_10_PrPoFin → 8784759
 ℹ️ Отсутствующие данные: OKVED_10_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_11_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_11_DolUch → 31094
 ℹ️ Отсутствующие данные: OKVED_11_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_11_ProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_11_PrPoFin → [-]
 ℹ️ Отсутствующие данные: OKVED_11_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_33_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_33_DolUch → 2210
 ℹ️ Отсутствующие данные: OKVED_33_PrCenBum → [-]
 ✅ Заполнено: OKVED_33_ProdAkcOrgDolUch → 119000
 ℹ️ Отсутствующие данные: OKVED_33_PrPoFin → [-]
 ℹ️ Отсутствующие данные: OKVED_33_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_35_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_35_DolUch → 5982874
 ✅ Заполнено: OKVED_35_PrCenBum → 16291
 ✅ Заполнено: OKVED_35_ProdAkcOrgDolUch → 41152786
 ✅ Заполнено: OKVED_35_PrPoFin → 16997452
 ✅ Заполнено: OKVED_35_Saldo → 63200
+ℹ️ Отсутствующие данные: OKVED_35_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_35_DolUch → 5982874
 ✅ Заполнено: OKVED_35_PrCenBum → 16291
 ✅ Заполнено: OKVED_35_ProdAkcOrgDolUch → 41152786
 ✅ Заполнено: OKVED_35_PrPoFin → 16997452
 ✅ Заполнено: OKVED_35_Saldo → 63200
+✅ Заполнено: OKVED_E_PlPoInvDeyt → 860137
 ✅ Заполнено: OKVED_E_DolUch → 1199773
 ℹ️ Отсутствующие данные: OKVED_E_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_E_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_E_PrPoFin → 286378
 ℹ️ Отсутствующие данные: OKVED_E_Saldo → [-]
+✅ Заполнено: OKVED_36_PlPoInvDeyt → 760602
 ✅ Заполнено: OKVED_36_DolUch → 1111425
 ℹ️ Отсутствующие данные: OKVED_36_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_36_ProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_36_PrPoFin → [-]
 ℹ️ Отсутствующие данные: OKVED_36_Saldo → [-]
+✅ Заполнено: OKVED_38_PlPoInvDeyt → 99535
 ✅ Заполнено: OKVED_38_DolUch → 88348
 ℹ️ Отсутствующие данные: OKVED_38_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_38_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_38_PrPoFin → 286378
 ℹ️ Отсутствующие данные: OKVED_38_Saldo → [-]
+✅ Заполнено: OKVED_F_PlPoInvDeyt → 760922
 ✅ Заполнено: OKVED_F_DolUch → 679791
 ℹ️ Отсутствующие данные: OKVED_F_PrCenBum → [-]
 ✅ Заполнено: OKVED_F_ProdAkcOrgDolUch → 287282
 ✅ Заполнено: OKVED_F_PrPoFin → 867914
 ℹ️ Отсутствующие данные: OKVED_F_Saldo → [-]
+✅ Заполнено: OKVED_41_PlPoInvDeyt → 600000
 ✅ Заполнено: OKVED_41_DolUch → 6058
 ℹ️ Отсутствующие данные: OKVED_41_PrCenBum → [-]
 ✅ Заполнено: OKVED_41_ProdAkcOrgDolUch → 57930
 ✅ Заполнено: OKVED_41_PrPoFin → 644600
 ℹ️ Отсутствующие данные: OKVED_41_Saldo → [-]
+✅ Заполнено: OKVED_42_PlPoInvDeyt → 160922
 ✅ Заполнено: OKVED_42_DolUch → 661683
 ℹ️ Отсутствующие данные: OKVED_42_PrCenBum → [-]
 ✅ Заполнено: OKVED_42_ProdAkcOrgDolUch → 229352
 ✅ Заполнено: OKVED_42_PrPoFin → 215880
 ℹ️ Отсутствующие данные: OKVED_42_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_43_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_43_DolUch → 12050
 ℹ️ Отсутствующие данные: OKVED_43_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_43_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_43_PrPoFin → 7434
 ℹ️ Отсутствующие данные: OKVED_43_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_G_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_G_DolUch → 404894
 ✅ Заполнено: OKVED_G_PrCenBum → 772164
 ✅ Заполнено: OKVED_G_ProdAkcOrgDolUch → 307752
 ✅ Заполнено: OKVED_G_PrPoFin → 25594964
 ✅ Заполнено: OKVED_G_Saldo → 1474
+ℹ️ Отсутствующие данные: OKVED_46_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_46_DolUch → 218916
 ✅ Заполнено: OKVED_46_PrCenBum → 772164
 ✅ Заполнено: OKVED_46_ProdAkcOrgDolUch → 302752
 ✅ Заполнено: OKVED_46_PrPoFin → 25284127
 ℹ️ Отсутствующие данные: OKVED_46_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_47_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_47_DolUch → 185978
 ℹ️ Отсутствующие данные: OKVED_47_PrCenBum → [-]
 ✅ Заполнено: OKVED_47_ProdAkcOrgDolUch → 5000
 ✅ Заполнено: OKVED_47_PrPoFin → 310837
 ✅ Заполнено: OKVED_47_Saldo → 1474
+ℹ️ Отсутствующие данные: OKVED_H_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_H_DolUch → 7676205
 ℹ️ Отсутствующие данные: OKVED_H_PrCenBum → [-]
 ✅ Заполнено: OKVED_H_ProdAkcOrgDolUch → 20122
 ✅ Заполнено: OKVED_H_PrPoFin → 4708372
 ℹ️ Отсутствующие данные: OKVED_H_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_49_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_49_DolUch → 114628
 ℹ️ Отсутствующие данные: OKVED_49_PrCenBum → [-]
 ✅ Заполнено: OKVED_49_ProdAkcOrgDolUch → 9161
 ✅ Заполнено: OKVED_49_PrPoFin → 111915
 ℹ️ Отсутствующие данные: OKVED_49_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_50_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_50_DolUch → 592107
 ℹ️ Отсутствующие данные: OKVED_50_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_50_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_50_PrPoFin → 312635
 ℹ️ Отсутствующие данные: OKVED_50_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_51_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_51_DolUch → 272313
 ℹ️ Отсутствующие данные: OKVED_51_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_51_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_51_PrPoFin → 108922
 ℹ️ Отсутствующие данные: OKVED_51_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_52_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_52_DolUch → 6697157
 ℹ️ Отсутствующие данные: OKVED_52_PrCenBum → [-]
 ✅ Заполнено: OKVED_52_ProdAkcOrgDolUch → 10961
 ✅ Заполнено: OKVED_52_PrPoFin → 4174900
 ℹ️ Отсутствующие данные: OKVED_52_Saldo → [-]
+✅ Заполнено: OKVED_I_PlPoInvDeyt → 16157702
 ✅ Заполнено: OKVED_I_DolUch → 483043
 ✅ Заполнено: OKVED_I_PrCenBum → 25887
 ✅ Заполнено: OKVED_I_ProdAkcOrgDolUch → 87232
 ✅ Заполнено: OKVED_I_PrPoFin → 255249
 ℹ️ Отсутствующие данные: OKVED_I_Saldo → [-]
+✅ Заполнено: OKVED_55_PlPoInvDeyt → 16157702
 ✅ Заполнено: OKVED_55_DolUch → 483043
 ✅ Заполнено: OKVED_55_PrCenBum → 25887
 ✅ Заполнено: OKVED_55_ProdAkcOrgDolUch → 87232
 ✅ Заполнено: OKVED_55_PrPoFin → 255249
 ℹ️ Отсутствующие данные: OKVED_55_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_K_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_K_DolUch → 57549
 ℹ️ Отсутствующие данные: OKVED_K_PrCenBum → [-]
 ✅ Заполнено: OKVED_K_ProdAkcOrgDolUch → 75105271
 ✅ Заполнено: OKVED_K_PrPoFin → 4490537
 ℹ️ Отсутствующие данные: OKVED_K_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_64_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_64_DolUch → 57549
 ℹ️ Отсутствующие данные: OKVED_64_PrCenBum → [-]
 ✅ Заполнено: OKVED_64_ProdAkcOrgDolUch → 75105271
 ✅ Заполнено: OKVED_64_PrPoFin → 4490537
 ℹ️ Отсутствующие данные: OKVED_64_Saldo → [-]
+✅ Заполнено: OKVED_L_PlPoInvDeyt → 556341
 ✅ Заполнено: OKVED_L_DolUch → 1425108
 ✅ Заполнено: OKVED_L_PrCenBum → 30
 ✅ Заполнено: OKVED_L_ProdAkcOrgDolUch → 64241
 ✅ Заполнено: OKVED_L_PrPoFin → 490288
 ✅ Заполнено: OKVED_L_Saldo → 4580
+✅ Заполнено: OKVED_68_PlPoInvDeyt → 556341
 ✅ Заполнено: OKVED_68_DolUch → 1425108
 ✅ Заполнено: OKVED_68_PrCenBum → 30
 ✅ Заполнено: OKVED_68_ProdAkcOrgDolUch → 64241
 ✅ Заполнено: OKVED_68_PrPoFin → 490288
 ✅ Заполнено: OKVED_68_Saldo → 4580
+ℹ️ Отсутствующие данные: OKVED_M_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_M_DolUch → 12712627
 ℹ️ Отсутствующие данные: OKVED_M_PrCenBum → [-]
 ✅ Заполнено: OKVED_M_ProdAkcOrgDolUch → 132100
 ✅ Заполнено: OKVED_M_PrPoFin → 13818108
 ✅ Заполнено: OKVED_M_Saldo → 1887394
+ℹ️ Отсутствующие данные: OKVED_70_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_70_DolUch → 751296
 ℹ️ Отсутствующие данные: OKVED_70_PrCenBum → [-]
 ✅ Заполнено: OKVED_70_ProdAkcOrgDolUch → 51600
 ℹ️ Отсутствующие данные: OKVED_70_PrPoFin → [-]
 ℹ️ Отсутствующие данные: OKVED_70_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_71_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_71_DolUch → 11961331
 ℹ️ Отсутствующие данные: OKVED_71_PrCenBum → [-]
 ✅ Заполнено: OKVED_71_ProdAkcOrgDolUch → 80500
 ✅ Заполнено: OKVED_71_PrPoFin → 13818108
 ✅ Заполнено: OKVED_71_Saldo → 1887394
+✅ Заполнено: OKVED_N_PlPoInvDeyt → 5491
 ✅ Заполнено: OKVED_N_DolUch → 143102
 ℹ️ Отсутствующие данные: OKVED_N_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_N_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_N_PrPoFin → 5000
 ✅ Заполнено: OKVED_N_Saldo → 13704
+ℹ️ Отсутствующие данные: OKVED_77_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_77_DolUch → 6215
 ℹ️ Отсутствующие данные: OKVED_77_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_77_ProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_77_PrPoFin → [-]
 ℹ️ Отсутствующие данные: OKVED_77_Saldo → [-]
+✅ Заполнено: OKVED_79_PlPoInvDeyt → 5491
 ✅ Заполнено: OKVED_79_DolUch → 136887
 ℹ️ Отсутствующие данные: OKVED_79_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_79_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_79_PrPoFin → 5000
 ✅ Заполнено: OKVED_79_Saldo → 13704
+✅ Заполнено: OKVED_S_PlPoInvDeyt → 14781
 ℹ️ Отсутствующие данные: OKVED_S_DolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_S_PrCenBum → [-]
 ✅ Заполнено: OKVED_S_ProdAkcOrgDolUch → 487200
 ℹ️ Отсутствующие данные: OKVED_S_PrPoFin → [-]
 ℹ️ Отсутствующие данные: OKVED_S_Saldo → [-]
+✅ Заполнено: OKVED_94_PlPoInvDeyt → 14781
 ℹ️ Отсутствующие данные: OKVED_94_DolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_94_PrCenBum → [-]
 ✅ Заполнено: OKVED_94_ProdAkcOrgDolUch → 487200
 ℹ️ Отсутствующие данные: OKVED_94_PrPoFin → [-]
 ℹ️ Отсутствующие данные: OKVED_94_Saldo → [-]
+✅ Заполнено: OKVED_101_АГ_PlPoInvDeyt → 20131426
 ✅ Заполнено: OKVED_101_АГ_DolUch → 44382632
 ✅ Заполнено: OKVED_101_АГ_PrCenBum → 4240192
 ✅ Заполнено: OKVED_101_АГ_ProdAkcOrgDolUch → 171666012
 ✅ Заполнено: OKVED_101_АГ_PrPoFin → 163412827
 ✅ Заполнено: OKVED_101_АГ_Saldo → 3797655
+✅ Заполнено: OKVED_A_PlPoInvDeyt → 1524701
 ✅ Заполнено: OKVED_A_DolUch → 9500953
 ✅ Заполнено: OKVED_A_PrCenBum → 3425820
 ✅ Заполнено: OKVED_A_ProdAkcOrgDolUch → 14477067
 ✅ Заполнено: OKVED_A_PrPoFin → 58252853
 ✅ Заполнено: OKVED_A_Saldo → 1827303
+ℹ️ Отсутствующие данные: OKVED_01_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_01_DolUch → 864709
 ℹ️ Отсутствующие данные: OKVED_01_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_01_ProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_01_PrPoFin → 677820
 ✅ Заполнено: OKVED_01_Saldo → 106255
+✅ Заполнено: OKVED_03_PlPoInvDeyt → 1524701
 ✅ Заполнено: OKVED_03_DolUch → 8636244
 ✅ Заполнено: OKVED_03_PrCenBum → 3425820
 ✅ Заполнено: OKVED_03_ProdAkcOrgDolUch → 14477067
 ✅ Заполнено: OKVED_03_PrPoFin → 57575033
 ✅ Заполнено: OKVED_03_Saldo → 1721048
+ℹ️ Отсутствующие данные: OKVED_B_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_B_DolUch → 3388841
 ℹ️ Отсутствующие данные: OKVED_B_PrCenBum → [-]
 ✅ Заполнено: OKVED_B_ProdAkcOrgDolUch → 36095728
 ✅ Заполнено: OKVED_B_PrPoFin → 28860953
 ℹ️ Отсутствующие данные: OKVED_B_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_07_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_07_DolUch → 3388841
 ℹ️ Отсутствующие данные: OKVED_07_PrCenBum → [-]
 ✅ Заполнено: OKVED_07_ProdAkcOrgDolUch → 36095728
 ✅ Заполнено: OKVED_07_PrPoFin → 28860953
 ℹ️ Отсутствующие данные: OKVED_07_Saldo → [-]
+✅ Заполнено: OKVED_C_PlPoInvDeyt → 251351
 ✅ Заполнено: OKVED_C_DolUch → 727872
 ℹ️ Отсутствующие данные: OKVED_C_PrCenBum → [-]
 ✅ Заполнено: OKVED_C_ProdAkcOrgDolUch → 3449231
 ✅ Заполнено: OKVED_C_PrPoFin → 8784759
 ℹ️ Отсутствующие данные: OKVED_C_Saldo → [-]
+✅ Заполнено: OKVED_10_PlPoInvDeyt → 251351
 ✅ Заполнено: OKVED_10_DolUch → 694568
 ℹ️ Отсутствующие данные: OKVED_10_PrCenBum → [-]
 ✅ Заполнено: OKVED_10_ProdAkcOrgDolUch → 3330231
 ✅ Заполнено: OKVED_10_PrPoFin → 8784759
 ℹ️ Отсутствующие данные: OKVED_10_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_32_PlPoInvDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_32_DolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_32_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_32_ProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_32_PrPoFin → [-]
 ℹ️ Отсутствующие данные: OKVED_32_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_33_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_33_DolUch → 2210
 ℹ️ Отсутствующие данные: OKVED_33_PrCenBum → [-]
 ✅ Заполнено: OKVED_33_ProdAkcOrgDolUch → 119000
 ℹ️ Отсутствующие данные: OKVED_33_PrPoFin → [-]
 ℹ️ Отсутствующие данные: OKVED_33_Saldo → [-]
+ℹ️ Отсутствующие данные: OKVED_35_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_35_DolUch → 5982874
 ✅ Заполнено: OKVED_35_PrCenBum → 16291
 ✅ Заполнено: OKVED_35_ProdAkcOrgDolUch → 41152786
 ✅ Заполнено: OKVED_35_PrPoFin → 16997452
 ✅ Заполнено: OKVED_35_Saldo → 63200
+ℹ️ Отсутствующие данные: OKVED_35_PlPoInvDeyt → [-]
 ✅ Заполнено: OKVED_35_DolUch → 5982874
 ✅ Заполнено: OKVED_35_PrCenBum → 16291
 ✅ Заполнено: OKVED_35_ProdAkcOrgDolUch → 41152786
 ✅ Заполнено: OKVED_35_PrPoFin → 16997452
 ✅ Заполнено: OKVED_35_Saldo → 63200
+ℹ️ Отсутствующие данные: OKVED_E_PostFin → [-]
 ✅ Заполнено: OKVED_E_PlCredit → -339328
 ✅ Заполнено: OKVED_E_PostDeyt → 307388
 ✅ Заполнено: OKVED_E_PostDeyt1 → 277378
 ✅ Заполнено: OKVED_E_PostDeyt2 → 30010
 ℹ️ Отсутствующие данные: OKVED_E_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_38_PostFin → [-]
 ✅ Заполнено: OKVED_38_PlCredit → 11187
 ✅ Заполнено: OKVED_38_PostDeyt → 307388
 ✅ Заполнено: OKVED_38_PostDeyt1 → 277378
 ✅ Заполнено: OKVED_38_PostDeyt2 → 30010
 ℹ️ Отсутствующие данные: OKVED_38_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_F_PostFin → [-]
 ✅ Заполнено: OKVED_F_PlCredit → 710099
 ✅ Заполнено: OKVED_F_PostDeyt → 648075
 ✅ Заполнено: OKVED_F_PostDeyt1 → 640165
 ✅ Заполнено: OKVED_F_PostDeyt2 → 100
 ℹ️ Отсутствующие данные: OKVED_F_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_41_PostFin → [-]
 ✅ Заполнено: OKVED_41_PlCredit → 843889
 ✅ Заполнено: OKVED_41_PostDeyt → 557061
 ✅ Заполнено: OKVED_41_PostDeyt1 → 549251
 ℹ️ Отсутствующие данные: OKVED_41_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_41_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_42_PostFin → [-]
 ✅ Заполнено: OKVED_42_PlCredit → -121947
 ✅ Заполнено: OKVED_42_PostDeyt → 78980
 ✅ Заполнено: OKVED_42_PostDeyt1 → 78980
 ℹ️ Отсутствующие данные: OKVED_42_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_42_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_43_PostFin → [-]
 ✅ Заполнено: OKVED_43_PlCredit → -11843
 ✅ Заполнено: OKVED_43_PostDeyt → 12034
 ✅ Заполнено: OKVED_43_PostDeyt1 → 11934
 ✅ Заполнено: OKVED_43_PostDeyt2 → 100
 ℹ️ Отсутствующие данные: OKVED_43_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_G_PostFin → [-]
 ✅ Заполнено: OKVED_G_PlCredit → 445220
 ✅ Заполнено: OKVED_G_PostDeyt → 25583331
 ✅ Заполнено: OKVED_G_PostDeyt1 → 25576548
 ℹ️ Отсутствующие данные: OKVED_G_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_G_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_46_PostFin → [-]
 ✅ Заполнено: OKVED_46_PlCredit → 619342
 ✅ Заполнено: OKVED_46_PostDeyt → 25539928
 ✅ Заполнено: OKVED_46_PostDeyt1 → 25533746
 ℹ️ Отсутствующие данные: OKVED_46_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_46_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_47_PostFin → [-]
 ✅ Заполнено: OKVED_47_PlCredit → -174122
 ✅ Заполнено: OKVED_47_PostDeyt → 43403
 ✅ Заполнено: OKVED_47_PostDeyt1 → 42802
 ℹ️ Отсутствующие данные: OKVED_47_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_47_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_H_PostFin → [-]
 ✅ Заполнено: OKVED_H_PlCredit → -7528466
 ✅ Заполнено: OKVED_H_PostDeyt → 9043491
 ✅ Заполнено: OKVED_H_PostDeyt1 → 8691342
 ✅ Заполнено: OKVED_H_PostDeyt2 → 10
 ℹ️ Отсутствующие данные: OKVED_H_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_49_PostFin → [-]
 ✅ Заполнено: OKVED_49_PlCredit → -114628
 ✅ Заполнено: OKVED_49_PostDeyt → 109153
 ✅ Заполнено: OKVED_49_PostDeyt1 → 109142
 ℹ️ Отсутствующие данные: OKVED_49_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_49_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_50_PostFin → [-]
 ✅ Заполнено: OKVED_50_PlCredit → -592107
 ✅ Заполнено: OKVED_50_PostDeyt → 319577
 ✅ Заполнено: OKVED_50_PostDeyt1 → 319577
 ℹ️ Отсутствующие данные: OKVED_50_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_50_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_51_PostFin → [-]
 ✅ Заполнено: OKVED_51_PlCredit → -241605
 ✅ Заполнено: OKVED_51_PostDeyt → 274989
 ✅ Заполнено: OKVED_51_PostDeyt1 → 274989
 ℹ️ Отсутствующие данные: OKVED_51_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_51_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_52_PostFin → [-]
 ✅ Заполнено: OKVED_52_PlCredit → -6580126
 ✅ Заполнено: OKVED_52_PostDeyt → 8339772
 ✅ Заполнено: OKVED_52_PostDeyt1 → 7987634
 ✅ Заполнено: OKVED_52_PostDeyt2 → 10
 ℹ️ Отсутствующие данные: OKVED_52_DrPost → [-]
+✅ Заполнено: OKVED_I_PostFin → 16217690
 ✅ Заполнено: OKVED_I_PlCredit → -573315
 ✅ Заполнено: OKVED_I_PostDeyt → 1565296
 ✅ Заполнено: OKVED_I_PostDeyt1 → 1013461
 ✅ Заполнено: OKVED_I_PostDeyt2 → 551835
 ℹ️ Отсутствующие данные: OKVED_I_DrPost → [-]
+✅ Заполнено: OKVED_55_PostFin → 16217690
 ✅ Заполнено: OKVED_55_PlCredit → -573315
 ✅ Заполнено: OKVED_55_PostDeyt → 1565296
 ✅ Заполнено: OKVED_55_PostDeyt1 → 1013461
 ✅ Заполнено: OKVED_55_PostDeyt2 → 551835
 ℹ️ Отсутствующие данные: OKVED_55_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_K_PostFin → [-]
 ✅ Заполнено: OKVED_K_PlCredit → -6847911
 ✅ Заполнено: OKVED_K_PostDeyt → 98370462
 ✅ Заполнено: OKVED_K_PostDeyt1 → 98370462
 ℹ️ Отсутствующие данные: OKVED_K_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_K_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_64_PostFin → [-]
 ✅ Заполнено: OKVED_64_PlCredit → -6847911
 ✅ Заполнено: OKVED_64_PostDeyt → 98370462
 ✅ Заполнено: OKVED_64_PostDeyt1 → 98370462
 ℹ️ Отсутствующие данные: OKVED_64_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_64_DrPost → [-]
+✅ Заполнено: OKVED_L_PostFin → 330447
 ✅ Заполнено: OKVED_L_PlCredit → -1121743
 ✅ Заполнено: OKVED_L_PostDeyt → 1711933
 ✅ Заполнено: OKVED_L_PostDeyt1 → 1104024
 ✅ Заполнено: OKVED_L_PostDeyt2 → 600001
 ℹ️ Отсутствующие данные: OKVED_L_DrPost → [-]
+✅ Заполнено: OKVED_68_PostFin → 330447
 ✅ Заполнено: OKVED_68_PlCredit → -1121743
 ✅ Заполнено: OKVED_68_PostDeyt → 1711933
 ✅ Заполнено: OKVED_68_PostDeyt1 → 1104024
 ✅ Заполнено: OKVED_68_PostDeyt2 → 600001
 ℹ️ Отсутствующие данные: OKVED_68_DrPost → [-]
+✅ Заполнено: OKVED_M_PostFin → 17066
 ✅ Заполнено: OKVED_M_PlCredit → -14714247
 ✅ Заполнено: OKVED_M_PostDeyt → 34924952
 ✅ Заполнено: OKVED_M_PostDeyt1 → 33686406
 ℹ️ Отсутствующие данные: OKVED_M_PostDeyt2 → [-]
 ✅ Заполнено: OKVED_M_DrPost → 1096497
+✅ Заполнено: OKVED_70_PostFin → 17066
 ✅ Заполнено: OKVED_70_PlCredit → -796172
 ✅ Заполнено: OKVED_70_PostDeyt → 1237286
 ℹ️ Отсутствующие данные: OKVED_70_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_70_PostDeyt2 → [-]
 ✅ Заполнено: OKVED_70_DrPost → 1096137
+ℹ️ Отсутствующие данные: OKVED_71_PostFin → [-]
 ✅ Заполнено: OKVED_71_PlCredit → -13918075
 ✅ Заполнено: OKVED_71_PostDeyt → 33685066
 ✅ Заполнено: OKVED_71_PostDeyt1 → 33683806
 ℹ️ Отсутствующие данные: OKVED_71_PostDeyt2 → [-]
 ✅ Заполнено: OKVED_71_DrPost → 360
+ℹ️ Отсутствующие данные: OKVED_74_PostFin → [-]
 ℹ️ Отсутствующие данные: OKVED_74_PlCredit → [-]
 ✅ Заполнено: OKVED_74_PostDeyt → 2600
 ✅ Заполнено: OKVED_74_PostDeyt1 → 2600
 ℹ️ Отсутствующие данные: OKVED_74_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_74_DrPost → [-]
+✅ Заполнено: OKVED_N_PostFin → 120
 ✅ Заполнено: OKVED_N_PlCredit → -149574
 ✅ Заполнено: OKVED_N_PostDeyt → 361931
 ✅ Заполнено: OKVED_N_PostDeyt1 → 161931
 ℹ️ Отсутствующие данные: OKVED_N_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_N_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_79_PostFin → [-]
 ✅ Заполнено: OKVED_79_PlCredit → -144990
 ✅ Заполнено: OKVED_79_PostDeyt → 161931
 ✅ Заполнено: OKVED_79_PostDeyt1 → 161931
 ℹ️ Отсутствующие данные: OKVED_79_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_79_DrPost → [-]
+ℹ️ Отсутствующие данные: OKVED_81_PostFin → [-]
 ℹ️ Отсутствующие данные: OKVED_81_PlCredit → [-]
 ✅ Заполнено: OKVED_81_PostDeyt → 20000
 ℹ️ Отсутствующие данные: OKVED_81_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_81_PostDeyt2 → [-]
 ℹ️ Отсутствующие данные: OKVED_81_DrPost → [-]
+✅ Заполнено: OKVED_S_PostFin → 14000
 ✅ Заполнено: OKVED_S_PlCredit → 36281
 ✅ Заполнено: OKVED_S_PostDeyt → 239020
 ℹ️ Отсутствующие данные: OKVED_S_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_S_PostDeyt2 → 48349
 ℹ️ Отсутствующие данные: OKVED_S_DrPost → [-]
+✅ Заполнено: OKVED_94_PostFin → 14000
 ✅ Заполнено: OKVED_94_PlCredit → 36281
 ✅ Заполнено: OKVED_94_PostDeyt → 239020
 ℹ️ Отсутствующие данные: OKVED_94_PostDeyt1 → [-]
