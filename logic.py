@@ -619,9 +619,15 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 code_value = canonical_mo(mo_code)
 
             code_tag_part = code_value.replace('.', '_')
+            name_cell_tc = row.cells[0]._tc
 
             for col_idx, indicator_spec in mapping.items():
                 if col_idx < len(row.cells):
+                    if col_idx != 0 and row.cells[col_idx]._tc is name_cell_tc:
+                        # Ячейка данных объединена с ячейкой названия ОКВЭД/МО (col0) —
+                        # запись тега сюда стёрла бы название строки. Пропускаем.
+                        print(f"   ⚠️ Строка {row_idx + 1}: колонка {col_idx} объединена с колонкой названия, тег пропущен")
+                        continue
                     indicator, year = indicator_spec
                     if year:
                         tag = f"{{{{{prefix}_{code_tag_part}_{indicator}_{year}}}}}"
