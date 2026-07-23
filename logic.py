@@ -100,13 +100,17 @@ def _normalize_match_text(text: str) -> str:
         s = re.sub(r"[\)\]\>]", " ", s)
         return s
     normalized = _remove_brackets_preserve_words(normalized)
-    # Убираем "мягкий" перенос слова Word (дефис без пробелов вокруг, например
-    # из-за узкой колонки таблицы: "себестои-мость" -> "себестоимость"). Иначе
-    # слово разбивается на два фрагмента и перестаёт совпадать с чистым названием
-    # показателя из column_mapping_v2.csv. Важно убрать дефис ДО замены прочих
-    # спецсимволов на пробел, иначе перенос уже станет пробелом и информация о
-    # том, что дефис не отделял слова, будет потеряна.
-    normalized = re.sub(r'(?<=\w)-(?=\w)', '', normalized, flags=re.UNICODE)
+    # Убираем "мягкий" перенос слова Word (дефис без пробела ПЕРЕД ним, например
+    # из-за узкой колонки таблицы: "себестои-мость" -> "себестоимость"). После
+    # него может остаться один пробел — это коллапс переноса строки ("количе-\n
+    # ство" -> "количе- ство" уже на этапе _normalize_text), а не настоящий
+    # дефис-разделитель ("деятельности - всего", где пробел есть С ОБЕИХ сторон).
+    # Поэтому пробел ДО дефиса — признак настоящего разделителя (не трогаем), а
+    # пробел только ПОСЛЕ — признак переноса (убираем вместе с дефисом). Важно
+    # убрать дефис ДО замены прочих спецсимволов на пробел, иначе перенос уже
+    # станет пробелом и информация о том, что дефис не отделял слова, будет
+    # потеряна.
+    normalized = re.sub(r'(?<=\w)-\s*(?=\w)', '', normalized, flags=re.UNICODE)
     # Удаляем все символы кроме цифр, букв (Cyrillic/Latin) и пробелов
     normalized = re.sub(r'[^\d\w\s]', ' ', normalized, flags=re.UNICODE)
     # Удаляем лишние пробелы
@@ -463,17 +467,31 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         # показатели не попадут в source_word_to_indicator, для них не построится
         # section mapping, и правило "конец предыдущей секции = начало следующей"
         # молча растянет предыдущий (неверный) маппинг колонок до конца таблицы.
-        table_content = ' '.join([
-            get_cleaned_cell_text(cell)
-            for row in table.rows
-            for cell in row.cells
-        ])
-        table_content_norm = _normalize_match_text(table_content)
+        #
+        # ВАЖНО: составляем текст ПО КОЛОНКАМ (сверху вниз), а не одной строкой на
+        # всю таблицу построчно. Название показателя в CSV часто склеено из
+        # "группового" заголовка (строка 1) и "листового" подзаголовка (строка 2),
+        # которые в Word стоят друг под другом В ОДНОЙ КОЛОНКЕ. При построчной
+        # склейке всей таблицы эти две строки становятся смежными только для
+        # ПОСЛЕДНЕЙ группы в строке заголовков (её текст просто оказывается
+        # впритык к началу следующей строки) — а для остальных групп между ними
+        # оказывается текст соседних колонок той же строки, и совпадение не
+        # находится. Из-за этого, например, "получившие убыток" находился, а
+        # "получившие прибыль" — нет, и оба столбца затем сопоставлялись с одним
+        # и тем же (последним найденным) показателем.
+        num_cols = max((len(row.cells) for row in table.rows), default=0)
+        column_texts_norm = []
+        for col_idx in range(num_cols):
+            column_texts_norm.append(_normalize_match_text(' '.join(
+                get_cleaned_cell_text(row.cells[col_idx])
+                for row in table.rows
+                if col_idx < len(row.cells)
+            )))
 
         source_word_to_indicator = {}
         for name, indicator in all_file_entries.items():
             name_norm = _normalize_match_text(name)
-            if name_norm and name_norm in table_content_norm:
+            if name_norm and any(name_norm in col_text for col_text in column_texts_norm):
                 source_word_to_indicator[name] = indicator
 
         if not source_word_to_indicator:
