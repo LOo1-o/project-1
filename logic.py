@@ -215,7 +215,7 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
     return sorted(set(headers))
 
 
-def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None):
+def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None, run_rows=None):
     """Вычисляет маппинг столбцов для данной секции таблицы."""
     year_row = table.rows[header_idx]
     year_texts = [get_cleaned_cell_text(cell).strip() for cell in year_row.cells]
@@ -299,22 +299,29 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
             _normalize_match_text(name): indicator
             for name, indicator in source_word_to_indicator.items()
         }
-        # Попробуем использовать не только одну строку, но и составной заголовок.
-        # ВАЖНО: строку header_idx + 1 подмешиваем только если она сама распознана
-        # как заголовочная (входит в header_rows) — иначе, если header_idx оказался
-        # последней строкой шапки, next_row_texts протащит текст первой строки ДАННЫХ
-        # (например, числа или название ОКВЭД/МО), и это "зашумит" сравнение с
-        # названиями показателей, ломая совпадение по некоторым столбцам.
-        next_row_texts = []
-        next_row_is_header = header_rows is None or (header_idx + 1) in header_rows
-        if header_idx + 1 < len(table.rows) and next_row_is_header:
-            next_row_texts = [_normalize_match_text(get_cleaned_cell_text(cell)) for cell in table.rows[header_idx + 1].cells]
+        # header_idx — это ПОСЛЕДНЯЯ строка своего "run"-а подряд идущих
+        # заголовочных строк (см. вызывающий код), поэтому строка header_idx+1 —
+        # это уже настоящие данные, а не продолжение шапки. Составной заголовок
+        # строим по ВСЕМ строкам run'а (обычно это "базовое название показателя"
+        # + "суффикс/подзаголовок"), а не только по одной последней строке —
+        # иначе несколько колонок с одинаковым суффиксом (например, у двух разных
+        # показателей "длительность 1 оборота") неотличимы друг от друга.
+        run_rows_sorted = sorted(run_rows) if run_rows else [header_idx]
 
         for i, cell in enumerate(header_row.cells):
-            base_text = _normalize_match_text(get_cleaned_cell_text(cell))
-            next_text = next_row_texts[i] if i < len(next_row_texts) else ''
-            # Составной заголовок: базовый + подзаголовок
-            header_text = (base_text + ' ' + next_text).strip()
+            parts = []
+            seen = set()
+            for r_idx in run_rows_sorted:
+                if r_idx >= len(table.rows):
+                    continue
+                row_cells = table.rows[r_idx].cells
+                if i >= len(row_cells):
+                    continue
+                part = _normalize_match_text(get_cleaned_cell_text(row_cells[i]))
+                if part and part not in seen:
+                    seen.add(part)
+                    parts.append(part)
+            header_text = ' '.join(parts).strip()
             if not header_text:
                 continue
 
@@ -479,9 +486,34 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
 
         header_rows = _find_header_rows(table, source_word_to_indicator)
         header_rows_set = set(header_rows)
+
+        # Многие "шапки" занимают несколько подряд идущих строк (например, строка
+        # с базовым названием показателя + строка с суффиксом/годом), и обе строки
+        # независимо распознаются _find_header_rows как заголовочные. Раньше для
+        # КАЖДОЙ такой строки отдельно вызывался _compute_section_mapping, и обе
+        # попадали в section_ranges — а поскольку граница секции считается как
+        # "конец = начало следующей", это давало пустой диапазон для первой строки
+        # блока (чей маппинг обычно правильный, т.к. содержит различающий текст) и
+        # растягивало реальные данные на маппинг последней строки блока (которая
+        # часто содержит только повторяющийся суффикс, одинаковый для нескольких
+        # колонок, и потому не может их различить). Группируем подряд идущие
+        # заголовочные строки в один "run" и используем только его ПОСЛЕДНЮЮ
+        # строку как границу секции — а сам маппинг строим по всем строкам run'а.
+        header_runs = []
+        current_run = []
+        for idx in header_rows:
+            if current_run and idx != current_run[-1] + 1:
+                header_runs.append(current_run)
+                current_run = []
+            current_run.append(idx)
+        if current_run:
+            header_runs.append(current_run)
+
         section_ranges = []
-        for header_idx in header_rows:
-            mapping = _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=header_rows_set)
+        for run in header_runs:
+            header_idx = run[-1]
+            mapping = _compute_section_mapping(table, header_idx, source_word_to_indicator,
+                                                header_rows=header_rows_set, run_rows=run)
             if mapping:
                 section_ranges.append((header_idx, mapping))
 
