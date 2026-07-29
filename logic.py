@@ -3,6 +3,8 @@ from difflib import SequenceMatcher
 from pathlib import Path
 import re
 from typing import Optional
+
+import pandas as pd
 from config import (
     get_excel_data,
     load_okved_map,
@@ -29,7 +31,8 @@ def _extract_year(text: str) -> Optional[str]:
     return match.group(1) if match else None
 
 
-def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: float = 0.80) -> str:
+def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: float = 0.80,
+                         near_miss_sink: Optional[list] = None) -> str:
     """
     Ищет наилучшее совпадение заголовка с использованием Fuzzy Matching.
     Возвращает код индикатора или None.
@@ -59,6 +62,7 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
 
     # 2. Нечеткое сравнение (Fuzzy Match) для случаев без точного вхождения
     best_match = None
+    best_match_name = None
     best_score = 0.0
     for name_norm, indicator in normalized_name_map.items():
         if not name_norm:
@@ -67,13 +71,21 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
         if score > best_score:
             best_score = score
             best_match = indicator
+            best_match_name = name_norm
 
     if best_score >= threshold:
         return best_match
 
-    # Диагностика: выводим в лог, если показатель почти нашелся, но не дотянул до порога
+    # Диагностика: если показатель почти нашелся, но не дотянул до порога — это
+    # тег, который остаётся без значения молча (или, что хуже, ячейка так и
+    # хранит нетронутый исходный текст, если это единственный кандидат для всей
+    # строки). Раньше это уходило только в консольный лог и никем не читалось;
+    # теперь также складываем в near_miss_sink, чтобы в конце прогона можно было
+    # выгрузить это в отдельный отчёт для проверки человеком.
     if target_text and len(target_text) > 5 and best_score > 0.50:
         print(f"   ⚠️ [Fuzzy Miss] Ожидалось похожее, но Score={best_score:.2f} для '{target_text[:50]}...'")
+        if near_miss_sink is not None:
+            near_miss_sink.append((target_text, best_score, best_match_name, best_match))
 
     return None
 
@@ -219,8 +231,15 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
     return sorted(set(headers))
 
 
-def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None, run_rows=None):
-    """Вычисляет маппинг столбцов для данной секции таблицы."""
+def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None, run_rows=None,
+                              near_miss_sink=None):
+    """Вычисляет маппинг столбцов для данной секции таблицы.
+
+    near_miss_sink, если передан, получает по одному элементу
+    (column_idx, cell_text, score, closest_name, closest_indicator) на каждую
+    почти-но-не-дотянувшую fuzzy-попытку — чтобы такие случаи не терялись
+    молча, а могли попасть в отчёт для проверки человеком.
+    """
     year_row = table.rows[header_idx]
     year_texts = [get_cleaned_cell_text(cell).strip() for cell in year_row.cells]
     has_years = sum(1 for text in year_texts if _extract_year(text)) >= 2
@@ -266,7 +285,11 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
             composed_header_norm = _normalize_match_text(composed_header)
 
             # Используем Fuzzy-поиск вместо жесткого вхождения
-            best_match = _fuzzy_match_header(composed_header_norm, normalized_name_map, threshold=0.80)
+            column_near_misses = [] if near_miss_sink is not None else None
+            best_match = _fuzzy_match_header(composed_header_norm, normalized_name_map, threshold=0.80,
+                                              near_miss_sink=column_near_misses)
+            if column_near_misses:
+                near_miss_sink.extend((i, *entry) for entry in column_near_misses)
 
             # Fuzzy-fallback для случаев с переносами, дефисами и неявными формулировками
             if not best_match and composed_header_norm:
@@ -329,7 +352,11 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
             if not header_text:
                 continue
 
-            best_match = _fuzzy_match_header(header_text, normalized_name_map, threshold=0.80)
+            column_near_misses = [] if near_miss_sink is not None else None
+            best_match = _fuzzy_match_header(header_text, normalized_name_map, threshold=0.80,
+                                              near_miss_sink=column_near_misses)
+            if column_near_misses:
+                near_miss_sink.extend((i, *entry) for entry in column_near_misses)
 
             if best_match:
                 col_to_indicator_map[i] = (best_match, None)
@@ -396,10 +423,18 @@ def get_table_source_by_number(table_source_mapping, table_number):
 # ==========================================================
 def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_path, column_mapping_path,
                            output_doc_path,
-                           mo_map_path: Path = None, validation_log_path: Path = None):
+                           mo_map_path: Path = None, validation_log_path: Path = None,
+                           near_miss_report_path: Path = None):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}} и {{MO_<code>_<indicator>[_22|_23]}}.
     Расширенный поиск заголовков по первым 5 строкам таблицы.
+
+    near_miss_report_path: если указан, сюда выгружается таблица всех "почти
+    совпавших" заголовков — случаев, когда нечёткое сравнение нашло похожий
+    показатель, но недостаточно похожий, чтобы вставить тег автоматически
+    (score выше 0.50, но ниже порога принятия 0.80). Раньше такие случаи были
+    видны только в консольном логе; теперь их можно проверить и решить,
+    исправлять ли column_mapping_v2.csv или сам Word-документ.
     """
     print("\n--- ШАГ 2: Генерация шаблона с умными тегами ---")
     _, name_to_okved_cleaned = load_okved_map(okved_map_path)
@@ -413,6 +448,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     doc = Document(input_doc_path)
     total_tags = 0
     validation_log = []
+    near_miss_report = []
     current_source_file = None
     normalized_title_to_src = {k: v for k, v in table_source_mapping.items()}
 
@@ -530,8 +566,24 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         section_ranges = []
         for run in header_runs:
             header_idx = run[-1]
+            table_near_misses = [] if near_miss_report_path else None
             mapping = _compute_section_mapping(table, header_idx, source_word_to_indicator,
-                                                header_rows=header_rows_set, run_rows=run)
+                                                header_rows=header_rows_set, run_rows=run,
+                                                near_miss_sink=table_near_misses)
+            if table_near_misses:
+                near_miss_report.extend(
+                    {
+                        'table': t_index + 1,
+                        'source_file': current_source_file,
+                        'column': col_idx,
+                        'header_row': header_idx + 1,
+                        'cell_text': cell_text,
+                        'score': round(score, 2),
+                        'closest_candidate': closest_name,
+                        'closest_indicator': closest_indicator,
+                    }
+                    for col_idx, cell_text, score, closest_name, closest_indicator in table_near_misses
+                )
             if mapping:
                 section_ranges.append((header_idx, mapping))
 
@@ -705,6 +757,14 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         with open(validation_log_path, 'w', encoding='utf-8') as f:
             f.write('\n'.join(validation_log))
         print(f"🧪 Лог валидации маппинга сохранён: {validation_log_path}")
+    if near_miss_report_path:
+        near_miss_report_path = Path(near_miss_report_path)
+        near_miss_report_path.parent.mkdir(parents=True, exist_ok=True)
+        columns = ['table', 'source_file', 'column', 'header_row', 'cell_text',
+                   'score', 'closest_candidate', 'closest_indicator']
+        pd.DataFrame(near_miss_report, columns=columns).to_excel(near_miss_report_path, index=False)
+        print(f"🔎 Отчёт по «почти совпавшим» показателям сохранён: {near_miss_report_path} "
+              f"({len(near_miss_report)} строк)")
 
 
 # ==========================================================
