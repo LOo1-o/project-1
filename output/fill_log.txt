@@ -7023,295 +7023,329 @@
 ✅ Заполнено: OKVED_A_PriUby(-DoNalZaAnaPerPreGo → 20524035
 ✅ Заполнено: OKVED_A_TeRosPriV% → 8,4
 ✅ Заполнено: OKVED_A_SumUbyZaSooPerPreGo → 10368479
+✅ Заполнено: OKVED_A_KolOrgPolUbyZaPreGo(ed → 21
 ✅ Заполнено: OKVED_A_SumPriZaSooPerPreGo → 30892514
 ✅ Заполнено: OKVED_A_TeRosUbyV% → 120
 ✅ Заполнено: OKVED_A_TeRosSumPriV% → 45,9
 ✅ Заполнено: OKVED_01_PriUby(-DoNalZaAnaPerPreGo → 58060
 ℹ️ Отсутствующие данные: OKVED_01_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_01_SumUbyZaSooPerPreGo → 21115
+✅ Заполнено: OKVED_01_KolOrgPolUbyZaPreGo(ed → 4
 ✅ Заполнено: OKVED_01_SumPriZaSooPerPreGo → 79175
 ✅ Заполнено: OKVED_01_TeRosUbyV% → 1069,5
 ✅ Заполнено: OKVED_01_TeRosSumPriV% → 33,5
 ✅ Заполнено: OKVED_03_PriUby(-DoNalZaAnaPerPreGo → 20465975
 ✅ Заполнено: OKVED_03_TeRosPriV% → 9,4
 ✅ Заполнено: OKVED_03_SumUbyZaSooPerPreGo → 10347364
+✅ Заполнено: OKVED_03_KolOrgPolUbyZaPreGo(ed → 17
 ✅ Заполнено: OKVED_03_SumPriZaSooPerPreGo → 30813339
 ✅ Заполнено: OKVED_03_TeRosUbyV% → 118,1
 ✅ Заполнено: OKVED_03_TeRosSumPriV% → 45,9
 ✅ Заполнено: OKVED_B_PriUby(-DoNalZaAnaPerPreGo → 4332390
 ✅ Заполнено: OKVED_B_TeRosPriV% → 627,8
 ✅ Заполнено: OKVED_B_SumUbyZaSooPerPreGo → 6826125
+✅ Заполнено: OKVED_B_KolOrgPolUbyZaPreGo(ed → 3
 ✅ Заполнено: OKVED_B_SumPriZaSooPerPreGo → 11158515
 ✅ Заполнено: OKVED_B_TeRosUbyV% → 54,6
 ✅ Заполнено: OKVED_B_TeRosSumPriV% → 277,1
 ✅ Заполнено: OKVED_07_PriUby(-DoNalZaAnaPerPreGo → 4332390
 ✅ Заполнено: OKVED_07_TeRosPriV% → 627,8
 ✅ Заполнено: OKVED_07_SumUbyZaSooPerPreGo → 6826125
+✅ Заполнено: OKVED_07_KolOrgPolUbyZaPreGo(ed → 3
 ✅ Заполнено: OKVED_07_SumPriZaSooPerPreGo → 11158515
 ✅ Заполнено: OKVED_07_TeRosUbyV% → 54,6
 ✅ Заполнено: OKVED_07_TeRosSumPriV% → 277,1
 ✅ Заполнено: OKVED_C_PriUby(-DoNalZaAnaPerPreGo → 5800851
 ✅ Заполнено: OKVED_C_TeRosPriV% → 80,4
 ✅ Заполнено: OKVED_C_SumUbyZaSooPerPreGo → 35341
+✅ Заполнено: OKVED_C_KolOrgPolUbyZaPreGo(ed → 2
 ✅ Заполнено: OKVED_C_SumPriZaSooPerPreGo → 5836192
 ✅ Заполнено: OKVED_C_TeRosUbyV% → 1977,2
 ✅ Заполнено: OKVED_C_TeRosSumPriV% → 91,8
 ✅ Заполнено: OKVED_10_PriUby(-DoNalZaAnaPerPreGo → 5693172
 ✅ Заполнено: OKVED_10_TeRosPriV% → 78
 ℹ️ Отсутствующие данные: OKVED_10_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_10_KolOrgPolUbyZaPreGo(ed → [-]
 ✅ Заполнено: OKVED_10_SumPriZaSooPerPreGo → 5693172
 ✅ Заполнено: OKVED_10_TeRosUbyV% → 0
 ✅ Заполнено: OKVED_10_TeRosSumPriV% → 89,6
 ✅ Заполнено: OKVED_11_PriUby(-DoNalZaAnaPerPreGo → 97199
 ✅ Заполнено: OKVED_11_TeRosPriV% → 146
 ℹ️ Отсутствующие данные: OKVED_11_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_11_KolOrgPolUbyZaPreGo(ed → [-]
 ✅ Заполнено: OKVED_11_SumPriZaSooPerPreGo → 97199
 ℹ️ Отсутствующие данные: OKVED_11_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_11_TeRosSumPriV% → 146
 ✅ Заполнено: OKVED_32_PriUby(-DoNalZaAnaPerPreGo → 7586
 ✅ Заполнено: OKVED_32_TeRosPriV% → 68,6
 ℹ️ Отсутствующие данные: OKVED_32_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_32_KolOrgPolUbyZaPreGo(ed → [-]
 ✅ Заполнено: OKVED_32_SumPriZaSooPerPreGo → 7586
 ℹ️ Отсутствующие данные: OKVED_32_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_32_TeRosSumPriV% → 68,6
 ✅ Заполнено: OKVED_33_PriUby(-DoNalZaAnaPerPreGo → 2894
 ✅ Заполнено: OKVED_33_TeRosPriV% → 2573,9
 ✅ Заполнено: OKVED_33_SumUbyZaSooPerPreGo → 35341
+✅ Заполнено: OKVED_33_KolOrgPolUbyZaPreGo(ed → 2
 ✅ Заполнено: OKVED_33_SumPriZaSooPerPreGo → 38235
 ✅ Заполнено: OKVED_33_TeRosUbyV% → 103,1
 ✅ Заполнено: OKVED_33_TeRosSumPriV% → 290,1
 ✅ Заполнено: OKVED_35_PriUby(-DoNalZaAnaPerPreGo → 3182327
 ✅ Заполнено: OKVED_35_TeRosPriV% → 126,6
 ✅ Заполнено: OKVED_35_SumUbyZaSooPerPreGo → 253891
+✅ Заполнено: OKVED_35_KolOrgPolUbyZaPreGo(ed → 6
 ✅ Заполнено: OKVED_35_SumPriZaSooPerPreGo → 3436218
 ✅ Заполнено: OKVED_35_TeRosUbyV% → 275,3
 ✅ Заполнено: OKVED_35_TeRosSumPriV% → 137,5
 ✅ Заполнено: OKVED_E_PriUby(-DoNalZaAnaPerPreGo → 356789
 ✅ Заполнено: OKVED_E_TeRosPriV% → 414
 ✅ Заполнено: OKVED_E_SumUbyZaSooPerPreGo → 89535
+✅ Заполнено: OKVED_E_KolOrgPolUbyZaPreGo(ed → 1
 ✅ Заполнено: OKVED_E_SumPriZaSooPerPreGo → 446324
 ✅ Заполнено: OKVED_E_TeRosUbyV% → 100,7
 ✅ Заполнено: OKVED_E_TeRosSumPriV% → 351,1
 ✅ Заполнено: OKVED_36_PriUby(-DoNalZaAnaPerPreGo → 355473
 ✅ Заполнено: OKVED_36_TeRosPriV% → 413,9
 ✅ Заполнено: OKVED_36_SumUbyZaSooPerPreGo → 89535
+✅ Заполнено: OKVED_36_KolOrgPolUbyZaPreGo(ed → 1
 ✅ Заполнено: OKVED_36_SumPriZaSooPerPreGo → 445008
 ✅ Заполнено: OKVED_36_TeRosUbyV% → 100,7
 ✅ Заполнено: OKVED_36_TeRosSumPriV% → 350,9
 ✅ Заполнено: OKVED_38_PriUby(-DoNalZaAnaPerPreGo → 1316
 ✅ Заполнено: OKVED_38_TeRosPriV% → 433,6
 ℹ️ Отсутствующие данные: OKVED_38_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_38_KolOrgPolUbyZaPreGo(ed → [-]
 ✅ Заполнено: OKVED_38_SumPriZaSooPerPreGo → 1316
 ✅ Заполнено: OKVED_38_TeRosUbyV% → 0
 ✅ Заполнено: OKVED_38_TeRosSumPriV% → 433,9
 ✅ Заполнено: OKVED_F_PriUby(-DoNalZaAnaPerPreGo → 511749
 ℹ️ Отсутствующие данные: OKVED_F_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_F_SumUbyZaSooPerPreGo → 192015
+✅ Заполнено: OKVED_F_KolOrgPolUbyZaPreGo(ed → 1
 ✅ Заполнено: OKVED_F_SumPriZaSooPerPreGo → 703764
 ✅ Заполнено: OKVED_F_TeRosUbyV% → 158,6
 ✅ Заполнено: OKVED_F_TeRosSumPriV% → 22,6
 ✅ Заполнено: OKVED_41_PriUby(-DoNalZaAnaPerPreGo → 701365
 ℹ️ Отсутствующие данные: OKVED_41_TeRosPriV% → [-]
 ℹ️ Отсутствующие данные: OKVED_41_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_41_KolOrgPolUbyZaPreGo(ed → [-]
 ✅ Заполнено: OKVED_41_SumPriZaSooPerPreGo → 701365
 ✅ Заполнено: OKVED_41_TeRosUbyV% → 0
 ✅ Заполнено: OKVED_41_TeRosSumPriV% → 20,8
 ✅ Заполнено: OKVED_42_PriUby(-DoNalZaAnaPerPreGo → -189616
 ℹ️ Отсутствующие данные: OKVED_42_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_42_SumUbyZaSooPerPreGo → 192015
+✅ Заполнено: OKVED_42_KolOrgPolUbyZaPreGo(ed → 1
 ✅ Заполнено: OKVED_42_SumPriZaSooPerPreGo → 2399
 ✅ Заполнено: OKVED_42_TeRosUbyV% → 67,5
 ℹ️ Отсутствующие данные: OKVED_42_TeRosSumPriV% → [-]
 ℹ️ Отсутствующие данные: OKVED_43_PriUby(-DoNalZaAnaPerPreGo → [-]
 ✅ Заполнено: OKVED_43_TeRosPriV% → 0
 ℹ️ Отсутствующие данные: OKVED_43_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_43_KolOrgPolUbyZaPreGo(ed → [-]
 ℹ️ Отсутствующие данные: OKVED_43_SumPriZaSooPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_43_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_43_TeRosSumPriV% → 0
 ✅ Заполнено: OKVED_G_PriUby(-DoNalZaAnaPerPreGo → 1700553
 ✅ Заполнено: OKVED_G_TeRosPriV% → 103,1
 ✅ Заполнено: OKVED_G_SumUbyZaSooPerPreGo → 161317
+✅ Заполнено: OKVED_G_KolOrgPolUbyZaPreGo(ed → 7
 ✅ Заполнено: OKVED_G_SumPriZaSooPerPreGo → 1861870
 ✅ Заполнено: OKVED_G_TeRosUbyV% → 154,7
 ✅ Заполнено: OKVED_G_TeRosSumPriV% → 107,5
 ✅ Заполнено: OKVED_47_PriUby(-DoNalZaAnaPerPreGo → 62931
 ✅ Заполнено: OKVED_47_TeRosPriV% → 154,7
 ✅ Заполнено: OKVED_47_SumUbyZaSooPerPreGo → 23188
+✅ Заполнено: OKVED_47_KolOrgPolUbyZaPreGo(ed → 5
 ✅ Заполнено: OKVED_47_SumPriZaSooPerPreGo → 86119
 ✅ Заполнено: OKVED_47_TeRosUbyV% → 124,9
 ✅ Заполнено: OKVED_47_TeRosSumPriV% → 146,7
 ✅ Заполнено: OKVED_H_PriUby(-DoNalZaAnaPerPreGo → 1375994
 ✅ Заполнено: OKVED_H_TeRosPriV% → 78,2
 ✅ Заполнено: OKVED_H_SumUbyZaSooPerPreGo → 189224
+✅ Заполнено: OKVED_H_KolOrgPolUbyZaPreGo(ed → 5
 ✅ Заполнено: OKVED_H_SumPriZaSooPerPreGo → 1565218
 ✅ Заполнено: OKVED_H_TeRosUbyV% → 195,8
 ✅ Заполнено: OKVED_H_TeRosSumPriV% → 92,4
 ✅ Заполнено: OKVED_49_PriUby(-DoNalZaAnaPerPreGo → 15779
 ✅ Заполнено: OKVED_49_TeRosPriV% → 423,6
 ✅ Заполнено: OKVED_49_SumUbyZaSooPerPreGo → 605
+✅ Заполнено: OKVED_49_KolOrgPolUbyZaPreGo(ed → 1
 ✅ Заполнено: OKVED_49_SumPriZaSooPerPreGo → 16384
 ℹ️ Отсутствующие данные: OKVED_49_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_49_TeRosSumPriV% → 407,9
 ✅ Заполнено: OKVED_50_PriUby(-DoNalZaAnaPerPreGo → 302297
 ℹ️ Отсутствующие данные: OKVED_50_TeRosPriV% → [-]
 ℹ️ Отсутствующие данные: OKVED_50_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_50_KolOrgPolUbyZaPreGo(ed → [-]
 ✅ Заполнено: OKVED_50_SumPriZaSooPerPreGo → 302297
 ✅ Заполнено: OKVED_50_TeRosUbyV% → 0
 ℹ️ Отсутствующие данные: OKVED_50_TeRosSumPriV% → [-]
 ✅ Заполнено: OKVED_51_PriUby(-DoNalZaAnaPerPreGo → 344882
 ✅ Заполнено: OKVED_51_TeRosPriV% → 94,1
 ℹ️ Отсутствующие данные: OKVED_51_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_51_KolOrgPolUbyZaPreGo(ed → [-]
 ✅ Заполнено: OKVED_51_SumPriZaSooPerPreGo → 344882
 ℹ️ Отсутствующие данные: OKVED_51_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_51_TeRosSumPriV% → 94,1
 ✅ Заполнено: OKVED_52_PriUby(-DoNalZaAnaPerPreGo → 713036
 ✅ Заполнено: OKVED_52_TeRosPriV% → 109,2
 ✅ Заполнено: OKVED_52_SumUbyZaSooPerPreGo → 188619
+✅ Заполнено: OKVED_52_KolOrgPolUbyZaPreGo(ed → 4
 ✅ Заполнено: OKVED_52_SumPriZaSooPerPreGo → 901655
 ✅ Заполнено: OKVED_52_TeRosUbyV% → 146,6
 ✅ Заполнено: OKVED_52_TeRosSumPriV% → 117,1
 ✅ Заполнено: OKVED_I_PriUby(-DoNalZaAnaPerPreGo → -675642
 ℹ️ Отсутствующие данные: OKVED_I_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_I_SumUbyZaSooPerPreGo → 680593
+✅ Заполнено: OKVED_I_KolOrgPolUbyZaPreGo(ed → 3
 ✅ Заполнено: OKVED_I_SumPriZaSooPerPreGo → 4951
 ✅ Заполнено: OKVED_I_TeRosUbyV% → 88,3
 ✅ Заполнено: OKVED_I_TeRosSumPriV% → 35,6
 ✅ Заполнено: OKVED_55_PriUby(-DoNalZaAnaPerPreGo → -680593
 ℹ️ Отсутствующие данные: OKVED_55_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_55_SumUbyZaSooPerPreGo → 680593
+✅ Заполнено: OKVED_55_KolOrgPolUbyZaPreGo(ed → 3
 ℹ️ Отсутствующие данные: OKVED_55_SumPriZaSooPerPreGo → [-]
 ✅ Заполнено: OKVED_55_TeRosUbyV% → 88,3
 ✅ Заполнено: OKVED_55_TeRosSumPriV% → 0
 ✅ Заполнено: OKVED_56_PriUby(-DoNalZaAnaPerPreGo → 4951
 ✅ Заполнено: OKVED_56_TeRosPriV% → 9,1
 ℹ️ Отсутствующие данные: OKVED_56_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_56_KolOrgPolUbyZaPreGo(ed → [-]
 ✅ Заполнено: OKVED_56_SumPriZaSooPerPreGo → 4951
 ℹ️ Отсутствующие данные: OKVED_56_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_56_TeRosSumPriV% → 9,1
 ✅ Заполнено: OKVED_K_PriUby(-DoNalZaAnaPerPreGo → 308072
 ✅ Заполнено: OKVED_K_TeRosPriV% → 75,9
 ✅ Заполнено: OKVED_K_SumUbyZaSooPerPreGo → 93107
+✅ Заполнено: OKVED_K_KolOrgPolUbyZaPreGo(ed → 5
 ✅ Заполнено: OKVED_K_SumPriZaSooPerPreGo → 401179
 ✅ Заполнено: OKVED_K_TeRosUbyV% → 186,3
 ✅ Заполнено: OKVED_K_TeRosSumPriV% → 101,5
 ✅ Заполнено: OKVED_L_PriUby(-DoNalZaAnaPerPreGo → 1424001
 ℹ️ Отсутствующие данные: OKVED_L_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_L_SumUbyZaSooPerPreGo → 198323
+✅ Заполнено: OKVED_L_KolOrgPolUbyZaPreGo(ed → 5
 ✅ Заполнено: OKVED_L_SumPriZaSooPerPreGo → 1622324
 ✅ Заполнено: OKVED_L_TeRosUbyV% → 422
 ✅ Заполнено: OKVED_L_TeRosSumPriV% → 0,9
 ℹ️ Отсутствующие данные: OKVED_68_PriUby(-DoNalZaAnaPerPreGo → [-]
 ✅ Заполнено: OKVED_68_TeRosPriV% → 0
 ℹ️ Отсутствующие данные: OKVED_68_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_68_KolOrgPolUbyZaPreGo(ed → [-]
 ℹ️ Отсутствующие данные: OKVED_68_SumPriZaSooPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_68_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_68_TeRosSumPriV% → 0
 ✅ Заполнено: OKVED_M_PriUby(-DoNalZaAnaPerPreGo → 1474539
 ℹ️ Отсутствующие данные: OKVED_M_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_M_SumUbyZaSooPerPreGo → 119225
+✅ Заполнено: OKVED_M_KolOrgPolUbyZaPreGo(ed → 1
 ✅ Заполнено: OKVED_M_SumPriZaSooPerPreGo → 1593764
 ✅ Заполнено: OKVED_M_TeRosUbyV% → 218,6
 ✅ Заполнено: OKVED_M_TeRosSumPriV% → 0
 ✅ Заполнено: OKVED_69_PriUby(-DoNalZaAnaPerPreGo → -47701
 ℹ️ Отсутствующие данные: OKVED_69_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_69_SumUbyZaSooPerPreGo → 76261
+✅ Заполнено: OKVED_69_KolOrgPolUbyZaPreGo(ed → 3
 ✅ Заполнено: OKVED_69_SumPriZaSooPerPreGo → 28560
 ✅ Заполнено: OKVED_69_TeRosUbyV% → 754,2
 ✅ Заполнено: OKVED_69_TeRosSumPriV% → 50,4
 ✅ Заполнено: OKVED_70_PriUby(-DoNalZaAnaPerPreGo → -2837
 ℹ️ Отсутствующие данные: OKVED_70_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_70_SumUbyZaSooPerPreGo → 2837
+✅ Заполнено: OKVED_70_KolOrgPolUbyZaPreGo(ed → 1
 ℹ️ Отсутствующие данные: OKVED_70_SumPriZaSooPerPreGo → [-]
 ✅ Заполнено: OKVED_70_TeRosUbyV% → 39,4
 ℹ️ Отсутствующие данные: OKVED_70_TeRosSumPriV% → [-]
 ✅ Заполнено: OKVED_71_PriUby(-DoNalZaAnaPerPreGo → -1160669
 ℹ️ Отсутствующие данные: OKVED_71_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_71_SumUbyZaSooPerPreGo → 1168337
+✅ Заполнено: OKVED_71_KolOrgPolUbyZaPreGo(ed → 3
 ✅ Заполнено: OKVED_71_SumPriZaSooPerPreGo → 7668
 ✅ Заполнено: OKVED_71_TeRosUbyV% → 10,5
 ✅ Заполнено: OKVED_71_TeRosSumPriV% → 1515,9
 ✅ Заполнено: OKVED_74_PriUby(-DoNalZaAnaPerPreGo → -1125453
 ℹ️ Отсутствующие данные: OKVED_74_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_74_SumUbyZaSooPerPreGo → 1132459
+✅ Заполнено: OKVED_74_KolOrgPolUbyZaPreGo(ed → 1
 ✅ Заполнено: OKVED_74_SumPriZaSooPerPreGo → 7006
 ✅ Заполнено: OKVED_74_TeRosUbyV% → 5,2
 ✅ Заполнено: OKVED_74_TeRosSumPriV% → 108,7
 ✅ Заполнено: OKVED_77_PriUby(-DoNalZaAnaPerPreGo → -34499
 ℹ️ Отсутствующие данные: OKVED_77_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_77_SumUbyZaSooPerPreGo → 34499
+✅ Заполнено: OKVED_77_KolOrgPolUbyZaPreGo(ed → 1
 ℹ️ Отсутствующие данные: OKVED_77_SumPriZaSooPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_77_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_77_TeRosSumPriV% → 0
 ✅ Заполнено: OKVED_79_PriUby(-DoNalZaAnaPerPreGo → 662
 ✅ Заполнено: OKVED_79_TeRosPriV% → 113,6
 ℹ️ Отсутствующие данные: OKVED_79_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_79_KolOrgPolUbyZaPreGo(ed → [-]
 ✅ Заполнено: OKVED_79_SumPriZaSooPerPreGo → 662
 ℹ️ Отсутствующие данные: OKVED_79_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_79_TeRosSumPriV% → 113,6
 ✅ Заполнено: OKVED_81_PriUby(-DoNalZaAnaPerPreGo → -3609
 ℹ️ Отсутствующие данные: OKVED_81_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_81_SumUbyZaSooPerPreGo → 3609
+✅ Заполнено: OKVED_81_KolOrgPolUbyZaPreGo(ed → 1
 ℹ️ Отсутствующие данные: OKVED_81_SumPriZaSooPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_81_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_81_TeRosSumPriV% → 0
 ✅ Заполнено: OKVED_82_PriUby(-DoNalZaAnaPerPreGo → -3609
 ℹ️ Отсутствующие данные: OKVED_82_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_82_SumUbyZaSooPerPreGo → 3609
+✅ Заполнено: OKVED_82_KolOrgPolUbyZaPreGo(ed → 1
 ℹ️ Отсутствующие данные: OKVED_82_SumPriZaSooPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_82_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_82_TeRosSumPriV% → 0
 ✅ Заполнено: OKVED_O_PriUby(-DoNalZaAnaPerPreGo → 253
 ✅ Заполнено: OKVED_O_TeRosPriV% → 188,1
 ℹ️ Отсутствующие данные: OKVED_O_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_O_KolOrgPolUbyZaPreGo(ed → [-]
 ✅ Заполнено: OKVED_O_SumPriZaSooPerPreGo → 253
 ℹ️ Отсутствующие данные: OKVED_O_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_O_TeRosSumPriV% → 188,1
 ℹ️ Отсутствующие данные: OKVED_85_PriUby(-DoNalZaAnaPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_85_TeRosPriV% → [-]
 ℹ️ Отсутствующие данные: OKVED_85_SumUbyZaSooPerPreGo → [-]
-ℹ️ Отсутствующие данные: OKVED_85_KolOrgPolUbyZaPreGo(ed → [-]
 ℹ️ Отсутствующие данные: OKVED_85_SumPriZaSooPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_85_TeRosUbyV% → [-]
 ℹ️ Отсутствующие данные: OKVED_85_TeRosSumPriV% → [-]
 ℹ️ Отсутствующие данные: OKVED_85_PriUby(-DoNalZaAnaPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_85_TeRosPriV% → [-]
 ℹ️ Отсутствующие данные: OKVED_85_SumUbyZaSooPerPreGo → [-]
-ℹ️ Отсутствующие данные: OKVED_85_KolOrgPolUbyZaPreGo(ed → [-]
 ℹ️ Отсутствующие данные: OKVED_85_SumPriZaSooPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_85_TeRosUbyV% → [-]
 ℹ️ Отсутствующие данные: OKVED_85_TeRosSumPriV% → [-]
 ✅ Заполнено: OKVED_R_PriUby(-DoNalZaAnaPerPreGo → 4953
 ✅ Заполнено: OKVED_R_TeRosPriV% → 1292,2
 ✅ Заполнено: OKVED_R_SumUbyZaSooPerPreGo → 2686
-✅ Заполнено: OKVED_R_KolOrgPolUbyZaPreGo(ed → 2
 ✅ Заполнено: OKVED_R_SumPriZaSooPerPreGo → 7639
 ✅ Заполнено: OKVED_R_TeRosUbyV% → 194
 ✅ Заполнено: OKVED_R_TeRosSumPriV% → 906,1
 ✅ Заполнено: OKVED_93_PriUby(-DoNalZaAnaPerPreGo → 7461
 ✅ Заполнено: OKVED_93_TeRosPriV% → 927,6
 ✅ Заполнено: OKVED_93_SumUbyZaSooPerPreGo → 173
-✅ Заполнено: OKVED_93_KolOrgPolUbyZaPreGo(ed → 1
 ✅ Заполнено: OKVED_93_SumPriZaSooPerPreGo → 7634
 ℹ️ Отсутствующие данные: OKVED_93_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_93_TeRosSumPriV% → 906,6
 ✅ Заполнено: OKVED_S_PriUby(-DoNalZaAnaPerPreGo → -2508
 ℹ️ Отсутствующие данные: OKVED_S_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_S_SumUbyZaSooPerPreGo → 2513
-✅ Заполнено: OKVED_S_KolOrgPolUbyZaPreGo(ed → 1
 ✅ Заполнено: OKVED_S_SumPriZaSooPerPreGo → 5
 ✅ Заполнено: OKVED_S_TeRosUbyV% → 207,4
 ✅ Заполнено: OKVED_S_TeRosSumPriV% → 120
 ℹ️ Отсутствующие данные: OKVED_94_PriUby(-DoNalZaAnaPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_94_TeRosPriV% → [-]
 ℹ️ Отсутствующие данные: OKVED_94_SumUbyZaSooPerPreGo → [-]
-ℹ️ Отсутствующие данные: OKVED_94_KolOrgPolUbyZaPreGo(ed → [-]
 ℹ️ Отсутствующие данные: OKVED_94_SumPriZaSooPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_94_TeRosUbyV% → [-]
 ℹ️ Отсутствующие данные: OKVED_94_TeRosSumPriV% → [-]
 ℹ️ Отсутствующие данные: OKVED_96_PriUby(-DoNalZaAnaPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_96_TeRosPriV% → [-]
 ℹ️ Отсутствующие данные: OKVED_96_SumUbyZaSooPerPreGo → [-]
-ℹ️ Отсутствующие данные: OKVED_96_KolOrgPolUbyZaPreGo(ed → [-]
 ℹ️ Отсутствующие данные: OKVED_96_SumPriZaSooPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_96_TeRosUbyV% → [-]
 ℹ️ Отсутствующие данные: OKVED_96_TeRosSumPriV% → [-]
@@ -7414,72 +7448,84 @@
 ✅ Заполнено: MO_30701_PriUby(-DoNalZaAnaPerPreGo_1 → 10180085
 ✅ Заполнено: MO_30701_TeRosPriV%_1 → 49
 ✅ Заполнено: MO_30701_SumUbyZaSooPerPreGo_1 → 18526680
+✅ Заполнено: MO_30701_KolOrgPolUbyZaPreGo(ed_1 → 47
 ✅ Заполнено: MO_30701_SumPriZaSooPerPreGo_1 → 28706765
 ✅ Заполнено: MO_30701_TeRosUbyV%_1 → 108,6
 ✅ Заполнено: MO_30701_TeRosSumPriV%_1 → 87,4
 ✅ Заполнено: MO_30851_PriUby(-DoNalZaAnaPerPreGo_1 → 780
 ✅ Заполнено: MO_30851_TeRosPriV%_1 → 934,6
 ℹ️ Отсутствующие данные: MO_30851_SumUbyZaSooPerPreGo_1 → [-]
+ℹ️ Отсутствующие данные: MO_30851_KolOrgPolUbyZaPreGo(ed_1 → [-]
 ✅ Заполнено: MO_30851_SumPriZaSooPerPreGo_1 → 780
 ℹ️ Отсутствующие данные: MO_30851_TeRosUbyV%_1 → [-]
 ✅ Заполнено: MO_30851_TeRosSumPriV%_1 → 934,6
 ✅ Заполнено: MO_30501_PriUby(-DoNalZaAnaPerPreGo_1 → 32763
 ℹ️ Отсутствующие данные: MO_30501_TeRosPriV%_1 → [-]
 ℹ️ Отсутствующие данные: MO_30501_SumUbyZaSooPerPreGo_1 → [-]
+ℹ️ Отсутствующие данные: MO_30501_KolOrgPolUbyZaPreGo(ed_1 → [-]
 ✅ Заполнено: MO_30501_SumPriZaSooPerPreGo_1 → 32763
 ✅ Заполнено: MO_30501_TeRosUbyV%_1 → 0
 ℹ️ Отсутствующие данные: MO_30501_TeRosSumPriV%_1 → [-]
 ✅ Заполнено: MO_30510_PriUby(-DoNalZaAnaPerPreGo_1 → -236
 ℹ️ Отсутствующие данные: MO_30510_TeRosPriV%_1 → [-]
 ✅ Заполнено: MO_30510_SumUbyZaSooPerPreGo_1 → 236
+✅ Заполнено: MO_30510_KolOrgPolUbyZaPreGo(ed_1 → 1
 ℹ️ Отсутствующие данные: MO_30510_SumPriZaSooPerPreGo_1 → [-]
 ✅ Заполнено: MO_30510_TeRosUbyV%_1 → 40,7
 ℹ️ Отсутствующие данные: MO_30510_TeRosSumPriV%_1 → [-]
 ℹ️ Отсутствующие данные: MO_30604_PriUby(-DoNalZaAnaPerPreGo_1 → [-]
 ℹ️ Отсутствующие данные: MO_30604_TeRosPriV%_1 → [-]
 ℹ️ Отсутствующие данные: MO_30604_SumUbyZaSooPerPreGo_1 → [-]
+ℹ️ Отсутствующие данные: MO_30604_KolOrgPolUbyZaPreGo(ed_1 → [-]
 ℹ️ Отсутствующие данные: MO_30604_SumPriZaSooPerPreGo_1 → [-]
 ℹ️ Отсутствующие данные: MO_30604_TeRosUbyV%_1 → [-]
 ℹ️ Отсутствующие данные: MO_30604_TeRosSumPriV%_1 → [-]
 ✅ Заполнено: MO_30607_PriUby(-DoNalZaAnaPerPreGo_1 → 12757877
 ✅ Заполнено: MO_30607_TeRosPriV%_1 → 158,8
 ✅ Заполнено: MO_30607_SumUbyZaSooPerPreGo_1 → 1094759
+✅ Заполнено: MO_30607_KolOrgPolUbyZaPreGo(ed_1 → 9
 ✅ Заполнено: MO_30607_SumPriZaSooPerPreGo_1 → 13852636
 ✅ Заполнено: MO_30607_TeRosUbyV%_1 → 119,8
 ✅ Заполнено: MO_30607_TeRosSumPriV%_1 → 155,7
 ✅ Заполнено: MO_30607101_PriUby(-DoNalZaAnaPerPreGo_1 → 11044941
 ✅ Заполнено: MO_30607101_TeRosPriV%_1 → 182,8
 ✅ Заполнено: MO_30607101_SumUbyZaSooPerPreGo_1 → 207900
+✅ Заполнено: MO_30607101_KolOrgPolUbyZaPreGo(ed_1 → 4
 ✅ Заполнено: MO_30607101_SumPriZaSooPerPreGo_1 → 11252841
 ✅ Заполнено: MO_30607101_TeRosUbyV%_1 → 255,3
 ✅ Заполнено: MO_30607101_TeRosSumPriV%_1 → 184,1
 ✅ Заполнено: MO_30613_PriUby(-DoNalZaAnaPerPreGo_1 → 4468172
 ✅ Заполнено: MO_30613_TeRosPriV%_1 → 3,1
 ✅ Заполнено: MO_30613_SumUbyZaSooPerPreGo_1 → 76144
+✅ Заполнено: MO_30613_KolOrgPolUbyZaPreGo(ed_1 → 2
 ✅ Заполнено: MO_30613_SumPriZaSooPerPreGo_1 → 4544316
 ✅ Заполнено: MO_30613_TeRosUbyV%_1 → 1592,7
 ✅ Заполнено: MO_30613_TeRosSumPriV%_1 → 29,7
 ✅ Заполнено: MO_30616_PriUby(-DoNalZaAnaPerPreGo_1 → 5214805
 ✅ Заполнено: MO_30616_TeRosPriV%_1 → 84,4
 ℹ️ Отсутствующие данные: MO_30616_SumUbyZaSooPerPreGo_1 → [-]
+ℹ️ Отсутствующие данные: MO_30616_KolOrgPolUbyZaPreGo(ed_1 → [-]
 ✅ Заполнено: MO_30616_SumPriZaSooPerPreGo_1 → 5214805
 ✅ Заполнено: MO_30616_TeRosUbyV%_1 → 0
 ✅ Заполнено: MO_30616_TeRosSumPriV%_1 → 98,4
 ✅ Заполнено: MO_30619_PriUby(-DoNalZaAnaPerPreGo_1 → 2908622
 ✅ Заполнено: MO_30619_TeRosPriV%_1 → 17
 ℹ️ Отсутствующие данные: MO_30619_SumUbyZaSooPerPreGo_1 → [-]
+ℹ️ Отсутствующие данные: MO_30619_KolOrgPolUbyZaPreGo(ed_1 → [-]
 ✅ Заполнено: MO_30619_SumPriZaSooPerPreGo_1 → 2908622
 ✅ Заполнено: MO_30619_TeRosUbyV%_1 → 0
 ✅ Заполнено: MO_30619_TeRosSumPriV%_1 → 23
 ✅ Заполнено: MO_30824_PriUby(-DoNalZaAnaPerPreGo_1 → 6965351
 ✅ Заполнено: MO_30824_TeRosPriV%_1 → 98,7
 ✅ Заполнено: MO_30824_SumUbyZaSooPerPreGo_1 → 473685
+✅ Заполнено: MO_30824_KolOrgPolUbyZaPreGo(ed_1 → 5
 ✅ Заполнено: MO_30824_SumPriZaSooPerPreGo_1 → 7439036
 ✅ Заполнено: MO_30824_TeRosUbyV%_1 → 27,2
 ✅ Заполнено: MO_30824_TeRosSumPriV%_1 → 94,2
 ✅ Заполнено: MO_30832_PriUby(-DoNalZaAnaPerPreGo_1 → -636
 ℹ️ Отсутствующие данные: MO_30832_TeRosPriV%_1 → [-]
 ✅ Заполнено: MO_30832_SumUbyZaSooPerPreGo_1 → 3035
+✅ Заполнено: MO_30832_KolOrgPolUbyZaPreGo(ed_1 → 1
 ✅ Заполнено: MO_30832_SumPriZaSooPerPreGo_1 → 2399
 ✅ Заполнено: MO_30832_TeRosUbyV%_1 → 1637,5
 ✅ Заполнено: MO_30832_TeRosSumPriV%_1 → 416,1
