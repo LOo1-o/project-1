@@ -31,8 +31,27 @@ def _extract_year(text: str) -> Optional[str]:
     return match.group(1) if match else None
 
 
+def _squish_text(text: str) -> str:
+    """
+    Самый толерантный уровень сравнения: убирает вообще все пробелы и
+    спецсимволы, оставляя только буквы и цифры "слитно". Ловит случаи, когда
+    слово внутри показателя разорвано непредвиденным образом — например,
+    "Себе - стоимость продаж" вместо "Себестоимость продаж" (лишний пробел
+    вокруг дефиса при переносе строки в Word). Обычная нормализация
+    (_normalize_match_text) такое не распознаёт как перенос, потому что перед
+    дефисом есть пробел — а значит выглядит как настоящий разделитель вроде
+    "деятельности - всего". Склеивание вообще без пробелов снимает разницу:
+    "себе стоимость продаж" и "себестоимость продаж" после склейки совпадают.
+    """
+    if not text:
+        return ""
+    normalized = _normalize_text(text)
+    return re.sub(r'[^0-9a-zA-Zа-яА-ЯёЁ]', '', normalized)
+
+
 def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: float = 0.80,
-                         near_miss_sink: Optional[list] = None) -> str:
+                         near_miss_sink: Optional[list] = None,
+                         squish_match_sink: Optional[list] = None) -> str:
     """
     Ищет наилучшее совпадение заголовка с использованием Fuzzy Matching.
     Возвращает код индикатора или None.
@@ -75,6 +94,37 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
 
     if best_score >= threshold:
         return best_match
+
+    # 3. Последний, самый толерантный уровень: сравнение "склеенных" (без
+    # пробелов и любых спецсимволов) форм. Ловит разрывы слова, которые не
+    # распознаются как перенос строки обычной нормализацией (см. _squish_text)
+    # — например, "Себе - стоимость продаж" вместо "Себестоимость продаж".
+    # Требуем точное совпадение или вхождение (не нечёткий ratio) — этот шаг и
+    # так менее строгий, чем предыдущие, добавлять к нему ещё и нечёткость
+    # было бы слишком рискованно. Каждое такое совпадение обязательно логируем
+    # отдельно (squish_match_sink), т.к. в отличие от точного/нечеткого
+    # совпадения текста, здесь два РАЗНЫХ по написанию текста считаются одним
+    # и тем же показателем — это стоит проверять человеку, а не доверять молча.
+    target_squished = _squish_text(target_text)
+    if target_squished and len(target_squished) >= 5:
+        best_squish_match = None
+        best_squish_name = None
+        best_squish_len = -1
+        for name_norm, indicator in normalized_name_map.items():
+            name_squished = _squish_text(name_norm)
+            if not name_squished or len(name_squished) < 5:
+                continue
+            if name_squished == target_squished or name_squished in target_squished or target_squished in name_squished:
+                # При нескольких кандидатах предпочитаем более длинное (более специфичное) совпадение
+                if len(name_squished) > best_squish_len:
+                    best_squish_len = len(name_squished)
+                    best_squish_match = indicator
+                    best_squish_name = name_norm
+        if best_squish_match is not None:
+            print(f"   🧩 [Squish-match] '{target_text[:50]}' -> '{best_squish_name[:50]}' -> {best_squish_match}")
+            if squish_match_sink is not None:
+                squish_match_sink.append((target_text, best_squish_name, best_squish_match))
+            return best_squish_match
 
     # Диагностика: если показатель почти нашелся, но не дотянул до порога — это
     # тег, который остаётся без значения молча (или, что хуже, ячейка так и
@@ -232,13 +282,18 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
 
 
 def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None, run_rows=None,
-                              near_miss_sink=None):
+                              near_miss_sink=None, squish_match_sink=None):
     """Вычисляет маппинг столбцов для данной секции таблицы.
 
     near_miss_sink, если передан, получает по одному элементу
     (column_idx, cell_text, score, closest_name, closest_indicator) на каждую
     почти-но-не-дотянувшую fuzzy-попытку — чтобы такие случаи не терялись
     молча, а могли попасть в отчёт для проверки человеком.
+
+    squish_match_sink, если передан, получает по одному элементу
+    (column_idx, cell_text, matched_name, matched_indicator) на каждое
+    совпадение, найденное только через самый толерантный уровень сравнения
+    (_squish_text) — тоже стоит проверять человеку, см. _fuzzy_match_header.
     """
     year_row = table.rows[header_idx]
     year_texts = [get_cleaned_cell_text(cell).strip() for cell in year_row.cells]
@@ -286,10 +341,14 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
 
             # Используем Fuzzy-поиск вместо жесткого вхождения
             column_near_misses = [] if near_miss_sink is not None else None
+            column_squish_matches = [] if squish_match_sink is not None else None
             best_match = _fuzzy_match_header(composed_header_norm, normalized_name_map, threshold=0.80,
-                                              near_miss_sink=column_near_misses)
+                                              near_miss_sink=column_near_misses,
+                                              squish_match_sink=column_squish_matches)
             if column_near_misses:
                 near_miss_sink.extend((i, *entry) for entry in column_near_misses)
+            if column_squish_matches:
+                squish_match_sink.extend((i, *entry) for entry in column_squish_matches)
 
             # Fuzzy-fallback для случаев с переносами, дефисами и неявными формулировками
             if not best_match and composed_header_norm:
@@ -353,10 +412,14 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
                 continue
 
             column_near_misses = [] if near_miss_sink is not None else None
+            column_squish_matches = [] if squish_match_sink is not None else None
             best_match = _fuzzy_match_header(header_text, normalized_name_map, threshold=0.80,
-                                              near_miss_sink=column_near_misses)
+                                              near_miss_sink=column_near_misses,
+                                              squish_match_sink=column_squish_matches)
             if column_near_misses:
                 near_miss_sink.extend((i, *entry) for entry in column_near_misses)
+            if column_squish_matches:
+                squish_match_sink.extend((i, *entry) for entry in column_squish_matches)
 
             if best_match:
                 col_to_indicator_map[i] = (best_match, None)
@@ -424,7 +487,7 @@ def get_table_source_by_number(table_source_mapping, table_number):
 def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_path, column_mapping_path,
                            output_doc_path,
                            mo_map_path: Path = None, validation_log_path: Path = None,
-                           near_miss_report_path: Path = None):
+                           near_miss_report_path: Path = None, squish_match_report_path: Path = None):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}} и {{MO_<code>_<indicator>[_22|_23]}}.
     Расширенный поиск заголовков по первым 5 строкам таблицы.
@@ -435,6 +498,11 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     (score выше 0.50, но ниже порога принятия 0.80). Раньше такие случаи были
     видны только в консольном логе; теперь их можно проверить и решить,
     исправлять ли column_mapping_v2.csv или сам Word-документ.
+
+    squish_match_report_path: если указан, сюда выгружается таблица всех
+    совпадений, найденных только через самый толерантный уровень сравнения
+    (склейка без пробелов и спецсимволов, см. _squish_text) — они прошли
+    автоматически, но стоит проверить человеком, что совпадение верное.
     """
     print("\n--- ШАГ 2: Генерация шаблона с умными тегами ---")
     _, name_to_okved_cleaned = load_okved_map(okved_map_path)
@@ -449,6 +517,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     total_tags = 0
     validation_log = []
     near_miss_report = []
+    squish_match_report = []
     current_source_file = None
     normalized_title_to_src = {k: v for k, v in table_source_mapping.items()}
 
@@ -517,17 +586,31 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         # и тем же (последним найденным) показателем.
         num_cols = max((len(row.cells) for row in table.rows), default=0)
         column_texts_norm = []
+        column_texts_squished = []
         for col_idx in range(num_cols):
-            column_texts_norm.append(_normalize_match_text(' '.join(
+            col_text = ' '.join(
                 get_cleaned_cell_text(row.cells[col_idx])
                 for row in table.rows
                 if col_idx < len(row.cells)
-            )))
+            )
+            column_texts_norm.append(_normalize_match_text(col_text))
+            column_texts_squished.append(_squish_text(col_text))
 
         source_word_to_indicator = {}
         for name, indicator in all_file_entries.items():
             name_norm = _normalize_match_text(name)
             if name_norm and any(name_norm in col_text for col_text in column_texts_norm):
+                source_word_to_indicator[name] = indicator
+                continue
+            # Тот же самый показатель может не найтись обычной проверкой, если
+            # слово в Word-документе разорвано непредвиденным образом (лишний
+            # пробел вокруг дефиса при переносе — см. _squish_text). Пробуем
+            # ещё и "склеенное" сравнение, прежде чем считать показатель
+            # отсутствующим в этой таблице.
+            name_squished = _squish_text(name)
+            if name_squished and len(name_squished) >= 5 and any(
+                name_squished in col_text for col_text in column_texts_squished
+            ):
                 source_word_to_indicator[name] = indicator
 
         if not source_word_to_indicator:
@@ -567,9 +650,11 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         for run in header_runs:
             header_idx = run[-1]
             table_near_misses = [] if near_miss_report_path else None
+            table_squish_matches = [] if squish_match_report_path else None
             mapping = _compute_section_mapping(table, header_idx, source_word_to_indicator,
                                                 header_rows=header_rows_set, run_rows=run,
-                                                near_miss_sink=table_near_misses)
+                                                near_miss_sink=table_near_misses,
+                                                squish_match_sink=table_squish_matches)
             if table_near_misses:
                 near_miss_report.extend(
                     {
@@ -583,6 +668,19 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                         'closest_indicator': closest_indicator,
                     }
                     for col_idx, cell_text, score, closest_name, closest_indicator in table_near_misses
+                )
+            if table_squish_matches:
+                squish_match_report.extend(
+                    {
+                        'table': t_index + 1,
+                        'source_file': current_source_file,
+                        'column': col_idx,
+                        'header_row': header_idx + 1,
+                        'cell_text': cell_text,
+                        'matched_candidate': matched_name,
+                        'matched_indicator': matched_indicator,
+                    }
+                    for col_idx, cell_text, matched_name, matched_indicator in table_squish_matches
                 )
             if mapping:
                 section_ranges.append((header_idx, mapping))
@@ -765,6 +863,14 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         pd.DataFrame(near_miss_report, columns=columns).to_excel(near_miss_report_path, index=False)
         print(f"🔎 Отчёт по «почти совпавшим» показателям сохранён: {near_miss_report_path} "
               f"({len(near_miss_report)} строк)")
+    if squish_match_report_path:
+        squish_match_report_path = Path(squish_match_report_path)
+        squish_match_report_path.parent.mkdir(parents=True, exist_ok=True)
+        columns = ['table', 'source_file', 'column', 'header_row', 'cell_text',
+                   'matched_candidate', 'matched_indicator']
+        pd.DataFrame(squish_match_report, columns=columns).to_excel(squish_match_report_path, index=False)
+        print(f"🧩 Отчёт по «склеенным» совпадениям сохранён: {squish_match_report_path} "
+              f"({len(squish_match_report)} строк)")
 
 
 # ==========================================================
