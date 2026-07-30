@@ -52,7 +52,7 @@ def main(input_template_override=None, output_file_override=None):
 
     ensure_column_mapping_v2(excel_dir, table_mapping, column_mapping_file)
 
-    word_to_indicator, indicator_to_excel, indicator_to_file, file_word_to_indicator, indicator_keywords = load_column_mapping_v2(column_mapping_file)
+    word_to_indicator, indicator_to_excel, indicator_to_file, file_word_to_indicator, indicator_keywords, _ = load_column_mapping_v2(column_mapping_file)
     okved_codes_set = set(okved_to_name.keys())
     print("✅ Справочники успешно загружены.")
 

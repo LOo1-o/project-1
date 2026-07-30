@@ -8594,126 +8594,126 @@
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10KolOrg(ed → 76
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10V%KObsKol → 32,9
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10DebZad → 27004313
-✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10V%KObsZad → 20,7
+✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10V%KObsZadKre → 38,7
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10KreZad → 62184294
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10DenSreIDenEkv → 8322101
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10V%KoVsDenSreDenEkv → 4,7
 ✅ Заполнено: OKVED_A_KoeTekLikDo<10KolOrg(ed → 22
 ✅ Заполнено: OKVED_A_KoeTekLikDo<10V%KObsKol → 31,4
 ✅ Заполнено: OKVED_A_KoeTekLikDo<10DebZad → 7790862
-✅ Заполнено: OKVED_A_KoeTekLikDo<10V%KObsZad → 16,8
+✅ Заполнено: OKVED_A_KoeTekLikDo<10V%KObsZadKre → 34,3
 ✅ Заполнено: OKVED_A_KoeTekLikDo<10KreZad → 14112871
 ✅ Заполнено: OKVED_A_KoeTekLikDo<10DenSreIDenEkv → 604107
 ✅ Заполнено: OKVED_A_KoeTekLikDo<10V%KoVsDenSreDenEkv → 1
 ✅ Заполнено: OKVED_01_KoeTekLikDo<10KolOrg(ed → 2
 ✅ Заполнено: OKVED_01_KoeTekLikDo<10V%KObsKol → 18,2
 ✅ Заполнено: OKVED_01_KoeTekLikDo<10DebZad → 78481
-✅ Заполнено: OKVED_01_KoeTekLikDo<10V%KObsZad → 8,5
+✅ Заполнено: OKVED_01_KoeTekLikDo<10V%KObsZadKre → 1,8
 ✅ Заполнено: OKVED_01_KoeTekLikDo<10KreZad → 18275
 ✅ Заполнено: OKVED_01_KoeTekLikDo<10DenSreIDenEkv → 10477
 ✅ Заполнено: OKVED_01_KoeTekLikDo<10V%KoVsDenSreDenEkv → 5,7
 ✅ Заполнено: OKVED_03_KoeTekLikDo<10KolOrg(ed → 20
 ✅ Заполнено: OKVED_03_KoeTekLikDo<10V%KObsKol → 33,9
 ✅ Заполнено: OKVED_03_KoeTekLikDo<10DebZad → 7712381
-✅ Заполнено: OKVED_03_KoeTekLikDo<10V%KObsZad → 16,9
+✅ Заполнено: OKVED_03_KoeTekLikDo<10V%KObsZadKre → 35,2
 ✅ Заполнено: OKVED_03_KoeTekLikDo<10KreZad → 14094596
 ✅ Заполнено: OKVED_03_KoeTekLikDo<10DenSreIDenEkv → 593630
 ✅ Заполнено: OKVED_03_KoeTekLikDo<10V%KoVsDenSreDenEkv → 1
 ✅ Заполнено: OKVED_B_KoeTekLikDo<10KolOrg(ed → 3
 ✅ Заполнено: OKVED_B_KoeTekLikDo<10V%KObsKol → 37,5
 ✅ Заполнено: OKVED_B_KoeTekLikDo<10DebZad → 4601561
-✅ Заполнено: OKVED_B_KoeTekLikDo<10V%KObsZad → 35,4
+✅ Заполнено: OKVED_B_KoeTekLikDo<10V%KObsZadKre → 67,5
 ✅ Заполнено: OKVED_B_KoeTekLikDo<10KreZad → 9493131
 ✅ Заполнено: OKVED_B_KoeTekLikDo<10DenSreIDenEkv → 42974
 ✅ Заполнено: OKVED_B_KoeTekLikDo<10V%KoVsDenSreDenEkv → 17
 ✅ Заполнено: OKVED_07_KoeTekLikDo<10KolOrg(ed → 3
 ✅ Заполнено: OKVED_07_KoeTekLikDo<10V%KObsKol → 37,5
 ✅ Заполнено: OKVED_07_KoeTekLikDo<10DebZad → 4601561
-✅ Заполнено: OKVED_07_KoeTekLikDo<10V%KObsZad → 35,4
+✅ Заполнено: OKVED_07_KoeTekLikDo<10V%KObsZadKre → 67,5
 ✅ Заполнено: OKVED_07_KoeTekLikDo<10KreZad → 9493131
 ✅ Заполнено: OKVED_07_KoeTekLikDo<10DenSreIDenEkv → 42974
 ✅ Заполнено: OKVED_07_KoeTekLikDo<10V%KoVsDenSreDenEkv → 17
 ✅ Заполнено: OKVED_C_KoeTekLikDo<10KolOrg(ed → 2
 ✅ Заполнено: OKVED_C_KoeTekLikDo<10V%KObsKol → 8,3
 ✅ Заполнено: OKVED_C_KoeTekLikDo<10DebZad → 187773
-✅ Заполнено: OKVED_C_KoeTekLikDo<10V%KObsZad → 1,8
+✅ Заполнено: OKVED_C_KoeTekLikDo<10V%KObsZadKre → 17
 ✅ Заполнено: OKVED_C_KoeTekLikDo<10KreZad → 1355609
 ✅ Заполнено: OKVED_C_KoeTekLikDo<10DenSreIDenEkv → 47
 ✅ Заполнено: OKVED_C_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0
 ✅ Заполнено: OKVED_10_KoeTekLikDo<10KolOrg(ed → 1
 ✅ Заполнено: OKVED_10_KoeTekLikDo<10V%KObsKol → 5,3
 ✅ Заполнено: OKVED_10_KoeTekLikDo<10DebZad → 10
-✅ Заполнено: OKVED_10_KoeTekLikDo<10V%KObsZad → 0
+ℹ️ Отсутствующие данные: OKVED_10_KoeTekLikDo<10V%KObsZadKre → [-]
 ℹ️ Отсутствующие данные: OKVED_10_KoeTekLikDo<10KreZad → [-]
 ℹ️ Отсутствующие данные: OKVED_10_KoeTekLikDo<10DenSreIDenEkv → [-]
 ℹ️ Отсутствующие данные: OKVED_10_KoeTekLikDo<10V%KoVsDenSreDenEkv → [-]
 ✅ Заполнено: OKVED_33_KoeTekLikDo<10KolOrg(ed → 1
 ✅ Заполнено: OKVED_33_KoeTekLikDo<10V%KObsKol → 33,3
 ✅ Заполнено: OKVED_33_KoeTekLikDo<10DebZad → 187763
-✅ Заполнено: OKVED_33_KoeTekLikDo<10V%KObsZad → 71,5
+✅ Заполнено: OKVED_33_KoeTekLikDo<10V%KObsZadKre → 30,3
 ✅ Заполнено: OKVED_33_KoeTekLikDo<10KreZad → 1355609
 ✅ Заполнено: OKVED_33_KoeTekLikDo<10DenSreIDenEkv → 47
 ✅ Заполнено: OKVED_33_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10KolOrg(ed → 7
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10V%KObsKol → 46,7
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10DebZad → 11691415
-✅ Заполнено: OKVED_35_KoeTekLikDo<10V%KObsZad → 65,4
+✅ Заполнено: OKVED_35_KoeTekLikDo<10V%KObsZadKre → 77,8
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10KreZad → 22336793
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10DenSreIDenEkv → 5248438
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10V%KoVsDenSreDenEkv → 84,4
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10KolOrg(ed → 7
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10V%KObsKol → 46,7
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10DebZad → 11691415
-✅ Заполнено: OKVED_35_KoeTekLikDo<10V%KObsZad → 65,4
+✅ Заполнено: OKVED_35_KoeTekLikDo<10V%KObsZadKre → 77,8
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10KreZad → 22336793
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10DenSreIDenEkv → 5248438
 ✅ Заполнено: OKVED_35_KoeTekLikDo<10V%KoVsDenSreDenEkv → 84,4
 ✅ Заполнено: OKVED_E_KoeTekLikDo<10KolOrg(ed → 2
 ✅ Заполнено: OKVED_E_KoeTekLikDo<10V%KObsKol → 40
 ✅ Заполнено: OKVED_E_KoeTekLikDo<10DebZad → 4672
-✅ Заполнено: OKVED_E_KoeTekLikDo<10V%KObsZad → 0,2
+✅ Заполнено: OKVED_E_KoeTekLikDo<10V%KObsZadKre → 1,2
 ✅ Заполнено: OKVED_E_KoeTekLikDo<10KreZad → 57294
 ✅ Заполнено: OKVED_E_KoeTekLikDo<10DenSreIDenEkv → 1799
 ✅ Заполнено: OKVED_E_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0,4
 ✅ Заполнено: OKVED_36_KoeTekLikDo<10KolOrg(ed → 1
 ✅ Заполнено: OKVED_36_KoeTekLikDo<10V%KObsKol → 33,3
 ✅ Заполнено: OKVED_36_KoeTekLikDo<10DebZad → 4672
-✅ Заполнено: OKVED_36_KoeTekLikDo<10V%KObsZad → 0,2
+✅ Заполнено: OKVED_36_KoeTekLikDo<10V%KObsZadKre → 1,3
 ✅ Заполнено: OKVED_36_KoeTekLikDo<10KreZad → 57294
 ✅ Заполнено: OKVED_36_KoeTekLikDo<10DenSreIDenEkv → 1793
 ✅ Заполнено: OKVED_36_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0,6
 ✅ Заполнено: OKVED_38_KoeTekLikDo<10KolOrg(ed → 1
 ✅ Заполнено: OKVED_38_KoeTekLikDo<10V%KObsKol → 50
 ℹ️ Отсутствующие данные: OKVED_38_KoeTekLikDo<10DebZad → [-]
-ℹ️ Отсутствующие данные: OKVED_38_KoeTekLikDo<10V%KObsZad → [-]
+ℹ️ Отсутствующие данные: OKVED_38_KoeTekLikDo<10V%KObsZadKre → [-]
 ℹ️ Отсутствующие данные: OKVED_38_KoeTekLikDo<10KreZad → [-]
 ✅ Заполнено: OKVED_38_KoeTekLikDo<10DenSreIDenEkv → 6
 ✅ Заполнено: OKVED_38_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0
 ✅ Заполнено: OKVED_F_KoeTekLikDo<10KolOrg(ed → 3
 ✅ Заполнено: OKVED_F_KoeTekLikDo<10V%KObsKol → 42,9
 ✅ Заполнено: OKVED_F_KoeTekLikDo<10DebZad → 1449986
-✅ Заполнено: OKVED_F_KoeTekLikDo<10V%KObsZad → 12,5
+✅ Заполнено: OKVED_F_KoeTekLikDo<10V%KObsZadKre → 22,8
 ✅ Заполнено: OKVED_F_KoeTekLikDo<10KreZad → 7390981
 ✅ Заполнено: OKVED_F_KoeTekLikDo<10DenSreIDenEkv → 1703308
 ✅ Заполнено: OKVED_F_KoeTekLikDo<10V%KoVsDenSreDenEkv → 25,8
 ✅ Заполнено: OKVED_41_KoeTekLikDo<10KolOrg(ed → 1
 ✅ Заполнено: OKVED_41_KoeTekLikDo<10V%KObsKol → 25
 ✅ Заполнено: OKVED_41_KoeTekLikDo<10DebZad → 921167
-✅ Заполнено: OKVED_41_KoeTekLikDo<10V%KObsZad → 8,7
+✅ Заполнено: OKVED_41_KoeTekLikDo<10V%KObsZadKre → 10,1
 ✅ Заполнено: OKVED_41_KoeTekLikDo<10KreZad → 2717228
 ✅ Заполнено: OKVED_41_KoeTekLikDo<10DenSreIDenEkv → 200756
 ✅ Заполнено: OKVED_41_KoeTekLikDo<10V%KoVsDenSreDenEkv → 4,1
 ✅ Заполнено: OKVED_42_KoeTekLikDo<10KolOrg(ed → 1
 ✅ Заполнено: OKVED_42_KoeTekLikDo<10V%KObsKol → 50
 ✅ Заполнено: OKVED_42_KoeTekLikDo<10DebZad → 508614
-✅ Заполнено: OKVED_42_KoeTekLikDo<10V%KObsZad → 49
+✅ Заполнено: OKVED_42_KoeTekLikDo<10V%KObsZadKre → 85,1
 ✅ Заполнено: OKVED_42_KoeTekLikDo<10KreZad → 4564430
 ✅ Заполнено: OKVED_42_KoeTekLikDo<10DenSreIDenEkv → 1502303
 ✅ Заполнено: OKVED_42_KoeTekLikDo<10V%KoVsDenSreDenEkv → 91,3
 ✅ Заполнено: OKVED_43_KoeTekLikDo<10KolOrg(ed → 1
 ✅ Заполнено: OKVED_43_KoeTekLikDo<10V%KObsKol → 100
 ✅ Заполнено: OKVED_43_KoeTekLikDo<10DebZad → 20205
-✅ Заполнено: OKVED_43_KoeTekLikDo<10V%KObsZad → 100
+✅ Заполнено: OKVED_43_KoeTekLikDo<10V%KObsZadKre → 100
 ✅ Заполнено: OKVED_43_KoeTekLikDo<10KreZad → 109323
 ✅ Заполнено: OKVED_43_KoeTekLikDo<10DenSreIDenEkv → 249
 ✅ Заполнено: OKVED_43_KoeTekLikDo<10V%KoVsDenSreDenEkv → 100
@@ -8722,6 +8722,7 @@
 ✅ Заполнено: OKVED_G_KoeTekLikDo<10DebZad → 425243
 ✅ Заполнено: OKVED_G_KoeTekLikDo<10V%KObsZad → 2,7
 ✅ Заполнено: OKVED_G_KoeTekLikDo<10KreZad → 3430031
+✅ Заполнено: OKVED_G_KoeTekLikDo<10V%KObsZadKre → 25,3
 ✅ Заполнено: OKVED_G_KoeTekLikDo<10DenSreIDenEkv → 448496
 ✅ Заполнено: OKVED_G_KoeTekLikDo<10V%KoVsDenSreDenEkv → 16,7
 ✅ Заполнено: OKVED_46_KoeTekLikDo<10KolOrg(ed → 1
@@ -8729,6 +8730,7 @@
 ✅ Заполнено: OKVED_46_KoeTekLikDo<10DebZad → 253675
 ✅ Заполнено: OKVED_46_KoeTekLikDo<10V%KObsZad → 1,7
 ✅ Заполнено: OKVED_46_KoeTekLikDo<10KreZad → 325159
+✅ Заполнено: OKVED_46_KoeTekLikDo<10V%KObsZadKre → 3,1
 ✅ Заполнено: OKVED_46_KoeTekLikDo<10DenSreIDenEkv → 18596
 ✅ Заполнено: OKVED_46_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0,8
 ✅ Заполнено: OKVED_47_KoeTekLikDo<10KolOrg(ed → 6
@@ -8736,6 +8738,7 @@
 ✅ Заполнено: OKVED_47_KoeTekLikDo<10DebZad → 171568
 ✅ Заполнено: OKVED_47_KoeTekLikDo<10V%KObsZad → 80,8
 ✅ Заполнено: OKVED_47_KoeTekLikDo<10KreZad → 3104872
+✅ Заполнено: OKVED_47_KoeTekLikDo<10V%KObsZadKre → 97,2
 ✅ Заполнено: OKVED_47_KoeTekLikDo<10DenSreIDenEkv → 429900
 ✅ Заполнено: OKVED_47_KoeTekLikDo<10V%KoVsDenSreDenEkv → 87,1
 ✅ Заполнено: OKVED_H_KoeTekLikDo<10KolOrg(ed → 4
@@ -8743,6 +8746,7 @@
 ✅ Заполнено: OKVED_H_KoeTekLikDo<10DebZad → 243754
 ✅ Заполнено: OKVED_H_KoeTekLikDo<10V%KObsZad → 10,3
 ✅ Заполнено: OKVED_H_KoeTekLikDo<10KreZad → 1559227
+✅ Заполнено: OKVED_H_KoeTekLikDo<10V%KObsZadKre → 20,4
 ✅ Заполнено: OKVED_H_KoeTekLikDo<10DenSreIDenEkv → 898
 ✅ Заполнено: OKVED_H_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0
 ✅ Заполнено: OKVED_50_KoeTekLikDo<10KolOrg(ed → 1
@@ -8750,6 +8754,7 @@
 ✅ Заполнено: OKVED_50_KoeTekLikDo<10DebZad → 169278
 ✅ Заполнено: OKVED_50_KoeTekLikDo<10V%KObsZad → 82,2
 ✅ Заполнено: OKVED_50_KoeTekLikDo<10KreZad → 1465666
+✅ Заполнено: OKVED_50_KoeTekLikDo<10V%KObsZadKre → 94,5
 ✅ Заполнено: OKVED_50_KoeTekLikDo<10DenSreIDenEkv → 547
 ✅ Заполнено: OKVED_50_KoeTekLikDo<10V%KoVsDenSreDenEkv → 2,5
 ✅ Заполнено: OKVED_52_KoeTekLikDo<10KolOrg(ed → 3
@@ -8757,6 +8762,7 @@
 ✅ Заполнено: OKVED_52_KoeTekLikDo<10DebZad → 74476
 ✅ Заполнено: OKVED_52_KoeTekLikDo<10V%KObsZad → 6,8
 ✅ Заполнено: OKVED_52_KoeTekLikDo<10KreZad → 93561
+✅ Заполнено: OKVED_52_KoeTekLikDo<10V%KObsZadKre → 3,7
 ✅ Заполнено: OKVED_52_KoeTekLikDo<10DenSreIDenEkv → 351
 ✅ Заполнено: OKVED_52_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0
 ✅ Заполнено: OKVED_I_KoeTekLikDo<10KolOrg(ed → 2
@@ -8764,6 +8770,7 @@
 ✅ Заполнено: OKVED_I_KoeTekLikDo<10DebZad → 5859
 ✅ Заполнено: OKVED_I_KoeTekLikDo<10V%KObsZad → 0,9
 ✅ Заполнено: OKVED_I_KoeTekLikDo<10KreZad → 12625
+✅ Заполнено: OKVED_I_KoeTekLikDo<10V%KObsZadKre → 3,8
 ✅ Заполнено: OKVED_I_KoeTekLikDo<10DenSreIDenEkv → 836
 ✅ Заполнено: OKVED_I_KoeTekLikDo<10V%KoVsDenSreDenEkv → 2,7
 ✅ Заполнено: OKVED_55_KoeTekLikDo<10KolOrg(ed → 1
@@ -8771,6 +8778,7 @@
 ✅ Заполнено: OKVED_55_KoeTekLikDo<10DebZad → 68
 ✅ Заполнено: OKVED_55_KoeTekLikDo<10V%KObsZad → 0
 ✅ Заполнено: OKVED_55_KoeTekLikDo<10KreZad → 3958
+✅ Заполнено: OKVED_55_KoeTekLikDo<10V%KObsZadKre → 1,2
 ✅ Заполнено: OKVED_55_KoeTekLikDo<10DenSreIDenEkv → 711
 ✅ Заполнено: OKVED_55_KoeTekLikDo<10V%KoVsDenSreDenEkv → 2,3
 ✅ Заполнено: OKVED_56_KoeTekLikDo<10KolOrg(ed → 0,1
@@ -8778,6 +8786,7 @@
 ✅ Заполнено: OKVED_56_KoeTekLikDo<10DebZad → 5791
 ✅ Заполнено: OKVED_56_KoeTekLikDo<10V%KObsZad → 100
 ✅ Заполнено: OKVED_56_KoeTekLikDo<10KreZad → 8667
+✅ Заполнено: OKVED_56_KoeTekLikDo<10V%KObsZadKre → 100
 ✅ Заполнено: OKVED_56_KoeTekLikDo<10DenSreIDenEkv → 125
 ✅ Заполнено: OKVED_56_KoeTekLikDo<10V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_L_KoeTekLikDo<10KolOrg(ed → 7
@@ -8785,6 +8794,7 @@
 ✅ Заполнено: OKVED_L_KoeTekLikDo<10DebZad → 388375
 ✅ Заполнено: OKVED_L_KoeTekLikDo<10V%KObsZad → 25
 ✅ Заполнено: OKVED_L_KoeTekLikDo<10KreZad → 1694548
+✅ Заполнено: OKVED_L_KoeTekLikDo<10V%KObsZadKre → 67,8
 ✅ Заполнено: OKVED_L_KoeTekLikDo<10DenSreIDenEkv → 170684
 ✅ Заполнено: OKVED_L_KoeTekLikDo<10V%KoVsDenSreDenEkv → 19,2
 ✅ Заполнено: OKVED_68_KoeTekLikDo<10KolOrg(ed → 7
@@ -8792,6 +8802,7 @@
 ✅ Заполнено: OKVED_68_KoeTekLikDo<10DebZad → 388375
 ✅ Заполнено: OKVED_68_KoeTekLikDo<10V%KObsZad → 25
 ✅ Заполнено: OKVED_68_KoeTekLikDo<10KreZad → 1694548
+✅ Заполнено: OKVED_68_KoeTekLikDo<10V%KObsZadKre → 67,8
 ✅ Заполнено: OKVED_68_KoeTekLikDo<10DenSreIDenEkv → 170684
 ✅ Заполнено: OKVED_68_KoeTekLikDo<10V%KoVsDenSreDenEkv → 19,2
 ✅ Заполнено: OKVED_M_KoeTekLikDo<10KolOrg(ed → 5
@@ -8799,6 +8810,7 @@
 ✅ Заполнено: OKVED_M_KoeTekLikDo<10DebZad → 27244
 ✅ Заполнено: OKVED_M_KoeTekLikDo<10V%KObsZad → 0,4
 ✅ Заполнено: OKVED_M_KoeTekLikDo<10KreZad → 176833
+✅ Заполнено: OKVED_M_KoeTekLikDo<10V%KObsZadKre → 2,6
 ✅ Заполнено: OKVED_M_KoeTekLikDo<10DenSreIDenEkv → 14600
 ✅ Заполнено: OKVED_M_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0,3
 ✅ Заполнено: OKVED_70_KoeTekLikDo<10KolOrg(ed → 1
@@ -8806,6 +8818,7 @@
 ✅ Заполнено: OKVED_70_KoeTekLikDo<10DebZad → 500
 ✅ Заполнено: OKVED_70_KoeTekLikDo<10V%KObsZad → 0
 ℹ️ Отсутствующие данные: OKVED_70_KoeTekLikDo<10KreZad → [-]
+ℹ️ Отсутствующие данные: OKVED_70_KoeTekLikDo<10V%KObsZadKre → [-]
 ✅ Заполнено: OKVED_70_KoeTekLikDo<10DenSreIDenEkv → 484
 ✅ Заполнено: OKVED_70_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0
 ✅ Заполнено: OKVED_71_KoeTekLikDo<10KolOrg(ed → 3
@@ -8813,6 +8826,7 @@
 ✅ Заполнено: OKVED_71_KoeTekLikDo<10DebZad → 26571
 ✅ Заполнено: OKVED_71_KoeTekLikDo<10V%KObsZad → 1
 ✅ Заполнено: OKVED_71_KoeTekLikDo<10KreZad → 172965
+✅ Заполнено: OKVED_71_KoeTekLikDo<10V%KObsZadKre → 5,3
 ✅ Заполнено: OKVED_71_KoeTekLikDo<10DenSreIDenEkv → 14090
 ✅ Заполнено: OKVED_71_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0,6
 ✅ Заполнено: OKVED_74_KoeTekLikDo<10KolOrg(ed → 1
@@ -8820,6 +8834,7 @@
 ✅ Заполнено: OKVED_74_KoeTekLikDo<10DebZad → 173
 ✅ Заполнено: OKVED_74_KoeTekLikDo<10V%KObsZad → 100
 ✅ Заполнено: OKVED_74_KoeTekLikDo<10KreZad → 3868
+✅ Заполнено: OKVED_74_KoeTekLikDo<10V%KObsZadKre → 100
 ✅ Заполнено: OKVED_74_KoeTekLikDo<10DenSreIDenEkv → 26
 ✅ Заполнено: OKVED_74_KoeTekLikDo<10V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_N_KoeTekLikDo<10KolOrg(ed → 3
@@ -8827,6 +8842,7 @@
 ✅ Заполнено: OKVED_N_KoeTekLikDo<10DebZad → 174363
 ✅ Заполнено: OKVED_N_KoeTekLikDo<10V%KObsZad → 82,3
 ✅ Заполнено: OKVED_N_KoeTekLikDo<10KreZad → 545832
+✅ Заполнено: OKVED_N_KoeTekLikDo<10V%KObsZadKre → 98,5
 ✅ Заполнено: OKVED_N_KoeTekLikDo<10DenSreIDenEkv → 64924
 ✅ Заполнено: OKVED_N_KoeTekLikDo<10V%KoVsDenSreDenEkv → 82,8
 ✅ Заполнено: OKVED_77_KoeTekLikDo<10KolOrg(ed → 1
@@ -8834,6 +8850,7 @@
 ✅ Заполнено: OKVED_77_KoeTekLikDo<10DebZad → 33729
 ✅ Заполнено: OKVED_77_KoeTekLikDo<10V%KObsZad → 62,7
 ✅ Заполнено: OKVED_77_KoeTekLikDo<10KreZad → 33080
+✅ Заполнено: OKVED_77_KoeTekLikDo<10V%KObsZadKre → 98,8
 ✅ Заполнено: OKVED_77_KoeTekLikDo<10DenSreIDenEkv → 61406
 ✅ Заполнено: OKVED_77_KoeTekLikDo<10V%KoVsDenSreDenEkv → 82,1
 ✅ Заполнено: OKVED_81_KoeTekLikDo<10KolOrg(ed → 1
@@ -8841,6 +8858,7 @@
 ✅ Заполнено: OKVED_81_KoeTekLikDo<10DebZad → 140209
 ✅ Заполнено: OKVED_81_KoeTekLikDo<10V%KObsZad → 100
 ✅ Заполнено: OKVED_81_KoeTekLikDo<10KreZad → 503781
+✅ Заполнено: OKVED_81_KoeTekLikDo<10V%KObsZadKre → 100
 ✅ Заполнено: OKVED_81_KoeTekLikDo<10DenSreIDenEkv → 2377
 ✅ Заполнено: OKVED_81_KoeTekLikDo<10V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_82_KoeTekLikDo<10KolOrg(ed → 1
@@ -8848,6 +8866,7 @@
 ✅ Заполнено: OKVED_82_KoeTekLikDo<10DebZad → 425
 ✅ Заполнено: OKVED_82_KoeTekLikDo<10V%KObsZad → 100
 ✅ Заполнено: OKVED_82_KoeTekLikDo<10KreZad → 8971
+✅ Заполнено: OKVED_82_KoeTekLikDo<10V%KObsZadKre → 100
 ✅ Заполнено: OKVED_82_KoeTekLikDo<10DenSreIDenEkv → 1141
 ✅ Заполнено: OKVED_82_KoeTekLikDo<10V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_O_KoeTekLikDo<10KolOrg(ed → 1
@@ -8855,6 +8874,7 @@
 ✅ Заполнено: OKVED_O_KoeTekLikDo<10DebZad → 724
 ✅ Заполнено: OKVED_O_KoeTekLikDo<10V%KObsZad → 100
 ✅ Заполнено: OKVED_O_KoeTekLikDo<10KreZad → 295
+✅ Заполнено: OKVED_O_KoeTekLikDo<10V%KObsZadKre → 100
 ✅ Заполнено: OKVED_O_KoeTekLikDo<10DenSreIDenEkv → 14448
 ✅ Заполнено: OKVED_O_KoeTekLikDo<10V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_84_KoeTekLikDo<10KolOrg(ed → 1
@@ -8862,6 +8882,7 @@
 ✅ Заполнено: OKVED_84_KoeTekLikDo<10DebZad → 724
 ✅ Заполнено: OKVED_84_KoeTekLikDo<10V%KObsZad → 100
 ✅ Заполнено: OKVED_84_KoeTekLikDo<10KreZad → 295
+✅ Заполнено: OKVED_84_KoeTekLikDo<10V%KObsZadKre → 100
 ✅ Заполнено: OKVED_84_KoeTekLikDo<10DenSreIDenEkv → 14448
 ✅ Заполнено: OKVED_84_KoeTekLikDo<10V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_Q_KoeTekLikDo<10KolOrg(ed → 2
@@ -8869,6 +8890,7 @@
 ✅ Заполнено: OKVED_Q_KoeTekLikDo<10DebZad → 151
 ✅ Заполнено: OKVED_Q_KoeTekLikDo<10V%KObsZad → 100
 ✅ Заполнено: OKVED_Q_KoeTekLikDo<10KreZad → 207
+✅ Заполнено: OKVED_Q_KoeTekLikDo<10V%KObsZadKre → 100
 ✅ Заполнено: OKVED_Q_KoeTekLikDo<10DenSreIDenEkv → 1028
 ✅ Заполнено: OKVED_Q_KoeTekLikDo<10V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_88_KoeTekLikDo<10KolOrg(ed → 2
@@ -8876,6 +8898,7 @@
 ✅ Заполнено: OKVED_88_KoeTekLikDo<10DebZad → 151
 ✅ Заполнено: OKVED_88_KoeTekLikDo<10V%KObsZad → 100
 ✅ Заполнено: OKVED_88_KoeTekLikDo<10KreZad → 207
+✅ Заполнено: OKVED_88_KoeTekLikDo<10V%KObsZadKre → 100
 ✅ Заполнено: OKVED_88_KoeTekLikDo<10DenSreIDenEkv → 1028
 ✅ Заполнено: OKVED_88_KoeTekLikDo<10V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_R_KoeTekLikDo<10KolOrg(ed → 2
@@ -8883,6 +8906,7 @@
 ✅ Заполнено: OKVED_R_KoeTekLikDo<10DebZad → 85
 ✅ Заполнено: OKVED_R_KoeTekLikDo<10V%KObsZad → 58,6
 ℹ️ Отсутствующие данные: OKVED_R_KoeTekLikDo<10KreZad → [-]
+ℹ️ Отсутствующие данные: OKVED_R_KoeTekLikDo<10V%KObsZadKre → [-]
 ✅ Заполнено: OKVED_R_KoeTekLikDo<10DenSreIDenEkv → 2
 ✅ Заполнено: OKVED_R_KoeTekLikDo<10V%KoVsDenSreDenEkv → 3,3
 ✅ Заполнено: OKVED_93_KoeTekLikDo<10KolOrg(ed → 2
@@ -8890,6 +8914,7 @@
 ✅ Заполнено: OKVED_93_KoeTekLikDo<10DebZad → 85
 ✅ Заполнено: OKVED_93_KoeTekLikDo<10V%KObsZad → 58,6
 ℹ️ Отсутствующие данные: OKVED_93_KoeTekLikDo<10KreZad → [-]
+ℹ️ Отсутствующие данные: OKVED_93_KoeTekLikDo<10V%KObsZadKre → [-]
 ✅ Заполнено: OKVED_93_KoeTekLikDo<10DenSreIDenEkv → 2
 ✅ Заполнено: OKVED_93_KoeTekLikDo<10V%KoVsDenSreDenEkv → 3,3
 ✅ Заполнено: OKVED_S_KoeTekLikDo<10KolOrg(ed → 4
@@ -8897,6 +8922,7 @@
 ✅ Заполнено: OKVED_S_KoeTekLikDo<10DebZad → 12246
 ✅ Заполнено: OKVED_S_KoeTekLikDo<10V%KObsZad → 77
 ✅ Заполнено: OKVED_S_KoeTekLikDo<10KreZad → 18017
+✅ Заполнено: OKVED_S_KoeTekLikDo<10V%KObsZadKre → 28,7
 ✅ Заполнено: OKVED_S_KoeTekLikDo<10DenSreIDenEkv → 5512
 ✅ Заполнено: OKVED_S_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0,9
 ✅ Заполнено: OKVED_94_KoeTekLikDo<10KolOrg(ed → 3
@@ -8904,6 +8930,7 @@
 ✅ Заполнено: OKVED_94_KoeTekLikDo<10DebZad → 165
 ✅ Заполнено: OKVED_94_KoeTekLikDo<10V%KObsZad → 4,5
 ℹ️ Отсутствующие данные: OKVED_94_KoeTekLikDo<10KreZad → [-]
+ℹ️ Отсутствующие данные: OKVED_94_KoeTekLikDo<10V%KObsZadKre → [-]
 ✅ Заполнено: OKVED_94_KoeTekLikDo<10DenSreIDenEkv → 5512
 ✅ Заполнено: OKVED_94_KoeTekLikDo<10V%KoVsDenSreDenEkv → 0,9
 ✅ Заполнено: OKVED_96_KoeTekLikDo<10KolOrg(ed → 1
@@ -8911,6 +8938,7 @@
 ✅ Заполнено: OKVED_96_KoeTekLikDo<10DebZad → 12081
 ✅ Заполнено: OKVED_96_KoeTekLikDo<10V%KObsZad → 98,6
 ✅ Заполнено: OKVED_96_KoeTekLikDo<10KreZad → 18017
+✅ Заполнено: OKVED_96_KoeTekLikDo<10V%KObsZadKre → 99
 ℹ️ Отсутствующие данные: OKVED_96_KoeTekLikDo<10DenSreIDenEkv → [-]
 ℹ️ Отсутствующие данные: OKVED_96_KoeTekLikDo<10V%KoVsDenSreDenEkv → [-]
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=10Do<20KolOrg(ed → 49
@@ -8918,6 +8946,7 @@
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=10Do<20DebZad → 41489407
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=10Do<20V%KObsZad → 31,9
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=10Do<20KreZad → 64653921
+✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=10Do<20V%KObsZadKre → 40,2
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=10Do<20DenSreIDenEkv → 23642075
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 13,4
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=10Do<20KolOrg(ed → 9
@@ -8925,6 +8954,7 @@
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=10Do<20DebZad → 9316001
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=10Do<20V%KObsZad → 20
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=10Do<20KreZad → 10876893
+✅ Заполнено: OKVED_A_KoeTekLikOt>=10Do<20V%KObsZadKre → 26,5
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=10Do<20DenSreIDenEkv → 12094886
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 20,3
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=10Do<20KolOrg(ed → 2
@@ -8932,6 +8962,7 @@
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=10Do<20DebZad → 552063
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=10Do<20V%KObsZad → 59,6
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=10Do<20KreZad → 648536
+✅ Заполнено: OKVED_01_KoeTekLikOt>=10Do<20V%KObsZadKre → 64,5
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=10Do<20DenSreIDenEkv → 71468
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 38,6
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=10Do<20KolOrg(ed → 7
@@ -8939,6 +8970,7 @@
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=10Do<20DebZad → 8763938
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=10Do<20V%KObsZad → 19,3
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=10Do<20KreZad → 10228357
+✅ Заполнено: OKVED_03_KoeTekLikOt>=10Do<20V%KObsZadKre → 25,5
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=10Do<20DenSreIDenEkv → 12023418
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 20,2
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -8946,6 +8978,7 @@
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=10Do<20DebZad → 80245
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=10Do<20V%KObsZad → 0,6
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=10Do<20KreZad → 353725
+✅ Заполнено: OKVED_B_KoeTekLikOt>=10Do<20V%KObsZadKre → 2,5
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=10Do<20DenSreIDenEkv → 795
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 0,3
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -8953,6 +8986,7 @@
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=10Do<20DebZad → 80245
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=10Do<20V%KObsZad → 0,6
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=10Do<20KreZad → 353725
+✅ Заполнено: OKVED_07_KoeTekLikOt>=10Do<20V%KObsZadKre → 2,5
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=10Do<20DenSreIDenEkv → 795
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 0,3
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=10Do<20KolOrg(ed → 6
@@ -8960,6 +8994,7 @@
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=10Do<20DebZad → 1715494
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=10Do<20V%KObsZad → 16,9
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=10Do<20KreZad → 1562642
+✅ Заполнено: OKVED_C_KoeTekLikOt>=10Do<20V%KObsZadKre → 19,6
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=10Do<20DenSreIDenEkv → 186939
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 4,8
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=10Do<20KolOrg(ed → 5
@@ -8967,6 +9002,7 @@
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=10Do<20DebZad → 1708987
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=10Do<20V%KObsZad → 17,6
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=10Do<20KreZad → 1550206
+✅ Заполнено: OKVED_10_KoeTekLikOt>=10Do<20V%KObsZadKre → 45,2
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=10Do<20DenSreIDenEkv → 185925
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 5,6
 ✅ Заполнено: OKVED_32_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -8974,6 +9010,7 @@
 ✅ Заполнено: OKVED_32_KoeTekLikOt>=10Do<20DebZad → 6507
 ✅ Заполнено: OKVED_32_KoeTekLikOt>=10Do<20V%KObsZad → 100
 ✅ Заполнено: OKVED_32_KoeTekLikOt>=10Do<20KreZad → 12436
+✅ Заполнено: OKVED_32_KoeTekLikOt>=10Do<20V%KObsZadKre → 100
 ✅ Заполнено: OKVED_32_KoeTekLikOt>=10Do<20DenSreIDenEkv → 1014
 ✅ Заполнено: OKVED_32_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20KolOrg(ed → 6
@@ -8981,6 +9018,7 @@
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20DebZad → 5940993
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20V%KObsZad → 33,2
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20KreZad → 6053227
+✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20V%KObsZadKre → 21,1
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20DenSreIDenEkv → 801863
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 12,9
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20KolOrg(ed → 6
@@ -8988,6 +9026,7 @@
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20DebZad → 5940993
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20V%KObsZad → 33,2
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20KreZad → 6053227
+✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20V%KObsZadKre → 21,1
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20DenSreIDenEkv → 801863
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 12,9
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=10Do<20KolOrg(ed → 2
@@ -8995,6 +9034,7 @@
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=10Do<20DebZad → 2030366
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=10Do<20V%KObsZad → 85,6
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=10Do<20KreZad → 4524244
+✅ Заполнено: OKVED_E_KoeTekLikOt>=10Do<20V%KObsZadKre → 96,3
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=10Do<20DenSreIDenEkv → 427994
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 98,3
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9002,6 +9042,7 @@
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=10Do<20DebZad → 1772343
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=10Do<20V%KObsZad → 83,9
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=10Do<20KreZad → 4268259
+✅ Заполнено: OKVED_36_KoeTekLikOt>=10Do<20V%KObsZadKre → 96
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=10Do<20DenSreIDenEkv → 298633
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 97,5
 ✅ Заполнено: OKVED_38_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9009,6 +9050,7 @@
 ✅ Заполнено: OKVED_38_KoeTekLikOt>=10Do<20DebZad → 258023
 ✅ Заполнено: OKVED_38_KoeTekLikOt>=10Do<20V%KObsZad → 100
 ✅ Заполнено: OKVED_38_KoeTekLikOt>=10Do<20KreZad → 255985
+✅ Заполнено: OKVED_38_KoeTekLikOt>=10Do<20V%KObsZadKre → 100
 ✅ Заполнено: OKVED_38_KoeTekLikOt>=10Do<20DenSreIDenEkv → 129361
 ✅ Заполнено: OKVED_38_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=10Do<20KolOrg(ed → 3
@@ -9016,6 +9058,7 @@
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=10Do<20DebZad → 10120396
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=10Do<20V%KObsZad → 86,9
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=10Do<20KreZad → 24934396
+✅ Заполнено: OKVED_F_KoeTekLikOt>=10Do<20V%KObsZadKre → 77,1
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=10Do<20DenSreIDenEkv → 4879332
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 74
 ✅ Заполнено: OKVED_41_KoeTekLikOt>=10Do<20KolOrg(ed → 2
@@ -9023,6 +9066,7 @@
 ✅ Заполнено: OKVED_41_KoeTekLikOt>=10Do<20DebZad → 9590951
 ✅ Заполнено: OKVED_41_KoeTekLikOt>=10Do<20V%KObsZad → 90,6
 ✅ Заполнено: OKVED_41_KoeTekLikOt>=10Do<20KreZad → 24133229
+✅ Заполнено: OKVED_41_KoeTekLikOt>=10Do<20V%KObsZadKre → 89,8
 ✅ Заполнено: OKVED_41_KoeTekLikOt>=10Do<20DenSreIDenEkv → 4735298
 ✅ Заполнено: OKVED_41_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 95,7
 ✅ Заполнено: OKVED_42_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9030,6 +9074,7 @@
 ✅ Заполнено: OKVED_42_KoeTekLikOt>=10Do<20DebZad → 529445
 ✅ Заполнено: OKVED_42_KoeTekLikOt>=10Do<20V%KObsZad → 51
 ✅ Заполнено: OKVED_42_KoeTekLikOt>=10Do<20KreZad → 801167
+✅ Заполнено: OKVED_42_KoeTekLikOt>=10Do<20V%KObsZadKre → 14,9
 ✅ Заполнено: OKVED_42_KoeTekLikOt>=10Do<20DenSreIDenEkv → 144034
 ✅ Заполнено: OKVED_42_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 8,7
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=10Do<20KolOrg(ed → 5
@@ -9037,6 +9082,7 @@
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=10Do<20DebZad → 4368943
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=10Do<20V%KObsZad → 28,4
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=10Do<20KreZad → 4154638
+✅ Заполнено: OKVED_G_KoeTekLikOt>=10Do<20V%KObsZadKre → 30,7
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=10Do<20DenSreIDenEkv → 77085
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 2,9
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=10Do<20KolOrg(ed → 4
@@ -9044,6 +9090,7 @@
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=10Do<20DebZad → 4368811
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=10Do<20V%KObsZad → 28,7
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=10Do<20KreZad → 4152152
+✅ Заполнено: OKVED_46_KoeTekLikOt>=10Do<20V%KObsZadKre → 40,2
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=10Do<20DenSreIDenEkv → 75847
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 3,5
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9051,6 +9098,7 @@
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=10Do<20DebZad → 132
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=10Do<20V%KObsZad → 0,1
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=10Do<20KreZad → 2486
+✅ Заполнено: OKVED_47_KoeTekLikOt>=10Do<20V%KObsZadKre → 0,1
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=10Do<20DenSreIDenEkv → 1238
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 0,3
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=10Do<20KolOrg(ed → 7
@@ -9058,6 +9106,7 @@
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=10Do<20DebZad → 1690289
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=10Do<20V%KObsZad → 71,8
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=10Do<20KreZad → 4717420
+✅ Заполнено: OKVED_H_KoeTekLikOt>=10Do<20V%KObsZadKre → 61,7
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=10Do<20DenSreIDenEkv → 2038468
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 64,1
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=10Do<20KolOrg(ed → 2
@@ -9065,6 +9114,7 @@
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=10Do<20DebZad → 124644
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=10Do<20V%KObsZad → 90
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=10Do<20KreZad → 279668
+✅ Заполнено: OKVED_49_KoeTekLikOt>=10Do<20V%KObsZadKre → 98,6
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=10Do<20DenSreIDenEkv → 290134
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_50_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9072,6 +9122,7 @@
 ✅ Заполнено: OKVED_50_KoeTekLikOt>=10Do<20DebZad → 36746
 ✅ Заполнено: OKVED_50_KoeTekLikOt>=10Do<20V%KObsZad → 17,8
 ✅ Заполнено: OKVED_50_KoeTekLikOt>=10Do<20KreZad → 85082
+✅ Заполнено: OKVED_50_KoeTekLikOt>=10Do<20V%KObsZadKre → 5,5
 ✅ Заполнено: OKVED_50_KoeTekLikOt>=10Do<20DenSreIDenEkv → 21584
 ✅ Заполнено: OKVED_50_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 97,5
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9079,6 +9130,7 @@
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=10Do<20DebZad → 590584
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=10Do<20V%KObsZad → 64,6
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=10Do<20KreZad → 2238430
+✅ Заполнено: OKVED_51_KoeTekLikOt>=10Do<20V%KObsZadKre → 68,3
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=10Do<20DenSreIDenEkv → 37146
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 20,9
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=10Do<20KolOrg(ed → 3
@@ -9086,6 +9138,7 @@
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=10Do<20DebZad → 938315
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=10Do<20V%KObsZad → 85,6
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=10Do<20KreZad → 2114240
+✅ Заполнено: OKVED_52_KoeTekLikOt>=10Do<20V%KObsZadKre → 83,4
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=10Do<20DenSreIDenEkv → 1689604
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 62,8
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9093,6 +9146,7 @@
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=10Do<20DebZad → 61405
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=10Do<20V%KObsZad → 9,8
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=10Do<20KreZad → 98263
+✅ Заполнено: OKVED_I_KoeTekLikOt>=10Do<20V%KObsZadKre → 29,5
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=10Do<20DenSreIDenEkv → 2761
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 9
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9100,6 +9154,7 @@
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=10Do<20DebZad → 61405
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=10Do<20V%KObsZad → 9,9
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=10Do<20KreZad → 98263
+✅ Заполнено: OKVED_55_KoeTekLikOt>=10Do<20V%KObsZadKre → 30,3
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=10Do<20DenSreIDenEkv → 2761
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 9
 ✅ Заполнено: OKVED_J_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9107,6 +9162,7 @@
 ✅ Заполнено: OKVED_J_KoeTekLikOt>=10Do<20DebZad → 1332
 ✅ Заполнено: OKVED_J_KoeTekLikOt>=10Do<20V%KObsZad → 100
 ✅ Заполнено: OKVED_J_KoeTekLikOt>=10Do<20KreZad → 1264
+✅ Заполнено: OKVED_J_KoeTekLikOt>=10Do<20V%KObsZadKre → 100
 ✅ Заполнено: OKVED_J_KoeTekLikOt>=10Do<20DenSreIDenEkv → 46
 ✅ Заполнено: OKVED_J_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_63_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9114,6 +9170,7 @@
 ✅ Заполнено: OKVED_63_KoeTekLikOt>=10Do<20DebZad → 1332
 ✅ Заполнено: OKVED_63_KoeTekLikOt>=10Do<20V%KObsZad → 100
 ✅ Заполнено: OKVED_63_KoeTekLikOt>=10Do<20KreZad → 1264
+✅ Заполнено: OKVED_63_KoeTekLikOt>=10Do<20V%KObsZadKre → 100
 ✅ Заполнено: OKVED_63_KoeTekLikOt>=10Do<20DenSreIDenEkv → 46
 ✅ Заполнено: OKVED_63_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9121,6 +9178,7 @@
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=10Do<20DebZad → 7537
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=10Do<20V%KObsZad → 0,4
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=10Do<20KreZad → 3981
+✅ Заполнено: OKVED_K_KoeTekLikOt>=10Do<20V%KObsZadKre → 1,4
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=10Do<20DenSreIDenEkv → 469
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 0
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9128,6 +9186,7 @@
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=10Do<20DebZad → 7537
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=10Do<20V%KObsZad → 0,4
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=10Do<20KreZad → 3981
+✅ Заполнено: OKVED_64_KoeTekLikOt>=10Do<20V%KObsZadKre → 1,4
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=10Do<20DenSreIDenEkv → 469
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 0
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=10Do<20KolOrg(ed → 2
@@ -9135,6 +9194,7 @@
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=10Do<20DebZad → 817719
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=10Do<20V%KObsZad → 52,6
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=10Do<20KreZad → 680655
+✅ Заполнено: OKVED_L_KoeTekLikOt>=10Do<20V%KObsZadKre → 27,2
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=10Do<20DenSreIDenEkv → 7429
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 0,8
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=10Do<20KolOrg(ed → 2
@@ -9142,6 +9202,7 @@
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=10Do<20DebZad → 817719
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=10Do<20V%KObsZad → 52,6
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=10Do<20KreZad → 680655
+✅ Заполнено: OKVED_68_KoeTekLikOt>=10Do<20V%KObsZadKre → 27,2
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=10Do<20DenSreIDenEkv → 7429
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 0,8
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=10Do<20KolOrg(ed → 2
@@ -9149,6 +9210,7 @@
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=10Do<20DebZad → 5320334
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=10Do<20V%KObsZad → 78,8
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=10Do<20KreZad → 6653348
+✅ Заполнено: OKVED_M_KoeTekLikOt>=10Do<20V%KObsZadKre → 96,7
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=10Do<20DenSreIDenEkv → 3123887
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 58
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9156,6 +9218,7 @@
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=10Do<20DebZad → 2722335
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=10Do<20V%KObsZad → 67,4
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=10Do<20KreZad → 3534389
+✅ Заполнено: OKVED_70_KoeTekLikOt>=10Do<20V%KObsZadKre → 98,8
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=10Do<20DenSreIDenEkv → 717513
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 24,2
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9163,6 +9226,7 @@
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=10Do<20DebZad → 2597999
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=10Do<20V%KObsZad → 95,9
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=10Do<20KreZad → 3118959
+✅ Заполнено: OKVED_71_KoeTekLikOt>=10Do<20V%KObsZadKre → 94,5
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=10Do<20DenSreIDenEkv → 2406374
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 99,3
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9170,6 +9234,7 @@
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=10Do<20DebZad → 17391
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=10Do<20V%KObsZad → 8,2
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=10Do<20KreZad → 8016
+✅ Заполнено: OKVED_N_KoeTekLikOt>=10Do<20V%KObsZadKre → 1,4
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=10Do<20DenSreIDenEkv → 59
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 0,1
 ✅ Заполнено: OKVED_79_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9177,6 +9242,7 @@
 ✅ Заполнено: OKVED_79_KoeTekLikOt>=10Do<20DebZad → 17391
 ✅ Заполнено: OKVED_79_KoeTekLikOt>=10Do<20V%KObsZad → 100
 ✅ Заполнено: OKVED_79_KoeTekLikOt>=10Do<20KreZad → 8016
+✅ Заполнено: OKVED_79_KoeTekLikOt>=10Do<20V%KObsZadKre → 100
 ✅ Заполнено: OKVED_79_KoeTekLikOt>=10Do<20DenSreIDenEkv → 59
 ✅ Заполнено: OKVED_79_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=10Do<20KolOrg(ed → 2
@@ -9184,6 +9250,7 @@
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=10Do<20DebZad → 962
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=10Do<20V%KObsZad → 6,1
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=10Do<20KreZad → 31209
+✅ Заполнено: OKVED_S_KoeTekLikOt>=10Do<20V%KObsZadKre → 49,8
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=10Do<20DenSreIDenEkv → 62
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 0
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9191,6 +9258,7 @@
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=10Do<20DebZad → 792
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=10Do<20V%KObsZad → 21,8
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=10Do<20KreZad → 31035
+✅ Заполнено: OKVED_94_KoeTekLikOt>=10Do<20V%KObsZadKre → 69,7
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=10Do<20DenSreIDenEkv → 60
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 0
 ✅ Заполнено: OKVED_96_KoeTekLikOt>=10Do<20KolOrg(ed → 1
@@ -9198,6 +9266,7 @@
 ✅ Заполнено: OKVED_96_KoeTekLikOt>=10Do<20DebZad → 170
 ✅ Заполнено: OKVED_96_KoeTekLikOt>=10Do<20V%KObsZad → 1,4
 ✅ Заполнено: OKVED_96_KoeTekLikOt>=10Do<20KreZad → 174
+✅ Заполнено: OKVED_96_KoeTekLikOt>=10Do<20V%KObsZadKre → 1
 ✅ Заполнено: OKVED_96_KoeTekLikOt>=10Do<20DenSreIDenEkv → 2
 ✅ Заполнено: OKVED_96_KoeTekLikOt>=10Do<20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=20KolOrg(ed → 106
@@ -9205,6 +9274,7 @@
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=20DebZad → 61763685
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=20V%KObsZad → 47,4
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=20KreZad → 33840010
+✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=20V%KObsZadKre → 21,1
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=20DenSreIDenEkv → 144189586
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 81,9
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=20KolOrg(ed → 39
@@ -9212,6 +9282,7 @@
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=20DebZad → 29343686
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=20V%KObsZad → 63,2
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=20KreZad → 16094534
+✅ Заполнено: OKVED_A_KoeTekLikOt>=20V%KObsZadKre → 39,2
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=20DenSreIDenEkv → 47023276
 ✅ Заполнено: OKVED_A_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 78,7
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=20KolOrg(ed → 7
@@ -9219,6 +9290,7 @@
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=20DebZad → 295613
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=20V%KObsZad → 31,9
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=20KreZad → 339130
+✅ Заполнено: OKVED_01_KoeTekLikOt>=20V%KObsZadKre → 33,7
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=20DenSreIDenEkv → 103174
 ✅ Заполнено: OKVED_01_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 55,7
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=20KolOrg(ed → 32
@@ -9226,6 +9298,7 @@
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=20DebZad → 29048073
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=20V%KObsZad → 63,8
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=20KreZad → 15755404
+✅ Заполнено: OKVED_03_KoeTekLikOt>=20V%KObsZadKre → 39,3
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=20DenSreIDenEkv → 46920102
 ✅ Заполнено: OKVED_03_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 78,8
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=20KolOrg(ed → 4
@@ -9233,6 +9306,7 @@
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=20DebZad → 8334082
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=20V%KObsZad → 64
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=20KreZad → 4222938
+✅ Заполнено: OKVED_B_KoeTekLikOt>=20V%KObsZadKre → 30
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=20DenSreIDenEkv → 209322
 ✅ Заполнено: OKVED_B_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 82,7
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=20KolOrg(ed → 4
@@ -9240,6 +9314,7 @@
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=20DebZad → 8334082
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=20V%KObsZad → 64
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=20KreZad → 4222938
+✅ Заполнено: OKVED_07_KoeTekLikOt>=20V%KObsZadKre → 30
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=20DenSreIDenEkv → 209322
 ✅ Заполнено: OKVED_07_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 82,7
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=20KolOrg(ed → 16
@@ -9247,6 +9322,7 @@
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=20DebZad → 8250107
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=20V%KObsZad → 81,3
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=20KreZad → 5055020
+✅ Заполнено: OKVED_C_KoeTekLikOt>=20V%KObsZadKre → 63,4
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=20DenSreIDenEkv → 3720222
 ✅ Заполнено: OKVED_C_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 95,2
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=20KolOrg(ed → 13
@@ -9254,6 +9330,7 @@
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=20DebZad → 7981573
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=20V%KObsZad → 82,4
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=20KreZad → 1882690
+✅ Заполнено: OKVED_10_KoeTekLikOt>=20V%KObsZadKre → 54,8
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=20DenSreIDenEkv → 3137437
 ✅ Заполнено: OKVED_10_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 94,4
 ✅ Заполнено: OKVED_11_KoeTekLikOt>=20KolOrg(ed → 1
@@ -9261,6 +9338,7 @@
 ✅ Заполнено: OKVED_11_KoeTekLikOt>=20DebZad → 193526
 ✅ Заполнено: OKVED_11_KoeTekLikOt>=20V%KObsZad → 100
 ✅ Заполнено: OKVED_11_KoeTekLikOt>=20KreZad → 60830
+✅ Заполнено: OKVED_11_KoeTekLikOt>=20V%KObsZadKre → 100
 ✅ Заполнено: OKVED_11_KoeTekLikOt>=20DenSreIDenEkv → 253413
 ✅ Заполнено: OKVED_11_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_33_KoeTekLikOt>=20KolOrg(ed → 0,2
@@ -9268,6 +9346,7 @@
 ✅ Заполнено: OKVED_33_KoeTekLikOt>=20DebZad → 75008
 ✅ Заполнено: OKVED_33_KoeTekLikOt>=20V%KObsZad → 28,5
 ✅ Заполнено: OKVED_33_KoeTekLikOt>=20KreZad → 3111500
+✅ Заполнено: OKVED_33_KoeTekLikOt>=20V%KObsZadKre → 69,7
 ✅ Заполнено: OKVED_33_KoeTekLikOt>=20DenSreIDenEkv → 329372
 ✅ Заполнено: OKVED_33_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20KolOrg(ed → 2
@@ -9275,6 +9354,7 @@
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20DebZad → 257290
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20V%KObsZad → 1,4
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20KreZad → 305800
+✅ Заполнено: OKVED_35_KoeTekLikOt>=20V%KObsZadKre → 1,1
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20DenSreIDenEkv → 167350
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 2,7
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20KolOrg(ed → 2
@@ -9282,6 +9362,7 @@
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20DebZad → 257290
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20V%KObsZad → 1,4
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20KreZad → 305800
+✅ Заполнено: OKVED_35_KoeTekLikOt>=20V%KObsZadKre → 1,1
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20DenSreIDenEkv → 167350
 ✅ Заполнено: OKVED_35_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 2,7
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=20KolOrg(ed → 1
@@ -9289,6 +9370,7 @@
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=20DebZad → 336784
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=20V%KObsZad → 14,2
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=20KreZad → 119357
+✅ Заполнено: OKVED_E_KoeTekLikOt>=20V%KObsZadKre → 2,5
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=20DenSreIDenEkv → 5779
 ✅ Заполнено: OKVED_E_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 1,3
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=20KolOrg(ed → 1
@@ -9296,6 +9378,7 @@
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=20DebZad → 336784
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=20V%KObsZad → 15,9
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=20KreZad → 119357
+✅ Заполнено: OKVED_36_KoeTekLikOt>=20V%KObsZadKre → 2,7
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=20DenSreIDenEkv → 5779
 ✅ Заполнено: OKVED_36_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 1,9
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=20KolOrg(ed → 1
@@ -9303,6 +9386,7 @@
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=20DebZad → 73193
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=20V%KObsZad → 0,6
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=20KreZad → 26510
+✅ Заполнено: OKVED_F_KoeTekLikOt>=20V%KObsZadKre → 0,1
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=20DenSreIDenEkv → 12636
 ✅ Заполнено: OKVED_F_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 0,2
 ℹ️ Отсутствующие данные: OKVED_42_KoeTekLikOt>=20KolOrg(ed → [-]
@@ -9310,6 +9394,7 @@
 ℹ️ Отсутствующие данные: OKVED_42_KoeTekLikOt>=20DebZad → [-]
 ℹ️ Отсутствующие данные: OKVED_42_KoeTekLikOt>=20V%KObsZad → [-]
 ℹ️ Отсутствующие данные: OKVED_42_KoeTekLikOt>=20KreZad → [-]
+ℹ️ Отсутствующие данные: OKVED_42_KoeTekLikOt>=20V%KObsZadKre → [-]
 ℹ️ Отсутствующие данные: OKVED_42_KoeTekLikOt>=20DenSreIDenEkv → [-]
 ℹ️ Отсутствующие данные: OKVED_42_KoeTekLikOt>=20V%KoVsDenSreDenEkv → [-]
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=20KolOrg(ed → 1,3
@@ -9317,6 +9402,7 @@
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=20DebZad → 10609187
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=20V%KObsZad → 68,9
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=20KreZad → 5950210
+✅ Заполнено: OKVED_G_KoeTekLikOt>=20V%KObsZadKre → 44
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=20DenSreIDenEkv → 2151601
 ✅ Заполнено: OKVED_G_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 80,4
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=20KolOrg(ed → 7
@@ -9324,6 +9410,7 @@
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=20DebZad → 10568506
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=20V%KObsZad → 69,6
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=20KreZad → 5864841
+✅ Заполнено: OKVED_46_KoeTekLikOt>=20V%KObsZadKre → 56,7
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=20DenSreIDenEkv → 2089205
 ✅ Заполнено: OKVED_46_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 95,7
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=20KolOrg(ed → 6
@@ -9331,6 +9418,7 @@
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=20DebZad → 40681
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=20V%KObsZad → 19,1
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=20KreZad → 85369
+✅ Заполнено: OKVED_47_KoeTekLikOt>=20V%KObsZadKre → 2,7
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=20DenSreIDenEkv → 62396
 ✅ Заполнено: OKVED_47_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 12,6
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=20KolOrg(ed → 4
@@ -9338,6 +9426,7 @@
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=20DebZad → 421081
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=20V%KObsZad → 17,9
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=20KreZad → 1369082
+✅ Заполнено: OKVED_H_KoeTekLikOt>=20V%KObsZadKre → 17,9
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=20DenSreIDenEkv → 1141320
 ✅ Заполнено: OKVED_H_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 35,9
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=20KolOrg(ed → 1
@@ -9345,6 +9434,7 @@
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=20DebZad → 13837
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=20V%KObsZad → 10
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=20KreZad → 4110
+✅ Заполнено: OKVED_49_KoeTekLikOt>=20V%KObsZadKre → 1,4
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=20DenSreIDenEkv → 42
 ✅ Заполнено: OKVED_49_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 0
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=20KolOrg(ed → 1
@@ -9352,6 +9442,7 @@
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=20DebZad → 324310
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=20V%KObsZad → 35,4
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=20KreZad → 1039031
+✅ Заполнено: OKVED_51_KoeTekLikOt>=20V%KObsZadKre → 31,7
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=20DenSreIDenEkv → 140673
 ✅ Заполнено: OKVED_51_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 79,1
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=20KolOrg(ed → 2
@@ -9359,6 +9450,7 @@
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=20DebZad → 82934
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=20V%KObsZad → 7,6
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=20KreZad → 325941
+✅ Заполнено: OKVED_52_KoeTekLikOt>=20V%KObsZadKre → 12,9
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=20DenSreIDenEkv → 1000605
 ✅ Заполнено: OKVED_52_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 37,2
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=20KolOrg(ed → 3
@@ -9366,6 +9458,7 @@
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=20DebZad → 559843
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=20V%KObsZad → 89,3
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=20KreZad → 222210
+✅ Заполнено: OKVED_I_KoeTekLikOt>=20V%KObsZadKre → 66,7
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=20DenSreIDenEkv → 27170
 ✅ Заполнено: OKVED_I_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 88,3
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=20KolOrg(ed → 3
@@ -9373,6 +9466,7 @@
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=20DebZad → 559843
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=20V%KObsZad → 90,1
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=20KreZad → 222210
+✅ Заполнено: OKVED_55_KoeTekLikOt>=20V%KObsZadKre → 68,5
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=20DenSreIDenEkv → 27170
 ✅ Заполнено: OKVED_55_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 88,7
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=20KolOrg(ed → 4
@@ -9380,6 +9474,7 @@
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=20DebZad → 1805725
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=20V%KObsZad → 99,6
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=20KreZad → 284671
+✅ Заполнено: OKVED_K_KoeTekLikOt>=20V%KObsZadKre → 98,6
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=20DenSreIDenEkv → 86175206
 ✅ Заполнено: OKVED_K_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=20KolOrg(ed → 4
@@ -9387,6 +9482,7 @@
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=20DebZad → 1805725
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=20V%KObsZad → 99,6
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=20KreZad → 284671
+✅ Заполнено: OKVED_64_KoeTekLikOt>=20V%KObsZadKre → 98,6
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=20DenSreIDenEkv → 86175206
 ✅ Заполнено: OKVED_64_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=20KolOrg(ed → 5
@@ -9394,6 +9490,7 @@
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=20DebZad → 347754
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=20V%KObsZad → 22,4
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=20KreZad → 124137
+✅ Заполнено: OKVED_L_KoeTekLikOt>=20V%KObsZadKre → 5
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=20DenSreIDenEkv → 711923
 ✅ Заполнено: OKVED_L_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 80
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=20KolOrg(ed → 5
@@ -9401,6 +9498,7 @@
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=20DebZad → 347754
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=20V%KObsZad → 22,4
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=20KreZad → 124137
+✅ Заполнено: OKVED_68_KoeTekLikOt>=20V%KObsZadKre → 5
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=20DenSreIDenEkv → 711923
 ✅ Заполнено: OKVED_68_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 80
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=20KolOrg(ed → 7
@@ -9408,6 +9506,7 @@
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=20DebZad → 1401959
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=20V%KObsZad → 20,8
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=20KreZad → 51584
+✅ Заполнено: OKVED_M_KoeTekLikOt>=20V%KObsZadKre → 0,7
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=20DenSreIDenEkv → 2245558
 ✅ Заполнено: OKVED_M_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 41,7
 ✅ Заполнено: OKVED_69_KoeTekLikOt>=20KolOrg(ed → 1
@@ -9415,6 +9514,7 @@
 ℹ️ Отсутствующие данные: OKVED_69_KoeTekLikOt>=20DebZad → [-]
 ℹ️ Отсутствующие данные: OKVED_69_KoeTekLikOt>=20V%KObsZad → [-]
 ✅ Заполнено: OKVED_69_KoeTekLikOt>=20KreZad → 5
+✅ Заполнено: OKVED_69_KoeTekLikOt>=20V%KObsZadKre → 100
 ✅ Заполнено: OKVED_69_KoeTekLikOt>=20DenSreIDenEkv → 35
 ✅ Заполнено: OKVED_69_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=20KolOrg(ed → 2
@@ -9422,6 +9522,7 @@
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=20DebZad → 1317769
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=20V%KObsZad → 32,6
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=20KreZad → 44357
+✅ Заполнено: OKVED_70_KoeTekLikOt>=20V%KObsZadKre → 1,2
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=20DenSreIDenEkv → 2243194
 ✅ Заполнено: OKVED_70_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 75,8
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=20KolOrg(ed → 4
@@ -9429,6 +9530,7 @@
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=20DebZad → 84190
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=20V%KObsZad → 3,1
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=20KreZad → 7222
+✅ Заполнено: OKVED_71_KoeTekLikOt>=20V%KObsZadKre → 0,2
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=20DenSreIDenEkv → 2329
 ✅ Заполнено: OKVED_71_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 0,1
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=20KolOrg(ed → 0,2
@@ -9436,6 +9538,7 @@
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=20DebZad → 20050
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=20V%KObsZad → 9,5
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=20KreZad → 387
+✅ Заполнено: OKVED_N_KoeTekLikOt>=20V%KObsZadKre → 0,1
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=20DenSreIDenEkv → 13384
 ✅ Заполнено: OKVED_N_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 17,1
 ✅ Заполнено: OKVED_77_KoeTekLikOt>=20KolOrg(ed → 2
@@ -9443,6 +9546,7 @@
 ✅ Заполнено: OKVED_77_KoeTekLikOt>=20DebZad → 20050
 ✅ Заполнено: OKVED_77_KoeTekLikOt>=20V%KObsZad → 37,3
 ✅ Заполнено: OKVED_77_KoeTekLikOt>=20KreZad → 387
+✅ Заполнено: OKVED_77_KoeTekLikOt>=20V%KObsZadKre → 1,2
 ✅ Заполнено: OKVED_77_KoeTekLikOt>=20DenSreIDenEkv → 13384
 ✅ Заполнено: OKVED_77_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 17,9
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20KolOrg(ed → 1
@@ -9450,6 +9554,7 @@
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20DebZad → 198
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20V%KObsZad → 100
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20KreZad → 83
+✅ Заполнено: OKVED_85_KoeTekLikOt>=20V%KObsZadKre → 100
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20DenSreIDenEkv → 17
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20KolOrg(ed → 1
@@ -9457,6 +9562,7 @@
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20DebZad → 198
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20V%KObsZad → 100
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20KreZad → 83
+✅ Заполнено: OKVED_85_KoeTekLikOt>=20V%KObsZadKre → 100
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20DenSreIDenEkv → 17
 ✅ Заполнено: OKVED_85_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 100
 ✅ Заполнено: OKVED_R_KoeTekLikOt>=20KolOrg(ed → 1
@@ -9464,6 +9570,7 @@
 ✅ Заполнено: OKVED_R_KoeTekLikOt>=20DebZad → 60
 ✅ Заполнено: OKVED_R_KoeTekLikOt>=20V%KObsZad → 41,4
 ✅ Заполнено: OKVED_R_KoeTekLikOt>=20KreZad → 13
+✅ Заполнено: OKVED_R_KoeTekLikOt>=20V%KObsZadKre → 100
 ✅ Заполнено: OKVED_R_KoeTekLikOt>=20DenSreIDenEkv → 58
 ✅ Заполнено: OKVED_R_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 96,7
 ✅ Заполнено: OKVED_93_KoeTekLikOt>=20KolOrg(ed → 1
@@ -9471,6 +9578,7 @@
 ✅ Заполнено: OKVED_93_KoeTekLikOt>=20DebZad → 60
 ✅ Заполнено: OKVED_93_KoeTekLikOt>=20V%KObsZad → 41,4
 ✅ Заполнено: OKVED_93_KoeTekLikOt>=20KreZad → 13
+✅ Заполнено: OKVED_93_KoeTekLikOt>=20V%KObsZadKre → 100
 ✅ Заполнено: OKVED_93_KoeTekLikOt>=20DenSreIDenEkv → 58
 ✅ Заполнено: OKVED_93_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 96,7
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=20KolOrg(ed → 3
@@ -9478,6 +9586,7 @@
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=20DebZad → 2686
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=20V%KObsZad → 16,9
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=20KreZad → 13474
+✅ Заполнено: OKVED_S_KoeTekLikOt>=20V%KObsZadKre → 21,5
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=20DenSreIDenEkv → 584764
 ✅ Заполнено: OKVED_S_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 99,1
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=20KolOrg(ed → 3
@@ -9485,6 +9594,7 @@
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=20DebZad → 2686
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=20V%KObsZad → 73,7
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=20KreZad → 13474
+✅ Заполнено: OKVED_94_KoeTekLikOt>=20V%KObsZadKre → 30,3
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=20DenSreIDenEkv → 584764
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 99,1
 ✅ Заполнено: OKVED_A_PostPoTekDeVsego → 210052416

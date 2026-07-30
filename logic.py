@@ -88,12 +88,43 @@ def _one_letter_diff(a: str, b: str) -> bool:
     return True
 
 
+def _resolve_indicator(normalized_name_map: dict, name_norm: str, consumed: Optional[dict]) -> str:
+    """
+    Превращает список индикаторов, зарегистрированных под одним и тем же
+    нормализованным названием, в ОДИН конкретный код — с учётом того, сколько
+    раз это название уже было "занято" ранее В ПРЕДЕЛАХ ТЕКУЩЕЙ секции
+    (см. consumed в _compute_section_mapping).
+
+    Нужно для случаев, когда две РАЗНЫЕ колонки таблицы имеют дословно
+    ОДИНАКОВЫЙ заголовок (например, "в % к общей задолженности" — один раз
+    относительно дебиторской задолженности, другой раз относительно
+    кредиторской), но по смыслу это два разных показателя. В CSV для такого
+    названия регистрируются НЕСКОЛЬКО строк подряд — и колонки должны разбирать
+    их по порядку появления в CSV, а не все получать один и тот же (первый)
+    индикатор, откуда предыдущий код молча выкидывал бы все, кроме первого, как
+    "дубликат".
+    """
+    indicators = normalized_name_map[name_norm]
+    if consumed is None:
+        return indicators[0]
+    count = consumed.get(name_norm, 0)
+    consumed[name_norm] = count + 1
+    idx = min(count, len(indicators) - 1)
+    return indicators[idx]
+
+
 def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: float = 0.80,
                          near_miss_sink: Optional[list] = None,
-                         squish_match_sink: Optional[list] = None) -> str:
+                         squish_match_sink: Optional[list] = None,
+                         consumed: Optional[dict] = None) -> str:
     """
     Ищет наилучшее совпадение заголовка с использованием Fuzzy Matching.
     Возвращает код индикатора или None.
+
+    normalized_name_map: dict нормализованное_название -> СПИСОК кодов
+    индикаторов (обычно из одного элемента; больше одного — когда одно и то же
+    название текста в Word соответствует нескольким разным показателям CSV,
+    см. _resolve_indicator).
     """
     if not target_text:
         return None
@@ -104,35 +135,33 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
     # "Себестоимость продаж" является префиксом "Себестоимость продаж с учетом
     # коммерческих и управленческих расходов") — иначе порядок перебора мог бы
     # случайно "перетянуть" короткую колонку на длинный показатель.
-    best_exact_match = None
+    best_exact_name = None
     best_exact_score = -1.0
-    for name_norm, indicator in normalized_name_map.items():
+    for name_norm in normalized_name_map:
         if not name_norm:
             continue
         if name_norm in target_text or target_text in name_norm:
             score = SequenceMatcher(None, target_text, name_norm).ratio()
             if score > best_exact_score:
                 best_exact_score = score
-                best_exact_match = indicator
+                best_exact_name = name_norm
 
-    if best_exact_match is not None:
-        return best_exact_match
+    if best_exact_name is not None:
+        return _resolve_indicator(normalized_name_map, best_exact_name, consumed)
 
     # 2. Нечеткое сравнение (Fuzzy Match) для случаев без точного вхождения
-    best_match = None
     best_match_name = None
     best_score = 0.0
-    for name_norm, indicator in normalized_name_map.items():
+    for name_norm in normalized_name_map:
         if not name_norm:
             continue
         score = SequenceMatcher(None, target_text, name_norm).ratio()
         if score > best_score:
             best_score = score
-            best_match = indicator
             best_match_name = name_norm
 
     if best_score >= threshold:
-        return best_match
+        return _resolve_indicator(normalized_name_map, best_match_name, consumed)
 
     # 3. Последний, самый толерантный уровень: сравнение "склеенных" (без
     # пробелов и любых спецсимволов) форм. Ловит разрывы слова, которые не
@@ -146,10 +175,9 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
     # и тем же показателем — это стоит проверять человеку, а не доверять молча.
     target_squished = _squish_text(target_text)
     if target_squished and len(target_squished) >= 5:
-        best_squish_match = None
         best_squish_name = None
         best_squish_len = -1
-        for name_norm, indicator in normalized_name_map.items():
+        for name_norm in normalized_name_map:
             name_squished = _squish_text(name_norm)
             if not name_squished or len(name_squished) < 5:
                 continue
@@ -157,9 +185,9 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
                 # При нескольких кандидатах предпочитаем более длинное (более специфичное) совпадение
                 if len(name_squished) > best_squish_len:
                     best_squish_len = len(name_squished)
-                    best_squish_match = indicator
                     best_squish_name = name_norm
-        if best_squish_match is not None:
+        if best_squish_name is not None:
+            best_squish_match = _resolve_indicator(normalized_name_map, best_squish_name, consumed)
             print(f"   🧩 [Squish-match] '{target_text[:50]}' -> '{best_squish_name[:50]}' -> {best_squish_match}")
             if squish_match_sink is not None:
                 squish_match_sink.append((target_text, best_squish_name, best_squish_match))
@@ -174,6 +202,7 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
     if target_text and len(target_text) > 5 and best_score > 0.50:
         print(f"   ⚠️ [Fuzzy Miss] Ожидалось похожее, но Score={best_score:.2f} для '{target_text[:50]}...'")
         if near_miss_sink is not None:
+            best_match = normalized_name_map[best_match_name][0] if best_match_name else None
             near_miss_sink.append((target_text, best_score, best_match_name, best_match))
 
     return None
@@ -356,9 +385,13 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
 
         last_indicator = None
         normalized_name_map = {
-            _normalize_match_text(name): indicator
-            for name, indicator in source_word_to_indicator.items()
+            _normalize_match_text(name): indicators
+            for name, indicators in source_word_to_indicator.items()
         }
+        # Отслеживает, сколько раз уже было "занято" каждое название — нужно,
+        # когда одно название соответствует НЕСКОЛЬКИМ разным индикаторам
+        # (см. _resolve_indicator).
+        consumed = {}
         for i, cell in enumerate(year_row.cells):
             raw_year_text = get_cleaned_cell_text(cell).strip()
             year_text = _extract_year(raw_year_text)
@@ -383,7 +416,8 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
             column_squish_matches = [] if squish_match_sink is not None else None
             best_match = _fuzzy_match_header(composed_header_norm, normalized_name_map, threshold=0.80,
                                               near_miss_sink=column_near_misses,
-                                              squish_match_sink=column_squish_matches)
+                                              squish_match_sink=column_squish_matches,
+                                              consumed=consumed)
             if column_near_misses:
                 near_miss_sink.extend((i, *entry) for entry in column_near_misses)
             if column_squish_matches:
@@ -392,16 +426,16 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
             # Fuzzy-fallback для случаев с переносами, дефисами и неявными формулировками
             if not best_match and composed_header_norm:
                 fuzzy_score = 0.0
-                fuzzy_match = None
-                for name_norm, indicator in normalized_name_map.items():
+                fuzzy_match_name = None
+                for name_norm in normalized_name_map:
                     if not name_norm:
                         continue
                     score = SequenceMatcher(None, name_norm, composed_header_norm).ratio()
                     if score > fuzzy_score:
                         fuzzy_score = score
-                        fuzzy_match = indicator
+                        fuzzy_match_name = name_norm
                 if fuzzy_score >= 0.75:
-                    best_match = fuzzy_match
+                    best_match = _resolve_indicator(normalized_name_map, fuzzy_match_name, consumed)
                     print(f"   🔍 fuzzy match {fuzzy_score:.2f} для '{composed_header[:80]}' -> {best_match}")
 
             if best_match:
@@ -421,9 +455,13 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
     else:
         header_row = year_row
         normalized_name_map = {
-            _normalize_match_text(name): indicator
-            for name, indicator in source_word_to_indicator.items()
+            _normalize_match_text(name): indicators
+            for name, indicators in source_word_to_indicator.items()
         }
+        # Отслеживает, сколько раз уже было "занято" каждое название — нужно,
+        # когда одно название соответствует НЕСКОЛЬКИМ разным индикаторам
+        # (см. _resolve_indicator).
+        consumed = {}
         # header_idx — это ПОСЛЕДНЯЯ строка своего "run"-а подряд идущих
         # заголовочных строк (см. вызывающий код), поэтому строка header_idx+1 —
         # это уже настоящие данные, а не продолжение шапки. Составной заголовок
@@ -454,7 +492,8 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
             column_squish_matches = [] if squish_match_sink is not None else None
             best_match = _fuzzy_match_header(header_text, normalized_name_map, threshold=0.80,
                                               near_miss_sink=column_near_misses,
-                                              squish_match_sink=column_squish_matches)
+                                              squish_match_sink=column_squish_matches,
+                                              consumed=consumed)
             if column_near_misses:
                 near_miss_sink.extend((i, *entry) for entry in column_near_misses)
             if column_squish_matches:
@@ -560,7 +599,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
 
     table_source_mapping = load_table_source_map(table_source_mapping_path)
     mo_source_files = {src for src in table_source_mapping.values() if 'mo' in src.lower()}
-    word_to_indicator, _, indicator_to_file, file_word_to_indicator, _ = load_column_mapping_v2(column_mapping_path)
+    word_to_indicator, _, indicator_to_file, file_word_to_indicator, _, file_word_to_indicators = load_column_mapping_v2(column_mapping_path)
     doc = Document(input_doc_path)
     total_tags = 0
     validation_log = []
@@ -608,8 +647,8 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
 
         # Используем file_word_to_indicator для правильного маппирования по (файл, слово)
         all_file_entries = {
-            name: indicator
-            for (file, name), indicator in file_word_to_indicator.items()
+            name: indicators
+            for (file, name), indicators in file_word_to_indicators.items()
             if file == current_source_file
         }
 
@@ -653,10 +692,10 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             column_cells_squished.append([_squish_text(t) for t in cell_texts if t])
 
         source_word_to_indicator = {}
-        for name, indicator in all_file_entries.items():
+        for name, indicators in all_file_entries.items():
             name_norm = _normalize_match_text(name)
             if name_norm and any(name_norm in col_text for col_text in column_texts_norm):
-                source_word_to_indicator[name] = indicator
+                source_word_to_indicator[name] = indicators
                 continue
             # Тот же самый показатель может не найтись обычной проверкой, если
             # слово в Word-документе разорвано непредвиденным образом (лишний
@@ -667,7 +706,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             if name_squished and len(name_squished) >= 5 and any(
                 name_squished in col_text for col_text in column_texts_squished
             ):
-                source_word_to_indicator[name] = indicator
+                source_word_to_indicator[name] = indicators
                 continue
             # Последний шанс: опечатка в одну букву в самом Word-документе
             # (например, "уравленческие" вместо "управленческие" — пропущена
@@ -683,14 +722,14 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                         None
                     )
                     if matched_cell is not None:
-                        source_word_to_indicator[name] = indicator
+                        source_word_to_indicator[name] = indicators
                         if typo_match_report_path:
                             typo_match_report.append({
                                 'table': t_index + 1,
                                 'source_file': current_source_file,
                                 'cell_text': matched_cell,
                                 'matched_candidate': name_squished,
-                                'matched_indicator': indicator,
+                                'matched_indicator': ','.join(indicators),
                             })
                         break
 
@@ -784,18 +823,18 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             # 1) Основная стратегия: маппинг только по верхней строке заголовка (row0-first)
             # 2) Если не сработало, fallback: объединяем верхнюю строку с соседней (row0+row1)
             normalized_name_map = {
-                _normalize_match_text(name): indicator
-                for name, indicator in source_word_to_indicator.items()
+                _normalize_match_text(name): indicators
+                for name, indicators in source_word_to_indicator.items()
             }
 
             for i, cell in enumerate(header_row.cells):
                 header_text = _normalize_match_text(get_cleaned_cell_text(cell))
                 if not header_text:
                     continue
-                for name_norm, indicator in normalized_name_map.items():
+                for name_norm, indicators in normalized_name_map.items():
                     if _text_matches_name(header_text, name_norm):
-                        base_indicator_map[i] = indicator
-                        print(f"   🔍 Fallback row0: столбец {i}, текст '{header_text[:50]}' → {indicator}")
+                        base_indicator_map[i] = indicators[0]
+                        print(f"   🔍 Fallback row0: столбец {i}, текст '{header_text[:50]}' → {indicators[0]}")
                         break
 
             if not base_indicator_map and header_row_idx is not None:
@@ -806,12 +845,12 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                         composed = _build_composed_header_for_column(table, header_row_idx, i, depth=depth)
                         if not composed:
                             continue
-                        for name_norm, indicator in normalized_name_map.items():
+                        for name_norm, indicators in normalized_name_map.items():
                             if _text_matches_name(composed, name_norm):
-                                base_indicator_map[i] = indicator
+                                base_indicator_map[i] = indicators[0]
                                 print(
                                     f"   🔍 Fallback row0+... (depth={depth}): столбец {i}, "
-                                    f"текст '{composed[:70]}' → {indicator}"
+                                    f"текст '{composed[:70]}' → {indicators[0]}"
                                 )
                                 break
 
@@ -845,7 +884,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             print(f"   📊 col_to_indicator_map: {col_to_indicator_map}")
             if not col_to_indicator_map:
                 print("⚠️ Заголовки не найдены. Пропускаем таблицу.")
-                expected = sorted(set(source_word_to_indicator.values()))
+                expected = sorted({ind for indicators in source_word_to_indicator.values() for ind in indicators})
                 if expected:
                     validation_log.append(
                         f"[TABLE {t_index + 1}] source={current_source_file} status=NO_HEADERS expected_indicators={len(expected)} "
@@ -869,7 +908,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         for _, _, section_map in mapped_sections:
             for indicator, _ in section_map.values():
                 matched_indicators.add(indicator)
-        expected_indicators = set(source_word_to_indicator.values())
+        expected_indicators = {ind for indicators in source_word_to_indicator.values() for ind in indicators}
         missing_indicators = sorted(expected_indicators - matched_indicators)
         if missing_indicators:
             validation_log.append(

@@ -126,22 +126,31 @@ def _parse_keywords_from_field(value: str) -> list:
     return [kw.strip() for kw in value.split(',') if kw.strip()]
 
 
-def load_column_mapping_v2(filepath) -> Tuple[Dict[str, str], Dict[str, Tuple[str, str]], 
-                                               Dict[str, str], Dict, Dict[str, Dict[str, str]]]:
+def load_column_mapping_v2(filepath) -> Tuple[Dict[str, str], Dict[str, Tuple[str, str]],
+                                               Dict[str, str], Dict, Dict[str, Dict[str, str]], Dict]:
     """
     Загружает column_mapping_v2.csv с ключевыми словами.
-    
+
     Returns:
         - word_to_indicator: название показателя → код индикатора
         - indicator_to_excel: код индикатора → (колонка 2022, колонка 2023)
         - indicator_to_file: код индикатора → файл Excel
-        - file_word_to_indicator: (файл, название) → код индикатора
-        - indicator_keywords: код индикатора → {year_2022: [...], year_2023: [...]} 
+        - file_word_to_indicator: (файл, название) → код индикатора (если строк
+          с одинаковым (файл, название) несколько — тут остаётся ПОСЛЕДНЯЯ)
+        - indicator_keywords: код индикатора → {year_2022: [...], year_2023: [...]}
+        - file_word_to_indicators: (файл, название) → СПИСОК кодов индикаторов
+          в порядке появления в CSV. В отличие от file_word_to_indicator, тут
+          НИЧЕГО не перезаписывается — нужно для таблиц, где два РАЗНЫХ
+          показателя в Word-документе называются дословно одинаково (например,
+          "в % к общей задолженности" — один раз для дебиторской, другой раз
+          для кредиторской задолженности), и колонки нужно разбирать по
+          порядку следования строк в CSV, а не терять все, кроме одной.
     """
     word_to_indicator = {}
     indicator_to_excel = {}
     indicator_to_file = {}
     file_word_to_indicator = {}
+    file_word_to_indicators = {}
     indicator_keywords = {}
 
     try:
@@ -175,7 +184,9 @@ def load_column_mapping_v2(filepath) -> Tuple[Dict[str, str], Dict[str, Tuple[st
             word_to_indicator[word_name] = indicator
             indicator_to_excel[indicator] = (col_22, col_23)
             indicator_to_file[indicator] = excel_file
-            file_word_to_indicator[(excel_file, _normalize_text(word_name))] = indicator
+            file_word_key = (excel_file, _normalize_text(word_name))
+            file_word_to_indicator[file_word_key] = indicator
+            file_word_to_indicators.setdefault(file_word_key, []).append(indicator)
 
             keywords_2022 = _parse_keywords_from_field(kw_2022)
             keywords_2023 = _parse_keywords_from_field(kw_2023)
@@ -184,15 +195,17 @@ def load_column_mapping_v2(filepath) -> Tuple[Dict[str, str], Dict[str, Tuple[st
                 '2022': keywords_2022,
                 '2023': keywords_2023
             }
-    
+
     except FileNotFoundError:
         print(f"⚠️ Файл {filepath} не найден, используем fallback на column_mapping.csv")
         # Fallback на старую версию
         from config import load_column_mapping
         word_to_indicator, indicator_to_excel, indicator_to_file, file_word_to_indicator = load_column_mapping(filepath)
         indicator_keywords = {k: {'2022': [], '2023': []} for k in indicator_to_file.keys()}
-    
-    return word_to_indicator, indicator_to_excel, indicator_to_file, file_word_to_indicator, indicator_keywords
+        file_word_to_indicators = {k: [v] for k, v in file_word_to_indicator.items()}
+
+    return (word_to_indicator, indicator_to_excel, indicator_to_file, file_word_to_indicator,
+            indicator_keywords, file_word_to_indicators)
 
 
 # === Оригинальные функции (для совместимости) ===
@@ -660,7 +673,7 @@ def ensure_column_mapping_v2(excel_dir: Path, table_source_mapping: dict, output
 
     existing_sources = set()
     try:
-        _, _, _, file_word_to_indicator, _ = load_column_mapping_v2(output_path)
+        _, _, _, file_word_to_indicator, _, _ = load_column_mapping_v2(output_path)
         existing_sources = {file for file, _ in file_word_to_indicator.keys()}
     except Exception as exc:
         build_column_mapping_v2_from_excel(excel_dir, table_source_mapping, output_path)
