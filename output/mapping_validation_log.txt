@@ -13,7 +13,7 @@
 [TABLE 66] source=T24_000000_t23Ved14mo8.xlsx matched=5/23 missing_sample=['DohIRasPoObyVidDeyZaOtcPerKomIUprRas_1', 'DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro_1', 'DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas_1', 'DohIRasPoObyVidDeyZaOtcPerSebPro_1', 'DohIRasPoObyVidDeyZaOtcPerVToChi_1', 'DohIRasPoObyVidDeyZaOtcPerValPri_1', 'DohIRasPoObyVidDeyZaOtcPerVyr_1', 'OtcGo(raSalProDohIRasDohOtUchVDruOrg', 'OtcGo(raSalProDohIRasProDoh', 'OtcGo(raSalProDohIRasProKPol', 'OtcGo(raSalProDohIRasProKUpl', 'OtcGo(raSalProDohIRasProRas', 'OtcGoChiPri(ubOtcPer_1', 'OtcGoNalNaPriOtOpeRezKotNeVklVChiPri(ubPer', 'OtcGoRezOtPerVneAktNeVklVChiPri(ubPer_1']
 [TABLE 72] source=T24_000000_t25Ved14.xlsx matched=7/8 missing_sample=['PriUby(-DoNal']
 [TABLE 73] source=T24_000000_t25Ved14.xlsx matched=7/8 missing_sample=['PriUby(-DoNal']
-[TABLE 74] source=T24_000000_t25Ved14.xlsx matched=6/7 missing_sample=['PriUby(-DoNal']
+[TABLE 74] source=T24_000000_t25Ved14.xlsx matched=7/8 missing_sample=['PriUby(-DoNal']
 [TABLE 76] source=T24_000000_t25Ved14mo8.xlsx matched=7/8 missing_sample=['PriUby(-DoNal_1']
 [TABLE 80] source=T24_000000_t25FsVed14.xlsx matched=7/8 missing_sample=['PriUby(-DoNal_3']
 [TABLE 88] source=T24_000000_t26Ved14.xlsx matched=6/8 missing_sample=['KolOrgEdi_4', 'VToChiKomIUprRas']

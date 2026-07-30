@@ -49,6 +49,45 @@ def _squish_text(text: str) -> str:
     return re.sub(r'[^0-9a-zA-Zа-яА-ЯёЁ]', '', normalized)
 
 
+def _one_letter_diff(a: str, b: str) -> bool:
+    """
+    Проверяет, что две строки отличаются не больше, чем на одну букву
+    (расстояние Левенштейна <= 1) — вставка, удаление или замена одного
+    символа. Ловит опечатки прямо в самом Word-документе, например
+    "уравленческие" вместо "управленческие" (пропущена буква "п"), которые
+    ни точное вхождение, ни склейка (_squish_text) не могут распознать —
+    ведь там пропущена не пунктуация/пробел, а именно буква слова.
+
+    Специально не считается через полное расстояние Левенштейна (O(n*m)),
+    а через линейный проход — этого достаточно, т.к. нас интересует только
+    "0 или 1", а не точное значение при большем расхождении.
+    """
+    if a == b:
+        return True
+    la, lb = len(a), len(b)
+    if abs(la - lb) > 1:
+        return False
+    if la > lb:
+        a, b = b, a
+        la, lb = lb, la
+    i = j = 0
+    mismatch_used = False
+    while i < la and j < lb:
+        if a[i] == b[j]:
+            i += 1
+            j += 1
+            continue
+        if mismatch_used:
+            return False
+        mismatch_used = True
+        if la == lb:
+            i += 1
+            j += 1
+        else:
+            j += 1
+    return True
+
+
 def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: float = 0.80,
                          near_miss_sink: Optional[list] = None,
                          squish_match_sink: Optional[list] = None) -> str:
@@ -487,7 +526,8 @@ def get_table_source_by_number(table_source_mapping, table_number):
 def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_path, column_mapping_path,
                            output_doc_path,
                            mo_map_path: Path = None, validation_log_path: Path = None,
-                           near_miss_report_path: Path = None, squish_match_report_path: Path = None):
+                           near_miss_report_path: Path = None, squish_match_report_path: Path = None,
+                           typo_match_report_path: Path = None):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}} и {{MO_<code>_<indicator>[_22|_23]}}.
     Расширенный поиск заголовков по первым 5 строкам таблицы.
@@ -503,6 +543,14 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     совпадений, найденных только через самый толерантный уровень сравнения
     (склейка без пробелов и спецсимволов, см. _squish_text) — они прошли
     автоматически, но стоит проверить человеком, что совпадение верное.
+
+    typo_match_report_path: если указан, сюда выгружается таблица совпадений,
+    найденных только благодаря допуску на опечатку в одну букву (см.
+    _one_letter_diff) — случаев, когда сам показатель в Word-документе
+    написан с ошибкой (пропущена/заменена одна буква), например
+    "уравленческие" вместо "управленческие". Такие совпадения проходят
+    автоматически, но их стоит проверить человеком: возможно, стоит
+    исправить сам Word-документ, а не мириться с опечаткой.
     """
     print("\n--- ШАГ 2: Генерация шаблона с умными тегами ---")
     _, name_to_okved_cleaned = load_okved_map(okved_map_path)
@@ -518,6 +566,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     validation_log = []
     near_miss_report = []
     squish_match_report = []
+    typo_match_report = []
     current_source_file = None
     normalized_title_to_src = {k: v for k, v in table_source_mapping.items()}
 
@@ -587,14 +636,21 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         num_cols = max((len(row.cells) for row in table.rows), default=0)
         column_texts_norm = []
         column_texts_squished = []
+        # Для допуска на опечатку в одну букву (см. _one_letter_diff) нужны
+        # тексты ОТДЕЛЬНЫХ ячеек колонки, а не всего столбца одной строкой —
+        # расстояние Левенштейна имеет смысл только между двумя цельными
+        # фразами похожей длины, а не при поиске подстроки в длинной "простыне".
+        column_cells_squished = []
         for col_idx in range(num_cols):
-            col_text = ' '.join(
+            cell_texts = [
                 get_cleaned_cell_text(row.cells[col_idx])
                 for row in table.rows
                 if col_idx < len(row.cells)
-            )
+            ]
+            col_text = ' '.join(cell_texts)
             column_texts_norm.append(_normalize_match_text(col_text))
             column_texts_squished.append(_squish_text(col_text))
+            column_cells_squished.append([_squish_text(t) for t in cell_texts if t])
 
         source_word_to_indicator = {}
         for name, indicator in all_file_entries.items():
@@ -612,6 +668,31 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 name_squished in col_text for col_text in column_texts_squished
             ):
                 source_word_to_indicator[name] = indicator
+                continue
+            # Последний шанс: опечатка в одну букву в самом Word-документе
+            # (например, "уравленческие" вместо "управленческие" — пропущена
+            # буква "п"). В отличие от склейки, это не пунктуация/перенос, а
+            # искажение самого слова, поэтому сравниваем показатель целиком с
+            # каждой ОТДЕЛЬНОЙ ячейкой колонки (не с "простынёй" всего
+            # столбца — расстояние Левенштейна не годится для поиска
+            # подстроки).
+            if name_squished and len(name_squished) >= 8:
+                for cells_squished in column_cells_squished:
+                    matched_cell = next(
+                        (c for c in cells_squished if _one_letter_diff(name_squished, c)),
+                        None
+                    )
+                    if matched_cell is not None:
+                        source_word_to_indicator[name] = indicator
+                        if typo_match_report_path:
+                            typo_match_report.append({
+                                'table': t_index + 1,
+                                'source_file': current_source_file,
+                                'cell_text': matched_cell,
+                                'matched_candidate': name_squished,
+                                'matched_indicator': indicator,
+                            })
+                        break
 
         if not source_word_to_indicator:
             # fallback на все показатели из Excel, если в Word ничего не найдено
@@ -871,6 +952,13 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         pd.DataFrame(squish_match_report, columns=columns).to_excel(squish_match_report_path, index=False)
         print(f"🧩 Отчёт по «склеенным» совпадениям сохранён: {squish_match_report_path} "
               f"({len(squish_match_report)} строк)")
+    if typo_match_report_path:
+        typo_match_report_path = Path(typo_match_report_path)
+        typo_match_report_path.parent.mkdir(parents=True, exist_ok=True)
+        columns = ['table', 'source_file', 'cell_text', 'matched_candidate', 'matched_indicator']
+        pd.DataFrame(typo_match_report, columns=columns).to_excel(typo_match_report_path, index=False)
+        print(f"✏️ Отчёт по опечаткам в одну букву сохранён: {typo_match_report_path} "
+              f"({len(typo_match_report)} строк)")
 
 
 # ==========================================================

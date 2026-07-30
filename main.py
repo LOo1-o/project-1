@@ -68,6 +68,7 @@ def main(input_template_override=None, output_file_override=None):
         validation_log_path=output_dir / "mapping_validation_log.txt",
         near_miss_report_path=output_dir / "нужна_проверка.xlsx",
         squish_match_report_path=output_dir / "склеенные_совпадения.xlsx",
+        typo_match_report_path=output_dir / "опечатки_в_одну_букву.xlsx",
     )
     print(f"📄 Шаблон с тегами сохранен: {template_word_file}")
 
