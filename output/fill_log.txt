@@ -8161,6 +8161,7 @@
 ✅ Заполнено: OKVED_A_PriUby(-DoNalV%K:KraOby → 2,4
 ✅ Заполнено: OKVED_A_FinRezUbyOrgV%KItoAktUbyOrg → 9,5
 ✅ Заполнено: OKVED_A_PriOtFinVloV%KoVsFinVlo → 11,5
+✅ Заполнено: OKVED_A_ChiPriUby(-DoNalV%K:VsAkt → -0,1
 ✅ Заполнено: OKVED_01_PriUby(-DoNalV%K:VsAkt → -2,6
 ✅ Заполнено: OKVED_01_PriUby(-DoNalV%K:VneAkt → -3,9
 ✅ Заполнено: OKVED_01_PriUby(-DoNalV%K:OboAkt → -7,6
@@ -8169,6 +8170,7 @@
 ✅ Заполнено: OKVED_01_PriUby(-DoNalV%K:KraOby → -12,5
 ✅ Заполнено: OKVED_01_FinRezUbyOrgV%KItoAktUbyOrg → 3,9
 ✅ Заполнено: OKVED_01_PriOtFinVloV%KoVsFinVlo → 65,4
+✅ Заполнено: OKVED_01_ChiPriUby(-DoNalV%K:VsAkt → -2,6
 ✅ Заполнено: OKVED_03_PriUby(-DoNalV%K:VsAkt → 0,6
 ✅ Заполнено: OKVED_03_PriUby(-DoNalV%K:VneAkt → 1
 ✅ Заполнено: OKVED_03_PriUby(-DoNalV%K:OboAkt → 1,3
@@ -8177,6 +8179,7 @@
 ✅ Заполнено: OKVED_03_PriUby(-DoNalV%K:KraOby → 2,7
 ✅ Заполнено: OKVED_03_FinRezUbyOrgV%KItoAktUbyOrg → 9,8
 ✅ Заполнено: OKVED_03_PriOtFinVloV%KoVsFinVlo → 11,4
+✅ Заполнено: OKVED_03_ChiPriUby(-DoNalV%K:VsAkt → -0,1
 ✅ Заполнено: OKVED_B_PriUby(-DoNalV%K:VsAkt → 23,5
 ✅ Заполнено: OKVED_B_PriUby(-DoNalV%K:VneAkt → 32,7
 ✅ Заполнено: OKVED_B_PriUby(-DoNalV%K:OboAkt → 83,4
@@ -8185,6 +8188,7 @@
 ✅ Заполнено: OKVED_B_PriUby(-DoNalV%K:KraOby → 57,5
 ✅ Заполнено: OKVED_B_FinRezUbyOrgV%KItoAktUbyOrg → 28,9
 ✅ Заполнено: OKVED_B_PriOtFinVloV%KoVsFinVlo → 7
+✅ Заполнено: OKVED_B_ChiPriUby(-DoNalV%K:VsAkt → 24,3
 ✅ Заполнено: OKVED_07_PriUby(-DoNalV%K:VsAkt → 23,5
 ✅ Заполнено: OKVED_07_PriUby(-DoNalV%K:VneAkt → 32,7
 ✅ Заполнено: OKVED_07_PriUby(-DoNalV%K:OboAkt → 83,4
@@ -8193,6 +8197,7 @@
 ✅ Заполнено: OKVED_07_PriUby(-DoNalV%K:KraOby → 57,5
 ✅ Заполнено: OKVED_07_FinRezUbyOrgV%KItoAktUbyOrg → 28,9
 ✅ Заполнено: OKVED_07_PriOtFinVloV%KoVsFinVlo → 7
+✅ Заполнено: OKVED_07_ChiPriUby(-DoNalV%K:VsAkt → 24,3
 ✅ Заполнено: OKVED_C_PriUby(-DoNalV%K:VsAkt → 10,1
 ✅ Заполнено: OKVED_C_PriUby(-DoNalV%K:VneAkt → 21,4
 ✅ Заполнено: OKVED_C_PriUby(-DoNalV%K:OboAkt → 19,3
@@ -8201,6 +8206,7 @@
 ✅ Заполнено: OKVED_C_PriUby(-DoNalV%K:KraOby → 49,8
 ✅ Заполнено: OKVED_C_FinRezUbyOrgV%KItoAktUbyOrg → 13,1
 ✅ Заполнено: OKVED_C_PriOtFinVloV%KoVsFinVlo → 15
+✅ Заполнено: OKVED_C_ChiPriUby(-DoNalV%K:VsAkt → 8,8
 ✅ Заполнено: OKVED_10_PriUby(-DoNalV%K:VsAkt → 11,9
 ✅ Заполнено: OKVED_10_PriUby(-DoNalV%K:VneAkt → 23,1
 ✅ Заполнено: OKVED_10_PriUby(-DoNalV%K:OboAkt → 24,5
@@ -8209,6 +8215,7 @@
 ✅ Заполнено: OKVED_10_PriUby(-DoNalV%K:KraOby → 64,2
 ✅ Заполнено: OKVED_10_FinRezUbyOrgV%KItoAktUbyOrg → 16,9
 ✅ Заполнено: OKVED_10_PriOtFinVloV%KoVsFinVlo → 14
+✅ Заполнено: OKVED_10_ChiPriUby(-DoNalV%K:VsAkt → 10,5
 ✅ Заполнено: OKVED_11_PriUby(-DoNalV%K:VsAkt → 9,3
 ✅ Заполнено: OKVED_11_PriUby(-DoNalV%K:VneAkt → 15,2
 ✅ Заполнено: OKVED_11_PriUby(-DoNalV%K:OboAkt → 24,4
@@ -8217,6 +8224,7 @@
 ✅ Заполнено: OKVED_11_PriUby(-DoNalV%K:KraOby → 230,6
 ℹ️ Отсутствующие данные: OKVED_11_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ✅ Заполнено: OKVED_11_PriOtFinVloV%KoVsFinVlo → 64,2
+✅ Заполнено: OKVED_11_ChiPriUby(-DoNalV%K:VsAkt → 7,7
 ✅ Заполнено: OKVED_33_PriUby(-DoNalV%K:VsAkt → 1,1
 ✅ Заполнено: OKVED_33_PriUby(-DoNalV%K:VneAkt → 4,6
 ✅ Заполнено: OKVED_33_PriUby(-DoNalV%K:OboAkt → 1,4
@@ -8225,6 +8233,7 @@
 ✅ Заполнено: OKVED_33_PriUby(-DoNalV%K:KraOby → 3,2
 ✅ Заполнено: OKVED_33_FinRezUbyOrgV%KItoAktUbyOrg → 2,6
 ✅ Заполнено: OKVED_33_PriOtFinVloV%KoVsFinVlo → 19,3
+✅ Заполнено: OKVED_33_ChiPriUby(-DoNalV%K:VsAkt → 0,4
 ✅ Заполнено: OKVED_35_PriUby(-DoNalV%K:VsAkt → 4,2
 ✅ Заполнено: OKVED_35_PriUby(-DoNalV%K:VneAkt → 6,3
 ✅ Заполнено: OKVED_35_PriUby(-DoNalV%K:OboAkt → 12,2
@@ -8233,6 +8242,7 @@
 ✅ Заполнено: OKVED_35_PriUby(-DoNalV%K:KraOby → 13,1
 ✅ Заполнено: OKVED_35_FinRezUbyOrgV%KItoAktUbyOrg → 7,4
 ✅ Заполнено: OKVED_35_PriOtFinVloV%KoVsFinVlo → 13,6
+✅ Заполнено: OKVED_35_ChiPriUby(-DoNalV%K:VsAkt → 3
 ✅ Заполнено: OKVED_35_PriUby(-DoNalV%K:VsAkt → 4,2
 ✅ Заполнено: OKVED_35_PriUby(-DoNalV%K:VneAkt → 6,3
 ✅ Заполнено: OKVED_35_PriUby(-DoNalV%K:OboAkt → 12,2
@@ -8241,6 +8251,7 @@
 ✅ Заполнено: OKVED_35_PriUby(-DoNalV%K:KraOby → 13,1
 ✅ Заполнено: OKVED_35_FinRezUbyOrgV%KItoAktUbyOrg → 7,4
 ✅ Заполнено: OKVED_35_PriOtFinVloV%KoVsFinVlo → 13,6
+✅ Заполнено: OKVED_35_ChiPriUby(-DoNalV%K:VsAkt → 3
 ✅ Заполнено: OKVED_E_PriUby(-DoNalV%K:VsAkt → 13,8
 ✅ Заполнено: OKVED_E_PriUby(-DoNalV%K:VneAkt → 19,1
 ✅ Заполнено: OKVED_E_PriUby(-DoNalV%K:OboAkt → 50
@@ -8249,6 +8260,7 @@
 ✅ Заполнено: OKVED_E_PriUby(-DoNalV%K:KraOby → 75,2
 ✅ Заполнено: OKVED_E_FinRezUbyOrgV%KItoAktUbyOrg → 4,4
 ✅ Заполнено: OKVED_E_PriOtFinVloV%KoVsFinVlo → 941
+✅ Заполнено: OKVED_E_ChiPriUby(-DoNalV%K:VsAkt → 10,6
 ✅ Заполнено: OKVED_36_PriUby(-DoNalV%K:VsAkt → 16,2
 ✅ Заполнено: OKVED_36_PriUby(-DoNalV%K:VneAkt → 22,5
 ✅ Заполнено: OKVED_36_PriUby(-DoNalV%K:OboAkt → 57,5
@@ -8257,6 +8269,7 @@
 ✅ Заполнено: OKVED_36_PriUby(-DoNalV%K:KraOby → 88,8
 ✅ Заполнено: OKVED_36_FinRezUbyOrgV%KItoAktUbyOrg → 4,4
 ✅ Заполнено: OKVED_36_PriOtFinVloV%KoVsFinVlo → 0
+✅ Заполнено: OKVED_36_ChiPriUby(-DoNalV%K:VsAkt → 12,4
 ✅ Заполнено: OKVED_38_PriUby(-DoNalV%K:VsAkt → 0,4
 ✅ Заполнено: OKVED_38_PriUby(-DoNalV%K:VneAkt → 0,5
 ✅ Заполнено: OKVED_38_PriUby(-DoNalV%K:OboAkt → 1,5
@@ -8265,6 +8278,7 @@
 ✅ Заполнено: OKVED_38_PriUby(-DoNalV%K:KraOby → 1,9
 ✅ Заполнено: OKVED_38_FinRezUbyOrgV%KItoAktUbyOrg → 133,3
 ✅ Заполнено: OKVED_38_PriOtFinVloV%KoVsFinVlo → 239,6
+✅ Заполнено: OKVED_38_ChiPriUby(-DoNalV%K:VsAkt → 0,4
 ✅ Заполнено: OKVED_F_PriUby(-DoNalV%K:VsAkt → -0,5
 ✅ Заполнено: OKVED_F_PriUby(-DoNalV%K:VneAkt → -3,9
 ✅ Заполнено: OKVED_F_PriUby(-DoNalV%K:OboAkt → -0,5
@@ -8273,6 +8287,7 @@
 ✅ Заполнено: OKVED_F_PriUby(-DoNalV%K:KraOby → -0,5
 ✅ Заполнено: OKVED_F_FinRezUbyOrgV%KItoAktUbyOrg → 3,6
 ✅ Заполнено: OKVED_F_PriOtFinVloV%KoVsFinVlo → 2,5
+✅ Заполнено: OKVED_F_ChiPriUby(-DoNalV%K:VsAkt → -1
 ✅ Заполнено: OKVED_42_PriUby(-DoNalV%K:VsAkt → -1,6
 ✅ Заполнено: OKVED_42_PriUby(-DoNalV%K:VneAkt → -4,6
 ✅ Заполнено: OKVED_42_PriUby(-DoNalV%K:OboAkt → -2,6
@@ -8281,6 +8296,7 @@
 ✅ Заполнено: OKVED_42_PriUby(-DoNalV%K:KraOby → -2,6
 ✅ Заполнено: OKVED_42_FinRezUbyOrgV%KItoAktUbyOrg → 1,6
 ✅ Заполнено: OKVED_42_PriOtFinVloV%KoVsFinVlo → 1,4
+✅ Заполнено: OKVED_42_ChiPriUby(-DoNalV%K:VsAkt → -3,2
 ✅ Заполнено: OKVED_43_PriUby(-DoNalV%K:VsAkt → 19,4
 ✅ Заполнено: OKVED_43_PriUby(-DoNalV%K:VneAkt → 38,9
 ✅ Заполнено: OKVED_43_PriUby(-DoNalV%K:OboAkt → 38,7
@@ -8289,6 +8305,7 @@
 ✅ Заполнено: OKVED_43_PriUby(-DoNalV%K:KraOby → 22
 ℹ️ Отсутствующие данные: OKVED_43_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ✅ Заполнено: OKVED_43_PriOtFinVloV%KoVsFinVlo → 0
+✅ Заполнено: OKVED_43_ChiPriUby(-DoNalV%K:VsAkt → 16,6
 ✅ Заполнено: OKVED_G_PriUby(-DoNalV%K:VsAkt → 5,3
 ✅ Заполнено: OKVED_G_PriUby(-DoNalV%K:VneAkt → 30,6
 ✅ Заполнено: OKVED_G_PriUby(-DoNalV%K:OboAkt → 6,4
@@ -8297,6 +8314,7 @@
 ✅ Заполнено: OKVED_G_PriUby(-DoNalV%K:KraOby → 12,3
 ✅ Заполнено: OKVED_G_FinRezUbyOrgV%KItoAktUbyOrg → 4,1
 ✅ Заполнено: OKVED_G_PriOtFinVloV%KoVsFinVlo → 9,6
+✅ Заполнено: OKVED_G_ChiPriUby(-DoNalV%K:VsAkt → 4,1
 ✅ Заполнено: OKVED_46_PriUby(-DoNalV%K:VsAkt → 5,6
 ✅ Заполнено: OKVED_46_PriUby(-DoNalV%K:VneAkt → 42,6
 ✅ Заполнено: OKVED_46_PriUby(-DoNalV%K:OboAkt → 6,5
@@ -8305,6 +8323,7 @@
 ✅ Заполнено: OKVED_46_PriUby(-DoNalV%K:KraOby → 14
 ✅ Заполнено: OKVED_46_FinRezUbyOrgV%KItoAktUbyOrg → 5,8
 ✅ Заполнено: OKVED_46_PriOtFinVloV%KoVsFinVlo → 9,4
+✅ Заполнено: OKVED_46_ChiPriUby(-DoNalV%K:VsAkt → 4,5
 ✅ Заполнено: OKVED_47_PriUby(-DoNalV%K:VsAkt → 2,6
 ✅ Заполнено: OKVED_47_PriUby(-DoNalV%K:VneAkt → 5,3
 ✅ Заполнено: OKVED_47_PriUby(-DoNalV%K:OboAkt → 5,2
@@ -8313,6 +8332,7 @@
 ✅ Заполнено: OKVED_47_PriUby(-DoNalV%K:KraOby → 4,1
 ✅ Заполнено: OKVED_47_FinRezUbyOrgV%KItoAktUbyOrg → 1,3
 ✅ Заполнено: OKVED_47_PriOtFinVloV%KoVsFinVlo → 23,8
+✅ Заполнено: OKVED_47_ChiPriUby(-DoNalV%K:VsAkt → 1,6
 ✅ Заполнено: OKVED_H_PriUby(-DoNalV%K:VsAkt → 2,4
 ✅ Заполнено: OKVED_H_PriUby(-DoNalV%K:VneAkt → 2,9
 ✅ Заполнено: OKVED_H_PriUby(-DoNalV%K:OboAkt → 14,1
@@ -8321,6 +8341,7 @@
 ✅ Заполнено: OKVED_H_PriUby(-DoNalV%K:KraOby → 28
 ✅ Заполнено: OKVED_H_FinRezUbyOrgV%KItoAktUbyOrg → 4,6
 ✅ Заполнено: OKVED_H_PriOtFinVloV%KoVsFinVlo → 42,9
+✅ Заполнено: OKVED_H_ChiPriUby(-DoNalV%K:VsAkt → 1,6
 ✅ Заполнено: OKVED_49_PriUby(-DoNalV%K:VsAkt → 6,9
 ✅ Заполнено: OKVED_49_PriUby(-DoNalV%K:VneAkt → 12,7
 ✅ Заполнено: OKVED_49_PriUby(-DoNalV%K:OboAkt → 15,2
@@ -8329,6 +8350,7 @@
 ✅ Заполнено: OKVED_49_PriUby(-DoNalV%K:KraOby → 43,4
 ℹ️ Отсутствующие данные: OKVED_49_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ✅ Заполнено: OKVED_49_PriOtFinVloV%KoVsFinVlo → 1098666,7
+✅ Заполнено: OKVED_49_ChiPriUby(-DoNalV%K:VsAkt → 5,6
 ✅ Заполнено: OKVED_50_PriUby(-DoNalV%K:VsAkt → -1,7
 ✅ Заполнено: OKVED_50_PriUby(-DoNalV%K:VneAkt → -2
 ✅ Заполнено: OKVED_50_PriUby(-DoNalV%K:OboAkt → -14,6
@@ -8337,6 +8359,7 @@
 ✅ Заполнено: OKVED_50_PriUby(-DoNalV%K:KraOby → -8,3
 ✅ Заполнено: OKVED_50_FinRezUbyOrgV%KItoAktUbyOrg → 1,7
 ✅ Заполнено: OKVED_50_PriOtFinVloV%KoVsFinVlo → 4
+✅ Заполнено: OKVED_50_ChiPriUby(-DoNalV%K:VsAkt → -1,6
 ✅ Заполнено: OKVED_52_PriUby(-DoNalV%K:VsAkt → 2,4
 ✅ Заполнено: OKVED_52_PriUby(-DoNalV%K:VneAkt → 2,9
 ✅ Заполнено: OKVED_52_PriUby(-DoNalV%K:OboAkt → 15
@@ -8345,6 +8368,7 @@
 ✅ Заполнено: OKVED_52_PriUby(-DoNalV%K:KraOby → 42,1
 ✅ Заполнено: OKVED_52_FinRezUbyOrgV%KItoAktUbyOrg → 10,4
 ✅ Заполнено: OKVED_52_PriOtFinVloV%KoVsFinVlo → 28,5
+✅ Заполнено: OKVED_52_ChiPriUby(-DoNalV%K:VsAkt → 1,7
 ✅ Заполнено: OKVED_I_PriUby(-DoNalV%K:VsAkt → -9,1
 ✅ Заполнено: OKVED_I_PriUby(-DoNalV%K:VneAkt → -10,9
 ✅ Заполнено: OKVED_I_PriUby(-DoNalV%K:OboAkt → -56,3
@@ -8353,6 +8377,7 @@
 ✅ Заполнено: OKVED_I_PriUby(-DoNalV%K:KraOby → -111
 ✅ Заполнено: OKVED_I_FinRezUbyOrgV%KItoAktUbyOrg → 9,2
 ✅ Заполнено: OKVED_I_PriOtFinVloV%KoVsFinVlo → 5,1
+✅ Заполнено: OKVED_I_ChiPriUby(-DoNalV%K:VsAkt → -9,3
 ✅ Заполнено: OKVED_55_PriUby(-DoNalV%K:VsAkt → -9,1
 ✅ Заполнено: OKVED_55_PriUby(-DoNalV%K:VneAkt → -10,9
 ✅ Заполнено: OKVED_55_PriUby(-DoNalV%K:OboAkt → -56,7
@@ -8361,6 +8386,7 @@
 ✅ Заполнено: OKVED_55_PriUby(-DoNalV%K:KraOby → -112,9
 ✅ Заполнено: OKVED_55_FinRezUbyOrgV%KItoAktUbyOrg → 9,2
 ✅ Заполнено: OKVED_55_PriOtFinVloV%KoVsFinVlo → 5,1
+✅ Заполнено: OKVED_55_ChiPriUby(-DoNalV%K:VsAkt → -9,4
 ✅ Заполнено: OKVED_56_PriUby(-DoNalV%K:VsAkt → 6,8
 ✅ Заполнено: OKVED_56_PriUby(-DoNalV%K:VneAkt → 669,6
 ✅ Заполнено: OKVED_56_PriUby(-DoNalV%K:OboAkt → 6,8
@@ -8369,6 +8395,7 @@
 ✅ Заполнено: OKVED_56_PriUby(-DoNalV%K:KraOby → 5,3
 ℹ️ Отсутствующие данные: OKVED_56_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ℹ️ Отсутствующие данные: OKVED_56_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_56_ChiPriUby(-DoNalV%K:VsAkt → -4,4
 ✅ Заполнено: OKVED_K_PriUby(-DoNalV%K:VsAkt → -5,5
 ✅ Заполнено: OKVED_K_PriUby(-DoNalV%K:VneAkt → -37,1
 ✅ Заполнено: OKVED_K_PriUby(-DoNalV%K:OboAkt → -6,5
@@ -8377,6 +8404,7 @@
 ✅ Заполнено: OKVED_K_PriUby(-DoNalV%K:KraOby → -1610,7
 ✅ Заполнено: OKVED_K_FinRezUbyOrgV%KItoAktUbyOrg → 5,8
 ✅ Заполнено: OKVED_K_PriOtFinVloV%KoVsFinVlo → 51,7
+✅ Заполнено: OKVED_K_ChiPriUby(-DoNalV%K:VsAkt → 2,7
 ✅ Заполнено: OKVED_64_PriUby(-DoNalV%K:VsAkt → -5,5
 ✅ Заполнено: OKVED_64_PriUby(-DoNalV%K:VneAkt → -37,1
 ✅ Заполнено: OKVED_64_PriUby(-DoNalV%K:OboAkt → -6,5
@@ -8385,6 +8413,7 @@
 ✅ Заполнено: OKVED_64_PriUby(-DoNalV%K:KraOby → -1610,7
 ✅ Заполнено: OKVED_64_FinRezUbyOrgV%KItoAktUbyOrg → 5,8
 ✅ Заполнено: OKVED_64_PriOtFinVloV%KoVsFinVlo → 51,7
+✅ Заполнено: OKVED_64_ChiPriUby(-DoNalV%K:VsAkt → 2,7
 ✅ Заполнено: OKVED_L_PriUby(-DoNalV%K:VsAkt → 2,3
 ✅ Заполнено: OKVED_L_PriUby(-DoNalV%K:VneAkt → 3,1
 ✅ Заполнено: OKVED_L_PriUby(-DoNalV%K:OboAkt → 9,4
@@ -8393,6 +8422,7 @@
 ✅ Заполнено: OKVED_L_PriUby(-DoNalV%K:KraOby → 8,4
 ✅ Заполнено: OKVED_L_FinRezUbyOrgV%KItoAktUbyOrg → 3,8
 ✅ Заполнено: OKVED_L_PriOtFinVloV%KoVsFinVlo → 168,2
+✅ Заполнено: OKVED_L_ChiPriUby(-DoNalV%K:VsAkt → 2,2
 ✅ Заполнено: OKVED_M_PriUby(-DoNalV%K:VsAkt → -1,9
 ✅ Заполнено: OKVED_M_PriUby(-DoNalV%K:VneAkt → -2,6
 ✅ Заполнено: OKVED_M_PriUby(-DoNalV%K:OboAkt → -6,7
@@ -8401,6 +8431,7 @@
 ✅ Заполнено: OKVED_M_PriUby(-DoNalV%K:KraOby → -5,4
 ✅ Заполнено: OKVED_M_FinRezUbyOrgV%KItoAktUbyOrg → 1,9
 ✅ Заполнено: OKVED_M_PriOtFinVloV%KoVsFinVlo → 20,8
+✅ Заполнено: OKVED_M_ChiPriUby(-DoNalV%K:VsAkt → -1,4
 ✅ Заполнено: OKVED_69_PriUby(-DoNalV%K:VsAkt → 171,4
 ✅ Заполнено: OKVED_69_PriUby(-DoNalV%K:VneAkt → 0
 ✅ Заполнено: OKVED_69_PriUby(-DoNalV%K:OboAkt → 171,4
@@ -8409,6 +8440,7 @@
 ✅ Заполнено: OKVED_69_PriUby(-DoNalV%K:KraOby → 1200
 ℹ️ Отсутствующие данные: OKVED_69_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ℹ️ Отсутствующие данные: OKVED_69_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_69_ChiPriUby(-DoNalV%K:VsAkt → 171,4
 ✅ Заполнено: OKVED_70_PriUby(-DoNalV%K:VsAkt → -2,5
 ✅ Заполнено: OKVED_70_PriUby(-DoNalV%K:VneAkt → -7,2
 ✅ Заполнено: OKVED_70_PriUby(-DoNalV%K:OboAkt → -3,9
@@ -8417,6 +8449,7 @@
 ✅ Заполнено: OKVED_70_PriUby(-DoNalV%K:KraOby → -7
 ✅ Заполнено: OKVED_70_FinRezUbyOrgV%KItoAktUbyOrg → 2,5
 ✅ Заполнено: OKVED_70_PriOtFinVloV%KoVsFinVlo → 12,1
+✅ Заполнено: OKVED_70_ChiPriUby(-DoNalV%K:VsAkt → -1,2
 ✅ Заполнено: OKVED_71_PriUby(-DoNalV%K:VsAkt → -1,7
 ✅ Заполнено: OKVED_71_PriUby(-DoNalV%K:VneAkt → -2
 ✅ Заполнено: OKVED_71_PriUby(-DoNalV%K:OboAkt → -10
@@ -8425,6 +8458,7 @@
 ✅ Заполнено: OKVED_71_PriUby(-DoNalV%K:KraOby → -4,9
 ✅ Заполнено: OKVED_71_FinRezUbyOrgV%KItoAktUbyOrg → 1,8
 ✅ Заполнено: OKVED_71_PriOtFinVloV%KoVsFinVlo → 76,8
+✅ Заполнено: OKVED_71_ChiPriUby(-DoNalV%K:VsAkt → -1,4
 ✅ Заполнено: OKVED_74_PriUby(-DoNalV%K:VsAkt → -23,6
 ✅ Заполнено: OKVED_74_PriUby(-DoNalV%K:VneAkt → -27,3
 ✅ Заполнено: OKVED_74_PriUby(-DoNalV%K:OboAkt → -176,6
@@ -8433,6 +8467,7 @@
 ✅ Заполнено: OKVED_74_PriUby(-DoNalV%K:KraOby → -19,1
 ✅ Заполнено: OKVED_74_FinRezUbyOrgV%KItoAktUbyOrg → 23,6
 ℹ️ Отсутствующие данные: OKVED_74_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_74_ChiPriUby(-DoNalV%K:VsAkt → -27,1
 ✅ Заполнено: OKVED_N_PriUby(-DoNalV%K:VsAkt → -0,2
 ✅ Заполнено: OKVED_N_PriUby(-DoNalV%K:VneAkt → -0,2
 ✅ Заполнено: OKVED_N_PriUby(-DoNalV%K:OboAkt → -1,7
@@ -8441,6 +8476,7 @@
 ✅ Заполнено: OKVED_N_PriUby(-DoNalV%K:KraOby → -0,3
 ✅ Заполнено: OKVED_N_FinRezUbyOrgV%KItoAktUbyOrg → 4,8
 ✅ Заполнено: OKVED_N_PriOtFinVloV%KoVsFinVlo → 28,4
+✅ Заполнено: OKVED_N_ChiPriUby(-DoNalV%K:VsAkt → 7,4
 ✅ Заполнено: OKVED_79_PriUby(-DoNalV%K:VsAkt → -9,1
 ✅ Заполнено: OKVED_79_PriUby(-DoNalV%K:VneAkt → -9,4
 ✅ Заполнено: OKVED_79_PriUby(-DoNalV%K:OboAkt → -376,2
@@ -8449,6 +8485,7 @@
 ✅ Заполнено: OKVED_79_PriUby(-DoNalV%K:KraOby → -596,7
 ✅ Заполнено: OKVED_79_FinRezUbyOrgV%KItoAktUbyOrg → 9,1
 ✅ Заполнено: OKVED_79_PriOtFinVloV%KoVsFinVlo → 0
+✅ Заполнено: OKVED_79_ChiPriUby(-DoNalV%K:VsAkt → -7
 ✅ Заполнено: OKVED_81_PriUby(-DoNalV%K:VsAkt → 10,5
 ✅ Заполнено: OKVED_81_PriUby(-DoNalV%K:VneAkt → 13,4
 ✅ Заполнено: OKVED_81_PriUby(-DoNalV%K:OboAkt → 48,3
@@ -8457,6 +8494,7 @@
 ✅ Заполнено: OKVED_81_PriUby(-DoNalV%K:KraOby → 22,4
 ℹ️ Отсутствующие данные: OKVED_81_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ℹ️ Отсутствующие данные: OKVED_81_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_81_ChiPriUby(-DoNalV%K:VsAkt → 1,5
 ✅ Заполнено: OKVED_82_PriUby(-DoNalV%K:VsAkt → 4,7
 ✅ Заполнено: OKVED_82_PriUby(-DoNalV%K:VneAkt → 5,2
 ✅ Заполнено: OKVED_82_PriUby(-DoNalV%K:OboAkt → 51,3
@@ -8465,6 +8503,7 @@
 ✅ Заполнено: OKVED_82_PriUby(-DoNalV%K:KraOby → 8
 ℹ️ Отсутствующие данные: OKVED_82_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ℹ️ Отсутствующие данные: OKVED_82_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_82_ChiPriUby(-DoNalV%K:VsAkt → 3,9
 ✅ Заполнено: OKVED_O_PriUby(-DoNalV%K:VsAkt → 5
 ✅ Заполнено: OKVED_O_PriUby(-DoNalV%K:VneAkt → 5,7
 ✅ Заполнено: OKVED_O_PriUby(-DoNalV%K:OboAkt → 38,3
@@ -8473,6 +8512,7 @@
 ✅ Заполнено: OKVED_O_PriUby(-DoNalV%K:KraOby → 9,2
 ℹ️ Отсутствующие данные: OKVED_O_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ℹ️ Отсутствующие данные: OKVED_O_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_O_ChiPriUby(-DoNalV%K:VsAkt → 4,6
 ✅ Заполнено: OKVED_85_PriUby(-DoNalV%K:VsAkt → 43,8
 ✅ Заполнено: OKVED_85_PriUby(-DoNalV%K:VneAkt → 0
 ✅ Заполнено: OKVED_85_PriUby(-DoNalV%K:OboAkt → 43,8
@@ -8481,6 +8521,7 @@
 ✅ Заполнено: OKVED_85_PriUby(-DoNalV%K:KraOby → 161,6
 ℹ️ Отсутствующие данные: OKVED_85_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ℹ️ Отсутствующие данные: OKVED_85_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_85_ChiPriUby(-DoNalV%K:VsAkt → 26
 ✅ Заполнено: OKVED_85_PriUby(-DoNalV%K:VsAkt → 43,8
 ✅ Заполнено: OKVED_85_PriUby(-DoNalV%K:VneAkt → 0
 ✅ Заполнено: OKVED_85_PriUby(-DoNalV%K:OboAkt → 43,8
@@ -8489,6 +8530,7 @@
 ✅ Заполнено: OKVED_85_PriUby(-DoNalV%K:KraOby → 161,6
 ℹ️ Отсутствующие данные: OKVED_85_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ℹ️ Отсутствующие данные: OKVED_85_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_85_ChiPriUby(-DoNalV%K:VsAkt → 26
 ✅ Заполнено: OKVED_R_PriUby(-DoNalV%K:VsAkt → 194,1
 ✅ Заполнено: OKVED_R_PriUby(-DoNalV%K:VneAkt → 0
 ✅ Заполнено: OKVED_R_PriUby(-DoNalV%K:OboAkt → 194,1
@@ -8497,6 +8539,7 @@
 ✅ Заполнено: OKVED_R_PriUby(-DoNalV%K:KraOby → 2761,3
 ℹ️ Отсутствующие данные: OKVED_R_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ℹ️ Отсутствующие данные: OKVED_R_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_R_ChiPriUby(-DoNalV%K:VsAkt → 194,1
 ✅ Заполнено: OKVED_93_PriUby(-DoNalV%K:VsAkt → 194,1
 ✅ Заполнено: OKVED_93_PriUby(-DoNalV%K:VneAkt → 0
 ✅ Заполнено: OKVED_93_PriUby(-DoNalV%K:OboAkt → 194,1
@@ -8505,6 +8548,7 @@
 ✅ Заполнено: OKVED_93_PriUby(-DoNalV%K:KraOby → 2761,3
 ℹ️ Отсутствующие данные: OKVED_93_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ℹ️ Отсутствующие данные: OKVED_93_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_93_ChiPriUby(-DoNalV%K:VsAkt → 194,1
 ✅ Заполнено: OKVED_S_PriUby(-DoNalV%K:VsAkt → 9,4
 ✅ Заполнено: OKVED_S_PriUby(-DoNalV%K:VneAkt → 274,3
 ✅ Заполнено: OKVED_S_PriUby(-DoNalV%K:OboAkt → 9,7
@@ -8513,6 +8557,7 @@
 ✅ Заполнено: OKVED_S_PriUby(-DoNalV%K:KraOby → 73,2
 ✅ Заполнено: OKVED_S_FinRezUbyOrgV%KItoAktUbyOrg → 32,7
 ✅ Заполнено: OKVED_S_PriOtFinVloV%KoVsFinVlo → 73,9
+✅ Заполнено: OKVED_S_ChiPriUby(-DoNalV%K:VsAkt → 7,6
 ✅ Заполнено: OKVED_94_PriUby(-DoNalV%K:VsAkt → 10,4
 ✅ Заполнено: OKVED_94_PriUby(-DoNalV%K:VneAkt → 335,8
 ✅ Заполнено: OKVED_94_PriUby(-DoNalV%K:OboAkt → 10,7
@@ -8521,6 +8566,7 @@
 ✅ Заполнено: OKVED_94_PriUby(-DoNalV%K:KraOby → 106,8
 ℹ️ Отсутствующие данные: OKVED_94_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ✅ Заполнено: OKVED_94_PriOtFinVloV%KoVsFinVlo → 73,9
+✅ Заполнено: OKVED_94_ChiPriUby(-DoNalV%K:VsAkt → 8,6
 ✅ Заполнено: OKVED_96_PriUby(-DoNalV%K:VsAkt → -32,3
 ✅ Заполнено: OKVED_96_PriUby(-DoNalV%K:VneAkt → -191,5
 ✅ Заполнено: OKVED_96_PriUby(-DoNalV%K:OboAkt → -38,8
@@ -8529,6 +8575,7 @@
 ✅ Заполнено: OKVED_96_PriUby(-DoNalV%K:KraOby → -23
 ✅ Заполнено: OKVED_96_FinRezUbyOrgV%KItoAktUbyOrg → 32,7
 ℹ️ Отсутствующие данные: OKVED_96_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_96_ChiPriUby(-DoNalV%K:VsAkt → -32,7
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10KolOrg(ed → 76
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10V%KObsKol → 32,9
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10DebZad → 27004313
@@ -10249,150 +10296,187 @@
 ✅ Заполнено: OKVED_94_PrCenBum → 487200
 ℹ️ Отсутствующие данные: OKVED_94_ProcDolgObyazVklInvAkt → [-]
 ✅ Заполнено: OKVED_94_Saldo → 36281
+✅ Заполнено: OKVED_A_PostFin → 92795778
 ✅ Заполнено: OKVED_A_PlCredit → 48788253
 ✅ Заполнено: OKVED_A_PostDeyt → 11681
 ✅ Заполнено: OKVED_A_PostDeyt1 → 1137575
 ✅ Заполнено: OKVED_A_DrPost → 42708269
+✅ Заполнено: OKVED_01_PostFin → 1519961
 ✅ Заполнено: OKVED_01_PlCredit → 1358330
 ✅ Заполнено: OKVED_01_PostDeyt → 11631
 ℹ️ Отсутствующие данные: OKVED_01_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_01_DrPost → [-]
+✅ Заполнено: OKVED_03_PostFin → 91275817
 ✅ Заполнено: OKVED_03_PlCredit → 47429923
 ✅ Заполнено: OKVED_03_PostDeyt → 50
 ✅ Заполнено: OKVED_03_PostDeyt1 → 1137575
 ✅ Заполнено: OKVED_03_DrPost → 42708269
+✅ Заполнено: OKVED_B_PostFin → 24845238
 ✅ Заполнено: OKVED_B_PlCredit → 22016071
 ℹ️ Отсутствующие данные: OKVED_B_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_B_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_B_DrPost → 2329167
+✅ Заполнено: OKVED_07_PostFin → 24845238
 ✅ Заполнено: OKVED_07_PlCredit → 22016071
 ℹ️ Отсутствующие данные: OKVED_07_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_07_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_07_DrPost → 2329167
+✅ Заполнено: OKVED_C_PostFin → 16778280
 ✅ Заполнено: OKVED_C_PlCredit → 9917168
 ✅ Заполнено: OKVED_C_PostDeyt → 611545
 ℹ️ Отсутствующие данные: OKVED_C_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_C_DrPost → 6249567
+✅ Заполнено: OKVED_10_PostFin → 15621014
 ✅ Заполнено: OKVED_10_PlCredit → 8759969
 ✅ Заполнено: OKVED_10_PostDeyt → 611545
 ℹ️ Отсутствующие данные: OKVED_10_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_10_DrPost → 6249500
+✅ Заполнено: OKVED_32_PostFin → 67
 ℹ️ Отсутствующие данные: OKVED_32_PlCredit → [-]
 ℹ️ Отсутствующие данные: OKVED_32_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_32_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_32_DrPost → 67
+✅ Заполнено: OKVED_33_PostFin → 115719,9
 ✅ Заполнено: OKVED_33_PlCredit → 1157199
 ℹ️ Отсутствующие данные: OKVED_33_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_33_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_33_DrPost → [-]
+✅ Заполнено: OKVED_35_PostFin → 70787676
 ✅ Заполнено: OKVED_35_PlCredit → 69969924
 ✅ Заполнено: OKVED_35_PostDeyt → 814941
 ℹ️ Отсутствующие данные: OKVED_35_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_35_DrPost → 97
+✅ Заполнено: OKVED_35_PostFin → 70787676
 ✅ Заполнено: OKVED_35_PlCredit → 69969924
 ✅ Заполнено: OKVED_35_PostDeyt → 814941
 ℹ️ Отсутствующие данные: OKVED_35_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_35_DrPost → 97
+✅ Заполнено: OKVED_38_PostFin → 307388
 ✅ Заполнено: OKVED_38_PlCredit → 277378
 ✅ Заполнено: OKVED_38_PostDeyt → 30010
 ℹ️ Отсутствующие данные: OKVED_38_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_38_DrPost → [-]
+✅ Заполнено: OKVED_F_PostFin → 648075
 ✅ Заполнено: OKVED_F_PlCredit → 640165
 ✅ Заполнено: OKVED_F_PostDeyt → 100
 ℹ️ Отсутствующие данные: OKVED_F_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_F_DrPost → 7810
+✅ Заполнено: OKVED_41_PostFin → 557061
 ✅ Заполнено: OKVED_41_PlCredit → 549251
 ℹ️ Отсутствующие данные: OKVED_41_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_41_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_41_DrPost → 7810
+✅ Заполнено: OKVED_42_PostFin → 78980
 ✅ Заполнено: OKVED_42_PlCredit → 78980
 ℹ️ Отсутствующие данные: OKVED_42_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_42_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_42_DrPost → [-]
+✅ Заполнено: OKVED_43_PostFin → 12034
 ✅ Заполнено: OKVED_43_PlCredit → 11934
 ✅ Заполнено: OKVED_43_PostDeyt → 100
 ℹ️ Отсутствующие данные: OKVED_43_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_43_DrPost → [-]
+✅ Заполнено: OKVED_G_PostFin → 25583331
 ✅ Заполнено: OKVED_G_PlCredit → 25576548
 ℹ️ Отсутствующие данные: OKVED_G_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_G_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_G_DrPost → 6783
+✅ Заполнено: OKVED_46_PostFin → 25539928
 ✅ Заполнено: OKVED_46_PlCredit → 25533746
 ℹ️ Отсутствующие данные: OKVED_46_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_46_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_46_DrPost → 6182
+✅ Заполнено: OKVED_47_PostFin → 43403
 ✅ Заполнено: OKVED_47_PlCredit → 42802
 ℹ️ Отсутствующие данные: OKVED_47_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_47_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_47_DrPost → 601
+✅ Заполнено: OKVED_H_PostFin → 9043491
 ✅ Заполнено: OKVED_H_PlCredit → 8691342
 ✅ Заполнено: OKVED_H_PostDeyt → 10
 ℹ️ Отсутствующие данные: OKVED_H_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_H_DrPost → 352139
+✅ Заполнено: OKVED_50_PostFin → 319577
 ✅ Заполнено: OKVED_50_PlCredit → 319577
 ℹ️ Отсутствующие данные: OKVED_50_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_50_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_50_DrPost → [-]
+✅ Заполнено: OKVED_51_PostFin → 274989
 ✅ Заполнено: OKVED_51_PlCredit → 274989
 ℹ️ Отсутствующие данные: OKVED_51_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_51_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_51_DrPost → [-]
+✅ Заполнено: OKVED_52_PostFin → 8339772
 ✅ Заполнено: OKVED_52_PlCredit → 7987634
 ✅ Заполнено: OKVED_52_PostDeyt → 10
 ℹ️ Отсутствующие данные: OKVED_52_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_52_DrPost → 352128
+✅ Заполнено: OKVED_I_PostFin → 1565296
 ✅ Заполнено: OKVED_I_PlCredit → 1013461
 ✅ Заполнено: OKVED_I_PostDeyt → 551835
 ℹ️ Отсутствующие данные: OKVED_I_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_I_DrPost → [-]
+✅ Заполнено: OKVED_55_PostFin → 1565296
 ✅ Заполнено: OKVED_55_PlCredit → 1013461
 ✅ Заполнено: OKVED_55_PostDeyt → 551835
 ℹ️ Отсутствующие данные: OKVED_55_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_55_DrPost → [-]
+✅ Заполнено: OKVED_K_PostFin → 98370462
 ✅ Заполнено: OKVED_K_PlCredit → 98370462
 ℹ️ Отсутствующие данные: OKVED_K_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_K_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_K_DrPost → [-]
+✅ Заполнено: OKVED_64_PostFin → 98370462
 ✅ Заполнено: OKVED_64_PlCredit → 98370462
 ℹ️ Отсутствующие данные: OKVED_64_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_64_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_64_DrPost → [-]
+✅ Заполнено: OKVED_L_PostFin → 1711933
 ✅ Заполнено: OKVED_L_PlCredit → 1104024
 ✅ Заполнено: OKVED_L_PostDeyt → 600001
 ℹ️ Отсутствующие данные: OKVED_L_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_L_DrPost → 7908
+✅ Заполнено: OKVED_68_PostFin → 1711933
 ✅ Заполнено: OKVED_68_PlCredit → 1104024
 ✅ Заполнено: OKVED_68_PostDeyt → 600001
 ℹ️ Отсутствующие данные: OKVED_68_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_68_DrPost → 7908
+✅ Заполнено: OKVED_70_PostFin → 1237286
 ℹ️ Отсутствующие данные: OKVED_70_PlCredit → [-]
 ℹ️ Отсутствующие данные: OKVED_70_PostDeyt → [-]
 ✅ Заполнено: OKVED_70_PostDeyt1 → 1096137
 ✅ Заполнено: OKVED_70_DrPost → 141149
+✅ Заполнено: OKVED_71_PostFin → 33685066
 ✅ Заполнено: OKVED_71_PlCredit → 33683806
 ℹ️ Отсутствующие данные: OKVED_71_PostDeyt → [-]
 ✅ Заполнено: OKVED_71_PostDeyt1 → 360
 ✅ Заполнено: OKVED_71_DrPost → 900
+✅ Заполнено: OKVED_74_PostFin → 2600
 ✅ Заполнено: OKVED_74_PlCredit → 2600
 ℹ️ Отсутствующие данные: OKVED_74_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_74_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_74_DrPost → [-]
+✅ Заполнено: OKVED_N_PostFin → 361931
 ✅ Заполнено: OKVED_N_PlCredit → 161931
 ℹ️ Отсутствующие данные: OKVED_N_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_N_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_N_DrPost → 200000
+✅ Заполнено: OKVED_79_PostFin → 161931
 ✅ Заполнено: OKVED_79_PlCredit → 161931
 ℹ️ Отсутствующие данные: OKVED_79_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_79_PostDeyt1 → [-]
 ℹ️ Отсутствующие данные: OKVED_79_DrPost → [-]
+✅ Заполнено: OKVED_81_PostFin → 20000
 ℹ️ Отсутствующие данные: OKVED_81_PlCredit → [-]
 ℹ️ Отсутствующие данные: OKVED_81_PostDeyt → [-]
 ℹ️ Отсутствующие данные: OKVED_81_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_81_DrPost → 200000
+✅ Заполнено: OKVED_S_PostFin → 239020
 ℹ️ Отсутствующие данные: OKVED_S_PlCredit → [-]
 ✅ Заполнено: OKVED_S_PostDeyt → 48349
 ℹ️ Отсутствующие данные: OKVED_S_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_S_DrPost → 190671
+✅ Заполнено: OKVED_94_PostFin → 239020
 ℹ️ Отсутствующие данные: OKVED_94_PlCredit → [-]
 ✅ Заполнено: OKVED_94_PostDeyt → 48349
 ℹ️ Отсутствующие данные: OKVED_94_PostDeyt1 → [-]
