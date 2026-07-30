@@ -6043,348 +6043,447 @@
 ✅ Заполнено: OKVED_96_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → -6438
 ✅ Заполнено: OKVED_A_OtcGoSalProDohIRas → -18518607
 ✅ Заполнено: OKVED_A_OtcGoPri(ubDoNal → 1732971
+✅ Заполнено: OKVED_A_OtcGoTekNalNaPri → 960755
 ✅ Заполнено: OKVED_A_OtcGoOtlNalNaPri → 24862
 ✅ Заполнено: OKVED_A_OtcGoPro → -1194292
 ✅ Заполнено: OKVED_01_OtcGoSalProDohIRas → 701822
 ✅ Заполнено: OKVED_01_OtcGoPri(ubDoNal → -199315
+✅ Заполнено: OKVED_01_OtcGoTekNalNaPri → 188
 ✅ Заполнено: OKVED_01_OtcGoOtlNalNaPri → -3180
 ✅ Заполнено: OKVED_01_OtcGoPro → -1723
 ✅ Заполнено: OKVED_03_OtcGoSalProDohIRas → -19220429
 ✅ Заполнено: OKVED_03_OtcGoPri(ubDoNal → 1932286
+✅ Заполнено: OKVED_03_OtcGoTekNalNaPri → 960567
 ✅ Заполнено: OKVED_03_OtcGoOtlNalNaPri → 28042
 ✅ Заполнено: OKVED_03_OtcGoPro → -1192569
 ✅ Заполнено: OKVED_B_OtcGoSalProDohIRas → -7015722
 ✅ Заполнено: OKVED_B_OtcGoPri(ubDoNal → 27197430
+✅ Заполнено: OKVED_B_OtcGoTekNalNaPri → 1172017
 ✅ Заполнено: OKVED_B_OtcGoOtlNalNaPri → 1804515
 ✅ Заполнено: OKVED_B_OtcGoPro → 324957
 ✅ Заполнено: OKVED_07_OtcGoSalProDohIRas → -7015722
 ✅ Заполнено: OKVED_07_OtcGoPri(ubDoNal → 27197430
+✅ Заполнено: OKVED_07_OtcGoTekNalNaPri → 1172017
 ✅ Заполнено: OKVED_07_OtcGoOtlNalNaPri → 1804515
 ✅ Заполнено: OKVED_07_OtcGoPro → 324957
 ✅ Заполнено: OKVED_C_OtcGoSalProDohIRas → -1094570
 ✅ Заполнено: OKVED_C_OtcGoPri(ubDoNal → 4661253
+✅ Заполнено: OKVED_C_OtcGoTekNalNaPri → 311712
 ✅ Заполнено: OKVED_C_OtcGoOtlNalNaPri → -131029
 ✅ Заполнено: OKVED_C_OtcGoPro → -151267
 ✅ Заполнено: OKVED_10_OtcGoSalProDohIRas → -916511
 ✅ Заполнено: OKVED_10_OtcGoPri(ubDoNal → 4439634
+✅ Заполнено: OKVED_10_OtcGoTekNalNaPri → 276184
 ✅ Заполнено: OKVED_10_OtcGoOtlNalNaPri → -94026
 ✅ Заполнено: OKVED_10_OtcGoPro → -149888
 ✅ Заполнено: OKVED_11_OtcGoSalProDohIRas → 40430
 ✅ Заполнено: OKVED_11_OtcGoPri(ubDoNal → 141924
+✅ Заполнено: OKVED_11_OtcGoTekNalNaPri → 23385
 ✅ Заполнено: OKVED_11_OtcGoOtlNalNaPri → -2335
 ℹ️ Отсутствующие данные: OKVED_11_OtcGoPro → [-]
 ✅ Заполнено: OKVED_32_OtcGoSalProDohIRas → -5070
 ✅ Заполнено: OKVED_32_OtcGoPri(ubDoNal → 5207
+ℹ️ Отсутствующие данные: OKVED_32_OtcGoTekNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_32_OtcGoOtlNalNaPri → [-]
 ✅ Заполнено: OKVED_32_OtcGoPro → -1379
 ✅ Заполнено: OKVED_33_OtcGoSalProDohIRas → -213419
 ✅ Заполнено: OKVED_33_OtcGoPri(ubDoNal → 74488
+✅ Заполнено: OKVED_33_OtcGoTekNalNaPri → 12143
 ✅ Заполнено: OKVED_33_OtcGoOtlNalNaPri → -34668
 ℹ️ Отсутствующие данные: OKVED_33_OtcGoPro → [-]
 ✅ Заполнено: OKVED_35_OtcGoSalProDohIRas → 5619863
 ✅ Заполнено: OKVED_35_OtcGoPri(ubDoNal → 4027301
+✅ Заполнено: OKVED_35_OtcGoTekNalNaPri → 562529
 ✅ Заполнено: OKVED_35_OtcGoOtlNalNaPri → -378779
 ✅ Заполнено: OKVED_35_OtcGoPro → -176013
 ✅ Заполнено: OKVED_35_OtcGoSalProDohIRas → 5619863
 ✅ Заполнено: OKVED_35_OtcGoPri(ubDoNal → 4027301
+✅ Заполнено: OKVED_35_OtcGoTekNalNaPri → 562529
 ✅ Заполнено: OKVED_35_OtcGoOtlNalNaPri → -378779
 ✅ Заполнено: OKVED_35_OtcGoPro → -176013
 ✅ Заполнено: OKVED_E_OtcGoSalProDohIRas → 527237
 ✅ Заполнено: OKVED_E_OtcGoPri(ubDoNal → 1476971
+✅ Заполнено: OKVED_E_OtcGoTekNalNaPri → 300277
 ✅ Заполнено: OKVED_E_OtcGoOtlNalNaPri → -9373
 ✅ Заполнено: OKVED_E_OtcGoPro → -35636
 ✅ Заполнено: OKVED_36_OtcGoSalProDohIRas → 585553
 ✅ Заполнено: OKVED_36_OtcGoPri(ubDoNal → 1471265
+✅ Заполнено: OKVED_36_OtcGoTekNalNaPri → 300277
 ✅ Заполнено: OKVED_36_OtcGoOtlNalNaPri → -9373
 ✅ Заполнено: OKVED_36_OtcGoPro → -35636
 ✅ Заполнено: OKVED_38_OtcGoSalProDohIRas → -58316
 ✅ Заполнено: OKVED_38_OtcGoPri(ubDoNal → 5706
+ℹ️ Отсутствующие данные: OKVED_38_OtcGoTekNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_38_OtcGoOtlNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_38_OtcGoPro → [-]
 ✅ Заполнено: OKVED_41_OtcGoSalProDohIRas → -327351
 ✅ Заполнено: OKVED_41_OtcGoPri(ubDoNal → -29022
+✅ Заполнено: OKVED_41_OtcGoTekNalNaPri → 7860
 ✅ Заполнено: OKVED_41_OtcGoOtlNalNaPri → -24470
 ✅ Заполнено: OKVED_41_OtcGoPro → -355
 ✅ Заполнено: OKVED_42_OtcGoSalProDohIRas → -298642
 ✅ Заполнено: OKVED_42_OtcGoPri(ubDoNal → -129635
+✅ Заполнено: OKVED_42_OtcGoTekNalNaPri → 80981
 ✅ Заполнено: OKVED_42_OtcGoOtlNalNaPri → -42708
 ℹ️ Отсутствующие данные: OKVED_42_OtcGoPro → [-]
 ✅ Заполнено: OKVED_43_OtcGoSalProDohIRas → -7764
 ✅ Заполнено: OKVED_43_OtcGoPri(ubDoNal → 12880
+✅ Заполнено: OKVED_43_OtcGoTekNalNaPri → 5568
 ✅ Заполнено: OKVED_43_OtcGoOtlNalNaPri → 3696
 ℹ️ Отсутствующие данные: OKVED_43_OtcGoPro → [-]
 ✅ Заполнено: OKVED_G_OtcGoSalProDohIRas → -1767762
 ✅ Заполнено: OKVED_G_OtcGoPri(ubDoNal → 1752434
+✅ Заполнено: OKVED_G_OtcGoTekNalNaPri → 462418
 ✅ Заполнено: OKVED_G_OtcGoOtlNalNaPri → 82983
 ✅ Заполнено: OKVED_G_OtcGoPro → -2377
 ✅ Заполнено: OKVED_46_OtcGoSalProDohIRas → -1337224
 ✅ Заполнено: OKVED_46_OtcGoPri(ubDoNal → 1655058
+✅ Заполнено: OKVED_46_OtcGoTekNalNaPri → 392980
 ✅ Заполнено: OKVED_46_OtcGoOtlNalNaPri → 51935
 ✅ Заполнено: OKVED_46_OtcGoPro → -1434
 ✅ Заполнено: OKVED_47_OtcGoSalProDohIRas → -430538
 ✅ Заполнено: OKVED_47_OtcGoPri(ubDoNal → 97376
+✅ Заполнено: OKVED_47_OtcGoTekNalNaPri → 69438
 ✅ Заполнено: OKVED_47_OtcGoOtlNalNaPri → 31048
 ✅ Заполнено: OKVED_47_OtcGoPro → -943
 ✅ Заполнено: OKVED_H_OtcGoSalProDohIRas → 661550
 ✅ Заполнено: OKVED_H_OtcGoPri(ubDoNal → 1076239
+✅ Заполнено: OKVED_H_OtcGoTekNalNaPri → 104577
 ✅ Заполнено: OKVED_H_OtcGoOtlNalNaPri → -203427
 ✅ Заполнено: OKVED_H_OtcGoPro → -48085
 ✅ Заполнено: OKVED_49_OtcGoSalProDohIRas → 36106
 ✅ Заполнено: OKVED_49_OtcGoPri(ubDoNal → 66838
+✅ Заполнено: OKVED_49_OtcGoTekNalNaPri → 12585
 ✅ Заполнено: OKVED_49_OtcGoOtlNalNaPri → 58
 ✅ Заполнено: OKVED_49_OtcGoPro → 19
 ✅ Заполнено: OKVED_50_OtcGoSalProDohIRas → 144512
 ✅ Заполнено: OKVED_50_OtcGoPri(ubDoNal → -93994
+ℹ️ Отсутствующие данные: OKVED_50_OtcGoTekNalNaPri → [-]
 ✅ Заполнено: OKVED_50_OtcGoOtlNalNaPri → 5099
 ℹ️ Отсутствующие данные: OKVED_50_OtcGoPro → [-]
 ✅ Заполнено: OKVED_51_OtcGoSalProDohIRas → -27456
 ✅ Заполнено: OKVED_51_OtcGoPri(ubDoNal → 324419
+✅ Заполнено: OKVED_51_OtcGoTekNalNaPri → 14306
 ✅ Заполнено: OKVED_51_OtcGoOtlNalNaPri → -99116
 ✅ Заполнено: OKVED_51_OtcGoPro → 869
 ✅ Заполнено: OKVED_52_OtcGoSalProDohIRas → 508388
 ✅ Заполнено: OKVED_52_OtcGoPri(ubDoNal → 778976
+✅ Заполнено: OKVED_52_OtcGoTekNalNaPri → 77686
 ✅ Заполнено: OKVED_52_OtcGoOtlNalNaPri → -109468
 ✅ Заполнено: OKVED_52_OtcGoPro → -48973
 ✅ Заполнено: OKVED_I_OtcGoSalProDohIRas → -250324
 ✅ Заполнено: OKVED_I_OtcGoPri(ubDoNal → -599174
+✅ Заполнено: OKVED_I_OtcGoTekNalNaPri → 267
 ✅ Заполнено: OKVED_I_OtcGoOtlNalNaPri → 2985
 ✅ Заполнено: OKVED_I_OtcGoPro → -18021
 ✅ Заполнено: OKVED_55_OtcGoSalProDohIRas → -250943
 ✅ Заполнено: OKVED_55_OtcGoPri(ubDoNal → -599626
+✅ Заполнено: OKVED_55_OtcGoTekNalNaPri → 267
 ✅ Заполнено: OKVED_55_OtcGoOtlNalNaPri → 2985
 ✅ Заполнено: OKVED_55_OtcGoPro → -17275
 ✅ Заполнено: OKVED_56_OtcGoSalProDohIRas → 619
 ✅ Заполнено: OKVED_56_OtcGoPri(ubDoNal → 452
+ℹ️ Отсутствующие данные: OKVED_56_OtcGoTekNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_56_OtcGoOtlNalNaPri → [-]
 ✅ Заполнено: OKVED_56_OtcGoPro → -746
 ✅ Заполнено: OKVED_K_OtcGoSalProDohIRas → -3331118
 ✅ Заполнено: OKVED_K_OtcGoPri(ubDoNal → -3349505
+✅ Заполнено: OKVED_K_OtcGoTekNalNaPri → 270485
 ✅ Заполнено: OKVED_K_OtcGoOtlNalNaPri → 1696724
 ✅ Заполнено: OKVED_K_OtcGoPro → 3545479
 ✅ Заполнено: OKVED_64_OtcGoSalProDohIRas → -3331118
 ✅ Заполнено: OKVED_64_OtcGoPri(ubDoNal → -3349505
+✅ Заполнено: OKVED_64_OtcGoTekNalNaPri → 270485
 ✅ Заполнено: OKVED_64_OtcGoOtlNalNaPri → 1696724
 ✅ Заполнено: OKVED_64_OtcGoPro → 3545479
 ✅ Заполнено: OKVED_68_OtcGoSalProDohIRas → -30579
 ✅ Заполнено: OKVED_68_OtcGoPri(ubDoNal → 233755
+✅ Заполнено: OKVED_68_OtcGoTekNalNaPri → 101698
 ✅ Заполнено: OKVED_68_OtcGoOtlNalNaPri → 72657
 ✅ Заполнено: OKVED_68_OtcGoPro → 19107
 ✅ Заполнено: OKVED_M_OtcGoSalProDohIRas → -395605
 ✅ Заполнено: OKVED_M_OtcGoPri(ubDoNal → -822315
+✅ Заполнено: OKVED_M_OtcGoTekNalNaPri → 5219
 ✅ Заполнено: OKVED_M_OtcGoOtlNalNaPri → 210069
 ✅ Заполнено: OKVED_M_OtcGoPro → 20470
 ✅ Заполнено: OKVED_69_OtcGoSalProDohIRas → -3
 ✅ Заполнено: OKVED_69_OtcGoPri(ubDoNal → 30
+ℹ️ Отсутствующие данные: OKVED_69_OtcGoTekNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_69_OtcGoOtlNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_69_OtcGoPro → [-]
 ✅ Заполнено: OKVED_70_OtcGoSalProDohIRas → 84026
 ✅ Заполнено: OKVED_70_OtcGoPri(ubDoNal → -260435
+✅ Заполнено: OKVED_70_OtcGoTekNalNaPri → 5219
 ✅ Заполнено: OKVED_70_OtcGoOtlNalNaPri → 141799
 ✅ Заполнено: OKVED_70_OtcGoPro → -15
 ✅ Заполнено: OKVED_71_OtcGoSalProDohIRas → -478241
 ✅ Заполнено: OKVED_71_OtcGoPri(ubDoNal → -560792
+ℹ️ Отсутствующие данные: OKVED_71_OtcGoTekNalNaPri → [-]
 ✅ Заполнено: OKVED_71_OtcGoOtlNalNaPri → 68433
 ✅ Заполнено: OKVED_71_OtcGoPro → 20485
 ✅ Заполнено: OKVED_74_OtcGoSalProDohIRas → -1387
 ✅ Заполнено: OKVED_74_OtcGoPri(ubDoNal → -1118
+ℹ️ Отсутствующие данные: OKVED_74_OtcGoTekNalNaPri → [-]
 ✅ Заполнено: OKVED_74_OtcGoOtlNalNaPri → -163
 ℹ️ Отсутствующие данные: OKVED_74_OtcGoPro → [-]
 ✅ Заполнено: OKVED_N_OtcGoSalProDohIRas → -41610
 ✅ Заполнено: OKVED_N_OtcGoPri(ubDoNal → -6740
+✅ Заполнено: OKVED_N_OtcGoTekNalNaPri → 12470
 ✅ Заполнено: OKVED_N_OtcGoOtlNalNaPri → 367628
 ✅ Заполнено: OKVED_N_OtcGoPro → -72534
 ✅ Заполнено: OKVED_77_OtcGoSalProDohIRas → -22990
 ✅ Заполнено: OKVED_77_OtcGoPri(ubDoNal → -51065
+✅ Заполнено: OKVED_77_OtcGoTekNalNaPri → 1525
 ✅ Заполнено: OKVED_77_OtcGoOtlNalNaPri → 361830
 ℹ️ Отсутствующие данные: OKVED_77_OtcGoPro → [-]
 ✅ Заполнено: OKVED_79_OtcGoSalProDohIRas → -19947
 ✅ Заполнено: OKVED_79_OtcGoPri(ubDoNal → -64296
+ℹ️ Отсутствующие данные: OKVED_79_OtcGoTekNalNaPri → [-]
 ✅ Заполнено: OKVED_79_OtcGoOtlNalNaPri → 15245
 ℹ️ Отсутствующие данные: OKVED_79_OtcGoPro → [-]
 ✅ Заполнено: OKVED_81_OtcGoSalProDohIRas → 1524
 ✅ Заполнено: OKVED_81_OtcGoPri(ubDoNal → 107869
+✅ Заполнено: OKVED_81_OtcGoTekNalNaPri → 10819
 ✅ Заполнено: OKVED_81_OtcGoOtlNalNaPri → -9447
 ✅ Заполнено: OKVED_81_OtcGoPro → -72534
 ✅ Заполнено: OKVED_O_OtcGoSalProDohIRas → 8277
 ✅ Заполнено: OKVED_O_OtcGoPri(ubDoNal → 7266
+✅ Заполнено: OKVED_O_OtcGoTekNalNaPri → 551
 ℹ️ Отсутствующие данные: OKVED_O_OtcGoOtlNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_O_OtcGoPro → [-]
 ✅ Заполнено: OKVED_84_OtcGoSalProDohIRas → 8277
 ✅ Заполнено: OKVED_84_OtcGoPri(ubDoNal → 7266
+✅ Заполнено: OKVED_84_OtcGoTekNalNaPri → 551
 ℹ️ Отсутствующие данные: OKVED_84_OtcGoOtlNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_84_OtcGoPro → [-]
 ✅ Заполнено: OKVED_85_OtcGoSalProDohIRas → -100
 ✅ Заполнено: OKVED_85_OtcGoPri(ubDoNal → 476
+ℹ️ Отсутствующие данные: OKVED_85_OtcGoTekNalNaPri → [-]
 ✅ Заполнено: OKVED_85_OtcGoOtlNalNaPri → -193
 ℹ️ Отсутствующие данные: OKVED_85_OtcGoPro → [-]
 ✅ Заполнено: OKVED_85_OtcGoSalProDohIRas → -100
 ✅ Заполнено: OKVED_85_OtcGoPri(ubDoNal → 476
+ℹ️ Отсутствующие данные: OKVED_85_OtcGoTekNalNaPri → [-]
 ✅ Заполнено: OKVED_85_OtcGoOtlNalNaPri → -193
 ℹ️ Отсутствующие данные: OKVED_85_OtcGoPro → [-]
 ℹ️ Отсутствующие данные: OKVED_R_OtcGoSalProDohIRas → [-]
 ✅ Заполнено: OKVED_R_OtcGoPri(ubDoNal → 428
+ℹ️ Отсутствующие данные: OKVED_R_OtcGoTekNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_R_OtcGoOtlNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_R_OtcGoPro → [-]
 ℹ️ Отсутствующие данные: OKVED_93_OtcGoSalProDohIRas → [-]
 ✅ Заполнено: OKVED_93_OtcGoPri(ubDoNal → 428
+ℹ️ Отсутствующие данные: OKVED_93_OtcGoTekNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_93_OtcGoOtlNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_93_OtcGoPro → [-]
 ✅ Заполнено: OKVED_S_OtcGoSalProDohIRas → 70406
 ✅ Заполнено: OKVED_S_OtcGoPri(ubDoNal → 64004
+✅ Заполнено: OKVED_S_OtcGoTekNalNaPri → 12215
 ✅ Заполнено: OKVED_S_OtcGoOtlNalNaPri → -57
 ℹ️ Отсутствующие данные: OKVED_S_OtcGoPro → [-]
 ✅ Заполнено: OKVED_94_OtcGoSalProDohIRas → 69174
 ✅ Заполнено: OKVED_94_OtcGoPri(ubDoNal → 69210
+✅ Заполнено: OKVED_94_OtcGoTekNalNaPri → 12177
 ✅ Заполнено: OKVED_94_OtcGoOtlNalNaPri → -20
 ℹ️ Отсутствующие данные: OKVED_94_OtcGoPro → [-]
 ✅ Заполнено: OKVED_96_OtcGoSalProDohIRas → 1232
 ✅ Заполнено: OKVED_96_OtcGoPri(ubDoNal → -5206
+✅ Заполнено: OKVED_96_OtcGoTekNalNaPri → 38
 ✅ Заполнено: OKVED_96_OtcGoOtlNalNaPri → -37
 ℹ️ Отсутствующие данные: OKVED_96_OtcGoPro → [-]
+✅ Заполнено: OKVED_A_OtcGoChiPri(ubOtcPer → -397214
 ✅ Заполнено: OKVED_A_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → -37540
 ✅ Заполнено: OKVED_A_OtcGoRezOtProOpeNeVklVChiPri(ubPer → -112181
 ✅ Заполнено: OKVED_A_OtcGoSovFinRezPer → -540165
+✅ Заполнено: OKVED_01_OtcGoChiPri(ubOtcPer → -204406
 ℹ️ Отсутствующие данные: OKVED_01_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_01_OtcGoRezOtProOpeNeVklVChiPri(ubPer → -500
 ✅ Заполнено: OKVED_01_OtcGoSovFinRezPer → -204906
+✅ Заполнено: OKVED_03_OtcGoChiPri(ubOtcPer → -192808
 ✅ Заполнено: OKVED_03_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → -37540
 ✅ Заполнено: OKVED_03_OtcGoRezOtProOpeNeVklVChiPri(ubPer → -111681
 ✅ Заполнено: OKVED_03_OtcGoSovFinRezPer → -335259
+✅ Заполнено: OKVED_B_OtcGoChiPri(ubOtcPer → 28154885
 ℹ️ Отсутствующие данные: OKVED_B_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_B_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_B_OtcGoSovFinRezPer → 28154885
+✅ Заполнено: OKVED_07_OtcGoChiPri(ubOtcPer → 28154885
 ℹ️ Отсутствующие данные: OKVED_07_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_07_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_07_OtcGoSovFinRezPer → 28154885
+✅ Заполнено: OKVED_C_OtcGoChiPri(ubOtcPer → 4067245
 ✅ Заполнено: OKVED_C_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → 102317
 ✅ Заполнено: OKVED_C_OtcGoRezOtProOpeNeVklVChiPri(ubPer → -143149
 ✅ Заполнено: OKVED_C_OtcGoSovFinRezPer → 4026413
+✅ Заполнено: OKVED_10_OtcGoChiPri(ubOtcPer → 3919536
 ℹ️ Отсутствующие данные: OKVED_10_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_10_OtcGoRezOtProOpeNeVklVChiPri(ubPer → -143149
 ✅ Заполнено: OKVED_10_OtcGoSovFinRezPer → 3776387
+✅ Заполнено: OKVED_11_OtcGoChiPri(ubOtcPer → 116204
 ℹ️ Отсутствующие данные: OKVED_11_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_11_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_11_OtcGoSovFinRezPer → 116204
+✅ Заполнено: OKVED_32_OtcGoChiPri(ubOtcPer → 3828
 ✅ Заполнено: OKVED_32_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → 102317
 ℹ️ Отсутствующие данные: OKVED_32_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_32_OtcGoSovFinRezPer → 106145
+✅ Заполнено: OKVED_33_OtcGoChiPri(ubOtcPer → 27677
 ℹ️ Отсутствующие данные: OKVED_33_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_33_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_33_OtcGoSovFinRezPer → 27677
+✅ Заполнено: OKVED_35_OtcGoChiPri(ubOtcPer → 2909980
 ℹ️ Отсутствующие данные: OKVED_35_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_35_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_35_OtcGoSovFinRezPer → 2909980
+✅ Заполнено: OKVED_35_OtcGoChiPri(ubOtcPer → 2909980
 ℹ️ Отсутствующие данные: OKVED_35_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_35_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_35_OtcGoSovFinRezPer → 2909980
+✅ Заполнено: OKVED_36_OtcGoChiPri(ubOtcPer → 1125979
 ℹ️ Отсутствующие данные: OKVED_36_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_36_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_36_OtcGoSovFinRezPer → 1125979
+✅ Заполнено: OKVED_38_OtcGoChiPri(ubOtcPer → 5706
 ℹ️ Отсутствующие данные: OKVED_38_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_38_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_38_OtcGoSovFinRezPer → 5706
+✅ Заполнено: OKVED_F_OtcGoChiPri(ubOtcPer → -304023
 ✅ Заполнено: OKVED_F_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → 150340
 ℹ️ Отсутствующие данные: OKVED_F_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_F_OtcGoSovFinRezPer → -153683
+✅ Заполнено: OKVED_41_OtcGoChiPri(ubOtcPer → -61707
 ℹ️ Отсутствующие данные: OKVED_41_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_41_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_41_OtcGoSovFinRezPer → -61707
+✅ Заполнено: OKVED_42_OtcGoChiPri(ubOtcPer → -253324
 ✅ Заполнено: OKVED_42_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → 150340
 ℹ️ Отсутствующие данные: OKVED_42_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_42_OtcGoSovFinRezPer → -102984
+✅ Заполнено: OKVED_43_OtcGoChiPri(ubOtcPer → 11008
 ℹ️ Отсутствующие данные: OKVED_43_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_43_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_43_OtcGoSovFinRezPer → 11008
+✅ Заполнено: OKVED_G_OtcGoChiPri(ubOtcPer → 1370622
 ℹ️ Отсутствующие данные: OKVED_G_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_G_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_G_OtcGoSovFinRezPer → 1370622
+✅ Заполнено: OKVED_46_OtcGoChiPri(ubOtcPer → 1312579
 ℹ️ Отсутствующие данные: OKVED_46_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_46_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_46_OtcGoSovFinRezPer → 1312579
+✅ Заполнено: OKVED_47_OtcGoChiPri(ubOtcPer → 58043
 ℹ️ Отсутствующие данные: OKVED_47_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_47_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_47_OtcGoSovFinRezPer → 58043
+✅ Заполнено: OKVED_H_OtcGoChiPri(ubOtcPer → 720150
 ✅ Заполнено: OKVED_H_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → 133452
 ✅ Заполнено: OKVED_H_OtcGoRezOtProOpeNeVklVChiPri(ubPer → 1441
 ✅ Заполнено: OKVED_H_OtcGoSovFinRezPer → 855043
+✅ Заполнено: OKVED_49_OtcGoChiPri(ubOtcPer → 54330
 ✅ Заполнено: OKVED_49_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → 133452
 ✅ Заполнено: OKVED_49_OtcGoRezOtProOpeNeVklVChiPri(ubPer → 1441
 ✅ Заполнено: OKVED_49_OtcGoSovFinRezPer → 189223
+✅ Заполнено: OKVED_50_OtcGoChiPri(ubOtcPer → -88895
 ℹ️ Отсутствующие данные: OKVED_50_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_50_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_50_OtcGoSovFinRezPer → -88895
+✅ Заполнено: OKVED_52_OtcGoChiPri(ubOtcPer → 542849
 ℹ️ Отсутствующие данные: OKVED_52_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_52_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_52_OtcGoSovFinRezPer → 542849
+✅ Заполнено: OKVED_I_OtcGoChiPri(ubOtcPer → -614477
 ℹ️ Отсутствующие данные: OKVED_I_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_I_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_I_OtcGoSovFinRezPer → -614477
+✅ Заполнено: OKVED_55_OtcGoChiPri(ubOtcPer → -614183
 ℹ️ Отсутствующие данные: OKVED_55_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_55_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_55_OtcGoSovFinRezPer → -614183
+✅ Заполнено: OKVED_56_OtcGoChiPri(ubOtcPer → -294
 ℹ️ Отсутствующие данные: OKVED_56_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_56_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_56_OtcGoSovFinRezPer → -294
+✅ Заполнено: OKVED_K_OtcGoChiPri(ubOtcPer → 1622213
 ℹ️ Отсутствующие данные: OKVED_K_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_K_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_K_OtcGoSovFinRezPer → 1622213
+✅ Заполнено: OKVED_64_OtcGoChiPri(ubOtcPer → 1622213
 ℹ️ Отсутствующие данные: OKVED_64_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_64_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_64_OtcGoSovFinRezPer → 1622213
+✅ Заполнено: OKVED_L_OtcGoChiPri(ubOtcPer → 223821
 ℹ️ Отсутствующие данные: OKVED_L_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_L_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_L_OtcGoSovFinRezPer → 223821
+✅ Заполнено: OKVED_68_OtcGoChiPri(ubOtcPer → 223821
 ℹ️ Отсутствующие данные: OKVED_68_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_68_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_68_OtcGoSovFinRezPer → 223821
+✅ Заполнено: OKVED_M_OtcGoChiPri(ubOtcPer → -596995
 ℹ️ Отсутствующие данные: OKVED_M_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_M_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_M_OtcGoSovFinRezPer → -596995
+✅ Заполнено: OKVED_69_OtcGoChiPri(ubOtcPer → 30
 ℹ️ Отсутствующие данные: OKVED_69_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_69_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_69_OtcGoSovFinRezPer → 30
+✅ Заполнено: OKVED_71_OtcGoChiPri(ubOtcPer → -471874
 ℹ️ Отсутствующие данные: OKVED_71_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_71_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_71_OtcGoSovFinRezPer → -471874
+✅ Заполнено: OKVED_74_OtcGoChiPri(ubOtcPer → -1281
 ℹ️ Отсутствующие данные: OKVED_74_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_74_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_74_OtcGoSovFinRezPer → -1281
+✅ Заполнено: OKVED_N_OtcGoChiPri(ubOtcPer → 275884
 ℹ️ Отсутствующие данные: OKVED_N_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_N_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_N_OtcGoSovFinRezPer → 275884
+✅ Заполнено: OKVED_77_OtcGoChiPri(ubOtcPer → 309240
 ℹ️ Отсутствующие данные: OKVED_77_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_77_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_77_OtcGoSovFinRezPer → 309240
+✅ Заполнено: OKVED_79_OtcGoChiPri(ubOtcPer → -49051
 ℹ️ Отсутствующие данные: OKVED_79_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_79_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_79_OtcGoSovFinRezPer → -49051
+✅ Заполнено: OKVED_81_OtcGoChiPri(ubOtcPer → 15069
 ℹ️ Отсутствующие данные: OKVED_81_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_81_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_81_OtcGoSovFinRezPer → 15069
+✅ Заполнено: OKVED_82_OtcGoChiPri(ubOtcPer → 626
 ℹ️ Отсутствующие данные: OKVED_82_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_82_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_82_OtcGoSovFinRezPer → 626
+✅ Заполнено: OKVED_84_OtcGoChiPri(ubOtcPer → 6715
 ℹ️ Отсутствующие данные: OKVED_84_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_84_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_84_OtcGoSovFinRezPer → 6715
+✅ Заполнено: OKVED_85_OtcGoChiPri(ubOtcPer → 283
 ℹ️ Отсутствующие данные: OKVED_85_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_85_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_85_OtcGoSovFinRezPer → 283
+✅ Заполнено: OKVED_85_OtcGoChiPri(ubOtcPer → 283
 ℹ️ Отсутствующие данные: OKVED_85_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_85_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_85_OtcGoSovFinRezPer → 283
+✅ Заполнено: OKVED_R_OtcGoChiPri(ubOtcPer → 428
 ℹ️ Отсутствующие данные: OKVED_R_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_R_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_R_OtcGoSovFinRezPer → 428
+✅ Заполнено: OKVED_93_OtcGoChiPri(ubOtcPer → 428
 ℹ️ Отсутствующие данные: OKVED_93_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_93_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_93_OtcGoSovFinRezPer → 428
+✅ Заполнено: OKVED_S_OtcGoChiPri(ubOtcPer → 51732
 ℹ️ Отсутствующие данные: OKVED_S_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_S_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_S_OtcGoSovFinRezPer → 51732
+✅ Заполнено: OKVED_94_OtcGoChiPri(ubOtcPer → 57013
 ℹ️ Отсутствующие данные: OKVED_94_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_94_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_94_OtcGoSovFinRezPer → 57013
+✅ Заполнено: OKVED_96_OtcGoChiPri(ubOtcPer → -5281
 ℹ️ Отсутствующие данные: OKVED_96_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_96_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_96_OtcGoSovFinRezPer → -5281
@@ -6442,54 +6541,67 @@
 ✅ Заполнено: MO_30832_DohIRasPoObyVidDeyZaOtcPerKomIUprRas_1 → 42590
 ✅ Заполнено: MO_30_OtcGoSalProDohIRas_1 → -26192421
 ✅ Заполнено: MO_30_OtcGoPri(ubDoNal_1 → 37307017
+✅ Заполнено: MO_30_OtcGoTekNalNaPri_1 → 4371599
 ✅ Заполнено: MO_30_OtcGoOtlNalNaPri_1 → 3476083
 ✅ Заполнено: MO_30_OtcGoPro_1 → 2211433
 ✅ Заполнено: MO_30701_OtcGoSalProDohIRas_1 → -24539666
 ✅ Заполнено: MO_30701_OtcGoPri(ubDoNal_1 → 4989031
+✅ Заполнено: MO_30701_OtcGoTekNalNaPri_1 → 3277816
 ✅ Заполнено: MO_30701_OtcGoOtlNalNaPri_1 → 3675830
 ✅ Заполнено: MO_30701_OtcGoPro_1 → 2949533
 ✅ Заполнено: MO_30851_OtcGoSalProDohIRas_1 → 16212
 ✅ Заполнено: MO_30851_OtcGoPri(ubDoNal_1 → 7290
+✅ Заполнено: MO_30851_OtcGoTekNalNaPri_1 → 1050
 ✅ Заполнено: MO_30851_OtcGoOtlNalNaPri_1 → -4840
 ℹ️ Отсутствующие данные: MO_30851_OtcGoPro_1 → [-]
 ✅ Заполнено: MO_30501_OtcGoSalProDohIRas_1 → 8936
 ✅ Заполнено: MO_30501_OtcGoPri(ubDoNal_1 → -12497
+✅ Заполнено: MO_30501_OtcGoTekNalNaPri_1 → 8
 ℹ️ Отсутствующие данные: MO_30501_OtcGoOtlNalNaPri_1 → [-]
 ℹ️ Отсутствующие данные: MO_30501_OtcGoPro_1 → [-]
 ℹ️ Отсутствующие данные: MO_30510_OtcGoSalProDohIRas_1 → [-]
 ✅ Заполнено: MO_30510_OtcGoPri(ubDoNal_1 → -96
+ℹ️ Отсутствующие данные: MO_30510_OtcGoTekNalNaPri_1 → [-]
 ℹ️ Отсутствующие данные: MO_30510_OtcGoOtlNalNaPri_1 → [-]
 ℹ️ Отсутствующие данные: MO_30510_OtcGoPro_1 → [-]
 ✅ Заполнено: MO_30604_OtcGoSalProDohIRas_1 → 1515
 ℹ️ Отсутствующие данные: MO_30604_OtcGoPri(ubDoNal_1 → [-]
+ℹ️ Отсутствующие данные: MO_30604_OtcGoTekNalNaPri_1 → [-]
 ℹ️ Отсутствующие данные: MO_30604_OtcGoOtlNalNaPri_1 → [-]
 ℹ️ Отсутствующие данные: MO_30604_OtcGoPro_1 → [-]
 ✅ Заполнено: MO_30607_OtcGoSalProDohIRas_1 → -800669
 ✅ Заполнено: MO_30607_OtcGoPri(ubDoNal_1 → 20253286
+✅ Заполнено: MO_30607_OtcGoTekNalNaPri_1 → 472689
 ✅ Заполнено: MO_30607_OtcGoOtlNalNaPri_1 → -128197
 ✅ Заполнено: MO_30607_OtcGoPro_1 → 106410
 ✅ Заполнено: MO_30607101_OtcGoSalProDohIRas_1 → -103224
 ✅ Заполнено: MO_30607101_OtcGoPri(ubDoNal_1 → 20189326
+✅ Заполнено: MO_30607101_OtcGoTekNalNaPri_1 → 258348
 ✅ Заполнено: MO_30607101_OtcGoOtlNalNaPri_1 → 30755
 ✅ Заполнено: MO_30607101_OtcGoPro_1 → 126130
 ✅ Заполнено: MO_30613_OtcGoSalProDohIRas_1 → -848244
 ✅ Заполнено: MO_30613_OtcGoPri(ubDoNal_1 → 138982
+✅ Заполнено: MO_30613_OtcGoTekNalNaPri_1 → 80221
 ✅ Заполнено: MO_30613_OtcGoOtlNalNaPri_1 → 13338
 ✅ Заполнено: MO_30613_OtcGoPro_1 → -158468
 ✅ Заполнено: MO_30616_OtcGoSalProDohIRas_1 → -2546111
 ✅ Заполнено: MO_30616_OtcGoPri(ubDoNal_1 → 4401518
+✅ Заполнено: MO_30616_OtcGoTekNalNaPri_1 → 236978
 ✅ Заполнено: MO_30616_OtcGoOtlNalNaPri_1 → -29046
 ✅ Заполнено: MO_30616_OtcGoPro_1 → -175004
 ✅ Заполнено: MO_30619_OtcGoSalProDohIRas_1 → 433465
 ✅ Заполнено: MO_30619_OtcGoPri(ubDoNal_1 → 493197
+✅ Заполнено: MO_30619_OtcGoTekNalNaPri_1 → 1390
 ✅ Заполнено: MO_30619_OtcGoOtlNalNaPri_1 → -19468
 ✅ Заполнено: MO_30619_OtcGoPro_1 → -98735
 ✅ Заполнено: MO_30824_OtcGoSalProDohIRas_1 → 96824
 ✅ Заполнено: MO_30824_OtcGoPri(ubDoNal_1 → 6876309
+✅ Заполнено: MO_30824_OtcGoTekNalNaPri_1 → 251259
 ✅ Заполнено: MO_30824_OtcGoOtlNalNaPri_1 → -35539
 ✅ Заполнено: MO_30824_OtcGoPro_1 → -356470
 ✅ Заполнено: MO_30832_OtcGoSalProDohIRas_1 → -9234
 ✅ Заполнено: MO_30832_OtcGoPri(ubDoNal_1 → -39714
+ℹ️ Отсутствующие данные: MO_30832_OtcGoTekNalNaPri_1 → [-]
 ✅ Заполнено: MO_30832_OtcGoOtlNalNaPri_1 → 12218
 ℹ️ Отсутствующие данные: MO_30832_OtcGoPro_1 → [-]
 ✅ Заполнено: OKVED_A_KolOrgEdi → 70
