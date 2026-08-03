@@ -177,9 +177,19 @@ def get_table_name(table: Table, known_table_names):
     - Нечеткие совпадения через fuzzy match (для опечаток)
     """
     from difflib import SequenceMatcher
-    
+
     ignore_phrases = ['продолжение таблицы', 'таблица', 'график', 'рис.', 'рис', 'по всей форме', 'приложение', 'форма',
                       'лист', 'страница', 'тысяч рублей', 'на конец года']
+    # Обычная проверка "phrase in text" ловит фразу как ПОДСТРОКУ где угодно —
+    # из-за этого одиночное слово "форма" ложно срабатывает на настоящих
+    # заголовках вроде "...ПО ОРГАНИЗАЦИОННО-ПРАВОВЫМ ФОРМАМ" или "...ПО ФОРМАМ
+    # СОБСТВЕННОСТИ" (там "форма" — просто начало слова "формам", а не сама
+    # фраза). Границы слова (\b) отсекают такие случаи, оставляя прежнее
+    # поведение для реальных технических пометок ("Форма 1", "рис. 2" и т.п.).
+    ignore_phrase_patterns = [re.compile(r'\b' + re.escape(phrase) + r'\b') for phrase in ignore_phrases]
+
+    def _has_ignore_phrase(text_norm: str) -> bool:
+        return any(pattern.search(text_norm) for pattern in ignore_phrase_patterns)
 
     # Собираем все параграфы выше таблицы, чтобы выбрать наиболее подходящий заголовок.
     exact_matches = []  # Точные совпадения (имеют приоритет)
@@ -203,7 +213,7 @@ def get_table_name(table: Table, known_table_names):
                 if para_buffer:
                     combined_text = " ".join(reversed(para_buffer))
                     combined_norm = _normalize_text(combined_text)
-                    if not any(phrase in combined_norm for phrase in ignore_phrases):
+                    if not _has_ignore_phrase(combined_norm):
                         for known_title in known_table_names:
                             known_norm = _normalize_text(known_title)
                             if combined_norm == known_norm:
@@ -213,7 +223,7 @@ def get_table_name(table: Table, known_table_names):
                 continue
 
             text_norm = _normalize_text(text)
-            if any(phrase in text_norm for phrase in ignore_phrases):
+            if _has_ignore_phrase(text_norm):
                 para_buffer = []
                 continue
             

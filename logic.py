@@ -18,6 +18,11 @@ from config import (
 )
 from mo import load_mo_map, find_mo_code, canonical_mo
 from config_v2 import load_column_mapping_v2
+from category_mapping import (
+    CATEGORY_FILE_PREFIXES,
+    canonical_category,
+    extract_category_codes_from_excel,
+)
 from docx import Document
 
 TAG_REGEX = re.compile(r"{{([^}]+?)_([0-9]+)}}")
@@ -566,10 +571,19 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                            output_doc_path,
                            mo_map_path: Path = None, validation_log_path: Path = None,
                            near_miss_report_path: Path = None, squish_match_report_path: Path = None,
-                           typo_match_report_path: Path = None):
+                           typo_match_report_path: Path = None, excel_dir: Path = None):
     """
-    Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}} и {{MO_<code>_<indicator>[_22|_23]}}.
+    Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}},
+    {{MO_<code>_<indicator>[_22|_23]}} и {{OPF_<code>_<indicator>}}/{{FS_<code>_<indicator>}}
+    (см. category_mapping.py — таблицы, где строки размечены не кодом ОКВЭД/МО,
+    а названием категории — организационно-правовой формы или формы
+    собственности).
     Расширенный поиск заголовков по первым 5 строкам таблицы.
+
+    excel_dir: папка с исходными Excel-файлами — нужна, чтобы построить
+    справочник "название категории -> код" для категорийных файлов (см.
+    category_mapping.CATEGORY_FILE_PREFIXES). Если не указана, категорийные
+    таблицы обрабатываются как раньше (строки останутся без тегов).
 
     near_miss_report_path: если указан, сюда выгружается таблица всех "почти
     совпавших" заголовков — случаев, когда нечёткое сравнение нашло похожий
@@ -600,6 +614,20 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     table_source_mapping = load_table_source_map(table_source_mapping_path)
     mo_source_files = {src for src in table_source_mapping.values() if 'mo' in src.lower()}
     word_to_indicator, _, indicator_to_file, file_word_to_indicator, _, file_word_to_indicators = load_column_mapping_v2(column_mapping_path)
+
+    # Справочники "название категории -> код" для категорийных файлов (ОПФ,
+    # форма собственности) — строятся прямо из соответствующего Excel-файла,
+    # см. category_mapping.py.
+    category_name_maps = {}
+    if excel_dir is not None:
+        excel_dir = Path(excel_dir)
+        for cat_filename in CATEGORY_FILE_PREFIXES:
+            cat_path = excel_dir / cat_filename
+            if cat_path.exists():
+                category_name_maps[cat_filename] = extract_category_codes_from_excel(cat_path)
+            else:
+                print(f"⚠️ Категорийный файл не найден: {cat_path}")
+
     doc = Document(input_doc_path)
     total_tags = 0
     validation_log = []
@@ -927,21 +955,32 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 continue
 
             first_cell_text = get_cleaned_cell_text(row.cells[0])
-            okved_code = find_okved_code(first_cell_text, name_to_okved_cleaned)
-            mo_code = None
-            if not okved_code and current_source_file and current_source_file.lower().endswith(
-                    '.xlsx') and current_source_file.lower().find('mo') != -1:
-                mo_code = find_mo_code(first_cell_text, mo_name_to_mo_cleaned)
 
-            if not okved_code and not mo_code:
-                continue
-
-            if okved_code:
-                prefix = "OKVED"
-                code_value = canonical_okved(okved_code)
+            category_prefix = CATEGORY_FILE_PREFIXES.get(current_source_file)
+            if category_prefix:
+                # Категорийная таблица (ОПФ / форма собственности) — строки
+                # размечены названием категории, а не кодом ОКВЭД/МО.
+                category_code = find_okved_code(first_cell_text, category_name_maps.get(current_source_file, {}))
+                if not category_code:
+                    continue
+                prefix = category_prefix
+                code_value = canonical_category(category_code)
             else:
-                prefix = "MO"
-                code_value = canonical_mo(mo_code)
+                okved_code = find_okved_code(first_cell_text, name_to_okved_cleaned)
+                mo_code = None
+                if not okved_code and current_source_file and current_source_file.lower().endswith(
+                        '.xlsx') and current_source_file.lower().find('mo') != -1:
+                    mo_code = find_mo_code(first_cell_text, mo_name_to_mo_cleaned)
+
+                if not okved_code and not mo_code:
+                    continue
+
+                if okved_code:
+                    prefix = "OKVED"
+                    code_value = canonical_okved(okved_code)
+                else:
+                    prefix = "MO"
+                    code_value = canonical_mo(mo_code)
 
             code_tag_part = code_value.replace('.', '_')
             name_cell_tc = row.cells[0]._tc

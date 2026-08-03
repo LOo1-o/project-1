@@ -15,6 +15,7 @@ from typing import Dict, Set, Tuple, Optional
 from config import canonical_okved, find_okved_code
 from config_v2 import load_column_mapping_v2, build_column_mapping_v2_from_excel
 from mo import load_mo_map, canonical_mo, find_mo_code
+from category_mapping import CATEGORY_FILE_PREFIXES, canonical_category
 from smart_loader import (
     find_column_by_year,
     find_row_by_fuzzy_match,
@@ -163,22 +164,32 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 continue
             
             is_mo_file = 'mo' in filename.lower()
+            category_prefix = CATEGORY_FILE_PREFIXES.get(filename)
             mo_codes_set = set(mo_name_to_mo_cleaned.values()) if mo_name_to_mo_cleaned else None
-            code_col_idx = _detect_code_column(df, okved_codes_set, mo_codes_set, is_mo_file)
-            if code_col_idx is None:
-                print(f"ℹ️ Не удалось автоматически определить колонку с кодами в файле {filename}. Попробуем использовать первую колонку как имена.")
-                code_col_idx = 0
-            else:
-                print(f"ℹ️ Автоопределена колонка с кодами в файле {filename}: {code_col_idx + 1}")
 
-            df['__entity_key__'] = df.apply(
-                lambda row: _infer_entity_key(row, code_col_idx, is_mo_file, okved_codes_set, okved_name_to_code, mo_name_to_mo_cleaned, mo_codes_set),
-                axis=1
-            )
+            if category_prefix:
+                # "Категорийный" файл (ОПФ/форма собственности): строки размечены
+                # не кодами ОКВЭД/МО, а заголовками категорий, и код "переносится"
+                # с заголовка на следующую строку данных — см. _infer_category_entity_keys.
+                print(f"ℹ️ {filename}: категорийная классификация (префикс {category_prefix})")
+                df['__entity_key__'] = _infer_category_entity_keys(df, category_prefix)
+            else:
+                code_col_idx = _detect_code_column(df, okved_codes_set, mo_codes_set, is_mo_file)
+                if code_col_idx is None:
+                    print(f"ℹ️ Не удалось автоматически определить колонку с кодами в файле {filename}. Попробуем использовать первую колонку как имена.")
+                    code_col_idx = 0
+                else:
+                    print(f"ℹ️ Автоопределена колонка с кодами в файле {filename}: {code_col_idx + 1}")
+
+                df['__entity_key__'] = df.apply(
+                    lambda row: _infer_entity_key(row, code_col_idx, is_mo_file, okved_codes_set, okved_name_to_code, mo_name_to_mo_cleaned, mo_codes_set),
+                    axis=1
+                )
+
             df_filtered = df[df['__entity_key__'].notna()].copy()
 
             # Если автоопределённый столбец с кодами дал пустой результат, попробуем первую колонку как fallback
-            if df_filtered.empty and code_col_idx is not None and code_col_idx != 0:
+            if df_filtered.empty and not category_prefix and code_col_idx is not None and code_col_idx != 0:
                 print(f"ℹ️ Автоопределенный столбец с кодами не дал результатов для {filename}. Попробуем первую колонку как имена.")
                 df['__entity_key__'] = df.apply(
                     lambda row: _infer_entity_key(row, 0, is_mo_file, okved_codes_set, okved_name_to_code, mo_name_to_mo_cleaned, mo_codes_set),
@@ -384,6 +395,35 @@ def _detect_code_column(df: pd.DataFrame, okved_codes_set: Set[str], mo_codes_se
     return None
 
 
+def _infer_category_entity_keys(df: pd.DataFrame, category_prefix: str, name_col_idx: int = 1) -> pd.Series:
+    """
+    Строит __entity_key__ для "категорийных" файлов (см. category_mapping.py)
+    — там, где заголовок категории (например, "20600 - Ассоциации (союзы)")
+    занимает ОТДЕЛЬНУЮ строку без данных, а сами значения — в СЛЕДУЮЩЕЙ строке
+    ("101.АГ Всего по обследуемым видам экономической деятельности").
+
+    В отличие от _infer_entity_key (применяется построчно и независимо через
+    df.apply), тут нужен ПОСЛЕДОВАТЕЛЬНЫЙ проход: код категории "переносится"
+    с строки-заголовка на СЛЕДУЮЩУЮ строку данных, а не определяется по
+    содержимому одной и той же строки.
+    """
+    from category_mapping import CATEGORY_HEADER_RE
+
+    keys = [None] * len(df)
+    pending_code = None
+    for pos in range(len(df)):
+        raw_name = df.iloc[pos, name_col_idx] if name_col_idx < df.shape[1] else None
+        name_str = "" if pd.isna(raw_name) else str(raw_name).strip()
+        match = CATEGORY_HEADER_RE.match(name_str)
+        if match:
+            pending_code = f"{category_prefix}_{match.group(1)}"
+            continue
+        if pending_code is not None:
+            keys[pos] = pending_code
+            pending_code = None
+    return pd.Series(keys, index=df.index)
+
+
 def _infer_entity_key(row: pd.Series, code_col_idx: int, is_mo_file: bool,
                       okved_codes_set: Set[str], okved_name_to_code: Dict[str, str],
                       mo_name_to_code: Dict[str, str],
@@ -445,6 +485,13 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
     def _canonicalize_entity_candidate(entity_raw: str, source_prefix: Optional[str]) -> str:
         if source_prefix == "MO":
             return canonical_mo(entity_raw)
+        if source_prefix in CATEGORY_FILE_PREFIXES.values():
+            # Категорийные коды (ОПФ/форма собственности) хранятся в master_data
+            # с префиксом прямо внутри ключа (например, "OPF_10000") — иначе
+            # они пересекались бы с обычными кодами ОКВЭД/МО в общем плоском
+            # словаре (например, форма собственности "10" совпадает по цифрам
+            # с ОКВЭД "10" — производство пищевых продуктов).
+            return f"{source_prefix}_{canonical_category(entity_raw)}"
         if "." in entity_raw or any(c.isalpha() for c in entity_raw):
             return canonical_okved(entity_raw.replace("_", "."))
         return canonical_okved(entity_raw)
@@ -505,6 +552,12 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                         elif raw_tag.startswith("MO_"):
                             source_prefix = "MO"
                             raw_tag = raw_tag[len("MO_"):]
+                        else:
+                            for cat_prefix in CATEGORY_FILE_PREFIXES.values():
+                                if raw_tag.startswith(f"{cat_prefix}_"):
+                                    source_prefix = cat_prefix
+                                    raw_tag = raw_tag[len(cat_prefix) + 1:]
+                                    break
 
                         parts = raw_tag.split("_")
                         if len(parts) < 2:

@@ -7544,6 +7544,381 @@
 ✅ Заполнено: MO_30832_SumPriZaSooPerPreGo_1 → 2399
 ✅ Заполнено: MO_30832_TeRosUbyV%_1 → 1637,5
 ✅ Заполнено: MO_30832_TeRosSumPriV%_1 → 416,1
+✅ Заполнено: OPF_12000_KolOrgEdi_2 → 180
+✅ Заполнено: OPF_12000_PriUby(-DoNal_2 → 35976967
+✅ Заполнено: OPF_12000_OrgPolPriKolOrgEdi_2 → 106
+✅ Заполнено: OPF_12000_OrgPolPriV%KObsKol_2 → 58,9
+✅ Заполнено: OPF_12000_OrgPolPriPriDoNal_2 → 58973666
+✅ Заполнено: OPF_12000_OrgPolUbyKolOrgEdi_2 → 74
+✅ Заполнено: OPF_12000_OrgPolUbyV%KObsKol_2 → 41,1
+✅ Заполнено: OPF_12000_OrgPolUbyUby_2 → 22996699
+✅ Заполнено: OPF_12200_KolOrgEdi_2 → 59
+✅ Заполнено: OPF_12200_PriUby(-DoNal_2 → 22634373
+✅ Заполнено: OPF_12200_OrgPolPriKolOrgEdi_2 → 36
+✅ Заполнено: OPF_12200_OrgPolPriV%KObsKol_2 → 61
+✅ Заполнено: OPF_12200_OrgPolPriPriDoNal_2 → 37202966
+✅ Заполнено: OPF_12200_OrgPolUbyKolOrgEdi_2 → 23
+✅ Заполнено: OPF_12200_OrgPolUbyV%KObsKol_2 → 39
+✅ Заполнено: OPF_12200_OrgPolUbyUby_2 → 14568593
+✅ Заполнено: OPF_12247_KolOrgEdi_2 → 5
+✅ Заполнено: OPF_12247_PriUby(-DoNal_2 → 243593
+✅ Заполнено: OPF_12247_OrgPolPriKolOrgEdi_2 → 3
+✅ Заполнено: OPF_12247_OrgPolPriV%KObsKol_2 → 60
+✅ Заполнено: OPF_12247_OrgPolPriPriDoNal_2 → 302373
+✅ Заполнено: OPF_12247_OrgPolUbyKolOrgEdi_2 → 2
+✅ Заполнено: OPF_12247_OrgPolUbyV%KObsKol_2 → 40
+✅ Заполнено: OPF_12247_OrgPolUbyUby_2 → 58780
+✅ Заполнено: OPF_12267_KolOrgEdi_2 → 54
+✅ Заполнено: OPF_12267_PriUby(-DoNal_2 → 22390780
+✅ Заполнено: OPF_12267_OrgPolPriKolOrgEdi_2 → 33
+✅ Заполнено: OPF_12267_OrgPolPriV%KObsKol_2 → 61,1
+✅ Заполнено: OPF_12267_OrgPolPriPriDoNal_2 → 36900593
+✅ Заполнено: OPF_12267_OrgPolUbyKolOrgEdi_2 → 21
+✅ Заполнено: OPF_12267_OrgPolUbyV%KObsKol_2 → 38,9
+✅ Заполнено: OPF_12267_OrgPolUbyUby_2 → 14509813
+✅ Заполнено: OPF_12300_KolOrgEdi_2 → 121
+✅ Заполнено: OPF_12300_PriUby(-DoNal_2 → 13342594
+✅ Заполнено: OPF_12300_OrgPolPriKolOrgEdi_2 → 70
+✅ Заполнено: OPF_12300_OrgPolPriV%KObsKol_2 → 57,9
+✅ Заполнено: OPF_12300_OrgPolPriPriDoNal_2 → 21770700
+✅ Заполнено: OPF_12300_OrgPolUbyKolOrgEdi_2 → 51
+✅ Заполнено: OPF_12300_OrgPolUbyV%KObsKol_2 → 42,1
+✅ Заполнено: OPF_12300_OrgPolUbyUby_2 → 8428106
+✅ Заполнено: OPF_14000_KolOrgEdi_2 → 2
+✅ Заполнено: OPF_14000_PriUby(-DoNal_2 → -296887
+✅ Заполнено: OPF_14000_OrgPolPriKolOrgEdi_2 → 1
+✅ Заполнено: OPF_14000_OrgPolPriV%KObsKol_2 → 50
+✅ Заполнено: OPF_14000_OrgPolPriPriDoNal_2 → 49297
+✅ Заполнено: OPF_14000_OrgPolUbyKolOrgEdi_2 → 1
+✅ Заполнено: OPF_14000_OrgPolUbyV%KObsKol_2 → 50
+✅ Заполнено: OPF_14000_OrgPolUbyUby_2 → 346184
+✅ Заполнено: OPF_14100_KolOrgEdi_2 → 2
+✅ Заполнено: OPF_14100_PriUby(-DoNal_2 → -296887
+✅ Заполнено: OPF_14100_OrgPolPriKolOrgEdi_2 → 1
+✅ Заполнено: OPF_14100_OrgPolPriV%KObsKol_2 → 50
+✅ Заполнено: OPF_14100_OrgPolPriPriDoNal_2 → 49297
+✅ Заполнено: OPF_14100_OrgPolUbyKolOrgEdi_2 → 1
+✅ Заполнено: OPF_14100_OrgPolUbyV%KObsKol_2 → 50
+✅ Заполнено: OPF_14100_OrgPolUbyUby_2 → 346184
+✅ Заполнено: OPF_20000_KolOrgEdi_2 → 18
+✅ Заполнено: OPF_20000_PriUby(-DoNal_2 → 63662
+✅ Заполнено: OPF_20000_OrgPolPriKolOrgEdi_2 → 15
+✅ Заполнено: OPF_20000_OrgPolPriV%KObsKol_2 → 83,3
+✅ Заполнено: OPF_20000_OrgPolPriPriDoNal_2 → 71118
+✅ Заполнено: OPF_20000_OrgPolUbyKolOrgEdi_2 → 3
+✅ Заполнено: OPF_20000_OrgPolUbyV%KObsKol_2 → 16,7
+✅ Заполнено: OPF_20000_OrgPolUbyUby_2 → 7456
+✅ Заполнено: OPF_20200_KolOrgEdi_2 → 7
+✅ Заполнено: OPF_20200_PriUby(-DoNal_2 → 571
+✅ Заполнено: OPF_20200_OrgPolPriKolOrgEdi_2 → 7
+✅ Заполнено: OPF_20200_OrgPolPriV%KObsKol_2 → 100
+✅ Заполнено: OPF_20200_OrgPolPriPriDoNal_2 → 571
+ℹ️ Отсутствующие данные: OPF_20200_OrgPolUbyKolOrgEdi_2 → [-]
+ℹ️ Отсутствующие данные: OPF_20200_OrgPolUbyV%KObsKol_2 → [-]
+ℹ️ Отсутствующие данные: OPF_20200_OrgPolUbyUby_2 → [-]
+✅ Заполнено: OPF_20600_KolOrgEdi_2 → 4
+✅ Заполнено: OPF_20600_PriUby(-DoNal_2 → 60559
+✅ Заполнено: OPF_20600_OrgPolPriKolOrgEdi_2 → 4
+✅ Заполнено: OPF_20600_OrgPolPriV%KObsKol_2 → 100
+✅ Заполнено: OPF_20600_OrgPolPriPriDoNal_2 → 60559
+ℹ️ Отсутствующие данные: OPF_20600_OrgPolUbyKolOrgEdi_2 → [-]
+ℹ️ Отсутствующие данные: OPF_20600_OrgPolUbyV%KObsKol_2 → [-]
+ℹ️ Отсутствующие данные: OPF_20600_OrgPolUbyUby_2 → [-]
+✅ Заполнено: OPF_21200_KolOrgEdi_2 → 7
+✅ Заполнено: OPF_21200_PriUby(-DoNal_2 → 2532
+✅ Заполнено: OPF_21200_OrgPolPriKolOrgEdi_2 → 4
+✅ Заполнено: OPF_21200_OrgPolPriV%KObsKol_2 → 57,1
+✅ Заполнено: OPF_21200_OrgPolPriPriDoNal_2 → 9988
+✅ Заполнено: OPF_21200_OrgPolUbyKolOrgEdi_2 → 3
+✅ Заполнено: OPF_21200_OrgPolUbyV%KObsKol_2 → 42,9
+✅ Заполнено: OPF_21200_OrgPolUbyUby_2 → 7456
+✅ Заполнено: OPF_65000_KolOrgEdi_2 → 23
+✅ Заполнено: OPF_65000_PriUby(-DoNal_2 → 1473088
+✅ Заполнено: OPF_65000_OrgPolPriKolOrgEdi_2 → 11
+✅ Заполнено: OPF_65000_OrgPolPriV%KObsKol_2 → 47,8
+✅ Заполнено: OPF_65000_OrgPolPriPriDoNal_2 → 1870487
+✅ Заполнено: OPF_65000_OrgPolUbyKolOrgEdi_2 → 12
+✅ Заполнено: OPF_65000_OrgPolUbyV%KObsKol_2 → 52,2
+✅ Заполнено: OPF_65000_OrgPolUbyUby_2 → 397399
+✅ Заполнено: OPF_70000_KolOrgEdi_2 → 8
+✅ Заполнено: OPF_70000_PriUby(-DoNal_2 → 90187
+✅ Заполнено: OPF_70000_OrgPolPriKolOrgEdi_2 → 7
+✅ Заполнено: OPF_70000_OrgPolPriV%KObsKol_2 → 87,5
+✅ Заполнено: OPF_70000_OrgPolPriPriDoNal_2 → 105154
+✅ Заполнено: OPF_70000_OrgPolUbyKolOrgEdi_2 → 1
+✅ Заполнено: OPF_70000_OrgPolUbyV%KObsKol_2 → 12,5
+✅ Заполнено: OPF_70000_OrgPolUbyUby_2 → 14967
+✅ Заполнено: OPF_70400_KolOrgEdi_2 → 4
+✅ Заполнено: OPF_70400_PriUby(-DoNal_2 → 81030
+✅ Заполнено: OPF_70400_OrgPolPriKolOrgEdi_2 → 3
+✅ Заполнено: OPF_70400_OrgPolPriV%KObsKol_2 → 75
+✅ Заполнено: OPF_70400_OrgPolPriPriDoNal_2 → 95997
+✅ Заполнено: OPF_70400_OrgPolUbyKolOrgEdi_2 → 1
+✅ Заполнено: OPF_70400_OrgPolUbyV%KObsKol_2 → 25
+✅ Заполнено: OPF_70400_OrgPolUbyUby_2 → 14967
+✅ Заполнено: OPF_71400_KolOrgEdi_2 → 3
+✅ Заполнено: OPF_71400_PriUby(-DoNal_2 → 8681
+✅ Заполнено: OPF_71400_OrgPolPriKolOrgEdi_2 → 3
+✅ Заполнено: OPF_71400_OrgPolPriV%KObsKol_2 → 100
+✅ Заполнено: OPF_71400_OrgPolPriPriDoNal_2 → 8681
+ℹ️ Отсутствующие данные: OPF_71400_OrgPolUbyKolOrgEdi_2 → [-]
+ℹ️ Отсутствующие данные: OPF_71400_OrgPolUbyV%KObsKol_2 → [-]
+ℹ️ Отсутствующие данные: OPF_71400_OrgPolUbyUby_2 → [-]
+✅ Заполнено: OPF_75500_KolOrgEdi_2 → 1
+✅ Заполнено: OPF_75500_PriUby(-DoNal_2 → 476
+✅ Заполнено: OPF_75500_OrgPolPriKolOrgEdi_2 → 1
+✅ Заполнено: OPF_75500_OrgPolPriV%KObsKol_2 → 100
+✅ Заполнено: OPF_75500_OrgPolPriPriDoNal_2 → 476
+ℹ️ Отсутствующие данные: OPF_75500_OrgPolUbyKolOrgEdi_2 → [-]
+ℹ️ Отсутствующие данные: OPF_75500_OrgPolUbyV%KObsKol_2 → [-]
+ℹ️ Отсутствующие данные: OPF_75500_OrgPolUbyUby_2 → [-]
+✅ Заполнено: OPF_12000_PriUby(-DoNalZaAnaPerPreGo_2 → 42258695
+✅ Заполнено: OPF_12000_TeRosPriV%_2 → 85,1
+✅ Заполнено: OPF_12000_SumUbyZaSooPerPreGo_2 → 19861358
+✅ Заполнено: OPF_12000_KolOrgPolUbyZaPreGo(ed_2 → 51
+✅ Заполнено: OPF_12000_SumPriZaSooPerPreGo_2 → 62120053
+✅ Заполнено: OPF_12000_TeRosUbyV%_2 → 115,8
+✅ Заполнено: OPF_12000_TeRosSumPriV%_2 → 94,9
+✅ Заполнено: OPF_12200_PriUby(-DoNalZaAnaPerPreGo_2 → 17860136
+✅ Заполнено: OPF_12200_TeRosPriV%_2 → 126,7
+✅ Заполнено: OPF_12200_SumUbyZaSooPerPreGo_2 → 15466484
+✅ Заполнено: OPF_12200_KolOrgPolUbyZaPreGo(ed_2 → 19
+✅ Заполнено: OPF_12200_SumPriZaSooPerPreGo_2 → 33326620
+✅ Заполнено: OPF_12200_TeRosUbyV%_2 → 94,2
+✅ Заполнено: OPF_12200_TeRosSumPriV%_2 → 111,6
+✅ Заполнено: OPF_12247_PriUby(-DoNalZaAnaPerPreGo_2 → 4869649
+✅ Заполнено: OPF_12247_TeRosPriV%_2 → 5
+✅ Заполнено: OPF_12247_SumUbyZaSooPerPreGo_2 → 1132695
+✅ Заполнено: OPF_12247_KolOrgPolUbyZaPreGo(ed_2 → 2
+✅ Заполнено: OPF_12247_SumPriZaSooPerPreGo_2 → 6002344
+✅ Заполнено: OPF_12247_TeRosUbyV%_2 → 5,2
+✅ Заполнено: OPF_12247_TeRosSumPriV%_2 → 5
+✅ Заполнено: OPF_12267_PriUby(-DoNalZaAnaPerPreGo_2 → 12990487
+✅ Заполнено: OPF_12267_TeRosPriV%_2 → 172,4
+✅ Заполнено: OPF_12267_SumUbyZaSooPerPreGo_2 → 14333789
+✅ Заполнено: OPF_12267_KolOrgPolUbyZaPreGo(ed_2 → 17
+✅ Заполнено: OPF_12267_SumPriZaSooPerPreGo_2 → 27324276
+✅ Заполнено: OPF_12267_TeRosUbyV%_2 → 101,2
+✅ Заполнено: OPF_12267_TeRosSumPriV%_2 → 135
+✅ Заполнено: OPF_12300_PriUby(-DoNalZaAnaPerPreGo_2 → 24398559
+✅ Заполнено: OPF_12300_TeRosPriV%_2 → 54,7
+✅ Заполнено: OPF_12300_SumUbyZaSooPerPreGo_2 → 4394874
+✅ Заполнено: OPF_12300_KolOrgPolUbyZaPreGo(ed_2 → 32
+✅ Заполнено: OPF_12300_SumPriZaSooPerPreGo_2 → 28793433
+✅ Заполнено: OPF_12300_TeRosUbyV%_2 → 191,8
+✅ Заполнено: OPF_12300_TeRosSumPriV%_2 → 75,6
+✅ Заполнено: OPF_14000_PriUby(-DoNalZaAnaPerPreGo_2 → 75665
+ℹ️ Отсутствующие данные: OPF_14000_TeRosPriV%_2 → [-]
+✅ Заполнено: OPF_14000_SumUbyZaSooPerPreGo_2 → 71824
+✅ Заполнено: OPF_14000_KolOrgPolUbyZaPreGo(ed_2 → 1
+✅ Заполнено: OPF_14000_SumPriZaSooPerPreGo_2 → 147489
+✅ Заполнено: OPF_14000_TeRosUbyV%_2 → 482
+✅ Заполнено: OPF_14000_TeRosSumPriV%_2 → 33,4
+✅ Заполнено: OPF_14100_PriUby(-DoNalZaAnaPerPreGo_2 → 75665
+ℹ️ Отсутствующие данные: OPF_14100_TeRosPriV%_2 → [-]
+✅ Заполнено: OPF_14100_SumUbyZaSooPerPreGo_2 → 71824
+✅ Заполнено: OPF_14100_KolOrgPolUbyZaPreGo(ed_2 → 1
+✅ Заполнено: OPF_14100_SumPriZaSooPerPreGo_2 → 147489
+✅ Заполнено: OPF_14100_TeRosUbyV%_2 → 482
+✅ Заполнено: OPF_14100_TeRosSumPriV%_2 → 33,4
+✅ Заполнено: OPF_20000_PriUby(-DoNalZaAnaPerPreGo_2 → 5014
+✅ Заполнено: OPF_20000_TeRosPriV%_2 → 1269,7
+✅ Заполнено: OPF_20000_SumUbyZaSooPerPreGo_2 → 3882
+✅ Заполнено: OPF_20000_KolOrgPolUbyZaPreGo(ed_2 → 5
+✅ Заполнено: OPF_20000_SumPriZaSooPerPreGo_2 → 8896
+✅ Заполнено: OPF_20000_TeRosUbyV%_2 → 192,1
+✅ Заполнено: OPF_20000_TeRosSumPriV%_2 → 799,4
+✅ Заполнено: OPF_20200_PriUby(-DoNalZaAnaPerPreGo_2 → 937
+✅ Заполнено: OPF_20200_TeRosPriV%_2 → 60,9
+✅ Заполнено: OPF_20200_SumUbyZaSooPerPreGo_2 → 180
+✅ Заполнено: OPF_20200_KolOrgPolUbyZaPreGo(ed_2 → 2
+✅ Заполнено: OPF_20200_SumPriZaSooPerPreGo_2 → 1117
+ℹ️ Отсутствующие данные: OPF_20200_TeRosUbyV%_2 → [-]
+✅ Заполнено: OPF_20200_TeRosSumPriV%_2 → 51,1
+✅ Заполнено: OPF_21200_PriUby(-DoNalZaAnaPerPreGo_2 → -3501
+ℹ️ Отсутствующие данные: OPF_21200_TeRosPriV%_2 → [-]
+✅ Заполнено: OPF_21200_SumUbyZaSooPerPreGo_2 → 3702
+✅ Заполнено: OPF_21200_KolOrgPolUbyZaPreGo(ed_2 → 3
+✅ Заполнено: OPF_21200_SumPriZaSooPerPreGo_2 → 201
+✅ Заполнено: OPF_21200_TeRosUbyV%_2 → 201,4
+✅ Заполнено: OPF_21200_TeRosSumPriV%_2 → 4969,2
+✅ Заполнено: OPF_60000_PriUby(-DoNalZaAnaPerPreGo_2 → 144918
+✅ Заполнено: OPF_60000_TeRosPriV%_2 → 1016,5
+✅ Заполнено: OPF_60000_SumUbyZaSooPerPreGo_2 → 329523
+✅ Заполнено: OPF_60000_KolOrgPolUbyZaPreGo(ed_2 → 10
+✅ Заполнено: OPF_60000_SumPriZaSooPerPreGo_2 → 474441
+✅ Заполнено: OPF_60000_TeRosUbyV%_2 → 120,6
+✅ Заполнено: OPF_60000_TeRosSumPriV%_2 → 394,3
+✅ Заполнено: OPF_65000_PriUby(-DoNalZaAnaPerPreGo_2 → 144918
+✅ Заполнено: OPF_65000_TeRosPriV%_2 → 1016,5
+✅ Заполнено: OPF_65000_SumUbyZaSooPerPreGo_2 → 329523
+✅ Заполнено: OPF_65000_KolOrgPolUbyZaPreGo(ed_2 → 10
+✅ Заполнено: OPF_65000_SumPriZaSooPerPreGo_2 → 474441
+✅ Заполнено: OPF_65000_TeRosUbyV%_2 → 120,6
+✅ Заполнено: OPF_65000_TeRosSumPriV%_2 → 394,3
+✅ Заполнено: OPF_70000_PriUby(-DoNalZaAnaPerPreGo_2 → 46694
+✅ Заполнено: OPF_70000_TeRosPriV%_2 → 193,1
+ℹ️ Отсутствующие данные: OPF_70000_SumUbyZaSooPerPreGo_2 → [-]
+ℹ️ Отсутствующие данные: OPF_70000_KolOrgPolUbyZaPreGo(ed_2 → [-]
+✅ Заполнено: OPF_70000_SumPriZaSooPerPreGo_2 → 46694
+✅ Заполнено: OPF_70000_TeRosUbyV%_2 → 0
+✅ Заполнено: OPF_70000_TeRosSumPriV%_2 → 225,2
+✅ Заполнено: OPF_70400_PriUby(-DoNalZaAnaPerPreGo_2 → 46279
+✅ Заполнено: OPF_70400_TeRosPriV%_2 → 175,1
+ℹ️ Отсутствующие данные: OPF_70400_SumUbyZaSooPerPreGo_2 → [-]
+ℹ️ Отсутствующие данные: OPF_70400_KolOrgPolUbyZaPreGo(ed_2 → [-]
+✅ Заполнено: OPF_70400_SumPriZaSooPerPreGo_2 → 46279
+✅ Заполнено: OPF_70400_TeRosUbyV%_2 → 0
+✅ Заполнено: OPF_70400_TeRosSumPriV%_2 → 207,4
+✅ Заполнено: OPF_71400_PriUby(-DoNalZaAnaPerPreGo_2 → 162
+✅ Заполнено: OPF_71400_TeRosPriV%_2 → 5358,6
+ℹ️ Отсутствующие данные: OPF_71400_SumUbyZaSooPerPreGo_2 → [-]
+ℹ️ Отсутствующие данные: OPF_71400_KolOrgPolUbyZaPreGo(ed_2 → [-]
+✅ Заполнено: OPF_71400_SumPriZaSooPerPreGo_2 → 162
+ℹ️ Отсутствующие данные: OPF_71400_TeRosUbyV%_2 → [-]
+✅ Заполнено: OPF_71400_TeRosSumPriV%_2 → 5358,6
+✅ Заполнено: OPF_75500_PriUby(-DoNalZaAnaPerPreGo_2 → 253
+✅ Заполнено: OPF_75500_TeRosPriV%_2 → 188,1
+ℹ️ Отсутствующие данные: OPF_75500_SumUbyZaSooPerPreGo_2 → [-]
+ℹ️ Отсутствующие данные: OPF_75500_KolOrgPolUbyZaPreGo(ed_2 → [-]
+✅ Заполнено: OPF_75500_SumPriZaSooPerPreGo_2 → 253
+ℹ️ Отсутствующие данные: OPF_75500_TeRosUbyV%_2 → [-]
+✅ Заполнено: OPF_75500_TeRosSumPriV%_2 → 188,1
+✅ Заполнено: FS_10_KolOrgEdi_3 → 227
+✅ Заполнено: FS_10_PriUby(-DoNal_3 → 40865176
+✅ Заполнено: FS_10_OrgPolPriKolOrgEdi_3 → 138
+✅ Заполнено: FS_10_OrgPolPriV%KObsKol_3 → 60,8
+✅ Заполнено: FS_10_OrgPolPriPriDoNal_3 → 61069722
+✅ Заполнено: FS_10_OrgPolUbyKolOrgEdi_3 → 89
+✅ Заполнено: FS_10_OrgPolUbyV%KObsKol_3 → 39,2
+✅ Заполнено: FS_10_OrgPolUbyUby_3 → 20204546
+✅ Заполнено: FS_11_KolOrgEdi_3 → 30
+✅ Заполнено: FS_11_PriUby(-DoNal_3 → 1989984
+✅ Заполнено: FS_11_OrgPolPriKolOrgEdi_3 → 14
+✅ Заполнено: FS_11_OrgPolPriV%KObsKol_3 → 46,7
+✅ Заполнено: FS_11_OrgPolPriPriDoNal_3 → 2735210
+✅ Заполнено: FS_11_OrgPolUbyKolOrgEdi_3 → 16
+✅ Заполнено: FS_11_OrgPolUbyV%KObsKol_3 → 53,3
+✅ Заполнено: FS_11_OrgPolUbyUby_3 → 745226
+✅ Заполнено: FS_12_KolOrgEdi_3 → 4
+✅ Заполнено: FS_12_PriUby(-DoNal_3 → -260751
+ℹ️ Отсутствующие данные: FS_12_OrgPolPriKolOrgEdi_3 → [-]
+ℹ️ Отсутствующие данные: FS_12_OrgPolPriV%KObsKol_3 → [-]
+ℹ️ Отсутствующие данные: FS_12_OrgPolPriPriDoNal_3 → [-]
+✅ Заполнено: FS_12_OrgPolUbyKolOrgEdi_3 → 4
+✅ Заполнено: FS_12_OrgPolUbyV%KObsKol_3 → 100
+✅ Заполнено: FS_12_OrgPolUbyUby_3 → 260751
+✅ Заполнено: FS_13_KolOrgEdi_3 → 26
+✅ Заполнено: FS_13_PriUby(-DoNal_3 → 2250735
+✅ Заполнено: FS_13_OrgPolPriKolOrgEdi_3 → 14
+✅ Заполнено: FS_13_OrgPolPriV%KObsKol_3 → 53,8
+✅ Заполнено: FS_13_OrgPolPriPriDoNal_3 → 2735210
+✅ Заполнено: FS_13_OrgPolUbyKolOrgEdi_3 → 12
+✅ Заполнено: FS_13_OrgPolUbyV%KObsKol_3 → 46,2
+✅ Заполнено: FS_13_OrgPolUbyUby_3 → 484475
+✅ Заполнено: FS_14_KolOrgEdi_3 → 21
+✅ Заполнено: FS_14_PriUby(-DoNal_3 → 351269
+✅ Заполнено: FS_14_OrgPolPriKolOrgEdi_3 → 13
+✅ Заполнено: FS_14_OrgPolPriV%KObsKol_3 → 61,9
+✅ Заполнено: FS_14_OrgPolPriPriDoNal_3 → 461744
+✅ Заполнено: FS_14_OrgPolUbyKolOrgEdi_3 → 8
+✅ Заполнено: FS_14_OrgPolUbyV%KObsKol_3 → 38,1
+✅ Заполнено: FS_14_OrgPolUbyUby_3 → 110475
+✅ Заполнено: FS_15_KolOrgEdi_3 → 7
+✅ Заполнено: FS_15_PriUby(-DoNal_3 → 571
+✅ Заполнено: FS_15_OrgPolPriKolOrgEdi_3 → 7
+✅ Заполнено: FS_15_OrgPolPriV%KObsKol_3 → 100
+✅ Заполнено: FS_15_OrgPolPriPriDoNal_3 → 571
+ℹ️ Отсутствующие данные: FS_15_OrgPolUbyKolOrgEdi_3 → [-]
+ℹ️ Отсутствующие данные: FS_15_OrgPolUbyV%KObsKol_3 → [-]
+ℹ️ Отсутствующие данные: FS_15_OrgPolUbyUby_3 → [-]
+✅ Заполнено: FS_16_KolOrgEdi_3 → 161
+✅ Заполнено: FS_16_PriUby(-DoNal_3 → 34373626
+✅ Заполнено: FS_16_OrgPolPriKolOrgEdi_3 → 99
+✅ Заполнено: FS_16_OrgPolPriV%KObsKol_3 → 61,5
+✅ Заполнено: FS_16_OrgPolPriPriDoNal_3 → 53336713
+✅ Заполнено: FS_16_OrgPolUbyKolOrgEdi_3 → 62
+✅ Заполнено: FS_16_OrgPolUbyV%KObsKol_3 → 38,5
+✅ Заполнено: FS_16_OrgPolUbyUby_3 → 18963087
+✅ Заполнено: FS_17_KolOrgEdi_3 → 8
+✅ Заполнено: FS_17_PriUby(-DoNal_3 → 4149726
+✅ Заполнено: FS_17_OrgPolPriKolOrgEdi_3 → 5
+✅ Заполнено: FS_17_OrgPolPriV%KObsKol_3 → 62,5
+✅ Заполнено: FS_17_OrgPolPriPriDoNal_3 → 4535484
+✅ Заполнено: FS_17_OrgPolUbyKolOrgEdi_3 → 3
+✅ Заполнено: FS_17_OrgPolUbyV%KObsKol_3 → 37,5
+✅ Заполнено: FS_17_OrgPolUbyUby_3 → 385758
+✅ Заполнено: FS_30_KolOrgEdi_3 → 4
+✅ Заполнено: FS_30_PriUby(-DoNal_3 → -3558159
+✅ Заполнено: FS_30_OrgPolPriKolOrgEdi_3 → 2
+✅ Заполнено: FS_30_OrgPolPriV%KObsKol_3 → 50
+✅ Заполнено: FS_30_OrgPolPriPriDoNal_3 → 0
+✅ Заполнено: FS_30_OrgPolUbyKolOrgEdi_3 → 2
+✅ Заполнено: FS_30_OrgPolUbyV%KObsKol_3 → 50
+✅ Заполнено: FS_30_OrgPolUbyUby_3 → 3558159
+✅ Заполнено: FS_10_PriUby(-DoNalZaAnaPerPreGo_3 → 37794260
+✅ Заполнено: FS_10_TeRosPriV%_3 → 108,1
+✅ Заполнено: FS_10_SumUbyZaSooPerPreGo_3 → 20197765
+✅ Заполнено: FS_10_KolOrgPolUbyZaPreGo(ed_3 → 66
+✅ Заполнено: FS_10_SumPriZaSooPerPreGo_3 → 57992025
+✅ Заполнено: FS_10_TeRosUbyV%_3 → 100
+✅ Заполнено: FS_10_TeRosSumPriV%_3 → 105,3
+✅ Заполнено: FS_11_PriUby(-DoNalZaAnaPerPreGo_3 → 3184420
+✅ Заполнено: FS_11_TeRosPriV%_3 → 62,5
+✅ Заполнено: FS_11_SumUbyZaSooPerPreGo_3 → 354645
+✅ Заполнено: FS_11_KolOrgPolUbyZaPreGo(ed_3 → 11
+✅ Заполнено: FS_11_SumPriZaSooPerPreGo_3 → 3539065
+✅ Заполнено: FS_11_TeRosUbyV%_3 → 210,1
+✅ Заполнено: FS_11_TeRosSumPriV%_3 → 77,3
+✅ Заполнено: FS_12_PriUby(-DoNalZaAnaPerPreGo_3 → -198964
+ℹ️ Отсутствующие данные: FS_12_TeRosPriV%_3 → [-]
+✅ Заполнено: FS_12_SumUbyZaSooPerPreGo_3 → 198964
+✅ Заполнено: FS_12_KolOrgPolUbyZaPreGo(ed_3 → 4
+ℹ️ Отсутствующие данные: FS_12_SumPriZaSooPerPreGo_3 → [-]
+✅ Заполнено: FS_12_TeRosUbyV%_3 → 131,1
+ℹ️ Отсутствующие данные: FS_12_TeRosSumPriV%_3 → [-]
+✅ Заполнено: FS_13_PriUby(-DoNalZaAnaPerPreGo_3 → 3383384
+✅ Заполнено: FS_13_TeRosPriV%_3 → 66,5
+✅ Заполнено: FS_13_SumUbyZaSooPerPreGo_3 → 155681
+✅ Заполнено: FS_13_KolOrgPolUbyZaPreGo(ed_3 → 7
+✅ Заполнено: FS_13_SumPriZaSooPerPreGo_3 → 3539065
+✅ Заполнено: FS_13_TeRosUbyV%_3 → 311,2
+✅ Заполнено: FS_13_TeRosSumPriV%_3 → 77,3
+✅ Заполнено: FS_14_PriUby(-DoNalZaAnaPerPreGo_3 → 8367
+✅ Заполнено: FS_14_TeRosPriV%_3 → 4198,3
+✅ Заполнено: FS_14_SumUbyZaSooPerPreGo_3 → 160676
+✅ Заполнено: FS_14_KolOrgPolUbyZaPreGo(ed_3 → 6
+✅ Заполнено: FS_14_SumPriZaSooPerPreGo_3 → 169043
+✅ Заполнено: FS_14_TeRosUbyV%_3 → 68,8
+✅ Заполнено: FS_14_TeRosSumPriV%_3 → 273,2
+✅ Заполнено: FS_15_PriUby(-DoNalZaAnaPerPreGo_3 → 937
+✅ Заполнено: FS_15_TeRosPriV%_3 → 60,9
+✅ Заполнено: FS_15_SumUbyZaSooPerPreGo_3 → 180
+✅ Заполнено: FS_15_KolOrgPolUbyZaPreGo(ed_3 → 2
+✅ Заполнено: FS_15_SumPriZaSooPerPreGo_3 → 1117
+ℹ️ Отсутствующие данные: FS_15_TeRosUbyV%_3 → [-]
+✅ Заполнено: FS_15_TeRosSumPriV%_3 → 51,1
+✅ Заполнено: FS_16_PriUby(-DoNalZaAnaPerPreGo_3 → 34003432
+✅ Заполнено: FS_16_TeRosPriV%_3 → 101,1
+✅ Заполнено: FS_16_SumUbyZaSooPerPreGo_3 → 19682264
+✅ Заполнено: FS_16_KolOrgPolUbyZaPreGo(ed_3 → 47
+✅ Заполнено: FS_16_SumPriZaSooPerPreGo_3 → 53685696
+✅ Заполнено: FS_16_TeRosUbyV%_3 → 96,3
+✅ Заполнено: FS_16_TeRosSumPriV%_3 → 99,3
+✅ Заполнено: FS_17_PriUby(-DoNalZaAnaPerPreGo_3 → 597104
+✅ Заполнено: FS_17_TeRosPriV%_3 → 695
+ℹ️ Отсутствующие данные: FS_17_SumUbyZaSooPerPreGo_3 → [-]
+ℹ️ Отсутствующие данные: FS_17_KolOrgPolUbyZaPreGo(ed_3 → [-]
+✅ Заполнено: FS_17_SumPriZaSooPerPreGo_3 → 597104
+✅ Заполнено: FS_17_TeRosUbyV%_3 → 0
+✅ Заполнено: FS_17_TeRosSumPriV%_3 → 759,6
+✅ Заполнено: FS_30_PriUby(-DoNalZaAnaPerPreGo_3 → 4736726
+✅ Заполнено: FS_30_TeRosPriV%_3 → 0
+✅ Заполнено: FS_30_SumUbyZaSooPerPreGo_3 → 68822
+✅ Заполнено: FS_30_KolOrgPolUbyZaPreGo(ed_3 → 1
+✅ Заполнено: FS_30_SumPriZaSooPerPreGo_3 → 4805548
+✅ Заполнено: FS_30_TeRosUbyV%_3 → 5170,1
+✅ Заполнено: FS_30_TeRosSumPriV%_3 → 0
 ✅ Заполнено: OKVED_A_KolOrgEdi_4 → 70
 ✅ Заполнено: OKVED_A_PriUby(-OtPro → 20251578
 ✅ Заполнено: OKVED_A_SebProSUchKomIUprRas → 147713630
