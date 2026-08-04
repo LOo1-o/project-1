@@ -253,6 +253,25 @@ def _normalize_match_text(text: str) -> str:
     return normalized
 
 
+# Строки-разметка единиц измерения/периода, которые Word иногда повторяет как
+# отдельную строку прямо над шапкой продолжения таблицы ("на конец года,
+# тысяч рублей" и т.п.) — это не часть названия показателя, а общая для всей
+# группы колонок пометка. Сравниваем ТОЧНО (после нормализации), а не по
+# вхождению — иначе можно случайно съесть реальное название, которое просто
+# содержит похожие слова.
+_UNIT_ANNOTATION_TEXTS = {
+    'на конец года тысяч рублей',
+    'на конец года',
+    'тысяч рублей',
+    'на начало года тысяч рублей',
+    'на начало года',
+}
+
+
+def _is_unit_annotation(part_norm: str) -> bool:
+    return part_norm in _UNIT_ANNOTATION_TEXTS
+
+
 def _text_matches_name(cell_text: str, name_norm: str, min_len: int = 5) -> bool:
     """
     Проверяет совпадение нормализованного названия показателя с текстом ячейки
@@ -486,7 +505,13 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
                 if i >= len(row_cells):
                     continue
                 part = _normalize_match_text(get_cleaned_cell_text(row_cells[i]))
-                if part and part not in seen:
+                # Строка-разметка единиц измерения ("на конец года, тысяч
+                # рублей" и т.п.) иногда попадает в run строки-заголовка (когда
+                # секция начинается со страницы "Продолжение таблицы N.") и
+                # тогда примешивается к составному названию колонки, сбивая
+                # score ниже порога принятия (0.80) — реальное название
+                # показателя при этом само по себе совпадает точно.
+                if part and part not in seen and not _is_unit_annotation(part):
                     seen.add(part)
                     parts.append(part)
             header_text = ' '.join(parts).strip()
