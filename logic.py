@@ -987,7 +987,18 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
 
             for col_idx, indicator_spec in mapping.items():
                 if col_idx < len(row.cells):
-                    if col_idx != 0 and row.cells[col_idx]._tc is name_cell_tc:
+                    if col_idx == 0:
+                        # Колонка 0 — это ВСЕГДА название строки (код ОКВЭД/МО/
+                        # категории), даже если по какой-то причине алгоритм
+                        # сопоставления колонок ошибочно решил, что это колонка
+                        # с данными. Ни при каких обстоятельствах не затираем её
+                        # тегом — иначе теряется сама подпись строки, и по этой
+                        # ячейке уже не восстановить, какая это была строка
+                        # (первое, что читает find_okved_code/find_mo_code/
+                        # find_category_code чуть выше — именно эта ячейка).
+                        print(f"   ⚠️ Строка {row_idx + 1}: колонка 0 — это колонка названия, тег пропущен (индикатор {indicator_spec[0]})")
+                        continue
+                    if row.cells[col_idx]._tc is name_cell_tc:
                         # Ячейка данных объединена с ячейкой названия ОКВЭД/МО (col0) —
                         # запись тега сюда стёрла бы название строки. Пропускаем.
                         print(f"   ⚠️ Строка {row_idx + 1}: колонка {col_idx} объединена с колонкой названия, тег пропущен")
