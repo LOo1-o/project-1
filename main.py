@@ -70,6 +70,7 @@ def main(input_template_override=None, output_file_override=None):
         squish_match_report_path=output_dir / "склеенные_совпадения.xlsx",
         typo_match_report_path=output_dir / "опечатки_в_одну_букву.xlsx",
         excel_dir=excel_dir,
+        unit_annotation_report_path=output_dir / "отфильтрованные_разметки_единиц.xlsx",
     )
     print(f"📄 Шаблон с тегами сохранен: {template_word_file}")
 

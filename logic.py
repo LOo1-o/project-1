@@ -374,7 +374,7 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
 
 
 def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None, run_rows=None,
-                              near_miss_sink=None, squish_match_sink=None):
+                              near_miss_sink=None, squish_match_sink=None, unit_annotation_sink=None):
     """Вычисляет маппинг столбцов для данной секции таблицы.
 
     near_miss_sink, если передан, получает по одному элементу
@@ -386,6 +386,12 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
     (column_idx, cell_text, matched_name, matched_indicator) на каждое
     совпадение, найденное только через самый толерантный уровень сравнения
     (_squish_text) — тоже стоит проверять человеку, см. _fuzzy_match_header.
+
+    unit_annotation_sink, если передан, получает по одному элементу
+    (column_idx, row_idx, dropped_text) на каждую строку-разметку единиц
+    измерения/периода (см. _is_unit_annotation), выброшенную из составного
+    заголовка колонки — чтобы было видно, где именно и что было отфильтровано,
+    а не просто молча выброшено.
     """
     year_row = table.rows[header_idx]
     year_texts = [get_cleaned_cell_text(cell).strip() for cell in year_row.cells]
@@ -511,7 +517,11 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
                 # тогда примешивается к составному названию колонки, сбивая
                 # score ниже порога принятия (0.80) — реальное название
                 # показателя при этом само по себе совпадает точно.
-                if part and part not in seen and not _is_unit_annotation(part):
+                if part and _is_unit_annotation(part):
+                    if unit_annotation_sink is not None:
+                        unit_annotation_sink.append((i, r_idx, part))
+                    continue
+                if part and part not in seen:
                     seen.add(part)
                     parts.append(part)
             header_text = ' '.join(parts).strip()
@@ -596,7 +606,8 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                            output_doc_path,
                            mo_map_path: Path = None, validation_log_path: Path = None,
                            near_miss_report_path: Path = None, squish_match_report_path: Path = None,
-                           typo_match_report_path: Path = None, excel_dir: Path = None):
+                           typo_match_report_path: Path = None, excel_dir: Path = None,
+                           unit_annotation_report_path: Path = None):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}},
     {{MO_<code>_<indicator>[_22|_23]}} и {{OPF_<code>_<indicator>}}/{{FS_<code>_<indicator>}}
@@ -629,6 +640,13 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     "уравленческие" вместо "управленческие". Такие совпадения проходят
     автоматически, но их стоит проверить человеком: возможно, стоит
     исправить сам Word-документ, а не мириться с опечаткой.
+
+    unit_annotation_report_path: если указан, сюда выгружается таблица всех
+    строк-разметок единиц измерения/периода (см. _UNIT_ANNOTATION_TEXTS),
+    которые были отфильтрованы из составного названия колонки при
+    сопоставлении — чтобы это не терялось молча, а было видно, что именно и
+    где было выброшено (и можно было проверить, что фильтр не съел что-то
+    лишнее).
     """
     print("\n--- ШАГ 2: Генерация шаблона с умными тегами ---")
     _, name_to_okved_cleaned = load_okved_map(okved_map_path)
@@ -659,6 +677,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     near_miss_report = []
     squish_match_report = []
     typo_match_report = []
+    unit_annotation_report = []
     current_source_file = None
     normalized_title_to_src = {k: v for k, v in table_source_mapping.items()}
 
@@ -824,10 +843,23 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             header_idx = run[-1]
             table_near_misses = [] if near_miss_report_path else None
             table_squish_matches = [] if squish_match_report_path else None
+            table_unit_annotations = [] if unit_annotation_report_path else None
             mapping = _compute_section_mapping(table, header_idx, source_word_to_indicator,
                                                 header_rows=header_rows_set, run_rows=run,
                                                 near_miss_sink=table_near_misses,
-                                                squish_match_sink=table_squish_matches)
+                                                squish_match_sink=table_squish_matches,
+                                                unit_annotation_sink=table_unit_annotations)
+            if table_unit_annotations:
+                unit_annotation_report.extend(
+                    {
+                        'table': t_index + 1,
+                        'source_file': current_source_file,
+                        'column': col_idx,
+                        'row': row_idx + 1,
+                        'dropped_text': dropped_text,
+                    }
+                    for col_idx, row_idx, dropped_text in table_unit_annotations
+                )
             if table_near_misses:
                 near_miss_report.extend(
                     {
@@ -1073,6 +1105,13 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         pd.DataFrame(typo_match_report, columns=columns).to_excel(typo_match_report_path, index=False)
         print(f"✏️ Отчёт по опечаткам в одну букву сохранён: {typo_match_report_path} "
               f"({len(typo_match_report)} строк)")
+    if unit_annotation_report_path:
+        unit_annotation_report_path = Path(unit_annotation_report_path)
+        unit_annotation_report_path.parent.mkdir(parents=True, exist_ok=True)
+        columns = ['table', 'source_file', 'column', 'row', 'dropped_text']
+        pd.DataFrame(unit_annotation_report, columns=columns).to_excel(unit_annotation_report_path, index=False)
+        print(f"📏 Отчёт по отфильтрованным разметкам единиц измерения сохранён: {unit_annotation_report_path} "
+              f"({len(unit_annotation_report)} строк)")
 
 
 # ==========================================================
