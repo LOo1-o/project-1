@@ -39,6 +39,7 @@ def main(input_template_override=None, output_file_override=None):
     mo_file = mappings_dir / "mo.csv"
     table_mapping_file = mappings_dir / "table_source_data_mapping.csv"
     column_mapping_file = mappings_dir / "column_mapping_v2.csv"
+    unit_annotations_file = mappings_dir / "unit_annotations.csv"
 
     input_word_file = input_template_override or input_dir / "Бюллетень_17.2.8 раздел 1-8.docx"
     template_word_file = output_dir / "Бюллетень_ШАБЛОН_С_ТЕГАМИ_v2.docx"
@@ -71,6 +72,7 @@ def main(input_template_override=None, output_file_override=None):
         typo_match_report_path=output_dir / "опечатки_в_одну_букву.xlsx",
         excel_dir=excel_dir,
         unit_annotation_report_path=output_dir / "отфильтрованные_разметки_единиц.xlsx",
+        unit_annotations_path=unit_annotations_file,
     )
     print(f"📄 Шаблон с тегами сохранен: {template_word_file}")
 

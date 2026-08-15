@@ -259,7 +259,12 @@ def _normalize_match_text(text: str) -> str:
 # группы колонок пометка. Сравниваем ТОЧНО (после нормализации), а не по
 # вхождению — иначе можно случайно съесть реальное название, которое просто
 # содержит похожие слова.
-_UNIT_ANNOTATION_TEXTS = {
+#
+# Список по умолчанию (fallback, если input/mappings/unit_annotations.csv не
+# найден) — обычно фактический список загружается из этого CSV через
+# load_unit_annotation_texts, чтобы пользователь мог дополнять его без
+# правки кода.
+_DEFAULT_UNIT_ANNOTATION_TEXTS = {
     'на конец года тысяч рублей',
     'на конец года',
     'тысяч рублей',
@@ -268,8 +273,39 @@ _UNIT_ANNOTATION_TEXTS = {
 }
 
 
-def _is_unit_annotation(part_norm: str) -> bool:
-    return part_norm in _UNIT_ANNOTATION_TEXTS
+def load_unit_annotation_texts(filepath) -> set:
+    """
+    Загружает список служебных фраз-разметок единиц измерения/периода из
+    CSV (колонка "фраза"; необязательная колонка "комментарий" — только
+    для человека, в сравнении не участвует). Каждая фраза нормализуется
+    так же, как и сравниваемый текст (см. _normalize_match_text), чтобы
+    пользователь мог писать её в любом регистре/с любой пунктуацией.
+
+    Если файл не найден или пуст — возвращает встроенный список по
+    умолчанию, чтобы поведение не менялось "из коробки".
+    """
+    import csv as _csv
+    try:
+        with open(filepath, encoding="utf-8-sig", newline='') as f:
+            reader = _csv.reader(f, delimiter=';')
+            rows = list(reader)
+    except FileNotFoundError:
+        return set(_DEFAULT_UNIT_ANNOTATION_TEXTS)
+
+    if rows:
+        rows = rows[1:]  # заголовок
+
+    texts = {
+        _normalize_match_text(row[0])
+        for row in rows
+        if row and row[0].strip()
+    }
+    return texts or set(_DEFAULT_UNIT_ANNOTATION_TEXTS)
+
+
+def _is_unit_annotation(part_norm: str, unit_annotation_texts: Optional[set] = None) -> bool:
+    texts = unit_annotation_texts if unit_annotation_texts is not None else _DEFAULT_UNIT_ANNOTATION_TEXTS
+    return part_norm in texts
 
 
 def _text_matches_name(cell_text: str, name_norm: str, min_len: int = 5) -> bool:
@@ -374,7 +410,8 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
 
 
 def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None, run_rows=None,
-                              near_miss_sink=None, squish_match_sink=None, unit_annotation_sink=None):
+                              near_miss_sink=None, squish_match_sink=None, unit_annotation_sink=None,
+                              unit_annotation_texts=None):
     """Вычисляет маппинг столбцов для данной секции таблицы.
 
     near_miss_sink, если передан, получает по одному элементу
@@ -517,7 +554,7 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
                 # тогда примешивается к составному названию колонки, сбивая
                 # score ниже порога принятия (0.80) — реальное название
                 # показателя при этом само по себе совпадает точно.
-                if part and _is_unit_annotation(part):
+                if part and _is_unit_annotation(part, unit_annotation_texts):
                     if unit_annotation_sink is not None:
                         unit_annotation_sink.append((i, r_idx, part))
                     continue
@@ -607,7 +644,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                            mo_map_path: Path = None, validation_log_path: Path = None,
                            near_miss_report_path: Path = None, squish_match_report_path: Path = None,
                            typo_match_report_path: Path = None, excel_dir: Path = None,
-                           unit_annotation_report_path: Path = None):
+                           unit_annotation_report_path: Path = None, unit_annotations_path: Path = None):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}},
     {{MO_<code>_<indicator>[_22|_23]}} и {{OPF_<code>_<indicator>}}/{{FS_<code>_<indicator>}}
@@ -642,17 +679,27 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     исправить сам Word-документ, а не мириться с опечаткой.
 
     unit_annotation_report_path: если указан, сюда выгружается таблица всех
-    строк-разметок единиц измерения/периода (см. _UNIT_ANNOTATION_TEXTS),
+    строк-разметок единиц измерения/периода (см. load_unit_annotation_texts),
     которые были отфильтрованы из составного названия колонки при
     сопоставлении — чтобы это не терялось молча, а было видно, что именно и
     где было выброшено (и можно было проверить, что фильтр не съел что-то
     лишнее).
+
+    unit_annotations_path: путь к CSV со списком фраз-разметок единиц
+    измерения/периода (см. load_unit_annotation_texts) — пользователь может
+    редактировать этот файл, не трогая код. Если не указан или не найден,
+    используется встроенный список по умолчанию.
     """
     print("\n--- ШАГ 2: Генерация шаблона с умными тегами ---")
     _, name_to_okved_cleaned = load_okved_map(okved_map_path)
     _, mo_name_to_mo_cleaned = ({}, {})
     if mo_map_path is not None:
         _, mo_name_to_mo_cleaned = load_mo_map(mo_map_path)
+    unit_annotation_texts = (
+        load_unit_annotation_texts(unit_annotations_path)
+        if unit_annotations_path is not None
+        else set(_DEFAULT_UNIT_ANNOTATION_TEXTS)
+    )
 
     table_source_mapping = load_table_source_map(table_source_mapping_path)
     mo_source_files = {src for src in table_source_mapping.values() if 'mo' in src.lower()}
@@ -848,7 +895,8 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                                                 header_rows=header_rows_set, run_rows=run,
                                                 near_miss_sink=table_near_misses,
                                                 squish_match_sink=table_squish_matches,
-                                                unit_annotation_sink=table_unit_annotations)
+                                                unit_annotation_sink=table_unit_annotations,
+                                                unit_annotation_texts=unit_annotation_texts)
             if table_unit_annotations:
                 unit_annotation_report.extend(
                     {
