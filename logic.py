@@ -381,8 +381,21 @@ def _build_composed_header_for_column(table, base_row_idx: int, col_idx: int, de
     return " ".join(parts).strip()
 
 
-def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
-    """Собирает все строки заголовков таблицы (year или indicator rows)."""
+def _find_header_rows(table, source_word_to_indicator, max_search_rows=80, entity_name_maps=None):
+    """Собирает все строки заголовков таблицы (year или indicator rows).
+
+    entity_name_maps: необязательный список справочников "название -> код"
+    (ОКВЭД/МО/категория — см. category_mapping.py), которые заведомо
+    относятся к СТРОКАМ ДАННЫХ, а не заголовков. Если колонка 0 строки-
+    кандидата в заголовки однозначно опознаётся как одна из этих сущностей
+    (например, "Всего по обследуемым видам экономической деятельности"),
+    строка исключается из результата, даже если она набрала нужный score по
+    текстовому сходству с показателями — реальный заголовок никогда не
+    содержит в колонке 0 название/код сущности, там всегда название метрики.
+    Это ЧИСТО ИСКЛЮЧАЮЩЕЕ правило (может только убрать строку из headers,
+    никогда не добавить) — специально сделано так, чтобы минимизировать риск
+    задеть другие, уже правильно работающие случаи классификации.
+    """
     normalized_names = [_normalize_match_text(name) for name in source_word_to_indicator.keys()]
     headers = []
     rows = table.rows[:max_search_rows]
@@ -406,7 +419,22 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=80):
             if combined_score >= 2:
                 # Помечаем и следующую строку как часть шапки
                 headers.append(row_idx + 1)
-    return sorted(set(headers))
+
+    if not entity_name_maps:
+        return sorted(set(headers))
+
+    filtered_headers = []
+    for row_idx in sorted(set(headers)):
+        if row_idx >= len(rows) or not rows[row_idx].cells:
+            filtered_headers.append(row_idx)
+            continue
+        col0_text = get_cleaned_cell_text(rows[row_idx].cells[0]).strip()
+        is_known_entity = bool(col0_text) and any(
+            find_okved_code(col0_text, name_map) for name_map in entity_name_maps if name_map
+        )
+        if not is_known_entity:
+            filtered_headers.append(row_idx)
+    return filtered_headers
 
 
 def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None, run_rows=None,
@@ -860,7 +888,10 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             print(f"⚠️ Нет показателей для источника {current_source_file}. Пропускаем таблицу.")
             continue
 
-        header_rows = _find_header_rows(table, source_word_to_indicator)
+        header_rows = _find_header_rows(
+            table, source_word_to_indicator,
+            entity_name_maps=[name_to_okved_cleaned, mo_name_to_mo_cleaned, category_name_maps.get(current_source_file, {})]
+        )
         header_rows_set = set(header_rows)
 
         # Многие "шапки" занимают несколько подряд идущих строк (например, строка

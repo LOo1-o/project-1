@@ -2466,6 +2466,11 @@
 ✅ Заполнено: OKVED_85_KraKreZadSreSrPog → 16,5
 ✅ Заполнено: OKVED_85_FinIDruAkt(deNdPoPriTseKraFinVloSreSrPog → 11,4
 ✅ Заполнено: OKVED_85_DebZadSreSrPog → 11,4
+✅ Заполнено: OKVED_Q_OboAktDli1Obo → 0
+✅ Заполнено: OKVED_Q_ZapDli1Obo → 0
+✅ Заполнено: OKVED_Q_KraKreZadSreSrPog → 0
+✅ Заполнено: OKVED_Q_FinIDruAkt(deNdPoPriTseKraFinVloSreSrPog → 0
+ℹ️ Отсутствующие данные: OKVED_Q_DebZadSreSrPog → [-]
 ✅ Заполнено: OKVED_88_OboAktDli1Obo → 0
 ✅ Заполнено: OKVED_88_ZapDli1Obo → 0
 ✅ Заполнено: OKVED_88_KraKreZadSreSrPog → 0
@@ -5720,6 +5725,14 @@
 ✅ Заполнено: MO_30832_KoeLik(noOgr80%)_1_24 → 87,3
 ✅ Заполнено: MO_30832_KoeTekLik(po(noOgr20%)_1_23 → 107,7
 ✅ Заполнено: MO_30832_KoeTekLik(po(noOgr20%)_1_24 → 102,4
+✅ Заполнено: OKVED_101_АГ_DohIRasPoObyVidDeyZaOtcPerVyr → 451806332
+✅ Заполнено: OKVED_101_АГ_DohIRasPoObyVidDeyZaOtcPerSebPro → 338189827
+✅ Заполнено: OKVED_101_АГ_DohIRasPoObyVidDeyZaOtcPerValPri → 113616505
+✅ Заполнено: OKVED_101_АГ_DohIRasPoObyVidDeyZaOtcPerKomIUprRas → 50117067
+✅ Заполнено: OKVED_101_АГ_DohIRasPoObyVidDeyZaOtcPerVToChiKomRas → 28716992
+✅ Заполнено: OKVED_101_АГ_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → 21400075
+✅ Заполнено: OKVED_101_АГ_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 388306894
+✅ Заполнено: OKVED_101_АГ_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → 63499438
 ✅ Заполнено: OKVED_A_DohIRasPoObyVidDeyZaOtcPerVyr → 167965208
 ✅ Заполнено: OKVED_A_DohIRasPoObyVidDeyZaOtcPerSebPro → 119270122
 ✅ Заполнено: OKVED_A_DohIRasPoObyVidDeyZaOtcPerValPri → 48695086
@@ -5784,6 +5797,14 @@
 ✅ Заполнено: OKVED_11_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → 108713
 ✅ Заполнено: OKVED_11_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 530050
 ✅ Заполнено: OKVED_11_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → 101494
+✅ Заполнено: OKVED_32_DohIRasPoObyVidDeyZaOtcPerVyr → 122935
+✅ Заполнено: OKVED_32_DohIRasPoObyVidDeyZaOtcPerSebPro → 61981
+✅ Заполнено: OKVED_32_DohIRasPoObyVidDeyZaOtcPerValPri → 60954
+✅ Заполнено: OKVED_32_DohIRasPoObyVidDeyZaOtcPerKomIUprRas → 50677
+ℹ️ Отсутствующие данные: OKVED_32_DohIRasPoObyVidDeyZaOtcPerVToChiKomRas → [-]
+✅ Заполнено: OKVED_32_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → 50677
+✅ Заполнено: OKVED_32_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 112658
+✅ Заполнено: OKVED_32_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → 10277
 ✅ Заполнено: OKVED_33_DohIRasPoObyVidDeyZaOtcPerVyr → 3586591
 ✅ Заполнено: OKVED_33_DohIRasPoObyVidDeyZaOtcPerSebPro → 2416058
 ✅ Заполнено: OKVED_33_DohIRasPoObyVidDeyZaOtcPerValPri → 1170533
@@ -5832,6 +5853,14 @@
 ✅ Заполнено: OKVED_38_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → 164513
 ✅ Заполнено: OKVED_38_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 1126650
 ✅ Заполнено: OKVED_38_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → 64022
+✅ Заполнено: OKVED_F_DohIRasPoObyVidDeyZaOtcPerVyr → 9223869
+✅ Заполнено: OKVED_F_DohIRasPoObyVidDeyZaOtcPerSebPro → 8044967
+✅ Заполнено: OKVED_F_DohIRasPoObyVidDeyZaOtcPerValPri → 1178902
+✅ Заполнено: OKVED_F_DohIRasPoObyVidDeyZaOtcPerKomIUprRas → 690922
+✅ Заполнено: OKVED_F_DohIRasPoObyVidDeyZaOtcPerVToChiKomRas → 38
+✅ Заполнено: OKVED_F_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → 690884
+✅ Заполнено: OKVED_F_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 8735889
+✅ Заполнено: OKVED_F_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → 487980
 ✅ Заполнено: OKVED_41_DohIRasPoObyVidDeyZaOtcPerVyr → 4425534
 ✅ Заполнено: OKVED_41_DohIRasPoObyVidDeyZaOtcPerSebPro → 3687515
 ✅ Заполнено: OKVED_41_DohIRasPoObyVidDeyZaOtcPerValPri → 738019
@@ -5904,6 +5933,14 @@
 ✅ Заполнено: OKVED_50_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → 324153
 ✅ Заполнено: OKVED_50_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 3520837
 ✅ Заполнено: OKVED_50_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → -238506
+✅ Заполнено: OKVED_51_DohIRasPoObyVidDeyZaOtcPerVyr → 5264985
+✅ Заполнено: OKVED_51_DohIRasPoObyVidDeyZaOtcPerSebPro → 4618218
+✅ Заполнено: OKVED_51_DohIRasPoObyVidDeyZaOtcPerValPri → 646767
+✅ Заполнено: OKVED_51_DohIRasPoObyVidDeyZaOtcPerKomIUprRas → 294892
+✅ Заполнено: OKVED_51_DohIRasPoObyVidDeyZaOtcPerVToChiKomRas → 39088
+✅ Заполнено: OKVED_51_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → 255804
+✅ Заполнено: OKVED_51_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 4913110
+✅ Заполнено: OKVED_51_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → 351875
 ✅ Заполнено: OKVED_52_DohIRasPoObyVidDeyZaOtcPerVyr → 4997538
 ✅ Заполнено: OKVED_52_DohIRasPoObyVidDeyZaOtcPerSebPro → 3746456
 ✅ Заполнено: OKVED_52_DohIRasPoObyVidDeyZaOtcPerValPri → 1251082
@@ -5952,6 +5989,14 @@
 ✅ Заполнено: OKVED_64_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → 41207
 ✅ Заполнено: OKVED_64_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 41207
 ✅ Заполнено: OKVED_64_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → -18387
+✅ Заполнено: OKVED_L_DohIRasPoObyVidDeyZaOtcPerVyr → 4085123
+✅ Заполнено: OKVED_L_DohIRasPoObyVidDeyZaOtcPerSebPro → 2832538
+✅ Заполнено: OKVED_L_DohIRasPoObyVidDeyZaOtcPerValPri → 1252585
+✅ Заполнено: OKVED_L_DohIRasPoObyVidDeyZaOtcPerKomIUprRas → 988251
+✅ Заполнено: OKVED_L_DohIRasPoObyVidDeyZaOtcPerVToChiKomRas → 433800
+✅ Заполнено: OKVED_L_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → 554451
+✅ Заполнено: OKVED_L_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 3820789
+✅ Заполнено: OKVED_L_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → 264334
 ✅ Заполнено: OKVED_68_DohIRasPoObyVidDeyZaOtcPerVyr → 4085123
 ✅ Заполнено: OKVED_68_DohIRasPoObyVidDeyZaOtcPerSebPro → 2832538
 ✅ Заполнено: OKVED_68_DohIRasPoObyVidDeyZaOtcPerValPri → 1252585
@@ -6000,6 +6045,14 @@
 ℹ️ Отсутствующие данные: OKVED_74_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → [-]
 ✅ Заполнено: OKVED_74_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 15931
 ✅ Заполнено: OKVED_74_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → 269
+✅ Заполнено: OKVED_N_DohIRasPoObyVidDeyZaOtcPerVyr → 1028978
+✅ Заполнено: OKVED_N_DohIRasPoObyVidDeyZaOtcPerSebPro → 815818
+✅ Заполнено: OKVED_N_DohIRasPoObyVidDeyZaOtcPerValPri → 213160
+✅ Заполнено: OKVED_N_DohIRasPoObyVidDeyZaOtcPerKomIUprRas → 178290
+✅ Заполнено: OKVED_N_DohIRasPoObyVidDeyZaOtcPerVToChiKomRas → 125590
+✅ Заполнено: OKVED_N_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → 52700
+✅ Заполнено: OKVED_N_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 994108
+✅ Заполнено: OKVED_N_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → 34870
 ✅ Заполнено: OKVED_77_DohIRasPoObyVidDeyZaOtcPerVyr → 248329
 ✅ Заполнено: OKVED_77_DohIRasPoObyVidDeyZaOtcPerSebPro → 101120
 ✅ Заполнено: OKVED_77_DohIRasPoObyVidDeyZaOtcPerValPri → 147209
@@ -6040,6 +6093,14 @@
 ℹ️ Отсутствующие данные: OKVED_O_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → [-]
 ✅ Заполнено: OKVED_O_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 5536
 ✅ Заполнено: OKVED_O_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → -1011
+✅ Заполнено: OKVED_84_DohIRasPoObyVidDeyZaOtcPerVyr → 4525
+✅ Заполнено: OKVED_84_DohIRasPoObyVidDeyZaOtcPerSebPro → 5536
+✅ Заполнено: OKVED_84_DohIRasPoObyVidDeyZaOtcPerValPri → -1011
+ℹ️ Отсутствующие данные: OKVED_84_DohIRasPoObyVidDeyZaOtcPerKomIUprRas → [-]
+ℹ️ Отсутствующие данные: OKVED_84_DohIRasPoObyVidDeyZaOtcPerVToChiKomRas → [-]
+ℹ️ Отсутствующие данные: OKVED_84_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → [-]
+✅ Заполнено: OKVED_84_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 5536
+✅ Заполнено: OKVED_84_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → -1011
 ✅ Заполнено: OKVED_85_DohIRasPoObyVidDeyZaOtcPerVyr → 6437
 ✅ Заполнено: OKVED_85_DohIRasPoObyVidDeyZaOtcPerSebPro → 5861
 ✅ Заполнено: OKVED_85_DohIRasPoObyVidDeyZaOtcPerValPri → 576
@@ -6096,6 +6157,11 @@
 ✅ Заполнено: OKVED_96_DohIRasPoObyVidDeyZaOtcPerVToChiUprRas → 6076
 ✅ Заполнено: OKVED_96_DohIRasPoObyVidDeyZaOtcPerSebProSUchKomIUprRas → 11520
 ✅ Заполнено: OKVED_96_DohIRasPoObyVidDeyZaOtcPerPriUby(-OtPro → -6438
+✅ Заполнено: OKVED_101_АГ_OtcGoSalProDohIRas → -26192421
+✅ Заполнено: OKVED_101_АГ_OtcGoPri(ubDoNal → 37307017
+✅ Заполнено: OKVED_101_АГ_OtcGoTekNalNaPri → 4371599
+✅ Заполнено: OKVED_101_АГ_OtcGoOtlNalNaPri → 3476083
+✅ Заполнено: OKVED_101_АГ_OtcGoPro → 2211433
 ✅ Заполнено: OKVED_A_OtcGoSalProDohIRas → -18518607
 ✅ Заполнено: OKVED_A_OtcGoPri(ubDoNal → 1732971
 ✅ Заполнено: OKVED_A_OtcGoTekNalNaPri → 960755
@@ -6171,6 +6237,11 @@
 ℹ️ Отсутствующие данные: OKVED_38_OtcGoTekNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_38_OtcGoOtlNalNaPri → [-]
 ℹ️ Отсутствующие данные: OKVED_38_OtcGoPro → [-]
+✅ Заполнено: OKVED_F_OtcGoSalProDohIRas → -633757
+✅ Заполнено: OKVED_F_OtcGoPri(ubDoNal → -145777
+✅ Заполнено: OKVED_F_OtcGoTekNalNaPri → 94409
+✅ Заполнено: OKVED_F_OtcGoOtlNalNaPri → -63482
+✅ Заполнено: OKVED_F_OtcGoPro → -355
 ✅ Заполнено: OKVED_41_OtcGoSalProDohIRas → -327351
 ✅ Заполнено: OKVED_41_OtcGoPri(ubDoNal → -29022
 ✅ Заполнено: OKVED_41_OtcGoTekNalNaPri → 7860
@@ -6251,6 +6322,11 @@
 ✅ Заполнено: OKVED_64_OtcGoTekNalNaPri → 270485
 ✅ Заполнено: OKVED_64_OtcGoOtlNalNaPri → 1696724
 ✅ Заполнено: OKVED_64_OtcGoPro → 3545479
+✅ Заполнено: OKVED_L_OtcGoSalProDohIRas → -30579
+✅ Заполнено: OKVED_L_OtcGoPri(ubDoNal → 233755
+✅ Заполнено: OKVED_L_OtcGoTekNalNaPri → 101698
+✅ Заполнено: OKVED_L_OtcGoOtlNalNaPri → 72657
+✅ Заполнено: OKVED_L_OtcGoPro → 19107
 ✅ Заполнено: OKVED_68_OtcGoSalProDohIRas → -30579
 ✅ Заполнено: OKVED_68_OtcGoPri(ubDoNal → 233755
 ✅ Заполнено: OKVED_68_OtcGoTekNalNaPri → 101698
@@ -6301,6 +6377,11 @@
 ✅ Заполнено: OKVED_81_OtcGoTekNalNaPri → 10819
 ✅ Заполнено: OKVED_81_OtcGoOtlNalNaPri → -9447
 ✅ Заполнено: OKVED_81_OtcGoPro → -72534
+✅ Заполнено: OKVED_82_OtcGoSalProDohIRas → -197
+✅ Заполнено: OKVED_82_OtcGoPri(ubDoNal → 752
+✅ Заполнено: OKVED_82_OtcGoTekNalNaPri → 126
+ℹ️ Отсутствующие данные: OKVED_82_OtcGoOtlNalNaPri → [-]
+ℹ️ Отсутствующие данные: OKVED_82_OtcGoPro → [-]
 ✅ Заполнено: OKVED_O_OtcGoSalProDohIRas → 8277
 ✅ Заполнено: OKVED_O_OtcGoPri(ubDoNal → 7266
 ✅ Заполнено: OKVED_O_OtcGoTekNalNaPri → 551
@@ -6346,6 +6427,10 @@
 ✅ Заполнено: OKVED_96_OtcGoTekNalNaPri → 38
 ✅ Заполнено: OKVED_96_OtcGoOtlNalNaPri → -37
 ℹ️ Отсутствующие данные: OKVED_96_OtcGoPro → [-]
+✅ Заполнено: OKVED_101_АГ_OtcGoChiPri(ubOtcPer → 38622934
+✅ Заполнено: OKVED_101_АГ_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → 348569
+✅ Заполнено: OKVED_101_АГ_OtcGoRezOtProOpeNeVklVChiPri(ubPer → -253889
+✅ Заполнено: OKVED_101_АГ_OtcGoSovFinRezPer → 38724384
 ✅ Заполнено: OKVED_A_OtcGoChiPri(ubOtcPer → -397214
 ✅ Заполнено: OKVED_A_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → -37540
 ✅ Заполнено: OKVED_A_OtcGoRezOtProOpeNeVklVChiPri(ubPer → -112181
@@ -6394,6 +6479,10 @@
 ℹ️ Отсутствующие данные: OKVED_35_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_35_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_35_OtcGoSovFinRezPer → 2909980
+✅ Заполнено: OKVED_E_OtcGoChiPri(ubOtcPer → 1131685
+ℹ️ Отсутствующие данные: OKVED_E_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
+ℹ️ Отсутствующие данные: OKVED_E_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
+✅ Заполнено: OKVED_E_OtcGoSovFinRezPer → 1131685
 ✅ Заполнено: OKVED_36_OtcGoChiPri(ubOtcPer → 1125979
 ℹ️ Отсутствующие данные: OKVED_36_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_36_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
@@ -6442,6 +6531,10 @@
 ℹ️ Отсутствующие данные: OKVED_50_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_50_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_50_OtcGoSovFinRezPer → -88895
+✅ Заполнено: OKVED_51_OtcGoChiPri(ubOtcPer → 211866
+ℹ️ Отсутствующие данные: OKVED_51_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
+ℹ️ Отсутствующие данные: OKVED_51_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
+✅ Заполнено: OKVED_51_OtcGoSovFinRezPer → 211866
 ✅ Заполнено: OKVED_52_OtcGoChiPri(ubOtcPer → 542849
 ℹ️ Отсутствующие данные: OKVED_52_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_52_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
@@ -6482,6 +6575,10 @@
 ℹ️ Отсутствующие данные: OKVED_69_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_69_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_69_OtcGoSovFinRezPer → 30
+✅ Заполнено: OKVED_70_OtcGoChiPri(ubOtcPer → -123870
+ℹ️ Отсутствующие данные: OKVED_70_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
+ℹ️ Отсутствующие данные: OKVED_70_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
+✅ Заполнено: OKVED_70_OtcGoSovFinRezPer → -123870
 ✅ Заполнено: OKVED_71_OtcGoChiPri(ubOtcPer → -471874
 ℹ️ Отсутствующие данные: OKVED_71_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_71_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
@@ -6510,6 +6607,10 @@
 ℹ️ Отсутствующие данные: OKVED_82_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_82_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
 ✅ Заполнено: OKVED_82_OtcGoSovFinRezPer → 626
+✅ Заполнено: OKVED_O_OtcGoChiPri(ubOtcPer → 671,5
+ℹ️ Отсутствующие данные: OKVED_O_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
+ℹ️ Отсутствующие данные: OKVED_O_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
+✅ Заполнено: OKVED_O_OtcGoSovFinRezPer → 6715
 ✅ Заполнено: OKVED_84_OtcGoChiPri(ubOtcPer → 6715
 ℹ️ Отсутствующие данные: OKVED_84_OtcGoRezOtPerVneAktNeVklVChiPri(ubPer → [-]
 ℹ️ Отсутствующие данные: OKVED_84_OtcGoRezOtProOpeNeVklVChiPri(ubPer → [-]
@@ -6633,6 +6734,14 @@
 ℹ️ Отсутствующие данные: MO_30832_OtcGoTekNalNaPri_1 → [-]
 ✅ Заполнено: MO_30832_OtcGoOtlNalNaPri_1 → 12218
 ℹ️ Отсутствующие данные: MO_30832_OtcGoPro_1 → [-]
+✅ Заполнено: OKVED_101_АГ_KolOrgEdi → 231
+✅ Заполнено: OKVED_101_АГ_PriUby(-DoNal → 37307017
+✅ Заполнено: OKVED_101_АГ_OrgPolPriKolOrgEdi → 140
+✅ Заполнено: OKVED_101_АГ_OrgPolPriV%KObsKol → 60,6
+✅ Заполнено: OKVED_101_АГ_OrgPolPriPriDoNal → 61069722
+✅ Заполнено: OKVED_101_АГ_OrgPolUbyKolOrgEdi → 91
+✅ Заполнено: OKVED_101_АГ_OrgPolUbyV%KObsKol → 39,4
+✅ Заполнено: OKVED_101_АГ_OrgPolUbyUby → 23762705
 ✅ Заполнено: OKVED_A_KolOrgEdi → 70
 ✅ Заполнено: OKVED_A_PriUby(-DoNal → 1732971
 ✅ Заполнено: OKVED_A_OrgPolPriKolOrgEdi → 39
@@ -6729,6 +6838,14 @@
 ✅ Заполнено: OKVED_35_OrgPolUbyKolOrgEdi → 7
 ✅ Заполнено: OKVED_35_OrgPolUbyV%KObsKol → 46,7
 ✅ Заполнено: OKVED_35_OrgPolUbyUby → 699031
+✅ Заполнено: OKVED_E_KolOrgEdi → 5
+✅ Заполнено: OKVED_E_PriUby(-DoNal → 1476971
+✅ Заполнено: OKVED_E_OrgPolPriKolOrgEdi → 2
+✅ Заполнено: OKVED_E_OrgPolPriV%KObsKol → 40
+✅ Заполнено: OKVED_E_OrgPolPriPriDoNal → 1567152
+✅ Заполнено: OKVED_E_OrgPolUbyKolOrgEdi → 3
+✅ Заполнено: OKVED_E_OrgPolUbyV%KObsKol → 60
+✅ Заполнено: OKVED_E_OrgPolUbyUby → 90181
 ✅ Заполнено: OKVED_36_KolOrgEdi → 3
 ✅ Заполнено: OKVED_36_PriUby(-DoNal → 1471265
 ✅ Заполнено: OKVED_36_OrgPolPriKolOrgEdi → 1
@@ -6817,6 +6934,14 @@
 ℹ️ Отсутствующие данные: OKVED_49_OrgPolUbyKolOrgEdi → [-]
 ℹ️ Отсутствующие данные: OKVED_49_OrgPolUbyV%KObsKol → [-]
 ℹ️ Отсутствующие данные: OKVED_49_OrgPolUbyUby → [-]
+✅ Заполнено: OKVED_50_KolOrgEdi → 2
+✅ Заполнено: OKVED_50_PriUby(-DoNal → -93994
+ℹ️ Отсутствующие данные: OKVED_50_OrgPolPriKolOrgEdi → [-]
+ℹ️ Отсутствующие данные: OKVED_50_OrgPolPriV%KObsKol → [-]
+ℹ️ Отсутствующие данные: OKVED_50_OrgPolPriPriDoNal → [-]
+✅ Заполнено: OKVED_50_OrgPolUbyKolOrgEdi → 2
+✅ Заполнено: OKVED_50_OrgPolUbyV%KObsKol → 100
+✅ Заполнено: OKVED_50_OrgPolUbyUby → 93994
 ✅ Заполнено: OKVED_51_KolOrgEdi → 2
 ✅ Заполнено: OKVED_51_PriUby(-DoNal → 324419
 ✅ Заполнено: OKVED_51_OrgPolPriKolOrgEdi → 2
@@ -6905,6 +7030,14 @@
 ✅ Заполнено: OKVED_68_OrgPolUbyKolOrgEdi → 6
 ✅ Заполнено: OKVED_68_OrgPolUbyV%KObsKol → 42,9
 ✅ Заполнено: OKVED_68_OrgPolUbyUby → 173422
+✅ Заполнено: OKVED_M_KolOrgEdi → 14
+✅ Заполнено: OKVED_M_PriUby(-DoNal → -822315
+✅ Заполнено: OKVED_M_OrgPolPriKolOrgEdi → 3
+✅ Заполнено: OKVED_M_OrgPolPriV%KObsKol → 21,4
+✅ Заполнено: OKVED_M_OrgPolPriPriDoNal → 14573
+✅ Заполнено: OKVED_M_OrgPolUbyKolOrgEdi → 11
+✅ Заполнено: OKVED_M_OrgPolUbyV%KObsKol → 78,6
+✅ Заполнено: OKVED_M_OrgPolUbyUby → 836888
 ✅ Заполнено: OKVED_69_KolOrgEdi → 1
 ✅ Заполнено: OKVED_69_PriUby(-DoNal → 30
 ✅ Заполнено: OKVED_69_OrgPolPriKolOrgEdi → 1
@@ -6969,6 +7102,14 @@
 ℹ️ Отсутствующие данные: OKVED_81_OrgPolUbyKolOrgEdi → [-]
 ℹ️ Отсутствующие данные: OKVED_81_OrgPolUbyV%KObsKol → [-]
 ℹ️ Отсутствующие данные: OKVED_81_OrgPolUbyUby → [-]
+✅ Заполнено: OKVED_82_KolOrgEdi → 1
+✅ Заполнено: OKVED_82_PriUby(-DoNal → 752
+✅ Заполнено: OKVED_82_OrgPolPriKolOrgEdi → 1
+✅ Заполнено: OKVED_82_OrgPolPriV%KObsKol → 100
+✅ Заполнено: OKVED_82_OrgPolPriPriDoNal → 752
+ℹ️ Отсутствующие данные: OKVED_82_OrgPolUbyKolOrgEdi → [-]
+ℹ️ Отсутствующие данные: OKVED_82_OrgPolUbyV%KObsKol → [-]
+ℹ️ Отсутствующие данные: OKVED_82_OrgPolUbyUby → [-]
 ✅ Заполнено: OKVED_O_KolOrgEdi → 1
 ✅ Заполнено: OKVED_O_PriUby(-DoNal → 7266
 ✅ Заполнено: OKVED_O_OrgPolPriKolOrgEdi → 1
@@ -7017,6 +7158,14 @@
 ℹ️ Отсутствующие данные: OKVED_88_OrgPolUbyKolOrgEdi → [-]
 ℹ️ Отсутствующие данные: OKVED_88_OrgPolUbyV%KObsKol → [-]
 ℹ️ Отсутствующие данные: OKVED_88_OrgPolUbyUby → [-]
+✅ Заполнено: OKVED_R_KolOrgEdi → 3
+✅ Заполнено: OKVED_R_PriUby(-DoNal → 428
+✅ Заполнено: OKVED_R_OrgPolPriKolOrgEdi → 3
+✅ Заполнено: OKVED_R_OrgPolPriV%KObsKol → 100
+✅ Заполнено: OKVED_R_OrgPolPriPriDoNal → 428
+ℹ️ Отсутствующие данные: OKVED_R_OrgPolUbyKolOrgEdi → [-]
+ℹ️ Отсутствующие данные: OKVED_R_OrgPolUbyV%KObsKol → [-]
+ℹ️ Отсутствующие данные: OKVED_R_OrgPolUbyUby → [-]
 ✅ Заполнено: OKVED_93_KolOrgEdi → 3
 ✅ Заполнено: OKVED_93_PriUby(-DoNal → 428
 ✅ Заполнено: OKVED_93_OrgPolPriKolOrgEdi → 3
@@ -7049,6 +7198,13 @@
 ✅ Заполнено: OKVED_96_OrgPolUbyKolOrgEdi → 1
 ✅ Заполнено: OKVED_96_OrgPolUbyV%KObsKol → 50
 ✅ Заполнено: OKVED_96_OrgPolUbyUby → 5212
+✅ Заполнено: OKVED_101_АГ_PriUby(-DoNalZaAnaPerPreGo → 42530986
+✅ Заполнено: OKVED_101_АГ_TeRosPriV% → 87,7
+✅ Заполнено: OKVED_101_АГ_SumUbyZaSooPerPreGo → 20266587
+✅ Заполнено: OKVED_101_АГ_KolOrgPolUbyZaPreGo(ed → 67
+✅ Заполнено: OKVED_101_АГ_SumPriZaSooPerPreGo → 62797573
+✅ Заполнено: OKVED_101_АГ_TeRosUbyV% → 117,3
+✅ Заполнено: OKVED_101_АГ_TeRosSumPriV% → 97,2
 ✅ Заполнено: OKVED_A_PriUby(-DoNalZaAnaPerPreGo → 20524035
 ✅ Заполнено: OKVED_A_TeRosPriV% → 8,4
 ✅ Заполнено: OKVED_A_SumUbyZaSooPerPreGo → 10368479
@@ -7126,6 +7282,13 @@
 ✅ Заполнено: OKVED_35_SumPriZaSooPerPreGo → 3436218
 ✅ Заполнено: OKVED_35_TeRosUbyV% → 275,3
 ✅ Заполнено: OKVED_35_TeRosSumPriV% → 137,5
+✅ Заполнено: OKVED_35_PriUby(-DoNalZaAnaPerPreGo → 3182327
+✅ Заполнено: OKVED_35_TeRosPriV% → 126,6
+✅ Заполнено: OKVED_35_SumUbyZaSooPerPreGo → 253891
+✅ Заполнено: OKVED_35_KolOrgPolUbyZaPreGo(ed → 6
+✅ Заполнено: OKVED_35_SumPriZaSooPerPreGo → 3436218
+✅ Заполнено: OKVED_35_TeRosUbyV% → 275,3
+✅ Заполнено: OKVED_35_TeRosSumPriV% → 137,5
 ✅ Заполнено: OKVED_E_PriUby(-DoNalZaAnaPerPreGo → 356789
 ✅ Заполнено: OKVED_E_TeRosPriV% → 414
 ✅ Заполнено: OKVED_E_SumUbyZaSooPerPreGo → 89535
@@ -7182,6 +7345,13 @@
 ✅ Заполнено: OKVED_G_SumPriZaSooPerPreGo → 1861870
 ✅ Заполнено: OKVED_G_TeRosUbyV% → 154,7
 ✅ Заполнено: OKVED_G_TeRosSumPriV% → 107,5
+✅ Заполнено: OKVED_46_PriUby(-DoNalZaAnaPerPreGo → 1637622
+✅ Заполнено: OKVED_46_TeRosPriV% → 101,1
+✅ Заполнено: OKVED_46_SumUbyZaSooPerPreGo → 138129
+✅ Заполнено: OKVED_46_KolOrgPolUbyZaPreGo(ed → 2
+✅ Заполнено: OKVED_46_SumPriZaSooPerPreGo → 1775751
+✅ Заполнено: OKVED_46_TeRosUbyV% → 159,8
+✅ Заполнено: OKVED_46_TeRosSumPriV% → 105,6
 ✅ Заполнено: OKVED_47_PriUby(-DoNalZaAnaPerPreGo → 62931
 ✅ Заполнено: OKVED_47_TeRosPriV% → 154,7
 ✅ Заполнено: OKVED_47_SumUbyZaSooPerPreGo → 23188
@@ -7252,6 +7422,13 @@
 ✅ Заполнено: OKVED_K_SumPriZaSooPerPreGo → 401179
 ✅ Заполнено: OKVED_K_TeRosUbyV% → 186,3
 ✅ Заполнено: OKVED_K_TeRosSumPriV% → 101,5
+✅ Заполнено: OKVED_64_PriUby(-DoNalZaAnaPerPreGo → 308072
+✅ Заполнено: OKVED_64_TeRosPriV% → 75,9
+✅ Заполнено: OKVED_64_SumUbyZaSooPerPreGo → 93107
+✅ Заполнено: OKVED_64_KolOrgPolUbyZaPreGo(ed → 5
+✅ Заполнено: OKVED_64_SumPriZaSooPerPreGo → 401179
+✅ Заполнено: OKVED_64_TeRosUbyV% → 186,3
+✅ Заполнено: OKVED_64_TeRosSumPriV% → 101,5
 ✅ Заполнено: OKVED_L_PriUby(-DoNalZaAnaPerPreGo → 1424001
 ℹ️ Отсутствующие данные: OKVED_L_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_L_SumUbyZaSooPerPreGo → 198323
@@ -7301,6 +7478,13 @@
 ✅ Заполнено: OKVED_74_SumPriZaSooPerPreGo → 7006
 ✅ Заполнено: OKVED_74_TeRosUbyV% → 5,2
 ✅ Заполнено: OKVED_74_TeRosSumPriV% → 108,7
+✅ Заполнено: OKVED_N_PriUby(-DoNalZaAnaPerPreGo → -1379
+ℹ️ Отсутствующие данные: OKVED_N_TeRosPriV% → [-]
+✅ Заполнено: OKVED_N_SumUbyZaSooPerPreGo → 1379
+✅ Заполнено: OKVED_N_KolOrgPolUbyZaPreGo(ed → 1
+ℹ️ Отсутствующие данные: OKVED_N_SumPriZaSooPerPreGo → [-]
+✅ Заполнено: OKVED_N_TeRosUbyV% → 4662,5
+ℹ️ Отсутствующие данные: OKVED_N_TeRosSumPriV% → [-]
 ✅ Заполнено: OKVED_77_PriUby(-DoNalZaAnaPerPreGo → -34499
 ℹ️ Отсутствующие данные: OKVED_77_TeRosPriV% → [-]
 ✅ Заполнено: OKVED_77_SumUbyZaSooPerPreGo → 34499
@@ -7336,6 +7520,13 @@
 ✅ Заполнено: OKVED_O_SumPriZaSooPerPreGo → 253
 ℹ️ Отсутствующие данные: OKVED_O_TeRosUbyV% → [-]
 ✅ Заполнено: OKVED_O_TeRosSumPriV% → 188,1
+✅ Заполнено: OKVED_84_PriUby(-DoNalZaAnaPerPreGo → 253
+✅ Заполнено: OKVED_84_TeRosPriV% → 188,1
+ℹ️ Отсутствующие данные: OKVED_84_SumUbyZaSooPerPreGo → [-]
+ℹ️ Отсутствующие данные: OKVED_84_KolOrgPolUbyZaPreGo(ed → [-]
+✅ Заполнено: OKVED_84_SumPriZaSooPerPreGo → 253
+ℹ️ Отсутствующие данные: OKVED_84_TeRosUbyV% → [-]
+✅ Заполнено: OKVED_84_TeRosSumPriV% → 188,1
 ℹ️ Отсутствующие данные: OKVED_85_PriUby(-DoNalZaAnaPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_85_TeRosPriV% → [-]
 ℹ️ Отсутствующие данные: OKVED_85_SumUbyZaSooPerPreGo → [-]
@@ -7385,6 +7576,14 @@
 ℹ️ Отсутствующие данные: OKVED_96_SumPriZaSooPerPreGo → [-]
 ℹ️ Отсутствующие данные: OKVED_96_TeRosUbyV% → [-]
 ℹ️ Отсутствующие данные: OKVED_96_TeRosSumPriV% → [-]
+✅ Заполнено: MO_30_KolOrgEdi_1 → 231
+✅ Заполнено: MO_30_PriUby(-DoNal_1 → 37307017
+✅ Заполнено: MO_30_OrgPolPriKolOrgEdi_1 → 140
+✅ Заполнено: MO_30_OrgPolPriV%KObsKol_1 → 60,6
+✅ Заполнено: MO_30_OrgPolPriPriDoNal_1 → 61069722
+✅ Заполнено: MO_30_OrgPolUbyKolOrgEdi_1 → 91
+✅ Заполнено: MO_30_OrgPolUbyV%KObsKol_1 → 39,4
+✅ Заполнено: MO_30_OrgPolUbyUby_1 → 23762705
 ✅ Заполнено: MO_30701_KolOrgEdi_1 → 135
 ✅ Заполнено: MO_30701_PriUby(-DoNal_1 → 4989031
 ✅ Заполнено: MO_30701_OrgPolPriKolOrgEdi_1 → 81
@@ -7481,6 +7680,13 @@
 ✅ Заполнено: MO_30832_OrgPolUbyKolOrgEdi_1 → 1
 ✅ Заполнено: MO_30832_OrgPolUbyV%KObsKol_1 → 50
 ✅ Заполнено: MO_30832_OrgPolUbyUby_1 → 49697
+✅ Заполнено: MO_30_PriUby(-DoNalZaAnaPerPreGo_1 → 42530986
+✅ Заполнено: MO_30_TeRosPriV%_1 → 87,7
+✅ Заполнено: MO_30_SumUbyZaSooPerPreGo_1 → 20266587
+✅ Заполнено: MO_30_KolOrgPolUbyZaPreGo(ed_1 → 67
+✅ Заполнено: MO_30_SumPriZaSooPerPreGo_1 → 62797573
+✅ Заполнено: MO_30_TeRosUbyV%_1 → 117,3
+✅ Заполнено: MO_30_TeRosSumPriV%_1 → 97,2
 ✅ Заполнено: MO_30701_PriUby(-DoNalZaAnaPerPreGo_1 → 10180085
 ✅ Заполнено: MO_30701_TeRosPriV%_1 → 49
 ✅ Заполнено: MO_30701_SumUbyZaSooPerPreGo_1 → 18526680
@@ -7565,6 +7771,14 @@
 ✅ Заполнено: MO_30832_SumPriZaSooPerPreGo_1 → 2399
 ✅ Заполнено: MO_30832_TeRosUbyV%_1 → 1637,5
 ✅ Заполнено: MO_30832_TeRosSumPriV%_1 → 416,1
+✅ Заполнено: OPF_10000_KolOrgEdi_2 → 182
+✅ Заполнено: OPF_10000_PriUby(-DoNal_2 → 35680080
+✅ Заполнено: OPF_10000_OrgPolPriKolOrgEdi_2 → 107
+✅ Заполнено: OPF_10000_OrgPolPriV%KObsKol_2 → 58,8
+✅ Заполнено: OPF_10000_OrgPolPriPriDoNal_2 → 59022963
+✅ Заполнено: OPF_10000_OrgPolUbyKolOrgEdi_2 → 75
+✅ Заполнено: OPF_10000_OrgPolUbyV%KObsKol_2 → 41,2
+✅ Заполнено: OPF_10000_OrgPolUbyUby_2 → 23342883
 ✅ Заполнено: OPF_12000_KolOrgEdi_2 → 180
 ✅ Заполнено: OPF_12000_PriUby(-DoNal_2 → 35976967
 ✅ Заполнено: OPF_12000_OrgPolPriKolOrgEdi_2 → 106
@@ -7653,6 +7867,14 @@
 ✅ Заполнено: OPF_21200_OrgPolUbyKolOrgEdi_2 → 3
 ✅ Заполнено: OPF_21200_OrgPolUbyV%KObsKol_2 → 42,9
 ✅ Заполнено: OPF_21200_OrgPolUbyUby_2 → 7456
+✅ Заполнено: OPF_60000_KolOrgEdi_2 → 2,3
+✅ Заполнено: OPF_60000_PriUby(-DoNal_2 → 1473088
+✅ Заполнено: OPF_60000_OrgPolPriKolOrgEdi_2 → 11
+✅ Заполнено: OPF_60000_OrgPolPriV%KObsKol_2 → 47,8
+✅ Заполнено: OPF_60000_OrgPolPriPriDoNal_2 → 1870487
+✅ Заполнено: OPF_60000_OrgPolUbyKolOrgEdi_2 → 12
+✅ Заполнено: OPF_60000_OrgPolUbyV%KObsKol_2 → 52,2
+✅ Заполнено: OPF_60000_OrgPolUbyUby_2 → 397399
 ✅ Заполнено: OPF_65000_KolOrgEdi_2 → 23
 ✅ Заполнено: OPF_65000_PriUby(-DoNal_2 → 1473088
 ✅ Заполнено: OPF_65000_OrgPolPriKolOrgEdi_2 → 11
@@ -7693,6 +7915,13 @@
 ℹ️ Отсутствующие данные: OPF_75500_OrgPolUbyKolOrgEdi_2 → [-]
 ℹ️ Отсутствующие данные: OPF_75500_OrgPolUbyV%KObsKol_2 → [-]
 ℹ️ Отсутствующие данные: OPF_75500_OrgPolUbyUby_2 → [-]
+✅ Заполнено: OPF_10000_PriUby(-DoNalZaAnaPerPreGo_2 → 42334360
+✅ Заполнено: OPF_10000_TeRosPriV%_2 → 84,3
+✅ Заполнено: OPF_10000_SumUbyZaSooPerPreGo_2 → 19933182
+✅ Заполнено: OPF_10000_KolOrgPolUbyZaPreGo(ed_2 → 52
+✅ Заполнено: OPF_10000_SumPriZaSooPerPreGo_2 → 62267542
+✅ Заполнено: OPF_10000_TeRosUbyV%_2 → 117,1
+✅ Заполнено: OPF_10000_TeRosSumPriV%_2 → 94,8
 ✅ Заполнено: OPF_12000_PriUby(-DoNalZaAnaPerPreGo_2 → 42258695
 ✅ Заполнено: OPF_12000_TeRosPriV%_2 → 85,1
 ✅ Заполнено: OPF_12000_SumUbyZaSooPerPreGo_2 → 19861358
@@ -7756,6 +7985,13 @@
 ✅ Заполнено: OPF_20200_SumPriZaSooPerPreGo_2 → 1117
 ℹ️ Отсутствующие данные: OPF_20200_TeRosUbyV%_2 → [-]
 ✅ Заполнено: OPF_20200_TeRosSumPriV%_2 → 51,1
+✅ Заполнено: OPF_20600_PriUby(-DoNalZaAnaPerPreGo_2 → 7578
+✅ Заполнено: OPF_20600_TeRosPriV%_2 → 799,1
+ℹ️ Отсутствующие данные: OPF_20600_SumUbyZaSooPerPreGo_2 → [-]
+ℹ️ Отсутствующие данные: OPF_20600_KolOrgPolUbyZaPreGo(ed_2 → [-]
+✅ Заполнено: OPF_20600_SumPriZaSooPerPreGo_2 → 7578
+ℹ️ Отсутствующие данные: OPF_20600_TeRosUbyV%_2 → [-]
+✅ Заполнено: OPF_20600_TeRosSumPriV%_2 → 799,1
 ✅ Заполнено: OPF_21200_PriUby(-DoNalZaAnaPerPreGo_2 → -3501
 ℹ️ Отсутствующие данные: OPF_21200_TeRosPriV%_2 → [-]
 ✅ Заполнено: OPF_21200_SumUbyZaSooPerPreGo_2 → 3702
@@ -7940,6 +8176,14 @@
 ✅ Заполнено: FS_30_SumPriZaSooPerPreGo_3 → 4805548
 ✅ Заполнено: FS_30_TeRosUbyV%_3 → 5170,1
 ✅ Заполнено: FS_30_TeRosSumPriV%_3 → 0
+✅ Заполнено: OKVED_101_АГ_KolOrgEdi_4 → 231
+✅ Заполнено: OKVED_101_АГ_PriUby(-OtPro → 63499438
+✅ Заполнено: OKVED_101_АГ_SebProSUchKomIUprRas → 388306894
+✅ Заполнено: OKVED_101_АГ_VToChiKomIUprRas → 50117067
+✅ Заполнено: OKVED_101_АГ_UroRenUby(-V%KSebProSUchKomIUprRas → 16,4
+✅ Заполнено: OKVED_101_АГ_UroRenUby(-V%KKomIUprRas → 126,7
+✅ Заполнено: OKVED_101_АГ_UroRenUby(-V%KVyr → 14,1
+✅ Заполнено: OKVED_101_АГ_UroRenUby(-V%ChiPri(ubKVyr → 8,5
 ✅ Заполнено: OKVED_A_KolOrgEdi_4 → 70
 ✅ Заполнено: OKVED_A_PriUby(-OtPro → 20251578
 ✅ Заполнено: OKVED_A_SebProSUchKomIUprRas → 147713630
@@ -8012,6 +8256,14 @@
 ✅ Заполнено: OKVED_32_UroRenUby(-V%KKomIUprRas → 20,3
 ✅ Заполнено: OKVED_32_UroRenUby(-V%KVyr → 8,4
 ✅ Заполнено: OKVED_32_UroRenUby(-V%ChiPri(ubKVyr → 3,1
+✅ Заполнено: OKVED_33_KolOrgEdi_4 → 3
+✅ Заполнено: OKVED_33_PriUby(-OtPro → 287907
+✅ Заполнено: OKVED_33_SebProSUchKomIUprRas → 3298684
+✅ Заполнено: OKVED_33_VToChiKomIUprRas → 882626
+✅ Заполнено: OKVED_33_UroRenUby(-V%KSebProSUchKomIUprRas → 8,7
+✅ Заполнено: OKVED_33_UroRenUby(-V%KKomIUprRas → 32,6
+✅ Заполнено: OKVED_33_UroRenUby(-V%KVyr → 8
+✅ Заполнено: OKVED_33_UroRenUby(-V%ChiPri(ubKVyr → 0,8
 ✅ Заполнено: OKVED_35_KolOrgEdi_4 → 15
 ✅ Заполнено: OKVED_35_PriUby(-OtPro → -1592562
 ✅ Заполнено: OKVED_35_SebProSUchKomIUprRas → 62710981
@@ -8084,6 +8336,14 @@
 ✅ Заполнено: OKVED_43_UroRenUby(-V%KKomIUprRas → 227,7
 ✅ Заполнено: OKVED_43_UroRenUby(-V%KVyr → 18,4
 ✅ Заполнено: OKVED_43_UroRenUby(-V%ChiPri(ubKVyr → 9,8
+✅ Заполнено: OKVED_G_KolOrgEdi_4 → 25
+✅ Заполнено: OKVED_G_PriUby(-OtPro → 3520196
+✅ Заполнено: OKVED_G_SebProSUchKomIUprRas → 85843188
+✅ Заполнено: OKVED_G_VToChiKomIUprRas → 7031794
+✅ Заполнено: OKVED_G_UroRenUby(-V%KSebProSUchKomIUprRas → 4,1
+✅ Заполнено: OKVED_G_UroRenUby(-V%KKomIUprRas → 50,1
+✅ Заполнено: OKVED_G_UroRenUby(-V%KVyr → 3,9
+✅ Заполнено: OKVED_G_UroRenUby(-V%ChiPri(ubKVyr → 1,5
 ✅ Заполнено: OKVED_46_KolOrgEdi_4 → 12
 ✅ Заполнено: OKVED_46_PriUby(-OtPro → 2992282
 ✅ Заполнено: OKVED_46_SebProSUchKomIUprRas → 71667745
@@ -8140,6 +8400,14 @@
 ✅ Заполнено: OKVED_52_UroRenUby(-V%KKomIUprRas → 27,6
 ✅ Заполнено: OKVED_52_UroRenUby(-V%KVyr → 5,4
 ✅ Заполнено: OKVED_52_UroRenUby(-V%ChiPri(ubKVyr → 10,9
+✅ Заполнено: OKVED_I_KolOrgEdi_4 → 6
+✅ Заполнено: OKVED_I_PriUby(-OtPro → -348850
+✅ Заполнено: OKVED_I_SebProSUchKomIUprRas → 1787882
+✅ Заполнено: OKVED_I_VToChiKomIUprRas → 395665
+✅ Заполнено: OKVED_I_UroRenUby(-V%KSebProSUchKomIUprRas → -19,5
+✅ Заполнено: OKVED_I_UroRenUby(-V%KKomIUprRas → -88,2
+✅ Заполнено: OKVED_I_UroRenUby(-V%KVyr → -24,2
+✅ Заполнено: OKVED_I_UroRenUby(-V%ChiPri(ubKVyr → -42,7
 ✅ Заполнено: OKVED_55_KolOrgEdi_4 → 5
 ✅ Заполнено: OKVED_55_PriUby(-OtPro → -348683
 ✅ Заполнено: OKVED_55_SebProSUchKomIUprRas → 1713512
@@ -8204,6 +8472,14 @@
 ✅ Заполнено: OKVED_68_UroRenUby(-V%KKomIUprRas → 26,7
 ✅ Заполнено: OKVED_68_UroRenUby(-V%KVyr → 6,5
 ✅ Заполнено: OKVED_68_UroRenUby(-V%ChiPri(ubKVyr → 5,5
+✅ Заполнено: OKVED_M_KolOrgEdi_4 → 14
+✅ Заполнено: OKVED_M_PriUby(-OtPro → -426710
+✅ Заполнено: OKVED_M_SebProSUchKomIUprRas → 911768
+✅ Заполнено: OKVED_M_VToChiKomIUprRas → 367570
+✅ Заполнено: OKVED_M_UroRenUby(-V%KSebProSUchKomIUprRas → -46,8
+✅ Заполнено: OKVED_M_UroRenUby(-V%KKomIUprRas → -116,1
+✅ Заполнено: OKVED_M_UroRenUby(-V%KVyr → -88
+✅ Заполнено: OKVED_M_UroRenUby(-V%ChiPri(ubKVyr → -123,1
 ✅ Заполнено: OKVED_69_KolOrgEdi_4 → 1
 ✅ Заполнено: OKVED_69_PriUby(-OtPro → 33
 ✅ Заполнено: OKVED_69_SebProSUchKomIUprRas → 362
@@ -8252,6 +8528,14 @@
 ✅ Заполнено: OKVED_77_UroRenUby(-V%KKomIUprRas → -16
 ✅ Заполнено: OKVED_77_UroRenUby(-V%KVyr → -11,3
 ✅ Заполнено: OKVED_77_UroRenUby(-V%ChiPri(ubKVyr → 124,5
+✅ Заполнено: OKVED_79_KolOrgEdi_4 → 1
+✅ Заполнено: OKVED_79_PriUby(-OtPro → -44349
+✅ Заполнено: OKVED_79_SebProSUchKomIUprRas → 46952
+✅ Заполнено: OKVED_79_VToChiKomIUprRas → 3006
+✅ Заполнено: OKVED_79_UroRenUby(-V%KSebProSUchKomIUprRas → -94,5
+✅ Заполнено: OKVED_79_UroRenUby(-V%KKomIUprRas → -1475,3
+✅ Заполнено: OKVED_79_UroRenUby(-V%KVyr → -1703,8
+✅ Заполнено: OKVED_79_UroRenUby(-V%ChiPri(ubKVyr → -1884,4
 ✅ Заполнено: OKVED_81_KolOrgEdi_4 → 1
 ✅ Заполнено: OKVED_81_PriUby(-OtPro → 106345
 ✅ Заполнено: OKVED_81_SebProSUchKomIUprRas → 659246
@@ -8284,6 +8568,14 @@
 ✅ Заполнено: OKVED_84_UroRenUby(-V%KKomIUprRas → 0
 ✅ Заполнено: OKVED_84_UroRenUby(-V%KVyr → -22,3
 ✅ Заполнено: OKVED_84_UroRenUby(-V%ChiPri(ubKVyr → 148,4
+✅ Заполнено: OKVED_85_KolOrgEdi_4 → 1
+✅ Заполнено: OKVED_85_PriUby(-OtPro → 576
+✅ Заполнено: OKVED_85_SebProSUchKomIUprRas → 5861
+ℹ️ Отсутствующие данные: OKVED_85_VToChiKomIUprRas → [-]
+✅ Заполнено: OKVED_85_UroRenUby(-V%KSebProSUchKomIUprRas → 9,8
+✅ Заполнено: OKVED_85_UroRenUby(-V%KKomIUprRas → 0
+✅ Заполнено: OKVED_85_UroRenUby(-V%KVyr → 8,9
+✅ Заполнено: OKVED_85_UroRenUby(-V%ChiPri(ubKVyr → 4,4
 ✅ Заполнено: OKVED_85_KolOrgEdi_4 → 1
 ✅ Заполнено: OKVED_85_PriUby(-OtPro → 576
 ✅ Заполнено: OKVED_85_SebProSUchKomIUprRas → 5861
@@ -8348,6 +8640,12 @@
 ✅ Заполнено: OKVED_96_UroRenUby(-V%KKomIUprRas → -106
 ✅ Заполнено: OKVED_96_UroRenUby(-V%KVyr → -126,7
 ✅ Заполнено: OKVED_96_UroRenUby(-V%ChiPri(ubKVyr → -103,9
+✅ Заполнено: OKVED_101_АГ_OrgPolUbyOtProKolOrg(ed → 94
+✅ Заполнено: OKVED_101_АГ_OrgPolUbyOtProV%KObsKolOrg → 40,7
+✅ Заполнено: OKVED_101_АГ_OrgPolUbyOtProUbyOtPro → 12654887
+✅ Заполнено: OKVED_101_АГ_OrgPolUbyOtProZatNaProPro → 77572920
+✅ Заполнено: OKVED_101_АГ_OrgPolUbyOtProVToChiKomIUprRas → 10853529
+✅ Заполнено: OKVED_101_АГ_OrgPolUbyOtProUbyV%: → 16,3
 ✅ Заполнено: OKVED_A_OrgPolUbyOtProKolOrg(ed → 32
 ✅ Заполнено: OKVED_A_OrgPolUbyOtProV%KObsKolOrg → 45,7
 ✅ Заполнено: OKVED_A_OrgPolUbyOtProUbyOtPro → 6353659
@@ -8402,6 +8700,12 @@
 ✅ Заполнено: OKVED_35_OrgPolUbyOtProZatNaProPro → 9844417
 ✅ Заполнено: OKVED_35_OrgPolUbyOtProVToChiKomIUprRas → 433139
 ✅ Заполнено: OKVED_35_OrgPolUbyOtProUbyV%: → 28,7
+✅ Заполнено: OKVED_35_OrgPolUbyOtProKolOrg(ed → 7
+✅ Заполнено: OKVED_35_OrgPolUbyOtProV%KObsKolOrg → 46,7
+✅ Заполнено: OKVED_35_OrgPolUbyOtProUbyOtPro → 2822687
+✅ Заполнено: OKVED_35_OrgPolUbyOtProZatNaProPro → 9844417
+✅ Заполнено: OKVED_35_OrgPolUbyOtProVToChiKomIUprRas → 433139
+✅ Заполнено: OKVED_35_OrgPolUbyOtProUbyV%: → 28,7
 ✅ Заполнено: OKVED_E_OrgPolUbyOtProKolOrg(ed → 2
 ✅ Заполнено: OKVED_E_OrgPolUbyOtProV%KObsKolOrg → 40
 ✅ Заполнено: OKVED_E_OrgPolUbyOtProUbyOtPro → 194720
@@ -8444,6 +8748,12 @@
 ✅ Заполнено: OKVED_46_OrgPolUbyOtProZatNaProPro → 14791357
 ✅ Заполнено: OKVED_46_OrgPolUbyOtProVToChiKomIUprRas → 1112372
 ✅ Заполнено: OKVED_46_OrgPolUbyOtProUbyV%: → 2,2
+✅ Заполнено: OKVED_47_OrgPolUbyOtProKolOrg(ed → 6
+✅ Заполнено: OKVED_47_OrgPolUbyOtProV%KObsKolOrg → 46,2
+✅ Заполнено: OKVED_47_OrgPolUbyOtProUbyOtPro → 83420
+✅ Заполнено: OKVED_47_OrgPolUbyOtProZatNaProPro → 837853
+✅ Заполнено: OKVED_47_OrgPolUbyOtProVToChiKomIUprRas → 311482
+✅ Заполнено: OKVED_47_OrgPolUbyOtProUbyV%: → 10
 ✅ Заполнено: OKVED_H_OrgPolUbyOtProKolOrg(ed → 8
 ✅ Заполнено: OKVED_H_OrgPolUbyOtProV%KObsKolOrg → 53,3
 ✅ Заполнено: OKVED_H_OrgPolUbyOtProUbyOtPro → 981418
@@ -8492,6 +8802,12 @@
 ✅ Заполнено: OKVED_K_OrgPolUbyOtProZatNaProPro → 41207
 ✅ Заполнено: OKVED_K_OrgPolUbyOtProVToChiKomIUprRas → 41207
 ✅ Заполнено: OKVED_K_OrgPolUbyOtProUbyV%: → 44,6
+✅ Заполнено: OKVED_64_OrgPolUbyOtProKolOrg(ed → 3
+✅ Заполнено: OKVED_64_OrgPolUbyOtProV%KObsKolOrg → 60
+✅ Заполнено: OKVED_64_OrgPolUbyOtProUbyOtPro → 18387
+✅ Заполнено: OKVED_64_OrgPolUbyOtProZatNaProPro → 41207
+✅ Заполнено: OKVED_64_OrgPolUbyOtProVToChiKomIUprRas → 41207
+✅ Заполнено: OKVED_64_OrgPolUbyOtProUbyV%: → 44,6
 ✅ Заполнено: OKVED_L_OrgPolUbyOtProKolOrg(ed → 7
 ✅ Заполнено: OKVED_L_OrgPolUbyOtProV%KObsKolOrg → 50
 ✅ Заполнено: OKVED_L_OrgPolUbyOtProUbyOtPro → 129808
@@ -8528,6 +8844,12 @@
 ✅ Заполнено: OKVED_N_OrgPolUbyOtProZatNaProPro → 323356
 ✅ Заполнено: OKVED_N_OrgPolUbyOtProVToChiKomIUprRas → 178290
 ✅ Заполнено: OKVED_N_OrgPolUbyOtProUbyV%: → 22,4
+✅ Заполнено: OKVED_77_OrgPolUbyOtProKolOrg(ed → 2
+✅ Заполнено: OKVED_77_OrgPolUbyOtProV%KObsKolOrg → 66,7
+✅ Заполнено: OKVED_77_OrgPolUbyOtProUbyOtPro → 28075
+✅ Заполнено: OKVED_77_OrgPolUbyOtProZatNaProPro → 276404
+✅ Заполнено: OKVED_77_OrgPolUbyOtProVToChiKomIUprRas → 175284
+✅ Заполнено: OKVED_77_OrgPolUbyOtProUbyV%: → 10,2
 ✅ Заполнено: OKVED_79_OrgPolUbyOtProKolOrg(ed → 1
 ✅ Заполнено: OKVED_79_OrgPolUbyOtProV%KObsKolOrg → 100
 ✅ Заполнено: OKVED_79_OrgPolUbyOtProUbyOtPro → 44349
@@ -8564,6 +8886,15 @@
 ✅ Заполнено: OKVED_96_OrgPolUbyOtProZatNaProPro → 11520
 ✅ Заполнено: OKVED_96_OrgPolUbyOtProVToChiKomIUprRas → 6076
 ✅ Заполнено: OKVED_96_OrgPolUbyOtProUbyV%: → 55,9
+✅ Заполнено: OKVED_101_АГ_PriUby(-DoNalV%K:VsAkt → 4,4
+✅ Заполнено: OKVED_101_АГ_PriUby(-DoNalV%K:VneAkt → 7,9
+✅ Заполнено: OKVED_101_АГ_PriUby(-DoNalV%K:OboAkt → 10
+✅ Заполнено: OKVED_101_АГ_PriUby(-DoNalV%K:KapIRez → 15,6
+✅ Заполнено: OKVED_101_АГ_PriUby(-DoNalV%K:DolOby → 9,9
+✅ Заполнено: OKVED_101_АГ_PriUby(-DoNalV%K:KraOby → 16,4
+✅ Заполнено: OKVED_101_АГ_FinRezUbyOrgV%KItoAktUbyOrg → 8
+✅ Заполнено: OKVED_101_АГ_PriOtFinVloV%KoVsFinVlo → 15,2
+✅ Заполнено: OKVED_101_АГ_ChiPriUby(-DoNalV%K:VsAkt → 4,6
 ✅ Заполнено: OKVED_A_PriUby(-DoNalV%K:VsAkt → 0,5
 ✅ Заполнено: OKVED_A_PriUby(-DoNalV%K:VneAkt → 0,9
 ✅ Заполнено: OKVED_A_PriUby(-DoNalV%K:OboAkt → 1,1
@@ -8636,6 +8967,15 @@
 ℹ️ Отсутствующие данные: OKVED_11_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ✅ Заполнено: OKVED_11_PriOtFinVloV%KoVsFinVlo → 64,2
 ✅ Заполнено: OKVED_11_ChiPriUby(-DoNalV%K:VsAkt → 7,7
+✅ Заполнено: OKVED_32_PriUby(-DoNalV%K:VsAkt → 6,4
+✅ Заполнено: OKVED_32_PriUby(-DoNalV%K:VneAkt → 9,3
+✅ Заполнено: OKVED_32_PriUby(-DoNalV%K:OboAkt → 20,2
+✅ Заполнено: OKVED_32_PriUby(-DoNalV%K:KapIRez → 8,4
+✅ Заполнено: OKVED_32_PriUby(-DoNalV%K:DolOby → 0
+✅ Заполнено: OKVED_32_PriUby(-DoNalV%K:KraOby → 26,3
+ℹ️ Отсутствующие данные: OKVED_32_FinRezUbyOrgV%KItoAktUbyOrg → [-]
+ℹ️ Отсутствующие данные: OKVED_32_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_32_ChiPriUby(-DoNalV%K:VsAkt → 4,7
 ✅ Заполнено: OKVED_33_PriUby(-DoNalV%K:VsAkt → 1,1
 ✅ Заполнено: OKVED_33_PriUby(-DoNalV%K:VneAkt → 4,6
 ✅ Заполнено: OKVED_33_PriUby(-DoNalV%K:OboAkt → 1,4
@@ -8699,6 +9039,15 @@
 ✅ Заполнено: OKVED_F_FinRezUbyOrgV%KItoAktUbyOrg → 3,6
 ✅ Заполнено: OKVED_F_PriOtFinVloV%KoVsFinVlo → 2,5
 ✅ Заполнено: OKVED_F_ChiPriUby(-DoNalV%K:VsAkt → -1
+✅ Заполнено: OKVED_41_PriUby(-DoNalV%K:VsAkt → -0,1
+✅ Заполнено: OKVED_41_PriUby(-DoNalV%K:VneAkt → -3,4
+✅ Заполнено: OKVED_41_PriUby(-DoNalV%K:OboAkt → -0,1
+✅ Заполнено: OKVED_41_PriUby(-DoNalV%K:KapIRez → -4,5
+✅ Заполнено: OKVED_41_PriUby(-DoNalV%K:DolOby → -7,5
+✅ Заполнено: OKVED_41_PriUby(-DoNalV%K:KraOby → -0,1
+✅ Заполнено: OKVED_41_FinRezUbyOrgV%KItoAktUbyOrg → 29,7
+✅ Заполнено: OKVED_41_PriOtFinVloV%KoVsFinVlo → 3,3
+✅ Заполнено: OKVED_41_ChiPriUby(-DoNalV%K:VsAkt → -0,3
 ✅ Заполнено: OKVED_42_PriUby(-DoNalV%K:VsAkt → -1,6
 ✅ Заполнено: OKVED_42_PriUby(-DoNalV%K:VneAkt → -4,6
 ✅ Заполнено: OKVED_42_PriUby(-DoNalV%K:OboAkt → -2,6
@@ -8771,6 +9120,15 @@
 ✅ Заполнено: OKVED_50_FinRezUbyOrgV%KItoAktUbyOrg → 1,7
 ✅ Заполнено: OKVED_50_PriOtFinVloV%KoVsFinVlo → 4
 ✅ Заполнено: OKVED_50_ChiPriUby(-DoNalV%K:VsAkt → -1,6
+✅ Заполнено: OKVED_51_PriUby(-DoNalV%K:VsAkt → 4,8
+✅ Заполнено: OKVED_51_PriUby(-DoNalV%K:VneAkt → 6
+✅ Заполнено: OKVED_51_PriUby(-DoNalV%K:OboAkt → 23,8
+✅ Заполнено: OKVED_51_PriUby(-DoNalV%K:KapIRez → 10,4
+✅ Заполнено: OKVED_51_PriUby(-DoNalV%K:DolOby → 11,2
+✅ Заполнено: OKVED_51_PriUby(-DoNalV%K:KraOby → 45,1
+ℹ️ Отсутствующие данные: OKVED_51_FinRezUbyOrgV%KItoAktUbyOrg → [-]
+✅ Заполнено: OKVED_51_PriOtFinVloV%KoVsFinVlo → 557,7
+✅ Заполнено: OKVED_51_ChiPriUby(-DoNalV%K:VsAkt → 3,1
 ✅ Заполнено: OKVED_52_PriUby(-DoNalV%K:VsAkt → 2,4
 ✅ Заполнено: OKVED_52_PriUby(-DoNalV%K:VneAkt → 2,9
 ✅ Заполнено: OKVED_52_PriUby(-DoNalV%K:OboAkt → 15
@@ -8834,6 +9192,15 @@
 ✅ Заполнено: OKVED_L_FinRezUbyOrgV%KItoAktUbyOrg → 3,8
 ✅ Заполнено: OKVED_L_PriOtFinVloV%KoVsFinVlo → 168,2
 ✅ Заполнено: OKVED_L_ChiPriUby(-DoNalV%K:VsAkt → 2,2
+✅ Заполнено: OKVED_68_PriUby(-DoNalV%K:VsAkt → 2,3
+✅ Заполнено: OKVED_68_PriUby(-DoNalV%K:VneAkt → 3,1
+✅ Заполнено: OKVED_68_PriUby(-DoNalV%K:OboAkt → 9,4
+✅ Заполнено: OKVED_68_PriUby(-DoNalV%K:KapIRez → 3,7
+✅ Заполнено: OKVED_68_PriUby(-DoNalV%K:DolOby → 23,6
+✅ Заполнено: OKVED_68_PriUby(-DoNalV%K:KraOby → 8,4
+✅ Заполнено: OKVED_68_FinRezUbyOrgV%KItoAktUbyOrg → 3,8
+✅ Заполнено: OKVED_68_PriOtFinVloV%KoVsFinVlo → 168,2
+✅ Заполнено: OKVED_68_ChiPriUby(-DoNalV%K:VsAkt → 2,2
 ✅ Заполнено: OKVED_M_PriUby(-DoNalV%K:VsAkt → -1,9
 ✅ Заполнено: OKVED_M_PriUby(-DoNalV%K:VneAkt → -2,6
 ✅ Заполнено: OKVED_M_PriUby(-DoNalV%K:OboAkt → -6,7
@@ -8888,6 +9255,15 @@
 ✅ Заполнено: OKVED_N_FinRezUbyOrgV%KItoAktUbyOrg → 4,8
 ✅ Заполнено: OKVED_N_PriOtFinVloV%KoVsFinVlo → 28,4
 ✅ Заполнено: OKVED_N_ChiPriUby(-DoNalV%K:VsAkt → 7,4
+✅ Заполнено: OKVED_77_PriUby(-DoNalV%K:VsAkt → -2,6
+✅ Заполнено: OKVED_77_PriUby(-DoNalV%K:VneAkt → -2,8
+✅ Заполнено: OKVED_77_PriUby(-DoNalV%K:OboAkt → -32,8
+✅ Заполнено: OKVED_77_PriUby(-DoNalV%K:KapIRez → -14,2
+✅ Заполнено: OKVED_77_PriUby(-DoNalV%K:DolOby → -54,9
+✅ Заполнено: OKVED_77_PriUby(-DoNalV%K:KraOby → -3,4
+✅ Заполнено: OKVED_77_FinRezUbyOrgV%KItoAktUbyOrg → 3,2
+✅ Заполнено: OKVED_77_PriOtFinVloV%KoVsFinVlo → 28,4
+✅ Заполнено: OKVED_77_ChiPriUby(-DoNalV%K:VsAkt → 15,8
 ✅ Заполнено: OKVED_79_PriUby(-DoNalV%K:VsAkt → -9,1
 ✅ Заполнено: OKVED_79_PriUby(-DoNalV%K:VneAkt → -9,4
 ✅ Заполнено: OKVED_79_PriUby(-DoNalV%K:OboAkt → -376,2
@@ -8924,6 +9300,15 @@
 ℹ️ Отсутствующие данные: OKVED_O_FinRezUbyOrgV%KItoAktUbyOrg → [-]
 ℹ️ Отсутствующие данные: OKVED_O_PriOtFinVloV%KoVsFinVlo → [-]
 ✅ Заполнено: OKVED_O_ChiPriUby(-DoNalV%K:VsAkt → 4,6
+✅ Заполнено: OKVED_84_PriUby(-DoNalV%K:VsAkt → 5
+✅ Заполнено: OKVED_84_PriUby(-DoNalV%K:VneAkt → 5,7
+✅ Заполнено: OKVED_84_PriUby(-DoNalV%K:OboAkt → 38,3
+✅ Заполнено: OKVED_84_PriUby(-DoNalV%K:KapIRez → 45,3
+✅ Заполнено: OKVED_84_PriUby(-DoNalV%K:DolOby → 14,1
+✅ Заполнено: OKVED_84_PriUby(-DoNalV%K:KraOby → 9,2
+ℹ️ Отсутствующие данные: OKVED_84_FinRezUbyOrgV%KItoAktUbyOrg → [-]
+ℹ️ Отсутствующие данные: OKVED_84_PriOtFinVloV%KoVsFinVlo → [-]
+✅ Заполнено: OKVED_84_ChiPriUby(-DoNalV%K:VsAkt → 4,6
 ✅ Заполнено: OKVED_85_PriUby(-DoNalV%K:VsAkt → 43,8
 ✅ Заполнено: OKVED_85_PriUby(-DoNalV%K:VneAkt → 0
 ✅ Заполнено: OKVED_85_PriUby(-DoNalV%K:OboAkt → 43,8
@@ -9993,6 +10378,9 @@
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=20V%KObsZadKre → 30,3
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=20DenSreIDenEkv → 584764
 ✅ Заполнено: OKVED_94_KoeTekLikOt>=20V%KoVsDenSreDenEkv → 99,1
+✅ Заполнено: OKVED_101_АГ_PostPoTekDeVsego → 541087473
+✅ Заполнено: OKVED_101_АГ_OtProdDeVsego → 449116864
+✅ Заполнено: OKVED_101_АГ_ArendPlDeVsego → 5189943
 ✅ Заполнено: OKVED_A_PostPoTekDeVsego → 210052416
 ✅ Заполнено: OKVED_A_OtProdDeVsego → 171740242
 ✅ Заполнено: OKVED_A_ArendPlDeVsego → 3223073
@@ -10026,6 +10414,9 @@
 ✅ Заполнено: OKVED_35_PostPoTekDeVsego → 65911701
 ✅ Заполнено: OKVED_35_OtProdDeVsego → 55658294
 ✅ Заполнено: OKVED_35_ArendPlDeVsego → 97634
+✅ Заполнено: OKVED_35_PostPoTekDeVsego → 65911701
+✅ Заполнено: OKVED_35_OtProdDeVsego → 55658294
+✅ Заполнено: OKVED_35_ArendPlDeVsego → 97634
 ✅ Заполнено: OKVED_E_PostPoTekDeVsego → 5305509
 ✅ Заполнено: OKVED_E_OtProdDeVsego → 2908106
 ℹ️ Отсутствующие данные: OKVED_E_ArendPlDeVsego → [-]
@@ -10053,6 +10444,9 @@
 ✅ Заполнено: OKVED_46_PostPoTekDeVsego → 78532612
 ✅ Заполнено: OKVED_46_OtProdDeVsego → 75646552
 ✅ Заполнено: OKVED_46_ArendPlDeVsego → 200609
+✅ Заполнено: OKVED_47_PostPoTekDeVsego → 15233063
+✅ Заполнено: OKVED_47_OtProdDeVsego → 14967176
+✅ Заполнено: OKVED_47_ArendPlDeVsego → 36675
 ✅ Заполнено: OKVED_H_PostPoTekDeVsego → 18234845
 ✅ Заполнено: OKVED_H_OtProdDeVsego → 13475669
 ✅ Заполнено: OKVED_H_ArendPlDeVsego → 277882
@@ -10083,6 +10477,9 @@
 ✅ Заполнено: OKVED_63_PostPoTekDeVsego → 140
 ℹ️ Отсутствующие данные: OKVED_63_OtProdDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_63_ArendPlDeVsego → [-]
+✅ Заполнено: OKVED_K_PostPoTekDeVsego → 6301524
+✅ Заполнено: OKVED_K_OtProdDeVsego → 691
+ℹ️ Отсутствующие данные: OKVED_K_ArendPlDeVsego → [-]
 ✅ Заполнено: OKVED_64_PostPoTekDeVsego → 6301524
 ✅ Заполнено: OKVED_64_OtProdDeVsego → 691
 ℹ️ Отсутствующие данные: OKVED_64_ArendPlDeVsego → [-]
@@ -10110,6 +10507,9 @@
 ✅ Заполнено: OKVED_N_PostPoTekDeVsego → 1093420
 ✅ Заполнено: OKVED_N_OtProdDeVsego → 879521
 ✅ Заполнено: OKVED_N_ArendPlDeVsego → 69916
+✅ Заполнено: OKVED_77_PostPoTekDeVsego → 255920
+✅ Заполнено: OKVED_77_OtProdDeVsego → 83153
+✅ Заполнено: OKVED_77_ArendPlDeVsego → 69916
 ✅ Заполнено: OKVED_79_PostPoTekDeVsego → 38658
 ✅ Заполнено: OKVED_79_OtProdDeVsego → 4871
 ℹ️ Отсутствующие данные: OKVED_79_ArendPlDeVsego → [-]
@@ -10131,6 +10531,9 @@
 ✅ Заполнено: OKVED_85_PostPoTekDeVsego → 8779
 ✅ Заполнено: OKVED_85_OtProdDeVsego → 6437
 ℹ️ Отсутствующие данные: OKVED_85_ArendPlDeVsego → [-]
+✅ Заполнено: OKVED_Q_PostPoTekDeVsego → 999
+ℹ️ Отсутствующие данные: OKVED_Q_OtProdDeVsego → [-]
+ℹ️ Отсутствующие данные: OKVED_Q_ArendPlDeVsego → [-]
 ✅ Заполнено: OKVED_88_PostPoTekDeVsego → 999
 ℹ️ Отсутствующие данные: OKVED_88_OtProdDeVsego → [-]
 ℹ️ Отсутствующие данные: OKVED_88_ArendPlDeVsego → [-]
@@ -10149,6 +10552,12 @@
 ✅ Заполнено: OKVED_96_PostPoTekDeVsego → 7503
 ✅ Заполнено: OKVED_96_OtProdDeVsego → 5367
 ℹ️ Отсутствующие данные: OKVED_96_ArendPlDeVsego → [-]
+✅ Заполнено: OKVED_101_АГ_PlatPoTekDeVsego → 490000243
+✅ Заполнено: OKVED_101_АГ_PostavPoSyrMatRabUsl → 289879436
+✅ Заполнено: OKVED_101_АГ_VSvyaziSOplTrudRab → 90498717
+✅ Заполнено: OKVED_101_АГ_ProcPoDolgObyaz → 22450153
+✅ Заполнено: OKVED_101_АГ_NalogNaPri → 5133984
+✅ Заполнено: OKVED_101_АГ_SaldoDenPotTekOper → 51087230
 ✅ Заполнено: OKVED_A_PlatPoTekDeVsego → 185748664
 ✅ Заполнено: OKVED_A_PostavPoSyrMatRabUsl → 86049019
 ✅ Заполнено: OKVED_A_VSvyaziSOplTrudRab → 42097031
@@ -10215,6 +10624,12 @@
 ✅ Заполнено: OKVED_35_ProcPoDolgObyaz → 2434879
 ✅ Заполнено: OKVED_35_NalogNaPri → 433018
 ✅ Заполнено: OKVED_35_SaldoDenPotTekOper → -8671709
+✅ Заполнено: OKVED_35_PlatPoTekDeVsego → 74583410
+✅ Заполнено: OKVED_35_PostavPoSyrMatRabUsl → 54386847
+✅ Заполнено: OKVED_35_VSvyaziSOplTrudRab → 13068409
+✅ Заполнено: OKVED_35_ProcPoDolgObyaz → 2434879
+✅ Заполнено: OKVED_35_NalogNaPri → 433018
+✅ Заполнено: OKVED_35_SaldoDenPotTekOper → -8671709
 ✅ Заполнено: OKVED_E_PlatPoTekDeVsego → 4802670
 ✅ Заполнено: OKVED_E_PostavPoSyrMatRabUsl → 1249969
 ✅ Заполнено: OKVED_E_VSvyaziSOplTrudRab → 2278123
@@ -10257,6 +10672,12 @@
 ✅ Заполнено: OKVED_43_ProcPoDolgObyaz → 132
 ✅ Заполнено: OKVED_43_NalogNaPri → 4906
 ✅ Заполнено: OKVED_43_SaldoDenPotTekOper → 7492
+✅ Заполнено: OKVED_G_PlatPoTekDeVsego → 90882411
+✅ Заполнено: OKVED_G_PostavPoSyrMatRabUsl → 82919244
+✅ Заполнено: OKVED_G_VSvyaziSOplTrudRab → 3576808
+✅ Заполнено: OKVED_G_ProcPoDolgObyaz → 1637150
+✅ Заполнено: OKVED_G_NalogNaPri → 429308
+✅ Заполнено: OKVED_G_SaldoDenPotTekOper → 2883264
 ✅ Заполнено: OKVED_46_PlatPoTekDeVsego → 76518123
 ✅ Заполнено: OKVED_46_PostavPoSyrMatRabUsl → 71317859
 ✅ Заполнено: OKVED_46_VSvyaziSOplTrudRab → 1591108
@@ -10305,6 +10726,12 @@
 ✅ Заполнено: OKVED_I_ProcPoDolgObyaz → 115449
 ✅ Заполнено: OKVED_I_NalogNaPri → 156
 ✅ Заполнено: OKVED_I_SaldoDenPotTekOper → -738304
+✅ Заполнено: OKVED_55_PlatPoTekDeVsego → 2474122
+✅ Заполнено: OKVED_55_PostavPoSyrMatRabUsl → 1592821
+✅ Заполнено: OKVED_55_VSvyaziSOplTrudRab → 481101
+✅ Заполнено: OKVED_55_ProcPoDolgObyaz → 115449
+✅ Заполнено: OKVED_55_NalogNaPri → 156
+✅ Заполнено: OKVED_55_SaldoDenPotTekOper → -735091
 ✅ Заполнено: OKVED_56_PlatPoTekDeVsego → 77816
 ✅ Заполнено: OKVED_56_PostavPoSyrMatRabUsl → 37265
 ✅ Заполнено: OKVED_56_VSvyaziSOplTrudRab → 7975
@@ -10359,6 +10786,12 @@
 ℹ️ Отсутствующие данные: OKVED_69_ProcPoDolgObyaz → [-]
 ℹ️ Отсутствующие данные: OKVED_69_NalogNaPri → [-]
 ✅ Заполнено: OKVED_69_SaldoDenPotTekOper → 35
+✅ Заполнено: OKVED_70_PlatPoTekDeVsego → 1728175
+✅ Заполнено: OKVED_70_PostavPoSyrMatRabUsl → 868683
+✅ Заполнено: OKVED_70_VSvyaziSOplTrudRab → 365352
+ℹ️ Отсутствующие данные: OKVED_70_ProcPoDolgObyaz → [-]
+✅ Заполнено: OKVED_70_NalogNaPri → 5690
+✅ Заполнено: OKVED_70_SaldoDenPotTekOper → -597712
 ✅ Заполнено: OKVED_71_PlatPoTekDeVsego → 4622816
 ✅ Заполнено: OKVED_71_PostavPoSyrMatRabUsl → 615027
 ✅ Заполнено: OKVED_71_VSvyaziSOplTrudRab → 3166262
@@ -10395,6 +10828,12 @@
 ✅ Заполнено: OKVED_81_ProcPoDolgObyaz → 11720
 ℹ️ Отсутствующие данные: OKVED_81_NalogNaPri → [-]
 ✅ Заполнено: OKVED_81_SaldoDenPotTekOper → 1918
+✅ Заполнено: OKVED_82_PlatPoTekDeVsego → 11837
+✅ Заполнено: OKVED_82_PostavPoSyrMatRabUsl → 6768
+✅ Заполнено: OKVED_82_VSvyaziSOplTrudRab → 2436
+ℹ️ Отсутствующие данные: OKVED_82_ProcPoDolgObyaz → [-]
+✅ Заполнено: OKVED_82_NalogNaPri → 263
+✅ Заполнено: OKVED_82_SaldoDenPotTekOper → 618
 ✅ Заполнено: OKVED_O_PlatPoTekDeVsego → 551
 ℹ️ Отсутствующие данные: OKVED_O_PostavPoSyrMatRabUsl → [-]
 ℹ️ Отсутствующие данные: OKVED_O_VSvyaziSOplTrudRab → [-]
@@ -10425,6 +10864,12 @@
 ℹ️ Отсутствующие данные: OKVED_Q_ProcPoDolgObyaz → [-]
 ℹ️ Отсутствующие данные: OKVED_Q_NalogNaPri → [-]
 ✅ Заполнено: OKVED_Q_SaldoDenPotTekOper → 148
+ℹ️ Отсутствующие данные: OKVED_86_PlatPoTekDeVsego → [-]
+ℹ️ Отсутствующие данные: OKVED_86_PostavPoSyrMatRabUsl → [-]
+ℹ️ Отсутствующие данные: OKVED_86_VSvyaziSOplTrudRab → [-]
+ℹ️ Отсутствующие данные: OKVED_86_ProcPoDolgObyaz → [-]
+ℹ️ Отсутствующие данные: OKVED_86_NalogNaPri → [-]
+ℹ️ Отсутствующие данные: OKVED_86_SaldoDenPotTekOper → [-]
 ✅ Заполнено: OKVED_R_PlatPoTekDeVsego → 454
 ℹ️ Отсутствующие данные: OKVED_R_PostavPoSyrMatRabUsl → [-]
 ℹ️ Отсутствующие данные: OKVED_R_VSvyaziSOplTrudRab → [-]
@@ -10455,6 +10900,11 @@
 ℹ️ Отсутствующие данные: OKVED_96_ProcPoDolgObyaz → [-]
 ℹ️ Отсутствующие данные: OKVED_96_NalogNaPri → [-]
 ✅ Заполнено: OKVED_96_SaldoDenPotTekOper → -51
+✅ Заполнено: OKVED_101_АГ_PostDenSredInvDeVsego → 154632005
+✅ Заполнено: OKVED_101_АГ_OtProdVneObAktKromeFinVlozh → 1525085
+✅ Заполнено: OKVED_101_АГ_OtProdAkcOrgDolUch → 367718
+✅ Заполнено: OKVED_101_АГ_OtProdFinVlozh → 124123994
+✅ Заполнено: OKVED_101_АГ_DivProcDolgFinVlozh → 8483782
 ✅ Заполнено: OKVED_A_PostDenSredInvDeVsego → 28732258
 ✅ Заполнено: OKVED_A_OtProdVneObAktKromeFinVlozh → 1401335
 ✅ Заполнено: OKVED_A_OtProdAkcOrgDolUch → 367718
@@ -10495,6 +10945,11 @@
 ℹ️ Отсутствующие данные: OKVED_11_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_11_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_11_DivProcDolgFinVlozh → 41770
+✅ Заполнено: OKVED_33_PostDenSredInvDeVsego → 29550
+ℹ️ Отсутствующие данные: OKVED_33_OtProdVneObAktKromeFinVlozh → [-]
+ℹ️ Отсутствующие данные: OKVED_33_OtProdAkcOrgDolUch → [-]
+✅ Заполнено: OKVED_33_OtProdFinVlozh → 29550
+ℹ️ Отсутствующие данные: OKVED_33_DivProcDolgFinVlozh → [-]
 ✅ Заполнено: OKVED_35_PostDenSredInvDeVsego → 3568593
 ✅ Заполнено: OKVED_35_OtProdVneObAktKromeFinVlozh → 759
 ℹ️ Отсутствующие данные: OKVED_35_OtProdAkcOrgDolUch → [-]
@@ -10530,6 +10985,11 @@
 ℹ️ Отсутствующие данные: OKVED_41_OtProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_41_OtProdFinVlozh → 307861
 ✅ Заполнено: OKVED_41_DivProcDolgFinVlozh → 16
+✅ Заполнено: OKVED_42_PostDenSredInvDeVsego → 769088
+ℹ️ Отсутствующие данные: OKVED_42_OtProdVneObAktKromeFinVlozh → [-]
+ℹ️ Отсутствующие данные: OKVED_42_OtProdAkcOrgDolUch → [-]
+✅ Заполнено: OKVED_42_OtProdFinVlozh → 603428
+✅ Заполнено: OKVED_42_DivProcDolgFinVlozh → 4738
 ✅ Заполнено: OKVED_43_PostDenSredInvDeVsego → 207
 ℹ️ Отсутствующие данные: OKVED_43_OtProdVneObAktKromeFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_43_OtProdAkcOrgDolUch → [-]
@@ -10560,6 +11020,11 @@
 ℹ️ Отсутствующие данные: OKVED_49_OtProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_49_OtProdFinVlozh → 9161
 ℹ️ Отсутствующие данные: OKVED_49_DivProcDolgFinVlozh → [-]
+✅ Заполнено: OKVED_51_PostDenSredInvDeVsego → 30708
+ℹ️ Отсутствующие данные: OKVED_51_OtProdVneObAktKromeFinVlozh → [-]
+ℹ️ Отсутствующие данные: OKVED_51_OtProdAkcOrgDolUch → [-]
+✅ Заполнено: OKVED_51_OtProdFinVlozh → 850
+✅ Заполнено: OKVED_51_DivProcDolgFinVlozh → 29858
 ✅ Заполнено: OKVED_52_PostDenSredInvDeVsego → 127992
 ✅ Заполнено: OKVED_52_OtProdVneObAktKromeFinVlozh → 14403
 ℹ️ Отсутствующие данные: OKVED_52_OtProdAkcOrgDolUch → [-]
@@ -10590,6 +11055,11 @@
 ℹ️ Отсутствующие данные: OKVED_L_OtProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_L_OtProdFinVlozh → 3141
 ✅ Заполнено: OKVED_L_DivProcDolgFinVlozh → 115319
+✅ Заполнено: OKVED_68_PostDenSredInvDeVsego → 702663
+✅ Заполнено: OKVED_68_OtProdVneObAktKromeFinVlozh → 27862
+ℹ️ Отсутствующие данные: OKVED_68_OtProdAkcOrgDolUch → [-]
+✅ Заполнено: OKVED_68_OtProdFinVlozh → 3141
+✅ Заполнено: OKVED_68_DivProcDolgFinVlozh → 115319
 ✅ Заполнено: OKVED_M_PostDenSredInvDeVsego → 3494
 ℹ️ Отсутствующие данные: OKVED_M_OtProdVneObAktKromeFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_M_OtProdAkcOrgDolUch → [-]
@@ -10615,6 +11085,11 @@
 ℹ️ Отсутствующие данные: OKVED_77_OtProdAkcOrgDolUch → [-]
 ℹ️ Отсутствующие данные: OKVED_77_OtProdFinVlozh → [-]
 ✅ Заполнено: OKVED_77_DivProcDolgFinVlozh → 1458
+✅ Заполнено: OKVED_79_PostDenSredInvDeVsego → 5601
+✅ Заполнено: OKVED_79_OtProdVneObAktKromeFinVlozh → 110
+ℹ️ Отсутствующие данные: OKVED_79_OtProdAkcOrgDolUch → [-]
+ℹ️ Отсутствующие данные: OKVED_79_OtProdFinVlozh → [-]
+ℹ️ Отсутствующие данные: OKVED_79_DivProcDolgFinVlozh → [-]
 ✅ Заполнено: OKVED_S_PostDenSredInvDeVsego → 537481
 ℹ️ Отсутствующие данные: OKVED_S_OtProdVneObAktKromeFinVlozh → [-]
 ℹ️ Отсутствующие данные: OKVED_S_OtProdAkcOrgDolUch → [-]
@@ -10625,6 +11100,12 @@
 ℹ️ Отсутствующие данные: OKVED_94_OtProdAkcOrgDolUch → [-]
 ✅ Заполнено: OKVED_94_OtProdFinVlozh → 522700
 ℹ️ Отсутствующие данные: OKVED_94_DivProcDolgFinVlozh → [-]
+✅ Заполнено: OKVED_101_АГ_PlPoInvDeyt → 240945199
+✅ Заполнено: OKVED_101_АГ_Modern → 44382632
+✅ Заполнено: OKVED_101_АГ_DolUch → 4240192
+✅ Заполнено: OKVED_101_АГ_PrCenBum → 171666012
+✅ Заполнено: OKVED_101_АГ_ProcDolgObyazVklInvAkt → 3797655
+✅ Заполнено: OKVED_101_АГ_Saldo → -86313194
 ✅ Заполнено: OKVED_A_PlPoInvDeyt → 29245361
 ✅ Заполнено: OKVED_A_Modern → 9500953
 ✅ Заполнено: OKVED_A_DolUch → 3425820
@@ -10649,6 +11130,12 @@
 ✅ Заполнено: OKVED_B_PrCenBum → 36095728
 ℹ️ Отсутствующие данные: OKVED_B_ProcDolgObyazVklInvAkt → [-]
 ✅ Заполнено: OKVED_B_Saldo → -11265475
+✅ Заполнено: OKVED_07_PlPoInvDeyt → 39484569
+✅ Заполнено: OKVED_07_Modern → 3388841
+ℹ️ Отсутствующие данные: OKVED_07_DolUch → [-]
+✅ Заполнено: OKVED_07_PrCenBum → 36095728
+ℹ️ Отсутствующие данные: OKVED_07_ProcDolgObyazVklInvAkt → [-]
+✅ Заполнено: OKVED_07_Saldo → -11265475
 ✅ Заполнено: OKVED_C_PlPoInvDeyt → 4442270
 ✅ Заполнено: OKVED_C_Modern → 727872
 ℹ️ Отсутствующие данные: OKVED_C_DolUch → [-]
@@ -10679,6 +11166,12 @@
 ✅ Заполнено: OKVED_35_PrCenBum → 41152786
 ✅ Заполнено: OKVED_35_ProcDolgObyazVklInvAkt → 63200
 ✅ Заполнено: OKVED_35_Saldo → -43646558
+✅ Заполнено: OKVED_35_PlPoInvDeyt → 47215151
+✅ Заполнено: OKVED_35_Modern → 5982874
+✅ Заполнено: OKVED_35_DolUch → 16291
+✅ Заполнено: OKVED_35_PrCenBum → 41152786
+✅ Заполнено: OKVED_35_ProcDolgObyazVklInvAkt → 63200
+✅ Заполнено: OKVED_35_Saldo → -43646558
 ✅ Заполнено: OKVED_E_PlPoInvDeyt → 1199773
 ✅ Заполнено: OKVED_E_Modern → 1199773
 ℹ️ Отсутствующие данные: OKVED_E_DolUch → [-]
@@ -10691,6 +11184,12 @@
 ℹ️ Отсутствующие данные: OKVED_36_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_36_ProcDolgObyazVklInvAkt → [-]
 ✅ Заполнено: OKVED_36_Saldo → -350515
+✅ Заполнено: OKVED_38_PlPoInvDeyt → 88348
+✅ Заполнено: OKVED_38_Modern → 88348
+ℹ️ Отсутствующие данные: OKVED_38_DolUch → [-]
+ℹ️ Отсутствующие данные: OKVED_38_PrCenBum → [-]
+ℹ️ Отсутствующие данные: OKVED_38_ProcDolgObyazVklInvAkt → [-]
+✅ Заполнено: OKVED_38_Saldo → 11187
 ✅ Заполнено: OKVED_F_PlPoInvDeyt → 967073
 ✅ Заполнено: OKVED_F_Modern → 679791
 ℹ️ Отсутствующие данные: OKVED_F_DolUch → [-]
@@ -10721,6 +11220,12 @@
 ✅ Заполнено: OKVED_G_PrCenBum → 307752
 ✅ Заполнено: OKVED_G_ProcDolgObyazVklInvAkt → 1474
 ✅ Заполнено: OKVED_G_Saldo → 445220
+✅ Заполнено: OKVED_46_PlPoInvDeyt → 1293832
+✅ Заполнено: OKVED_46_Modern → 218916
+✅ Заполнено: OKVED_46_DolUch → 772164
+✅ Заполнено: OKVED_46_PrCenBum → 302752
+ℹ️ Отсутствующие данные: OKVED_46_ProcDolgObyazVklInvAkt → [-]
+✅ Заполнено: OKVED_46_Saldo → 619342
 ✅ Заполнено: OKVED_47_PlPoInvDeyt → 192452
 ✅ Заполнено: OKVED_47_Modern → 185978
 ℹ️ Отсутствующие данные: OKVED_47_DolUch → [-]
@@ -10745,6 +11250,12 @@
 ℹ️ Отсутствующие данные: OKVED_50_PrCenBum → [-]
 ℹ️ Отсутствующие данные: OKVED_50_ProcDolgObyazVklInvAkt → [-]
 ✅ Заполнено: OKVED_50_Saldo → -592107
+✅ Заполнено: OKVED_51_PlPoInvDeyt → 272313
+✅ Заполнено: OKVED_51_Modern → 272313
+ℹ️ Отсутствующие данные: OKVED_51_DolUch → [-]
+ℹ️ Отсутствующие данные: OKVED_51_PrCenBum → [-]
+ℹ️ Отсутствующие данные: OKVED_51_ProcDolgObyazVklInvAkt → [-]
+✅ Заполнено: OKVED_51_Saldo → -241605
 ✅ Заполнено: OKVED_52_PlPoInvDeyt → 6708118
 ✅ Заполнено: OKVED_52_Modern → 6697157
 ℹ️ Отсутствующие данные: OKVED_52_DolUch → [-]
@@ -10769,6 +11280,12 @@
 ✅ Заполнено: OKVED_K_PrCenBum → 75105271
 ℹ️ Отсутствующие данные: OKVED_K_ProcDolgObyazVklInvAkt → [-]
 ✅ Заполнено: OKVED_K_Saldo → -6847911
+✅ Заполнено: OKVED_64_PlPoInvDeyt → 75162820
+✅ Заполнено: OKVED_64_Modern → 57549
+ℹ️ Отсутствующие данные: OKVED_64_DolUch → [-]
+✅ Заполнено: OKVED_64_PrCenBum → 75105271
+ℹ️ Отсутствующие данные: OKVED_64_ProcDolgObyazVklInvAkt → [-]
+✅ Заполнено: OKVED_64_Saldo → -6847911
 ✅ Заполнено: OKVED_L_PlPoInvDeyt → 1824406
 ✅ Заполнено: OKVED_L_Modern → 1425108
 ✅ Заполнено: OKVED_L_DolUch → 30
@@ -10787,6 +11304,12 @@
 ✅ Заполнено: OKVED_M_PrCenBum → 132100
 ✅ Заполнено: OKVED_M_ProcDolgObyazVklInvAkt → 1887394
 ✅ Заполнено: OKVED_M_Saldo → -14714247
+✅ Заполнено: OKVED_70_PlPoInvDeyt → 819962
+✅ Заполнено: OKVED_70_Modern → 751296
+ℹ️ Отсутствующие данные: OKVED_70_DolUch → [-]
+✅ Заполнено: OKVED_70_PrCenBum → 51600
+ℹ️ Отсутствующие данные: OKVED_70_ProcDolgObyazVklInvAkt → [-]
+✅ Заполнено: OKVED_70_Saldo → -796172
 ✅ Заполнено: OKVED_71_PlPoInvDeyt → 13929225
 ✅ Заполнено: OKVED_71_Modern → 11961331
 ℹ️ Отсутствующие данные: OKVED_71_DolUch → [-]
@@ -10799,6 +11322,12 @@
 ℹ️ Отсутствующие данные: OKVED_N_PrCenBum → [-]
 ✅ Заполнено: OKVED_N_ProcDolgObyazVklInvAkt → 13704
 ✅ Заполнено: OKVED_N_Saldo → -149574
+✅ Заполнено: OKVED_77_PlPoInvDeyt → 6335
+✅ Заполнено: OKVED_77_Modern → 6215
+ℹ️ Отсутствующие данные: OKVED_77_DolUch → [-]
+ℹ️ Отсутствующие данные: OKVED_77_PrCenBum → [-]
+ℹ️ Отсутствующие данные: OKVED_77_ProcDolgObyazVklInvAkt → [-]
+✅ Заполнено: OKVED_77_Saldo → -4584
 ✅ Заполнено: OKVED_79_PlPoInvDeyt → 150591
 ✅ Заполнено: OKVED_79_Modern → 136887
 ℹ️ Отсутствующие данные: OKVED_79_DolUch → [-]
@@ -10817,6 +11346,11 @@
 ✅ Заполнено: OKVED_94_PrCenBum → 487200
 ℹ️ Отсутствующие данные: OKVED_94_ProcDolgObyazVklInvAkt → [-]
 ✅ Заполнено: OKVED_94_Saldo → 36281
+✅ Заполнено: OKVED_101_АГ_PostFin → 377962851
+✅ Заполнено: OKVED_101_АГ_PlCredit → 320213133
+✅ Заполнено: OKVED_101_АГ_PostDeyt → 2668472
+✅ Заполнено: OKVED_101_АГ_PostDeyt1 → 2234072
+✅ Заполнено: OKVED_101_АГ_DrPost → 52194460
 ✅ Заполнено: OKVED_A_PostFin → 92795778
 ✅ Заполнено: OKVED_A_PlCredit → 48788253
 ✅ Заполнено: OKVED_A_PostDeyt → 11681
@@ -10872,6 +11406,11 @@
 ✅ Заполнено: OKVED_35_PostDeyt → 814941
 ℹ️ Отсутствующие данные: OKVED_35_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_35_DrPost → 97
+✅ Заполнено: OKVED_E_PostFin → 307388
+✅ Заполнено: OKVED_E_PlCredit → 277378
+✅ Заполнено: OKVED_E_PostDeyt → 30010
+ℹ️ Отсутствующие данные: OKVED_E_PostDeyt1 → [-]
+ℹ️ Отсутствующие данные: OKVED_E_DrPost → [-]
 ✅ Заполнено: OKVED_38_PostFin → 307388
 ✅ Заполнено: OKVED_38_PlCredit → 277378
 ✅ Заполнено: OKVED_38_PostDeyt → 30010
@@ -10917,6 +11456,11 @@
 ✅ Заполнено: OKVED_H_PostDeyt → 10
 ℹ️ Отсутствующие данные: OKVED_H_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_H_DrPost → 352139
+✅ Заполнено: OKVED_49_PostFin → 109153
+✅ Заполнено: OKVED_49_PlCredit → 109142
+ℹ️ Отсутствующие данные: OKVED_49_PostDeyt → [-]
+ℹ️ Отсутствующие данные: OKVED_49_PostDeyt1 → [-]
+✅ Заполнено: OKVED_49_DrPost → 11
 ✅ Заполнено: OKVED_50_PostFin → 319577
 ✅ Заполнено: OKVED_50_PlCredit → 319577
 ℹ️ Отсутствующие данные: OKVED_50_PostDeyt → [-]
@@ -10962,6 +11506,11 @@
 ✅ Заполнено: OKVED_68_PostDeyt → 600001
 ℹ️ Отсутствующие данные: OKVED_68_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_68_DrPost → 7908
+✅ Заполнено: OKVED_M_PostFin → 34924952
+✅ Заполнено: OKVED_M_PlCredit → 33686406
+ℹ️ Отсутствующие данные: OKVED_M_PostDeyt → [-]
+✅ Заполнено: OKVED_M_PostDeyt1 → 1096497
+✅ Заполнено: OKVED_M_DrPost → 142049
 ✅ Заполнено: OKVED_70_PostFin → 1237286
 ℹ️ Отсутствующие данные: OKVED_70_PlCredit → [-]
 ℹ️ Отсутствующие данные: OKVED_70_PostDeyt → [-]
@@ -11002,6 +11551,11 @@
 ✅ Заполнено: OKVED_94_PostDeyt → 48349
 ℹ️ Отсутствующие данные: OKVED_94_PostDeyt1 → [-]
 ✅ Заполнено: OKVED_94_DrPost → 190671
+✅ Заполнено: OKVED_101_АГ_PlPoFin → 248361532
+✅ Заполнено: OKVED_101_АГ_PlPoFin1 → 1902083
+✅ Заполнено: OKVED_101_АГ_PlPoFin2 → 31182898
+✅ Заполнено: OKVED_101_АГ_PlPoFin3 → 163412827
+✅ Заполнено: OKVED_101_АГ_SaldoDenPot → 129601319
 ✅ Заполнено: OKVED_A_PlPoFin → 114573893
 ✅ Заполнено: OKVED_A_PlPoFin1 → 1501216
 ✅ Заполнено: OKVED_A_PlPoFin2 → 11718462
@@ -11037,6 +11591,11 @@
 ✅ Заполнено: OKVED_10_PlPoFin2 → 2492484
 ✅ Заполнено: OKVED_10_PlPoFin3 → 8784759
 ✅ Заполнено: OKVED_10_SaldoDenPot → -2338443
+ℹ️ Отсутствующие данные: OKVED_32_PlPoFin → [-]
+ℹ️ Отсутствующие данные: OKVED_32_PlPoFin1 → [-]
+ℹ️ Отсутствующие данные: OKVED_32_PlPoFin2 → [-]
+ℹ️ Отсутствующие данные: OKVED_32_PlPoFin3 → [-]
+✅ Заполнено: OKVED_32_SaldoDenPot → 67
 ℹ️ Отсутствующие данные: OKVED_33_PlPoFin → [-]
 ℹ️ Отсутствующие данные: OKVED_33_PlPoFin1 → [-]
 ℹ️ Отсутствующие данные: OKVED_33_PlPoFin2 → [-]
@@ -11072,6 +11631,11 @@
 ✅ Заполнено: OKVED_41_PlPoFin2 → 178317
 ✅ Заполнено: OKVED_41_PlPoFin3 → 644600
 ✅ Заполнено: OKVED_41_SaldoDenPot → -405823
+✅ Заполнено: OKVED_42_PlPoFin → 252858
+ℹ️ Отсутствующие данные: OKVED_42_PlPoFin1 → [-]
+✅ Заполнено: OKVED_42_PlPoFin2 → 119
+✅ Заполнено: OKVED_42_PlPoFin3 → 215880
+✅ Заполнено: OKVED_42_SaldoDenPot → -173878
 ✅ Заполнено: OKVED_43_PlPoFin → 7434
 ℹ️ Отсутствующие данные: OKVED_43_PlPoFin1 → [-]
 ℹ️ Отсутствующие данные: OKVED_43_PlPoFin2 → [-]
@@ -11107,6 +11671,11 @@
 ✅ Заполнено: OKVED_50_PlPoFin2 → 1644
 ✅ Заполнено: OKVED_50_PlPoFin3 → 312635
 ✅ Заполнено: OKVED_50_SaldoDenPot → 5298
+✅ Заполнено: OKVED_51_PlPoFin → 394712
+ℹ️ Отсутствующие данные: OKVED_51_PlPoFin1 → [-]
+ℹ️ Отсутствующие данные: OKVED_51_PlPoFin2 → [-]
+✅ Заполнено: OKVED_51_PlPoFin3 → 108922
+✅ Заполнено: OKVED_51_SaldoDenPot → -119723
 ✅ Заполнено: OKVED_52_PlPoFin → 4609492
 ℹ️ Отсутствующие данные: OKVED_52_PlPoFin1 → [-]
 ✅ Заполнено: OKVED_52_PlPoFin2 → 352855
@@ -11132,6 +11701,11 @@
 ✅ Заполнено: OKVED_64_PlPoFin2 → 700000
 ✅ Заполнено: OKVED_64_PlPoFin3 → 4490537
 ✅ Заполнено: OKVED_64_SaldoDenPot → 93179925
+✅ Заполнено: OKVED_L_PlPoFin → 528597
+ℹ️ Отсутствующие данные: OKVED_L_PlPoFin1 → [-]
+✅ Заполнено: OKVED_L_PlPoFin2 → 34081
+✅ Заполнено: OKVED_L_PlPoFin3 → 490288
+✅ Заполнено: OKVED_L_SaldoDenPot → 1183336
 ✅ Заполнено: OKVED_68_PlPoFin → 528597
 ℹ️ Отсутствующие данные: OKVED_68_PlPoFin1 → [-]
 ✅ Заполнено: OKVED_68_PlPoFin2 → 34081
@@ -11157,6 +11731,11 @@
 ℹ️ Отсутствующие данные: OKVED_74_PlPoFin2 → [-]
 ℹ️ Отсутствующие данные: OKVED_74_PlPoFin3 → [-]
 ℹ️ Отсутствующие данные: OKVED_74_SaldoDenPot → [-]
+✅ Заполнено: OKVED_N_PlPoFin → 205000
+ℹ️ Отсутствующие данные: OKVED_N_PlPoFin1 → [-]
+ℹ️ Отсутствующие данные: OKVED_N_PlPoFin2 → [-]
+✅ Заполнено: OKVED_N_PlPoFin3 → 5000
+✅ Заполнено: OKVED_N_SaldoDenPot → 156931
 ✅ Заполнено: OKVED_79_PlPoFin → 5000
 ℹ️ Отсутствующие данные: OKVED_79_PlPoFin1 → [-]
 ℹ️ Отсутствующие данные: OKVED_79_PlPoFin2 → [-]
@@ -11177,6 +11756,9 @@
 ℹ️ Отсутствующие данные: OKVED_94_PlPoFin2 → [-]
 ℹ️ Отсутствующие данные: OKVED_94_PlPoFin3 → [-]
 ✅ Заполнено: OKVED_94_SaldoDenPot → 95122
+✅ Заполнено: OKVED_101_АГ_SaldoDenPotOtch → 94375355
+✅ Заполнено: OKVED_101_АГ_Velch → 3079820
+✅ Заполнено: OKVED_101_АГ_PostSredst → 1073682329
 ✅ Заполнено: OKVED_A_SaldoDenPotOtch → 2012534
 ✅ Заполнено: OKVED_A_Velch → 1704575
 ✅ Заполнено: OKVED_A_PostSredst → 331580452
@@ -11216,6 +11798,9 @@
 ✅ Заполнено: OKVED_E_SaldoDenPotOtch → 183238
 ℹ️ Отсутствующие данные: OKVED_E_Velch → [-]
 ✅ Заполнено: OKVED_E_PostSredst → 6473342
+✅ Заполнено: OKVED_36_SaldoDenPotOtch → 77454
+ℹ️ Отсутствующие данные: OKVED_36_Velch → [-]
+✅ Заполнено: OKVED_36_PostSredst → 4890843
 ✅ Заполнено: OKVED_38_SaldoDenPotOtch → 105784
 ℹ️ Отсутствующие данные: OKVED_38_Velch → [-]
 ✅ Заполнено: OKVED_38_PostSredst → 1582499
@@ -11258,6 +11843,9 @@
 ✅ Заполнено: OKVED_I_SaldoDenPotOtch → -1572
 ℹ️ Отсутствующие данные: OKVED_I_Velch → [-]
 ✅ Заполнено: OKVED_I_PostSredst → 19619467
+✅ Заполнено: OKVED_55_SaldoDenPotOtch → 1641
+ℹ️ Отсутствующие данные: OKVED_55_Velch → [-]
+✅ Заполнено: OKVED_55_PostSredst → 19544864
 ✅ Заполнено: OKVED_56_SaldoDenPotOtch → -3213
 ℹ️ Отсутствующие данные: OKVED_56_Velch → [-]
 ✅ Заполнено: OKVED_56_PostSredst → 74603
@@ -11291,6 +11879,9 @@
 ✅ Заполнено: OKVED_71_SaldoDenPotOtch → 1713259
 ℹ️ Отсутствующие данные: OKVED_71_Velch → [-]
 ✅ Заполнено: OKVED_71_PostSredst → 34400163
+✅ Заполнено: OKVED_74_SaldoDenPotOtch → -31
+ℹ️ Отсутствующие данные: OKVED_74_Velch → [-]
+✅ Заполнено: OKVED_74_PostSredst → 19073
 ✅ Заполнено: OKVED_N_SaldoDenPotOtch → -10659
 ℹ️ Отсутствующие данные: OKVED_N_Velch → [-]
 ✅ Заполнено: OKVED_N_PostSredst → 1462703
@@ -11318,6 +11909,9 @@
 ✅ Заполнено: OKVED_85_SaldoDenPotOtch → -145
 ℹ️ Отсутствующие данные: OKVED_85_Velch → [-]
 ✅ Заполнено: OKVED_85_PostSredst → 8779
+✅ Заполнено: OKVED_Q_SaldoDenPotOtch → 148
+ℹ️ Отсутствующие данные: OKVED_Q_Velch → [-]
+✅ Заполнено: OKVED_Q_PostSredst → 999
 ✅ Заполнено: OKVED_88_SaldoDenPotOtch → 148
 ℹ️ Отсутствующие данные: OKVED_88_Velch → [-]
 ✅ Заполнено: OKVED_88_PostSredst → 999
@@ -11336,303 +11930,235 @@
 ✅ Заполнено: OKVED_96_SaldoDenPotOtch → -51
 ℹ️ Отсутствующие данные: OKVED_96_Velch → [-]
 ✅ Заполнено: OKVED_96_PostSredst → 7503
-✅ Заполнено: OKVED_A_UstKap → 2941454
-✅ Заполнено: OKVED_A_ChiAkt → 113041376
-✅ Заполнено: OKVED_A_SebPro → 119270122
-✅ Заполнено: OKVED_A_Pri(ubOtPro → 20251578
-✅ Заполнено: OKVED_A_ChiPri(ubOtcPer → -397214
-✅ Заполнено: OKVED_A_PriUby(-DoNalKChiAktV% → 1,8
-✅ Заполнено: OKVED_01_UstKap → 1505061
-✅ Заполнено: OKVED_01_ChiAkt → 2239650
-✅ Заполнено: OKVED_01_SebPro → 2880240
-✅ Заполнено: OKVED_01_Pri(ubOtPro → -901137
-✅ Заполнено: OKVED_01_ChiPri(ubOtcPer → -204406
-✅ Заполнено: OKVED_01_PriUby(-DoNalKChiAktV% → -10,1
-✅ Заполнено: OKVED_03_UstKap → 1436393
-✅ Заполнено: OKVED_03_ChiAkt → 110801726
-✅ Заполнено: OKVED_03_SebPro → 116389882
-✅ Заполнено: OKVED_03_Pri(ubOtPro → 21152715
-✅ Заполнено: OKVED_03_ChiPri(ubOtcPer → -192808
-✅ Заполнено: OKVED_03_PriUby(-DoNalKChiAktV% → 2
-✅ Заполнено: OKVED_B_UstKap → 5028261
-✅ Заполнено: OKVED_B_ChiAkt → 18240544
-✅ Заполнено: OKVED_B_SebPro → 31680606
-✅ Заполнено: OKVED_B_Pri(ubOtPro → 34213152
-✅ Заполнено: OKVED_B_ChiPri(ubOtcPer → 28154885
-✅ Заполнено: OKVED_B_PriUby(-DoNalKChiAktV% → 101,9
-✅ Заполнено: OKVED_07_UstKap → 5028261
-✅ Заполнено: OKVED_07_ChiAkt → 18240544
-✅ Заполнено: OKVED_07_SebPro → 31680606
-✅ Заполнено: OKVED_07_Pri(ubOtPro → 34213152
-✅ Заполнено: OKVED_07_ChiPri(ubOtcPer → 28154885
-✅ Заполнено: OKVED_07_PriUby(-DoNalKChiAktV% → 101,9
-✅ Заполнено: OKVED_C_UstKap → 2202752
-✅ Заполнено: OKVED_C_ChiAkt → 25769953
-✅ Заполнено: OKVED_C_SebPro → 18089224
-✅ Заполнено: OKVED_C_Pri(ubOtPro → 5755823
-✅ Заполнено: OKVED_C_ChiPri(ubOtcPer → 4067245
-✅ Заполнено: OKVED_C_PriUby(-DoNalKChiAktV% → 16,6
-✅ Заполнено: OKVED_10_UstKap → 1720164
-✅ Заполнено: OKVED_10_ChiAkt → 23435707
-✅ Заполнено: OKVED_10_SebPro → 15192926
-✅ Заполнено: OKVED_10_Pri(ubOtPro → 5356145
-✅ Заполнено: OKVED_10_ChiPri(ubOtcPer → 3919536
-✅ Заполнено: OKVED_10_PriUby(-DoNalKChiAktV% → 17,4
-✅ Заполнено: OKVED_11_UstKap → 26
-✅ Заполнено: OKVED_11_ChiAkt → 1397084
-✅ Заполнено: OKVED_11_SebPro → 418259
-✅ Заполнено: OKVED_11_Pri(ubOtPro → 101494
-✅ Заполнено: OKVED_11_ChiPri(ubOtcPer → 116204
-✅ Заполнено: OKVED_11_PriUby(-DoNalKChiAktV% → 9,4
-✅ Заполнено: OKVED_33_UstKap → 461074
-✅ Заполнено: OKVED_33_ChiAkt → 928409
-✅ Заполнено: OKVED_33_SebPro → 2416058
-✅ Заполнено: OKVED_33_Pri(ubOtPro → 287907
-✅ Заполнено: OKVED_33_ChiPri(ubOtcPer → 27677
-✅ Заполнено: OKVED_33_PriUby(-DoNalKChiAktV% → 7,8
-✅ Заполнено: OKVED_35_UstKap → 9210614
-✅ Заполнено: OKVED_35_ChiAkt → 23573741
-✅ Заполнено: OKVED_35_SebPro → 60282435
-✅ Заполнено: OKVED_35_Pri(ubOtPro → -1592562
-✅ Заполнено: OKVED_35_ChiPri(ubOtcPer → 2909980
-✅ Заполнено: OKVED_35_PriUby(-DoNalKChiAktV% → 15,3
-✅ Заполнено: OKVED_35_UstKap → 9210614
-✅ Заполнено: OKVED_35_ChiAkt → 23573741
-✅ Заполнено: OKVED_35_SebPro → 60282435
-✅ Заполнено: OKVED_35_Pri(ubOtPro → -1592562
-✅ Заполнено: OKVED_35_ChiPri(ubOtcPer → 2909980
-✅ Заполнено: OKVED_35_PriUby(-DoNalKChiAktV% → 15,3
-✅ Заполнено: OKVED_E_UstKap → 975376
-✅ Заполнено: OKVED_E_ChiAkt → 8767284
-✅ Заполнено: OKVED_E_SebPro → 4441264
-✅ Заполнено: OKVED_E_Pri(ubOtPro → 949734
-✅ Заполнено: OKVED_E_ChiPri(ubOtcPer → 1131685
-✅ Заполнено: OKVED_E_PriUby(-DoNalKChiAktV% → 16,4
-✅ Заполнено: OKVED_36_UstKap → 410870
-✅ Заполнено: OKVED_36_ChiAkt → 7513566
-✅ Заполнено: OKVED_36_SebPro → 3479127
-✅ Заполнено: OKVED_36_Pri(ubOtPro → 885712
-✅ Заполнено: OKVED_36_ChiPri(ubOtcPer → 1125979
-✅ Заполнено: OKVED_36_PriUby(-DoNalKChiAktV% → 18,9
-✅ Заполнено: OKVED_38_UstKap → 564506
-✅ Заполнено: OKVED_38_ChiAkt → 1253718
-✅ Заполнено: OKVED_38_SebPro → 962137
-✅ Заполнено: OKVED_38_Pri(ubOtPro → 64022
-✅ Заполнено: OKVED_38_ChiPri(ubOtcPer → 5706
-✅ Заполнено: OKVED_38_PriUby(-DoNalKChiAktV% → 0,5
-✅ Заполнено: OKVED_F_UstKap → 28441
-✅ Заполнено: OKVED_F_ChiAkt → 2663725
-✅ Заполнено: OKVED_F_SebPro → 8044967
-✅ Заполнено: OKVED_F_Pri(ubOtPro → 487980
-✅ Заполнено: OKVED_F_ChiPri(ubOtcPer → -304023
-✅ Заполнено: OKVED_F_PriUby(-DoNalKChiAktV% → -6,1
-✅ Заполнено: OKVED_42_UstKap → 26511
-✅ Заполнено: OKVED_42_ChiAkt → 1929391
-✅ Заполнено: OKVED_42_SebPro → 4274976
-✅ Заполнено: OKVED_42_Pri(ubOtPro → 169007
-✅ Заполнено: OKVED_42_ChiPri(ubOtcPer → -253324
-✅ Заполнено: OKVED_42_PriUby(-DoNalKChiAktV% → -7
-ℹ️ Отсутствующие данные: OKVED_43_UstKap → [-]
-ℹ️ Отсутствующие данные: OKVED_43_ChiAkt → [-]
-✅ Заполнено: OKVED_43_SebPro → 82476
-✅ Заполнено: OKVED_43_Pri(ubOtPro → 20644
-✅ Заполнено: OKVED_43_ChiPri(ubOtcPer → 11008
-✅ Заполнено: OKVED_43_PriUby(-DoNalKChiAktV% → 115,9
-✅ Заполнено: OKVED_G_UstKap → 67249
-✅ Заполнено: OKVED_G_ChiAkt → 9851501
-✅ Заполнено: OKVED_G_SebPro → 78811394
-✅ Заполнено: OKVED_G_Pri(ubOtPro → 3520196
-✅ Заполнено: OKVED_G_ChiPri(ubOtcPer → 1370622
-✅ Заполнено: OKVED_G_PriUby(-DoNalKChiAktV% → 18,9
-✅ Заполнено: OKVED_46_UstKap → 11794
-✅ Заполнено: OKVED_46_ChiAkt → 9634753
-✅ Заполнено: OKVED_46_SebPro → 67581312
-✅ Заполнено: OKVED_46_Pri(ubOtPro → 2992282
-✅ Заполнено: OKVED_46_ChiPri(ubOtcPer → 1312579
-✅ Заполнено: OKVED_46_PriUby(-DoNalKChiAktV% → 18,4
-✅ Заполнено: OKVED_47_UstKap → 55455
-✅ Заполнено: OKVED_47_ChiAkt → 216748
-✅ Заполнено: OKVED_47_SebPro → 11230082
-✅ Заполнено: OKVED_47_Pri(ubOtPro → 527914
-✅ Заполнено: OKVED_47_ChiPri(ubOtcPer → 58043
-✅ Заполнено: OKVED_47_PriUby(-DoNalKChiAktV% → 35,6
-✅ Заполнено: OKVED_H_UstKap → 6596858
-✅ Заполнено: OKVED_H_ChiAkt → 19178008
-✅ Заполнено: OKVED_H_SebPro → 11967109
-✅ Заполнено: OKVED_H_Pri(ubOtPro → 414689
-✅ Заполнено: OKVED_H_ChiPri(ubOtcPer → 720150
-✅ Заполнено: OKVED_H_PriUby(-DoNalKChiAktV% → 5,5
-✅ Заполнено: OKVED_49_UstKap → 740125
-✅ Заполнено: OKVED_49_ChiAkt → 666366
-✅ Заполнено: OKVED_49_SebPro → 417338
-✅ Заполнено: OKVED_49_Pri(ubOtPro → 30732
-✅ Заполнено: OKVED_49_ChiPri(ubOtcPer → 54330
-✅ Заполнено: OKVED_49_PriUby(-DoNalKChiAktV% → 7,8
-✅ Заполнено: OKVED_50_UstKap → 316635
-✅ Заполнено: OKVED_50_ChiAkt → 2715646
-✅ Заполнено: OKVED_50_SebPro → 3185097
-✅ Заполнено: OKVED_50_Pri(ubOtPro → -238506
-✅ Заполнено: OKVED_50_ChiPri(ubOtcPer → -88895
-✅ Заполнено: OKVED_50_PriUby(-DoNalKChiAktV% → -3,6
-✅ Заполнено: OKVED_52_UstKap → 4558910
-✅ Заполнено: OKVED_52_ChiAkt → 12771389
-✅ Заполнено: OKVED_52_SebPro → 3746456
-✅ Заполнено: OKVED_52_Pri(ubOtPro → 270588
-✅ Заполнено: OKVED_52_ChiPri(ubOtcPer → 542849
-✅ Заполнено: OKVED_52_PriUby(-DoNalKChiAktV% → 6,1
-✅ Заполнено: OKVED_I_UstKap → 447727
-✅ Заполнено: OKVED_I_ChiAkt → 1653065
-✅ Заполнено: OKVED_I_SebPro → 1392217
-✅ Заполнено: OKVED_I_Pri(ubOtPro → -348850
-✅ Заполнено: OKVED_I_ChiPri(ubOtcPer → -614477
-✅ Заполнено: OKVED_I_PriUby(-DoNalKChiAktV% → -38,9
-✅ Заполнено: OKVED_55_UstKap → 446781
-✅ Заполнено: OKVED_55_ChiAkt → 1654798
-✅ Заполнено: OKVED_55_SebPro → 1317847
-✅ Заполнено: OKVED_55_Pri(ubOtPro → -348683
-✅ Заполнено: OKVED_55_ChiPri(ubOtcPer → -614183
-✅ Заполнено: OKVED_55_PriUby(-DoNalKChiAktV% → -38,9
-✅ Заполнено: OKVED_56_UstKap → 946
-✅ Заполнено: OKVED_56_ChiAkt → -1733
-✅ Заполнено: OKVED_56_SebPro → 74370
-✅ Заполнено: OKVED_56_Pri(ubOtPro → -167
-✅ Заполнено: OKVED_56_ChiPri(ubOtcPer → -294
-✅ Заполнено: OKVED_56_PriUby(-DoNalKChiAktV% → 22,3
-ℹ️ Отсутствующие данные: OKVED_J_UstKap → [-]
-✅ Заполнено: OKVED_J_ChiAkt → 146
-ℹ️ Отсутствующие данные: OKVED_J_SebPro → [-]
-ℹ️ Отсутствующие данные: OKVED_J_Pri(ubOtPro → [-]
-ℹ️ Отсутствующие данные: OKVED_J_ChiPri(ubOtcPer → [-]
-ℹ️ Отсутствующие данные: OKVED_J_PriUby(-DoNalKChiAktV% → [-]
-ℹ️ Отсутствующие данные: OKVED_63_UstKap → [-]
-✅ Заполнено: OKVED_63_ChiAkt → 146
-ℹ️ Отсутствующие данные: OKVED_63_SebPro → [-]
-ℹ️ Отсутствующие данные: OKVED_63_Pri(ubOtPro → [-]
-ℹ️ Отсутствующие данные: OKVED_63_ChiPri(ubOtcPer → [-]
-ℹ️ Отсутствующие данные: OKVED_63_PriUby(-DoNalKChiAktV% → [-]
-✅ Заполнено: OKVED_K_UstKap → 17520
-✅ Заполнено: OKVED_K_ChiAkt → 5035583
-ℹ️ Отсутствующие данные: OKVED_K_SebPro → [-]
-✅ Заполнено: OKVED_K_Pri(ubOtPro → -18387
-✅ Заполнено: OKVED_K_ChiPri(ubOtcPer → 1622213
-✅ Заполнено: OKVED_K_PriUby(-DoNalKChiAktV% → -53,3
-✅ Заполнено: OKVED_L_UstKap → 5013708
-✅ Заполнено: OKVED_L_ChiAkt → 5751335
-✅ Заполнено: OKVED_L_SebPro → 2832538
-✅ Заполнено: OKVED_L_Pri(ubOtPro → 264334
-✅ Заполнено: OKVED_L_ChiPri(ubOtcPer → 223821
-✅ Заполнено: OKVED_L_PriUby(-DoNalKChiAktV% → 3,4
-✅ Заполнено: OKVED_68_UstKap → 5013708
-✅ Заполнено: OKVED_68_ChiAkt → 5751335
-✅ Заполнено: OKVED_68_SebPro → 2832538
-✅ Заполнено: OKVED_68_Pri(ubOtPro → 264334
-✅ Заполнено: OKVED_68_ChiPri(ubOtcPer → 223821
-✅ Заполнено: OKVED_68_PriUby(-DoNalKChiAktV% → 3,4
-✅ Заполнено: OKVED_M_UstKap → 2928028
-✅ Заполнено: OKVED_M_ChiAkt → 7555427
-✅ Заполнено: OKVED_M_SebPro → 544198
-✅ Заполнено: OKVED_M_Pri(ubOtPro → -426710
-✅ Заполнено: OKVED_M_ChiPri(ubOtcPer → -596995
-✅ Заполнено: OKVED_M_PriUby(-DoNalKChiAktV% → -8,5
-ℹ️ Отсутствующие данные: OKVED_69_UstKap → [-]
-ℹ️ Отсутствующие данные: OKVED_69_ChiAkt → [-]
-ℹ️ Отсутствующие данные: OKVED_69_SebPro → [-]
-✅ Заполнено: OKVED_69_Pri(ubOtPro → 33
-✅ Заполнено: OKVED_69_ChiPri(ubOtcPer → 30
-✅ Заполнено: OKVED_69_PriUby(-DoNalKChiAktV% → 100
-✅ Заполнено: OKVED_70_UstKap → 2902126
-✅ Заполнено: OKVED_70_ChiAkt → 4936733
-✅ Заполнено: OKVED_70_SebPro → 324837
-✅ Заполнено: OKVED_70_Pri(ubOtPro → -344461
-✅ Заполнено: OKVED_70_ChiPri(ubOtcPer → -123870
-✅ Заполнено: OKVED_70_PriUby(-DoNalKChiAktV% → -3,5
-✅ Заполнено: OKVED_74_UstKap → 1648
-✅ Заполнено: OKVED_74_ChiAkt → -1292
-✅ Заполнено: OKVED_74_SebPro → 15931
-✅ Заполнено: OKVED_74_Pri(ubOtPro → 269
-✅ Заполнено: OKVED_74_ChiPri(ubOtcPer → -1281
-✅ Заполнено: OKVED_74_PriUby(-DoNalKChiAktV% → -43,5
-✅ Заполнено: OKVED_N_UstKap → 3126341
-✅ Заполнено: OKVED_N_ChiAkt → 1230008
-✅ Заполнено: OKVED_N_SebPro → 815818
-✅ Заполнено: OKVED_N_Pri(ubOtPro → 34870
-✅ Заполнено: OKVED_N_ChiPri(ubOtcPer → 275884
-✅ Заполнено: OKVED_N_PriUby(-DoNalKChiAktV% → -0,4
-✅ Заполнено: OKVED_77_UstKap → 2687104
-✅ Заполнено: OKVED_77_ChiAkt → 206126
-✅ Заполнено: OKVED_77_SebPro → 101120
-✅ Заполнено: OKVED_77_Pri(ubOtPro → -28075
-✅ Заполнено: OKVED_77_ChiPri(ubOtcPer → 309240
-✅ Заполнено: OKVED_77_PriUby(-DoNalKChiAktV% → -9,9
-✅ Заполнено: OKVED_79_UstKap → 10
-✅ Заполнено: OKVED_79_ChiAkt → 533835
-✅ Заполнено: OKVED_79_SebPro → 43946
-✅ Заполнено: OKVED_79_Pri(ubOtPro → -44349
-✅ Заполнено: OKVED_79_ChiPri(ubOtcPer → -49051
-✅ Заполнено: OKVED_79_PriUby(-DoNalKChiAktV% → -13,3
-✅ Заполнено: OKVED_82_UstKap → 100
-✅ Заполнено: OKVED_82_ChiAkt → 6368
-✅ Заполнено: OKVED_82_SebPro → 11506
-✅ Заполнено: OKVED_82_Pri(ubOtPro → 949
-✅ Заполнено: OKVED_82_ChiPri(ubOtcPer → 626
-✅ Заполнено: OKVED_82_PriUby(-DoNalKChiAktV% → 11,4
-ℹ️ Отсутствующие данные: OKVED_O_UstKap → [-]
-✅ Заполнено: OKVED_O_ChiAkt → 114489
-✅ Заполнено: OKVED_O_SebPro → 5536
-✅ Заполнено: OKVED_O_Pri(ubOtPro → -1011
-✅ Заполнено: OKVED_O_ChiPri(ubOtcPer → 6715
-✅ Заполнено: OKVED_O_PriUby(-DoNalKChiAktV% → 4,5
-ℹ️ Отсутствующие данные: OKVED_84_UstKap → [-]
-✅ Заполнено: OKVED_84_ChiAkt → 114489
-✅ Заполнено: OKVED_84_SebPro → 5536
-✅ Заполнено: OKVED_84_Pri(ubOtPro → -1011
-✅ Заполнено: OKVED_84_ChiPri(ubOtcPer → 6715
-✅ Заполнено: OKVED_84_PriUby(-DoNalKChiAktV% → 4,5
-ℹ️ Отсутствующие данные: OKVED_85_UstKap → [-]
-✅ Заполнено: OKVED_85_ChiAkt → 651
-✅ Заполнено: OKVED_85_SebPro → 5861
-✅ Заполнено: OKVED_85_Pri(ubOtPro → 576
-✅ Заполнено: OKVED_85_ChiPri(ubOtcPer → 283
-✅ Заполнено: OKVED_85_PriUby(-DoNalKChiAktV% → 51
-ℹ️ Отсутствующие данные: OKVED_Q_UstKap → [-]
-✅ Заполнено: OKVED_Q_ChiAkt → 873
-ℹ️ Отсутствующие данные: OKVED_Q_SebPro → [-]
-ℹ️ Отсутствующие данные: OKVED_Q_Pri(ubOtPro → [-]
-ℹ️ Отсутствующие данные: OKVED_Q_ChiPri(ubOtcPer → [-]
-ℹ️ Отсутствующие данные: OKVED_Q_PriUby(-DoNalKChiAktV% → [-]
-ℹ️ Отсутствующие данные: OKVED_88_UstKap → [-]
-✅ Заполнено: OKVED_88_ChiAkt → 873
-ℹ️ Отсутствующие данные: OKVED_88_SebPro → [-]
-ℹ️ Отсутствующие данные: OKVED_88_Pri(ubOtPro → [-]
-ℹ️ Отсутствующие данные: OKVED_88_ChiPri(ubOtcPer → [-]
-ℹ️ Отсутствующие данные: OKVED_88_PriUby(-DoNalKChiAktV% → [-]
-✅ Заполнено: OKVED_R_UstKap → 11
-✅ Заполнено: OKVED_R_ChiAkt → 217
-ℹ️ Отсутствующие данные: OKVED_R_SebPro → [-]
-✅ Заполнено: OKVED_R_Pri(ubOtPro → 428
-✅ Заполнено: OKVED_R_ChiPri(ubOtcPer → 428
-✅ Заполнено: OKVED_R_PriUby(-DoNalKChiAktV% → 222,9
-✅ Заполнено: OKVED_93_UstKap → 11
-✅ Заполнено: OKVED_93_ChiAkt → 217
-ℹ️ Отсутствующие данные: OKVED_93_SebPro → [-]
-✅ Заполнено: OKVED_93_Pri(ubOtPro → 428
-✅ Заполнено: OKVED_93_ChiPri(ubOtcPer → 428
-✅ Заполнено: OKVED_93_PriUby(-DoNalKChiAktV% → 222,9
-✅ Заполнено: OKVED_S_UstKap → 30191
-✅ Заполнено: OKVED_S_ChiAkt → 553804
-✅ Заполнено: OKVED_S_SebPro → 6538
-✅ Заполнено: OKVED_S_Pri(ubOtPro → -6402
-✅ Заполнено: OKVED_S_ChiPri(ubOtcPer → 51732
-✅ Заполнено: OKVED_S_PriUby(-DoNalKChiAktV% → 10,1
-✅ Заполнено: OKVED_94_UstKap → 29058
-✅ Заполнено: OKVED_94_ChiAkt → 557681
-✅ Заполнено: OKVED_94_SebPro → 1094
-✅ Заполнено: OKVED_94_Pri(ubOtPro → 36
-✅ Заполнено: OKVED_94_ChiPri(ubOtcPer → 57013
-✅ Заполнено: OKVED_94_PriUby(-DoNalKChiAktV% → 10,8
-✅ Заполнено: OKVED_96_UstKap → 1133
-✅ Заполнено: OKVED_96_ChiAkt → -3877
-✅ Заполнено: OKVED_96_SebPro → 5444
-✅ Заполнено: OKVED_96_Pri(ubOtPro → -6438
-✅ Заполнено: OKVED_96_ChiPri(ubOtcPer → -5281
-✅ Заполнено: OKVED_96_PriUby(-DoNalKChiAktV% → -56,8
+✅ Заполнено: OKVED_101_АГ_UstKap_23 → 38614531
+✅ Заполнено: OKVED_101_АГ_UstKap_24 → 43607994
+✅ Заполнено: OKVED_101_АГ_ChiAkt_23 → 242981730
+✅ Заполнено: OKVED_101_АГ_ChiAkt_24 → 244507649
+✅ Заполнено: OKVED_A_UstKap_23 → 2941454
+✅ Заполнено: OKVED_A_UstKap_24 → 3891213
+✅ Заполнено: OKVED_A_ChiAkt_23 → 113041376
+✅ Заполнено: OKVED_A_ChiAkt_24 → 96623087
+✅ Заполнено: OKVED_01_UstKap_23 → 1505061
+✅ Заполнено: OKVED_01_UstKap_24 → 1505061
+✅ Заполнено: OKVED_01_ChiAkt_23 → 2239650
+✅ Заполнено: OKVED_01_ChiAkt_24 → 1972428
+✅ Заполнено: OKVED_03_UstKap_23 → 1436393
+✅ Заполнено: OKVED_03_UstKap_24 → 2386152
+✅ Заполнено: OKVED_03_ChiAkt_23 → 110801726
+✅ Заполнено: OKVED_03_ChiAkt_24 → 94650659
+✅ Заполнено: OKVED_B_UstKap_23 → 5028261
+✅ Заполнено: OKVED_B_UstKap_24 → 5028261
+✅ Заполнено: OKVED_B_ChiAkt_23 → 18240544
+✅ Заполнено: OKVED_B_ChiAkt_24 → 26692840
+✅ Заполнено: OKVED_07_UstKap_23 → 5028261
+✅ Заполнено: OKVED_07_UstKap_24 → 5028261
+✅ Заполнено: OKVED_07_ChiAkt_23 → 18240544
+✅ Заполнено: OKVED_07_ChiAkt_24 → 26692840
+✅ Заполнено: OKVED_C_UstKap_23 → 2202752
+✅ Заполнено: OKVED_C_UstKap_24 → 2305089
+✅ Заполнено: OKVED_C_ChiAkt_23 → 25769953
+✅ Заполнено: OKVED_C_ChiAkt_24 → 28103412
+✅ Заполнено: OKVED_10_UstKap_23 → 1720164
+✅ Заполнено: OKVED_10_UstKap_24 → 1720184
+✅ Заполнено: OKVED_10_ChiAkt_23 → 23435707
+✅ Заполнено: OKVED_10_ChiAkt_24 → 25514997
+✅ Заполнено: OKVED_11_UstKap_23 → 26
+✅ Заполнено: OKVED_11_UstKap_24 → 26
+✅ Заполнено: OKVED_11_ChiAkt_23 → 1397084
+✅ Заполнено: OKVED_11_ChiAkt_24 → 1513288
+✅ Заполнено: OKVED_32_UstKap_23 → 21488
+✅ Заполнено: OKVED_32_UstKap_24 → 123805
+✅ Заполнено: OKVED_32_ChiAkt_23 → 8753
+✅ Заполнено: OKVED_32_ChiAkt_24 → 115071
+✅ Заполнено: OKVED_33_UstKap_23 → 461074
+✅ Заполнено: OKVED_33_UstKap_24 → 461074
+✅ Заполнено: OKVED_33_ChiAkt_23 → 928409
+✅ Заполнено: OKVED_33_ChiAkt_24 → 960056
+✅ Заполнено: OKVED_35_UstKap_23 → 9210614
+✅ Заполнено: OKVED_35_UstKap_24 → 9210614
+✅ Заполнено: OKVED_35_ChiAkt_23 → 23573741
+✅ Заполнено: OKVED_35_ChiAkt_24 → 26302785
+✅ Заполнено: OKVED_35_UstKap_23 → 9210614
+✅ Заполнено: OKVED_35_UstKap_24 → 9210614
+✅ Заполнено: OKVED_35_ChiAkt_23 → 23573741
+✅ Заполнено: OKVED_35_ChiAkt_24 → 26302785
+✅ Заполнено: OKVED_E_UstKap_23 → 975376
+✅ Заполнено: OKVED_E_UstKap_24 → 988601
+✅ Заполнено: OKVED_E_ChiAkt_23 → 8767284
+✅ Заполнено: OKVED_E_ChiAkt_24 → 9005036
+✅ Заполнено: OKVED_36_UstKap_23 → 410870
+✅ Заполнено: OKVED_36_UstKap_24 → 410870
+✅ Заполнено: OKVED_36_ChiAkt_23 → 7513566
+✅ Заполнено: OKVED_36_ChiAkt_24 → 7803617
+✅ Заполнено: OKVED_38_UstKap_23 → 564506
+✅ Заполнено: OKVED_38_UstKap_24 → 577731
+✅ Заполнено: OKVED_38_ChiAkt_23 → 1253718
+✅ Заполнено: OKVED_38_ChiAkt_24 → 1201419
+✅ Заполнено: OKVED_F_UstKap_23 → 28441
+✅ Заполнено: OKVED_F_UstKap_24 → 28541
+✅ Заполнено: OKVED_F_ChiAkt_23 → 2663725
+✅ Заполнено: OKVED_F_ChiAkt_24 → 2404098
+✅ Заполнено: OKVED_41_UstKap_23 → 1930
+✅ Заполнено: OKVED_41_UstKap_24 → 1930
+✅ Заполнено: OKVED_41_ChiAkt_23 → 734334
+✅ Заполнено: OKVED_41_ChiAkt_24 → 542777
+✅ Заполнено: OKVED_42_UstKap_23 → 26511
+✅ Заполнено: OKVED_42_UstKap_24 → 26511
+✅ Заполнено: OKVED_42_ChiAkt_23 → 1929391
+✅ Заполнено: OKVED_42_ChiAkt_24 → 1850212
+ℹ️ Отсутствующие данные: OKVED_43_UstKap_23 → [-]
+✅ Заполнено: OKVED_43_UstKap_24 → 100
+ℹ️ Отсутствующие данные: OKVED_43_ChiAkt_23 → [-]
+✅ Заполнено: OKVED_43_ChiAkt_24 → 11109
+✅ Заполнено: OKVED_G_UstKap_23 → 67249
+✅ Заполнено: OKVED_G_UstKap_24 → 67249
+✅ Заполнено: OKVED_G_ChiAkt_23 → 9851501
+✅ Заполнено: OKVED_G_ChiAkt_24 → 9291472
+✅ Заполнено: OKVED_46_UstKap_23 → 11794
+✅ Заполнено: OKVED_46_UstKap_24 → 11794
+✅ Заполнено: OKVED_46_ChiAkt_23 → 9634753
+✅ Заполнено: OKVED_46_ChiAkt_24 → 9018129
+✅ Заполнено: OKVED_47_UstKap_23 → 55455
+✅ Заполнено: OKVED_47_UstKap_24 → 55455
+✅ Заполнено: OKVED_47_ChiAkt_23 → 216748
+✅ Заполнено: OKVED_47_ChiAkt_24 → 273343
+✅ Заполнено: OKVED_H_UstKap_23 → 6596858
+✅ Заполнено: OKVED_H_UstKap_24 → 6596868
+✅ Заполнено: OKVED_H_ChiAkt_23 → 19178008
+✅ Заполнено: OKVED_H_ChiAkt_24 → 19430484
+✅ Заполнено: OKVED_49_UstKap_23 → 740125
+✅ Заполнено: OKVED_49_UstKap_24 → 740125
+✅ Заполнено: OKVED_49_ChiAkt_23 → 666366
+✅ Заполнено: OKVED_49_ChiAkt_24 → 855466
+✅ Заполнено: OKVED_50_UstKap_23 → 316635
+✅ Заполнено: OKVED_50_UstKap_24 → 316635
+✅ Заполнено: OKVED_50_ChiAkt_23 → 2715646
+✅ Заполнено: OKVED_50_ChiAkt_24 → 2624365
+✅ Заполнено: OKVED_51_UstKap_23 → 981188
+✅ Заполнено: OKVED_51_UstKap_24 → 981188
+✅ Заполнено: OKVED_51_ChiAkt_23 → 3024607
+✅ Заполнено: OKVED_51_ChiAkt_24 → 3229096
+✅ Заполнено: OKVED_52_UstKap_23 → 4558910
+✅ Заполнено: OKVED_52_UstKap_24 → 4558920
+✅ Заполнено: OKVED_52_ChiAkt_23 → 12771389
+✅ Заполнено: OKVED_52_ChiAkt_24 → 12721557
+✅ Заполнено: OKVED_I_UstKap_23 → 447727
+✅ Заполнено: OKVED_I_UstKap_24 → 448827
+✅ Заполнено: OKVED_I_ChiAkt_23 → 1653065
+✅ Заполнено: OKVED_I_ChiAkt_24 → 1540339
+✅ Заполнено: OKVED_55_UstKap_23 → 446781
+✅ Заполнено: OKVED_55_UstKap_24 → 447881
+✅ Заполнено: OKVED_55_ChiAkt_23 → 1654798
+✅ Заполнено: OKVED_55_ChiAkt_24 → 1542366
+✅ Заполнено: OKVED_56_UstKap_23 → 946
+✅ Заполнено: OKVED_56_UstKap_24 → 946
+✅ Заполнено: OKVED_56_ChiAkt_23 → -1733
+✅ Заполнено: OKVED_56_ChiAkt_24 → -2027
+ℹ️ Отсутствующие данные: OKVED_J_UstKap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_J_UstKap_24 → [-]
+✅ Заполнено: OKVED_J_ChiAkt_23 → 146
+✅ Заполнено: OKVED_J_ChiAkt_24 → 114
+ℹ️ Отсутствующие данные: OKVED_63_UstKap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_63_UstKap_24 → [-]
+✅ Заполнено: OKVED_63_ChiAkt_23 → 146
+✅ Заполнено: OKVED_63_ChiAkt_24 → 114
+✅ Заполнено: OKVED_K_UstKap_23 → 17520
+✅ Заполнено: OKVED_K_UstKap_24 → 17520
+✅ Заполнено: OKVED_K_ChiAkt_23 → 5035583
+✅ Заполнено: OKVED_K_ChiAkt_24 → 6285301
+✅ Заполнено: OKVED_64_UstKap_23 → 17520
+✅ Заполнено: OKVED_64_UstKap_24 → 17520
+✅ Заполнено: OKVED_64_ChiAkt_23 → 5035583
+✅ Заполнено: OKVED_64_ChiAkt_24 → 6285301
+✅ Заполнено: OKVED_L_UstKap_23 → 5013708
+✅ Заполнено: OKVED_L_UstKap_24 → 5943270
+✅ Заполнено: OKVED_L_ChiAkt_23 → 5751335
+✅ Заполнено: OKVED_L_ChiAkt_24 → 6840001
+✅ Заполнено: OKVED_68_UstKap_23 → 5013708
+✅ Заполнено: OKVED_68_UstKap_24 → 5943270
+✅ Заполнено: OKVED_68_ChiAkt_23 → 5751335
+✅ Заполнено: OKVED_68_ChiAkt_24 → 6840001
+✅ Заполнено: OKVED_M_UstKap_23 → 2928028
+✅ Заполнено: OKVED_M_UstKap_24 → 5930678
+✅ Заполнено: OKVED_M_ChiAkt_23 → 7555427
+✅ Заполнено: OKVED_M_ChiAkt_24 → 9687988
+ℹ️ Отсутствующие данные: OKVED_69_UstKap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_69_UstKap_24 → [-]
+ℹ️ Отсутствующие данные: OKVED_69_ChiAkt_23 → [-]
+✅ Заполнено: OKVED_69_ChiAkt_24 → 30
+✅ Заполнено: OKVED_70_UstKap_23 → 2902126
+✅ Заполнено: OKVED_70_UstKap_24 → 5904416
+✅ Заполнено: OKVED_70_ChiAkt_23 → 4936733
+✅ Заполнено: OKVED_70_ChiAkt_24 → 7541653
+✅ Заполнено: OKVED_71_UstKap_23 → 24254
+✅ Заполнено: OKVED_71_UstKap_24 → 24614
+✅ Заполнено: OKVED_71_ChiAkt_23 → 2619986
+✅ Заполнено: OKVED_71_ChiAkt_24 → 2148878
+✅ Заполнено: OKVED_74_UstKap_23 → 1648
+✅ Заполнено: OKVED_74_UstKap_24 → 1648
+✅ Заполнено: OKVED_74_ChiAkt_23 → -1292
+✅ Заполнено: OKVED_74_ChiAkt_24 → -2573
+✅ Заполнено: OKVED_N_UstKap_23 → 3126341
+✅ Заполнено: OKVED_N_UstKap_24 → 3126341
+✅ Заполнено: OKVED_N_ChiAkt_23 → 1230008
+✅ Заполнено: OKVED_N_ChiAkt_24 → 1505181
+✅ Заполнено: OKVED_77_UstKap_23 → 2687104
+✅ Заполнено: OKVED_77_UstKap_24 → 2687104
+✅ Заполнено: OKVED_77_ChiAkt_23 → 206126
+✅ Заполнено: OKVED_77_ChiAkt_24 → 515367
+✅ Заполнено: OKVED_79_UstKap_23 → 10
+✅ Заполнено: OKVED_79_UstKap_24 → 10
+✅ Заполнено: OKVED_79_ChiAkt_23 → 533835
+✅ Заполнено: OKVED_79_ChiAkt_24 → 484785
+✅ Заполнено: OKVED_81_UstKap_23 → 439127
+✅ Заполнено: OKVED_81_UstKap_24 → 439127
+✅ Заполнено: OKVED_81_ChiAkt_23 → 483679
+✅ Заполнено: OKVED_81_ChiAkt_24 → 498441
+✅ Заполнено: OKVED_82_UstKap_23 → 100
+✅ Заполнено: OKVED_82_UstKap_24 → 100
+✅ Заполнено: OKVED_82_ChiAkt_23 → 6368
+✅ Заполнено: OKVED_82_ChiAkt_24 → 6588
+ℹ️ Отсутствующие данные: OKVED_O_UstKap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_O_UstKap_24 → [-]
+✅ Заполнено: OKVED_O_ChiAkt_23 → 114489
+✅ Заполнено: OKVED_O_ChiAkt_24 → 160410
+ℹ️ Отсутствующие данные: OKVED_84_UstKap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_84_UstKap_24 → [-]
+✅ Заполнено: OKVED_84_ChiAkt_23 → 114489
+✅ Заполнено: OKVED_84_ChiAkt_24 → 160410
+ℹ️ Отсутствующие данные: OKVED_85_UstKap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_85_UstKap_24 → [-]
+✅ Заполнено: OKVED_85_ChiAkt_23 → 651
+✅ Заполнено: OKVED_85_ChiAkt_24 → 934
+ℹ️ Отсутствующие данные: OKVED_85_UstKap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_85_UstKap_24 → [-]
+✅ Заполнено: OKVED_85_ChiAkt_23 → 651
+✅ Заполнено: OKVED_85_ChiAkt_24 → 934
+ℹ️ Отсутствующие данные: OKVED_Q_UstKap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_Q_UstKap_24 → [-]
+✅ Заполнено: OKVED_Q_ChiAkt_23 → 873
+✅ Заполнено: OKVED_Q_ChiAkt_24 → 1083
+ℹ️ Отсутствующие данные: OKVED_88_UstKap_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_88_UstKap_24 → [-]
+✅ Заполнено: OKVED_88_ChiAkt_23 → 873
+✅ Заполнено: OKVED_88_ChiAkt_24 → 1083
+✅ Заполнено: OKVED_R_UstKap_23 → 11
+ℹ️ Отсутствующие данные: OKVED_R_UstKap_24 → [-]
+✅ Заполнено: OKVED_R_ChiAkt_23 → 217
+✅ Заполнено: OKVED_R_ChiAkt_24 → 192
+✅ Заполнено: OKVED_93_UstKap_23 → 11
+ℹ️ Отсутствующие данные: OKVED_93_UstKap_24 → [-]
+✅ Заполнено: OKVED_93_ChiAkt_23 → 217
+✅ Заполнено: OKVED_93_ChiAkt_24 → 192
+✅ Заполнено: OKVED_S_UstKap_23 → 30191
+✅ Заполнено: OKVED_S_UstKap_24 → 24922
+✅ Заполнено: OKVED_S_ChiAkt_23 → 553804
+✅ Заполнено: OKVED_S_ChiAkt_24 → 632892
+✅ Заполнено: OKVED_94_UstKap_23 → 29058
+✅ Заполнено: OKVED_94_UstKap_24 → 23789
+✅ Заполнено: OKVED_94_ChiAkt_23 → 557681
+✅ Заполнено: OKVED_94_ChiAkt_24 → 642050
+✅ Заполнено: OKVED_96_UstKap_23 → 1133
+✅ Заполнено: OKVED_96_UstKap_24 → 1133
+✅ Заполнено: OKVED_96_ChiAkt_23 → -3877
+✅ Заполнено: OKVED_96_ChiAkt_24 → -9158
