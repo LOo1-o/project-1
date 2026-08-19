@@ -1,6 +1,7 @@
 # confic.py
 import csv
 import re
+from collections import Counter
 
 import pandas as pd
 from docx.table import _Cell, Table
@@ -358,6 +359,31 @@ def get_excel_data(excel_path, okved_codes_set):
     return data_dict
 
 
+# Короткие предлоги/союзы, чьё отсутствие или добавление в тексте ячейки
+# (например, потерянное "и" при переносе строки в исходном docx) не должно
+# мешать сопоставлению с эталонным названием из справочника.
+_SINGLE_WORD_DIFF_ALLOWED = {
+    'и', 'а', 'но', 'или', 'да', 'не', 'ни', 'то', 'же', 'ли',
+    'с', 'со', 'в', 'во', 'к', 'ко', 'у', 'о', 'об', 'обо',
+    'от', 'до', 'из', 'изо', 'за', 'на', 'по', 'под', 'над',
+    'при', 'для', 'без', 'через',
+}
+
+
+def _match_by_single_preposition_diff(text_norm, name):
+    """
+    Возвращает True, если text_norm и name отличаются ровно одним словом,
+    и это слово — короткий предлог/союз (см. _SINGLE_WORD_DIFF_ALLOWED).
+    """
+    text_words = Counter(text_norm.split())
+    name_words = Counter(name.split())
+    diff = (text_words - name_words) + (name_words - text_words)
+    extra_words = list(diff.elements())
+    if len(extra_words) != 1:
+        return False
+    return extra_words[0] in _SINGLE_WORD_DIFF_ALLOWED
+
+
 # === Поиск кода ОКВЭД по названию ===
 def find_okved_code(cell_text, name_to_okved_cleaned):
     text_norm = _normalize_text(cell_text)
@@ -368,5 +394,9 @@ def find_okved_code(cell_text, name_to_okved_cleaned):
     for name, code in name_to_okved_cleaned.items():
         if len(text_norm) >= 3 and (text_norm in name or name in text_norm):
             print(f"⚠️ Частичное совпадение: '{cell_text}' ~ '{name}' → {code}")
+            return code
+    for name, code in name_to_okved_cleaned.items():
+        if _match_by_single_preposition_diff(text_norm, name):
+            print(f"⚠️ Совпадение с точностью до предлога/союза: '{cell_text}' ~ '{name}' → {code}")
             return code
     return None
