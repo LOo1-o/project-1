@@ -527,7 +527,19 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
         # когда одно название соответствует НЕСКОЛЬКИМ разным индикаторам
         # (см. _resolve_indicator).
         consumed = {}
+        prev_tc = None
         for i, cell in enumerate(year_row.cells):
+            # python-docx повторяет один и тот же физический <w:tc> на КАЖДОЙ
+            # позиции сетки, которую он перекрывает через gridSpan (например,
+            # ячейка "в % к общей задолженности", реально одна, но растянутая
+            # на 2 колонки сетки, отдаётся .cells как ДВА одинаковых элемента
+            # подряд). Без этой проверки счётчик consumed (см.
+            # _resolve_indicator) продвигается по списку индикаторов дважды
+            # за одну и ту же ячейку — и настоящая следующая колонка с тем же
+            # названием получает уже занятый индикатор, а не свой.
+            if cell._tc is prev_tc:
+                continue
+            prev_tc = cell._tc
             raw_year_text = get_cleaned_cell_text(cell).strip()
             year_text = _extract_year(raw_year_text)
             if not year_text:
@@ -606,7 +618,17 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
         # показателей "длительность 1 оборота") неотличимы друг от друга.
         run_rows_sorted = sorted(run_rows) if run_rows else [header_idx]
 
+        prev_tc = None
         for i, cell in enumerate(header_row.cells):
+            # См. аналогичную проверку выше (has_years-ветка): python-docx
+            # повторяет один и тот же физический <w:tc> на каждой позиции
+            # сетки, которую он занимает через gridSpan — без пропуска такой
+            # "фантомной" колонки consumed продвигается по списку индикаторов
+            # лишний раз, и настоящая следующая колонка с тем же названием
+            # получает уже занятый чужой индикатор.
+            if cell._tc is prev_tc:
+                continue
+            prev_tc = cell._tc
             parts = []
             seen = set()
             for r_idx in run_rows_sorted:
