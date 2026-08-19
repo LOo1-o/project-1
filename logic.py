@@ -253,6 +253,46 @@ def _normalize_match_text(text: str) -> str:
     return normalized
 
 
+def _compute_shared_group_prefixes(names_norm, min_siblings=2, min_prefix_words=2):
+    """Находит "групповые" префиксы, общие для нескольких показателей одного
+    Excel-файла — например, "отчетный год" в "отчетный год сальдо прочих
+    доходов и расходов" / "отчетный год прибыль (убыток) до налогообложения"
+    / "отчетный год прочее" и т.д.
+
+    В исходном Excel такой групповой заголовок объединён (merge) по
+    нескольким столбцам (см. _infer_mapping_from_excel в config_v2.py), и
+    поэтому "приклеивается" ко всем показателям этой группы при сборке
+    column_mapping_v2.csv. В Word же он обычно не повторяется в каждой
+    колонке — там просто короткий подзаголовок.
+
+    Важно искать префикс, ОБЩИЙ ХОТЯ БЫ ДЛЯ ДВУХ показателей (а не просто
+    "первые N слов одного произвольного названия") — иначе можно случайно
+    отрезать значимую часть уникального названия и словить ложное
+    совпадение с чужой колонкой. Всегда выбирается МАКСИМАЛЬНО длинный
+    общий префикс (в словах) — короткие префиксы более длинных общих
+    последовательностей не включаются в результат, чтобы не заслонять
+    более точный вариант при последующем поиске.
+    """
+    from collections import defaultdict
+
+    word_lists = [n.split() for n in names_norm if n]
+    max_len = max((len(w) for w in word_lists), default=0)
+
+    prefixes = set()
+    covered = set()  # индексы имён, для которых уже найден максимальный префикс
+    for k in range(max_len - 1, min_prefix_words - 1, -1):
+        groups = defaultdict(list)
+        for idx, words in enumerate(word_lists):
+            if idx in covered or len(words) <= k:
+                continue
+            groups[tuple(words[:k])].append(idx)
+        for prefix, idxs in groups.items():
+            if len(idxs) >= min_siblings:
+                prefixes.add(prefix)
+                covered.update(idxs)
+    return prefixes
+
+
 # Строки-разметка единиц измерения/периода, которые Word иногда повторяет как
 # отдельную строку прямо над шапкой продолжения таблицы ("на конец года,
 # тысяч рублей" и т.п.) — это не часть названия показателя, а общая для всей
@@ -672,7 +712,8 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                            mo_map_path: Path = None, validation_log_path: Path = None,
                            near_miss_report_path: Path = None, squish_match_report_path: Path = None,
                            typo_match_report_path: Path = None, excel_dir: Path = None,
-                           unit_annotation_report_path: Path = None, unit_annotations_path: Path = None):
+                           unit_annotation_report_path: Path = None, unit_annotations_path: Path = None,
+                           group_prefix_match_report_path: Path = None):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}},
     {{MO_<code>_<indicator>[_22|_23]}} и {{OPF_<code>_<indicator>}}/{{FS_<code>_<indicator>}}
@@ -717,6 +758,16 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     измерения/периода (см. load_unit_annotation_texts) — пользователь может
     редактировать этот файл, не трогая код. Если не указан или не найден,
     используется встроенный список по умолчанию.
+
+    group_prefix_match_report_path: если указан, сюда выгружается таблица
+    совпадений, найденных только после отбрасывания общего "группового"
+    префикса показателя (см. _infer_mapping_from_excel в config_v2.py) —
+    случаев, когда в column_mapping_v2.csv показатель записан как
+    "<общий заголовок группы колонок> <имя колонки>", а в самом
+    Word-документе групповой заголовок не повторяется в каждой колонке.
+    Такие совпадения проходят автоматически, но стоит проверить, что
+    остаток названия не совпал случайно не с той колонкой — а лучше
+    почистить сам column_mapping_v2.csv, укоротив название показателя.
     """
     print("\n--- ШАГ 2: Генерация шаблона с умными тегами ---")
     _, name_to_okved_cleaned = load_okved_map(okved_map_path)
@@ -753,6 +804,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     squish_match_report = []
     typo_match_report = []
     unit_annotation_report = []
+    group_prefix_match_report = []
     current_source_file = None
     normalized_title_to_src = {k: v for k, v in table_source_mapping.items()}
 
@@ -838,9 +890,20 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             column_texts_squished.append(_squish_text(col_text))
             column_cells_squished.append([_squish_text(t) for t in cell_texts if t])
 
+        # Групповые префиксы, общие для нескольких показателей ЭТОГО файла
+        # (см. _compute_shared_group_prefixes) — вычисляем один раз на всю
+        # таблицу/файл, а не для каждого показателя отдельно, чтобы решение
+        # "это групповой заголовок или нет" опиралось на структуру всего
+        # набора показателей, а не на длину одного случайно взятого слова.
+        all_names_norm = {name: _normalize_match_text(name) for name in all_file_entries}
+        shared_group_prefixes = sorted(
+            _compute_shared_group_prefixes(all_names_norm.values()),
+            key=len, reverse=True
+        )
+
         source_word_to_indicator = {}
         for name, indicators in all_file_entries.items():
-            name_norm = _normalize_match_text(name)
+            name_norm = all_names_norm[name]
             if name_norm and any(name_norm in col_text for col_text in column_texts_norm):
                 source_word_to_indicator[name] = indicators
                 continue
@@ -879,6 +942,44 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                                 'matched_indicator': ','.join(indicators),
                             })
                         break
+
+            if name in source_word_to_indicator:
+                continue
+            # В Excel-исходнике заголовок показателя часто склеен из общего
+            # "группового" заголовка, объединённого (merge) по нескольким
+            # столбцам (например, "Отчетный год" или "Доходы и расходы по
+            # обычным видам деятельности за отчетный период"), и собственного
+            # подзаголовка колонки ("Прочее", "Выручка") — см.
+            # _infer_mapping_from_excel в config_v2.py. В Word же такой
+            # групповой заголовок обычно не повторяется в каждом столбце: там
+            # просто короткий подзаголовок. Если показатель целиком не
+            # нашёлся, пробуем отбросить префикс, который РЕАЛЬНО общий у
+            # НЕСКОЛЬКИХ показателей этого файла (shared_group_prefixes) — в
+            # отличие от произвольного обрезания по словам, это не хватается
+            # за случайное совпадение, а опирается на структуру самого
+            # column_mapping_v2.csv.
+            name_words = name_norm.split() if name_norm else []
+            for prefix in shared_group_prefixes:
+                if len(name_words) <= len(prefix) or tuple(name_words[:len(prefix)]) != prefix:
+                    continue
+                remainder = ' '.join(name_words[len(prefix):])
+                if not remainder:
+                    continue
+                matched_col = next(
+                    (col_text for col_text in column_texts_norm if remainder in col_text),
+                    None
+                )
+                if matched_col is not None:
+                    source_word_to_indicator[name] = indicators
+                    if group_prefix_match_report_path:
+                        group_prefix_match_report.append({
+                            'table': t_index + 1,
+                            'source_file': current_source_file,
+                            'full_name': name,
+                            'matched_remainder': remainder,
+                            'matched_indicator': ','.join(indicators),
+                        })
+                    break
 
         if not source_word_to_indicator:
             # fallback на все показатели из Excel, если в Word ничего не найдено
@@ -1184,6 +1285,13 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         pd.DataFrame(typo_match_report, columns=columns).to_excel(typo_match_report_path, index=False)
         print(f"✏️ Отчёт по опечаткам в одну букву сохранён: {typo_match_report_path} "
               f"({len(typo_match_report)} строк)")
+    if group_prefix_match_report_path:
+        group_prefix_match_report_path = Path(group_prefix_match_report_path)
+        group_prefix_match_report_path.parent.mkdir(parents=True, exist_ok=True)
+        columns = ['table', 'source_file', 'full_name', 'matched_remainder', 'matched_indicator']
+        pd.DataFrame(group_prefix_match_report, columns=columns).to_excel(group_prefix_match_report_path, index=False)
+        print(f"🪓 Отчёт по совпадениям после отбрасывания группового префикса сохранён: "
+              f"{group_prefix_match_report_path} ({len(group_prefix_match_report)} строк)")
     if unit_annotation_report_path:
         unit_annotation_report_path = Path(unit_annotation_report_path)
         unit_annotation_report_path.parent.mkdir(parents=True, exist_ok=True)
