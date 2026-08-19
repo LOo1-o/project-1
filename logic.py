@@ -985,23 +985,58 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 if len(name_words) <= len(prefix) or tuple(name_words[:len(prefix)]) != prefix:
                     continue
                 remainder = ' '.join(name_words[len(prefix):])
-                if not remainder:
+                # Остаток должен быть содержательной ФРАЗОЙ (минимум 2 слова),
+                # а не одним общим словом вроде "единиц" или "всего" — такой
+                # остаток совпадает почти где угодно (это же слово случайно
+                # оказывается частью и совсем другого, никак не связанного
+                # показателя в этой же таблице) и, если зарегистрировать под
+                # ним алиас (см. ниже), может увести тег в чужую колонку.
+                if len(name_words[len(prefix):]) < 2 or len(remainder) < 10:
                     continue
                 matched_col = next(
                     (col_text for col_text in column_texts_norm if remainder in col_text),
                     None
                 )
-                if matched_col is not None:
-                    source_word_to_indicator[name] = indicators
-                    if group_prefix_match_report_path:
-                        group_prefix_match_report.append({
-                            'table': t_index + 1,
-                            'source_file': current_source_file,
-                            'full_name': name,
-                            'matched_remainder': remainder,
-                            'matched_indicator': ','.join(indicators),
-                        })
-                    break
+                if matched_col is None:
+                    continue
+                # Групповой префикс может быть общим сразу для НЕСКОЛЬКИХ
+                # разных секций одного файла (например, "Поступления по
+                # текущей деятельности" и "Поступления по инвестиционной
+                # деятельности" — обе секции заканчиваются словами "прочие
+                # поступления", и Word в обеих пишет ОДИНАКОВЫЙ короткий текст
+                # колонки — "в том числе прочие поступления", без вообще
+                # какого-либо признака, к какой секции она относится). Просто
+                # совпадения remainder недостаточно — так подошёл бы ЛЮБОЙ
+                # показатель с таким остатком из ЛЮБОЙ секции файла. Поэтому
+                # дополнительно проверяем, что сам префикс (например,
+                # "поступления по текущей деятельности") тоже реально
+                # присутствует где-то в этой таблице — обычно в соседней
+                # колонке "Х - всего" той же секции. Это подтверждает, что мы
+                # действительно в "своей" секции, а не просто угадали по
+                # общему хвосту фразы.
+                prefix_text = ' '.join(prefix)
+                if not any(prefix_text in col_text for col_text in column_texts_norm):
+                    continue
+                source_word_to_indicator[name] = indicators
+                # Помимо полного (длинного) названия регистрируем показатель
+                # ещё и под "коротким" остатком — именно так он выглядит в
+                # Word-документе (без группового префикса), а полное название
+                # в этой колонке никогда не встретится целиком. Без этого
+                # показатель хоть и попадает в пул кандидатов таблицы, но
+                # ниже, при постолбцовом сопоставлении (_compute_section_mapping
+                # / _fuzzy_match_header), длинное название не находит точного
+                # вхождения в короткий текст колонки и не проходит порог
+                # нечёткого совпадения — тег так и не проставляется.
+                source_word_to_indicator.setdefault(remainder, indicators)
+                if group_prefix_match_report_path:
+                    group_prefix_match_report.append({
+                        'table': t_index + 1,
+                        'source_file': current_source_file,
+                        'full_name': name,
+                        'matched_remainder': remainder,
+                        'matched_indicator': ','.join(indicators),
+                    })
+                break
 
         if not source_word_to_indicator:
             # fallback на все показатели из Excel, если в Word ничего не найдено
