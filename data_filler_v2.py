@@ -228,8 +228,9 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 keywords_2023 = indicator_keywords.get(indicator, {}).get('2023', [])
                 
                 # === ЭТАП 1: Динамический поиск колонок по году ===
-                col_idx_2022 = _find_column_smart(df, col_22_hardcode, "2022", keywords_2022)
-                col_idx_2023 = _find_column_smart(df, col_23_hardcode, "2023", keywords_2023)
+                context_label = f"{filename}: {indicator}"
+                col_idx_2022 = _find_column_smart(df, col_22_hardcode, "2022", keywords_2022, context_label)
+                col_idx_2023 = _find_column_smart(df, col_23_hardcode, "2023", keywords_2023, context_label)
                 suffix_2022 = _detect_year_suffix_for_column(df, col_idx_2022, "22")
                 suffix_2023 = _detect_year_suffix_for_column(df, col_idx_2023, "23")
                 
@@ -317,43 +318,108 @@ def _map_year_to_suffix(year: str) -> str:
     return None
 
 
-def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords: list) -> Optional[int]:
+_HEADER_SCAN_ROWS = 8  # захватывает заголовок/подзаголовок/буквенный маркер А,Б,1,2...
+
+
+def _column_header_text(df: pd.DataFrame, col_idx: int, max_row: int) -> str:
+    """Склеивает текст из первых нескольких строк одного столбца (название
+    показателя, подзаголовок с годом, единица измерения и т.п.) — реальная
+    шапка росстатовских таблиц занимает НЕСКОЛЬКО строк, а не одну."""
+    parts = []
+    for row_idx in range(max_row):
+        try:
+            cell = df.iat[row_idx, col_idx]
+        except Exception:
+            continue
+        if pd.isna(cell):
+            continue
+        parts.append(str(cell).strip())
+    return ' '.join(parts).lower()
+
+
+def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords: list,
+                        context_label: str = "") -> Optional[int]:
     """
-    Умный поиск колонки: сначала жесткий индекс, потом ключевые слова, потом год.
-    
+    Умный поиск колонки.
+
+    Номера колонок из column_mapping_v2.csv — это снимок структуры Excel на
+    момент составления справочника. Если в новом периоде структура сдвинулась
+    (вставили/убрали столбец), старый номер может молча указывать на СОВСЕМ
+    ДРУГОЙ показатель, оставаясь при этом в допустимых границах таблицы —
+    поэтому жёсткому индексу доверяем, только если заголовок над ним всё ещё
+    подтверждается ключевыми словами. Если нет — колонку ищем заново по
+    ключевым словам (для этого они и существуют), и только если это тоже не
+    удалось — год, и только в самом крайнем случае — всё равно старый номер
+    (лучше вернуть что-то, чем молча потерять данные).
+
     Args:
         df: DataFrame
-        hardcode_idx: Жесткий индекс из column_mapping.csv (приоритет)
+        hardcode_idx: Жесткий индекс из column_mapping_v2.csv (1-based)
         year: Год для поиска ("2022" или "2023")
         keywords: Список ключевых слов для поиска
-    
+        context_label: Для сообщения в консоль, если жёсткий индекс не подтвердился
+
     Returns:
         Индекс колонки или None
     """
-    # 1️⃣ Сначала используем жесткий индекс, если он есть
+    max_row = min(_HEADER_SCAN_ROWS, len(df))
+
+    def _keyword_match_at(col_idx: int) -> bool:
+        if not keywords:
+            return False
+        header_text = _column_header_text(df, col_idx, max_row)
+        return any(keyword.lower() in header_text for keyword in keywords)
+
+    def _find_by_keyword() -> Optional[int]:
+        for keyword in keywords:
+            keyword_lower = keyword.lower()
+            for col_idx in range(df.shape[1]):
+                if keyword_lower in _column_header_text(df, col_idx, max_row):
+                    return col_idx
+        return None
+
+    hardcode_col = None
     if hardcode_idx and hardcode_idx.strip():
         try:
             idx = int(hardcode_idx) - 1  # CSV использует 1-based индексы
             if 0 <= idx < len(df.columns):
-                return idx
+                hardcode_col = idx
         except ValueError:
             pass
-    
-    # 2️⃣ Пытаемся найти по ключевым словам
-    if keywords:
-        for keyword in keywords:
-            for col_idx, header in enumerate(df.iloc[0]):
-                header_str = str(header).strip()
-                if keyword.lower() in header_str.lower():
-                    return col_idx
-    
-    # 3️⃣ Пытаемся найти по году (только если жесткий индекс был указан, но не найден)
+
+    # 1️⃣ Жёсткий индекс — доверяем, если заголовок над ним подтверждён
+    #    ключевыми словами (или ключевых слов вообще не задано).
+    if hardcode_col is not None and (not keywords or _keyword_match_at(hardcode_col)):
+        return hardcode_col
+
+    # 2️⃣ Структура похожа на изменившуюся — пересчитываем колонку по ключевым словам.
+    keyword_col = _find_by_keyword() if keywords else None
+    if keyword_col is not None:
+        if hardcode_col is not None and keyword_col != hardcode_col:
+            print(
+                f"   🔄 Структура Excel сдвинулась{(' (' + context_label + ')') if context_label else ''}: "
+                f"столбец {hardcode_col + 1} больше не подтверждён ключевыми словами, "
+                f"используем столбец {keyword_col + 1}."
+            )
+        return keyword_col
+
+    # 3️⃣ Поиск по году — если ключевые слова не заданы/не нашлись
     if hardcode_idx and hardcode_idx.strip():
-        for col_idx, header in enumerate(df.iloc[0]):
-            header_str = str(header).strip()
-            if year in header_str:
+        for col_idx in range(df.shape[1]):
+            if year in _column_header_text(df, col_idx, max_row):
                 return col_idx
-    
+
+    # 4️⃣ Крайний случай: старый номер не подтвердился, но ничего лучше не
+    #    нашлось — возвращаем его, чтобы не потерять данные совсем, но это
+    #    стоит перепроверить вручную.
+    if hardcode_col is not None:
+        if keywords:
+            print(
+                f"   ⚠️ Не удалось подтвердить столбец {hardcode_col + 1}{(' (' + context_label + ')') if context_label else ''} "
+                f"по ключевым словам — используем его как есть, проверьте вручную."
+            )
+        return hardcode_col
+
     return None
 
 
