@@ -769,12 +769,24 @@ def build_column_mapping_v2_from_excel(excel_dir: Path, table_source_mapping: di
             seen_files.add(filename)
             unique_files.append(filename)
 
+    failed_files = []
     for filename in unique_files:
         excel_path = excel_dir / filename
         if not excel_path.exists():
             print(f"⚠️ Excel файл не найден: {filename}")
+            failed_files.append(f"{filename} (файл не найден)")
             continue
-        inferred = _infer_mapping_from_excel(excel_path)
+        try:
+            inferred = _infer_mapping_from_excel(excel_path)
+        except Exception as exc:
+            # Битый/нечитаемый Excel-файл (повреждён, не тот формат, защищён
+            # паролем и т.д.) не должен обрушивать весь пайплайн — пропускаем
+            # этот источник и продолжаем с остальными.
+            print(f"❌ Не удалось прочитать Excel файл {filename}: {exc}")
+            failed_files.append(f"{filename} (ошибка чтения: {exc})")
+            continue
+        if not inferred:
+            failed_files.append(f"{filename} (не найдена структура заголовков)")
         for excel_file, name, code, col_22, col_23, kw22, kw23 in inferred:
             if code in seen_codes:
                 suffix = 1
@@ -786,7 +798,11 @@ def build_column_mapping_v2_from_excel(excel_dir: Path, table_source_mapping: di
             rows.append((excel_file, name, code, col_22, col_23, kw22, kw23))
 
     if not rows:
-        raise ValueError("Не удалось сгенерировать column_mapping_v2 из Excel.")
+        details = "\n".join(f"  - {item}" for item in failed_files) or "  (нет данных)"
+        raise ValueError(
+            "Не удалось сгенерировать column_mapping_v2 из Excel — ни один "
+            f"источник не дал ни одной строки:\n{details}"
+        )
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w', encoding='utf-8-sig', newline='') as f:
@@ -820,8 +836,8 @@ def ensure_column_mapping_v2(excel_dir: Path, table_source_mapping: dict, output
         _, _, _, file_word_to_indicator, _, _ = load_column_mapping_v2(output_path)
         existing_sources = {file for file, _ in file_word_to_indicator.keys()}
     except Exception as exc:
+        print(f"⚠️ Не удалось прочитать {output_path} ({exc}). Пересобираем из Excel...")
         build_column_mapping_v2_from_excel(excel_dir, table_source_mapping, output_path)
-        print("    Файл существует, автоматическую регенерацию пропускаем.")
         return
 
     expected_sources = set(table_source_mapping.values())
