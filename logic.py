@@ -885,7 +885,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         print(f"\n📄 Таблица {t_index + 1}")
 
         # 0. Определение источника данных по названию таблицы
-        table_title = get_table_name(table, table_source_mapping.keys())
+        table_title, saw_heading_text = get_table_name(table, table_source_mapping.keys(), return_details=True)
         if table_title:
             table_title_norm = _normalize_text(table_title)
             if table_title_norm in normalized_title_to_src:
@@ -893,6 +893,14 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 print(f"🔍 Источник таблицы: {current_source_file}")
             else:
                 print(f"⚠️ Не найден источник для заголовка таблицы: '{table_title}'")
+        elif saw_heading_text:
+            # Над таблицей ЕСТЬ содержательный заголовок, но он не совпал ни
+            # с одним известным названием таблицы — это не "продолжение без
+            # метки" (тогда заголовка не было бы вовсе), а похоже на ДРУГУЮ,
+            # незнакомую таблицу. Не наследуем источник предыдущей таблицы
+            # вслепую — иначе при случайном текстовом совпадении показателя
+            # эта новая таблица получит чужие данные молча.
+            current_source_file = None
 
         continuation_number = get_continuation_table_number(table)
         if continuation_number:
