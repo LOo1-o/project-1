@@ -42,6 +42,7 @@ def main(input_template_override=None, output_file_override=None):
     unit_annotations_file = mappings_dir / "unit_annotations.csv"
 
     input_word_file = input_template_override or input_dir / "Бюллетень_17.2.8 раздел 1-8.docx"
+    cleared_word_file = output_dir / "Бюллетень_ОЧИЩЕННЫЙ.docx"
     template_word_file = output_dir / "Бюллетень_ШАБЛОН_С_ТЕГАМИ_v2.docx"
     final_word_file = Path(output_file_override) if output_file_override else output_dir / "Бюллетень_17.2.8_ГОТОВЫЙ.docx"
 
@@ -57,10 +58,30 @@ def main(input_template_override=None, output_file_override=None):
     okved_codes_set = set(okved_to_name.keys())
     print("✅ Справочники успешно загружены.")
 
+    # === ШАГ 1.5: Очистка шаблона от данных прошлого периода ===
+    # Сначала убираем старые числа из исходного бюллетеня (кроме шапки с
+    # годами) — до того, как на их место встанут теги. Так в репозитории
+    # остаётся явный промежуточный "пустой бланк", и специалистам, которые
+    # открывают файл между этим шагом и следующим, не приходится гадать,
+    # откуда цифры прошлого периода или что означают {{...}}.
+    print("\n=== ШАГ 1.5: Очистка шаблона от данных ===")
+    generate_word_template(
+        input_word_file,
+        okved_file,
+        table_mapping_file,
+        column_mapping_file,
+        cleared_word_file,
+        mo_map_path=mo_file,
+        excel_dir=excel_dir,
+        unit_annotations_path=unit_annotations_file,
+        clear_only=True,
+    )
+    print(f"🧹 Очищенный бланк сохранён: {cleared_word_file}")
+
     # === ШАГ 2: Генерация шаблона Word с тегами ===
     print("\n=== ШАГ 2: Генерация шаблона Word с умными тегами ===")
     generate_word_template(
-        input_word_file,
+        cleared_word_file,
         okved_file,
         table_mapping_file,
         column_mapping_file,

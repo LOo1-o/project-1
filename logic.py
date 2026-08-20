@@ -748,7 +748,8 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                            typo_match_report_path: Path = None, excel_dir: Path = None,
                            unit_annotation_report_path: Path = None, unit_annotations_path: Path = None,
                            group_prefix_match_report_path: Path = None,
-                           unused_indicator_report_path: Path = None):
+                           unused_indicator_report_path: Path = None,
+                           clear_only: bool = False):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}},
     {{MO_<code>_<indicator>[_22|_23]}} и {{OPF_<code>_<indicator>}}/{{FS_<code>_<indicator>}}
@@ -817,8 +818,20 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     ловить), и это нужно поправить руками, сверив оба источника; низкий
     score — показатель, вероятно, в этой редакции документа просто
     отсутствует, и это не обязательно ошибка.
+
+    clear_only: если True, функция работает как отдельный шаг "очистка
+    данных" — находит те же самые ячейки, что и обычно, но вместо
+    вставки тега просто ОПУСТОШАЕТ ячейку (старое число из исходного
+    бюллетеня удаляется, шапка с годами не трогается). Тег в эту же
+    ячейку ставится уже ВТОРЫМ, отдельным проходом (обычный вызов этой
+    же функции с clear_only=False, на этот раз — над уже очищенным
+    файлом). Это разделение специально сделано так, чтобы в репозитории
+    оставался явный промежуточный результат "пустой бланк без чисел и
+    без тегов" — специалисты, которые открывают файл между этими двумя
+    шагами, не путаются, откуда взялись цифры или что означают {{...}}.
     """
-    print("\n--- ШАГ 2: Генерация шаблона с умными тегами ---")
+    print("\n--- ШАГ 2: Генерация шаблона с умными тегами ---" if not clear_only
+          else "\n--- ШАГ 1.5: Очистка шаблона от данных ---")
     _, name_to_okved_cleaned = load_okved_map(okved_map_path)
     _, mo_name_to_mo_cleaned = ({}, {})
     if mo_map_path is not None:
@@ -1366,15 +1379,29 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                         tag = f"{{{{{prefix}_{code_tag_part}_{indicator}}}}}"
                     # Очищаем ячейку перед вставкой тега
                     for p in row.cells[col_idx].paragraphs:
-                        p.text = " "
+                        p.text = ""
+                    if clear_only:
+                        # Только шаг очистки (см. clear_only) — ячейка с
+                        # исходным числом уже опустошена выше, тег на её
+                        # место НЕ ставим. Нужно, чтобы получить
+                        # промежуточный "очищенный" вариант документа
+                        # (только шапки с годами, без старых чисел) — на
+                        # него потом отдельным проходом ставятся теги.
+                        total_tags += 1
+                        print(f"   🧹 Строка {row_idx + 1}: очищена колонка {col_idx} (был бы тег {tag})")
+                        continue
                     if row.cells[col_idx].paragraphs:
                         row.cells[col_idx].paragraphs[0].text = tag
                     total_tags += 1
                     print(f"   🏷️ Строка {row_idx + 1}: вставлен тег {tag}")
 
     doc.save(output_doc_path)
-    print(f"\n✅ Шаблон с тегами сохранён: {output_doc_path}")
-    print(f"🔢 Всего вставлено тегов: {total_tags}")
+    if clear_only:
+        print(f"\n✅ Очищенный от данных бланк сохранён: {output_doc_path}")
+        print(f"🧹 Всего очищено ячеек: {total_tags}")
+    else:
+        print(f"\n✅ Шаблон с тегами сохранён: {output_doc_path}")
+        print(f"🔢 Всего вставлено тегов: {total_tags}")
     if validation_log_path:
         validation_log_path = Path(validation_log_path)
         validation_log_path.parent.mkdir(parents=True, exist_ok=True)
