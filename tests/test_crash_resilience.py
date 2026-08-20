@@ -10,7 +10,7 @@ from pathlib import Path
 
 import openpyxl
 
-from config_v2 import build_column_mapping_v2_from_excel, ensure_column_mapping_v2
+from config_v2 import build_column_mapping_v2_from_excel, ensure_column_mapping_v2, load_column_mapping_v2
 
 
 def _write_good_excel(path: Path) -> None:
@@ -85,7 +85,13 @@ class TestCrashResilience(unittest.TestCase):
             self.assertTrue(output_path.exists())
             self.assertIn("good.xlsx", output_path.read_text(encoding="utf-8-sig"))
 
-    def test_corrupted_existing_column_mapping_csv_is_regenerated_not_crashed(self):
+    def test_column_mapping_v2_csv_saved_as_windows1251_reads_correctly(self):
+        # Частый реальный сценарий: специалист открыл column_mapping_v2.csv
+        # в Excel на Windows и пересохранил его — результат обычно в
+        # кодировке windows-1251, а не UTF-8. Раньше это ломало чтение файла
+        # необработанным исключением (или ensure_column_mapping_v2 решала,
+        # что источник "отсутствует", хотя на самом деле файл просто в
+        # другой кодировке).
         with tempfile.TemporaryDirectory() as tmpdir:
             excel_dir = Path(tmpdir) / "excel"
             excel_dir.mkdir()
@@ -94,16 +100,36 @@ class TestCrashResilience(unittest.TestCase):
             table_mapping = {"1. Хорошая таблица": "good.xlsx"}
             output_path = Path(tmpdir) / "column_mapping_v2.csv"
 
-            # Имитация повреждённого файла (например, сохранённого не в той
-            # кодировке) — содержит невалидные для utf-8-sig байты.
-            with open(output_path, "wb") as f:
-                f.write(b"\xff\xfe\x00garbage bytes not valid utf-8-sig \xff\xff\xff")
+            content = (
+                "Excel файл;Название показателя;Код показателя;"
+                "Excel колонка 2022;Excel колонка 2023;"
+                "Ключевое слово 2022;Ключевое слово 2023\n"
+                "good.xlsx;Показатель А;PokA;3;3;;\n"
+            )
+            output_path.write_bytes(content.encode("windows-1251"))
 
-            # ensure_column_mapping_v2 должна заметить, что файл не читается,
-            # и молча пересобрать его, а не уронить весь пайплайн.
+            word_to_indicator, _, _, _, _, _ = load_column_mapping_v2(output_path)
+            self.assertIn("PokA", word_to_indicator.values())
+
+            # ensure_column_mapping_v2 не должна решить, что этот источник
+            # "отсутствует" и портить файл повторной генерацией — она должна
+            # прочитать его правильно и увидеть, что good.xlsx уже учтён.
             ensure_column_mapping_v2(excel_dir, table_mapping, output_path)
+            self.assertIn("PokA", output_path.read_text(encoding="windows-1251"))
 
-            self.assertIn("good.xlsx", output_path.read_text(encoding="utf-8-sig"))
+    def test_all_excel_sources_corrupted_when_regenerating_gives_clear_error(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            excel_dir = Path(tmpdir) / "excel"
+            excel_dir.mkdir()
+            _write_corrupted_excel(excel_dir / "corrupted.xlsx")
+
+            table_mapping = {"1. Битая таблица": "corrupted.xlsx"}
+            output_path = Path(tmpdir) / "column_mapping_v2.csv"
+            # Файла ещё нет вообще — ensure_column_mapping_v2 должна попытаться
+            # его собрать и упасть с понятной ошибкой, а не тихо продолжить.
+            with self.assertRaises(ValueError) as ctx:
+                ensure_column_mapping_v2(excel_dir, table_mapping, output_path)
+            self.assertIn("corrupted.xlsx", str(ctx.exception))
 
 
 if __name__ == "__main__":

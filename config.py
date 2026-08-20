@@ -72,6 +72,27 @@ def set_paragraph_text_keep_format(paragraph, text: str) -> None:
         paragraph.add_run(text)
 
 
+_ROBUST_ENCODINGS = ['utf-8-sig', 'windows-1251', 'cp1251', 'utf-8', 'latin1']
+
+
+def _read_csv_rows_robustly(filepath, delimiter=';', quotechar='"'):
+    """Читает CSV-файл построчно (список списков-ячеек), перебирая
+    кодировки — на случай, если файл пересохранили из Excel на Windows
+    (обычно даёт windows-1251, а не UTF-8). Аналог _read_csv_robustly, но
+    без pandas — для мест, где нужен именно "сырой" csv.reader.
+    """
+    last_error = None
+    for encoding in _ROBUST_ENCODINGS:
+        try:
+            with open(filepath, encoding=encoding, newline='') as f:
+                reader = csv.reader(f, delimiter=delimiter, quotechar=quotechar)
+                return [row for row in reader]
+        except UnicodeDecodeError as e:
+            last_error = e
+            continue
+    raise ValueError(f"❌ Не удалось прочитать {filepath} ни с одной кодировкой ({last_error}).")
+
+
 def _read_csv_robustly(filepath, header_row=0):
     encodings = ['utf-8-sig', 'windows-1251', 'cp1251', 'utf-8', 'latin1']
     for encoding in encodings:
@@ -117,9 +138,7 @@ def load_table_source_map(filepath):
     print(f"Загрузка сопоставления таблиц из: {filepath}")
     mapping_dict = {}
 
-    with open(filepath, encoding='utf-8-sig', newline='') as f:
-        reader = csv.reader(f, delimiter=';')
-        rows = [row for row in reader if row]
+    rows = [row for row in _read_csv_rows_robustly(filepath, delimiter=';') if row]
 
     if not rows:
         print("⚠️ Файл маппинга пуст.")

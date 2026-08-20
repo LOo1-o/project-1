@@ -12,6 +12,8 @@ import pandas as pd
 from pathlib import Path
 from typing import Dict, Tuple, Optional, Set
 
+from config import _read_csv_rows_robustly
+
 # === Константы ===
 EMPTY_CELL_MARKER = "—"
 OKVED_CODE_COLUMN_INDEX = 0
@@ -154,9 +156,7 @@ def load_column_mapping_v2(filepath) -> Tuple[Dict[str, str], Dict[str, Tuple[st
     indicator_keywords = {}
 
     try:
-        with open(filepath, encoding="utf-8-sig", newline='') as f:
-            reader = csv.reader(f, delimiter=';', quotechar='"')
-            rows = list(reader)
+        rows = _read_csv_rows_robustly(filepath, delimiter=';', quotechar='"')
 
         if rows:
             rows = rows[1:]

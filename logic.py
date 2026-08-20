@@ -16,7 +16,8 @@ from config import (
     _normalize_text,
     find_okved_code,
     get_table_name,
-    canonical_okved
+    canonical_okved,
+    _read_csv_rows_robustly,
 )
 from mo import load_mo_map, find_mo_code, canonical_mo
 from config_v2 import load_column_mapping_v2
@@ -326,11 +327,8 @@ def load_unit_annotation_texts(filepath) -> set:
     Если файл не найден или пуст — возвращает встроенный список по
     умолчанию, чтобы поведение не менялось "из коробки".
     """
-    import csv as _csv
     try:
-        with open(filepath, encoding="utf-8-sig", newline='') as f:
-            reader = _csv.reader(f, delimiter=';')
-            rows = list(reader)
+        rows = _read_csv_rows_robustly(filepath, delimiter=';')
     except FileNotFoundError:
         return set(_DEFAULT_UNIT_ANNOTATION_TEXTS)
 
@@ -1479,14 +1477,13 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         # а не искать код по всему CSV вручную.
         code_to_csv_line = {}
         try:
-            with open(column_mapping_path, encoding='utf-8-sig', newline='') as f:
-                reader = csv.reader(f, delimiter=';', quotechar='"')
-                for line_no, row in enumerate(reader, start=1):
-                    if line_no == 1 or len(row) < 3:
-                        continue
-                    code = str(row[2]).strip()
-                    if code:
-                        code_to_csv_line[code] = line_no
+            rows = _read_csv_rows_robustly(column_mapping_path, delimiter=';', quotechar='"')
+            for line_no, row in enumerate(rows, start=1):
+                if line_no == 1 or len(row) < 3:
+                    continue
+                code = str(row[2]).strip()
+                if code:
+                    code_to_csv_line[code] = line_no
         except FileNotFoundError:
             pass
 
