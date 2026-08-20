@@ -1399,6 +1399,27 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                     total_tags += 1
                     print(f"   🏷️ Строка {row_idx + 1}: вставлен тег {tag}")
 
+            if clear_only:
+                # Цикл выше очищает только те колонки, для которых нашёлся
+                # показатель (mapping). Но в строке данных могут быть и
+                # ДРУГИЕ колонки с числами — например, расчётные/производные
+                # (проценты, доли), для которых просто нет отдельного
+                # показателя в column_mapping_v2.csv, или колонки, для
+                # которых сопоставление не удалось найти. Раз это шаг
+                # ПОЛНОЙ очистки от данных прошлого периода — чистим и их
+                # тоже, а не только то, что попало в найденный маппинг.
+                mapped_cols = set(mapping.keys())
+                for col_idx, cell in enumerate(row.cells):
+                    if col_idx == 0 or col_idx in mapped_cols:
+                        continue
+                    if cell._tc is name_cell_tc:
+                        continue
+                    cell_text = get_cleaned_cell_text(cell)
+                    if any(ch.isdigit() for ch in cell_text):
+                        for p in cell.paragraphs:
+                            set_paragraph_text_keep_format(p, "")
+                        print(f"   🧹 Строка {row_idx + 1}: дополнительно очищена несопоставленная колонка {col_idx} (было {cell_text[:30]!r})")
+
     doc.save(output_doc_path)
     if clear_only:
         print(f"\n✅ Очищенный от данных бланк сохранён: {output_doc_path}")
