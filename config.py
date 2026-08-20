@@ -45,6 +45,33 @@ def get_cleaned_cell_text(cell: _Cell) -> str:
     return ' '.join(p.text.replace('\n', ' ').strip() for p in cell.paragraphs).strip()
 
 
+def set_paragraph_text_keep_format(paragraph, text: str) -> None:
+    """Заменяет текст параграфа, СОХРАНЯЯ форматирование (шрифт, размер,
+    жирность и т.д.) уже существующего в нём текста.
+
+    Обычное `paragraph.text = text` (см. python-docx) внутри делает
+    `self.clear()` + `self.add_run(text)` — то есть удаляет ВСЕ существующие
+    runs вместе с их форматированием и создаёт новый run с форматированием
+    по умолчанию (обычно это даёт другой шрифт/размер, чем у остальной
+    таблицы: например, Calibri 11 вместо Times New Roman 12, как в
+    исходном бюллетене). Из-за этого после вставки тегов и заполнения их
+    данными числа визуально отличались от остального документа.
+
+    Вместо этого пишем текст в ПЕРВЫЙ существующий run (его форматирование
+    остаётся как было), а все прочие runs этого параграфа опустошаем — так
+    старый текст не дублируется, а форматирование не теряется. Если runs в
+    параграфе вообще нет (пустой параграф), тогда действительно приходится
+    создать новый — сохранять там нечего.
+    """
+    runs = paragraph.runs
+    if runs:
+        runs[0].text = text
+        for extra_run in runs[1:]:
+            extra_run.text = ""
+    else:
+        paragraph.add_run(text)
+
+
 def _read_csv_robustly(filepath, header_row=0):
     encodings = ['utf-8-sig', 'windows-1251', 'cp1251', 'utf-8', 'latin1']
     for encoding in encodings:

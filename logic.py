@@ -12,6 +12,7 @@ from config import (
     load_table_source_map,
     load_column_mapping,
     get_cleaned_cell_text,
+    set_paragraph_text_keep_format,
     _normalize_text,
     find_okved_code,
     get_table_name,
@@ -1377,9 +1378,12 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                         tag = f"{{{{{prefix}_{code_tag_part}_{indicator}_{year}}}}}"
                     else:
                         tag = f"{{{{{prefix}_{code_tag_part}_{indicator}}}}}"
-                    # Очищаем ячейку перед вставкой тега
+                    # Очищаем ячейку перед вставкой тега — сохраняя
+                    # форматирование (шрифт/размер) исходного текста, а не
+                    # пересоздавая run с форматированием по умолчанию (см.
+                    # set_paragraph_text_keep_format).
                     for p in row.cells[col_idx].paragraphs:
-                        p.text = ""
+                        set_paragraph_text_keep_format(p, "")
                     if clear_only:
                         # Только шаг очистки (см. clear_only) — ячейка с
                         # исходным числом уже опустошена выше, тег на её
@@ -1391,7 +1395,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                         print(f"   🧹 Строка {row_idx + 1}: очищена колонка {col_idx} (был бы тег {tag})")
                         continue
                     if row.cells[col_idx].paragraphs:
-                        row.cells[col_idx].paragraphs[0].text = tag
+                        set_paragraph_text_keep_format(row.cells[col_idx].paragraphs[0], tag)
                     total_tags += 1
                     print(f"   🏷️ Строка {row_idx + 1}: вставлен тег {tag}")
 

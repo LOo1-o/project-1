@@ -12,7 +12,7 @@ from pathlib import Path
 import pandas as pd
 from typing import Dict, Set, Tuple, Optional
 
-from config import canonical_okved, find_okved_code
+from config import canonical_okved, find_okved_code, set_paragraph_text_keep_format
 from config_v2 import load_column_mapping_v2, build_column_mapping_v2_from_excel
 from mo import load_mo_map, canonical_mo, find_mo_code
 from category_mapping import CATEGORY_FILE_PREFIXES, canonical_category
@@ -622,7 +622,10 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                             log.append(f"ℹ️ Отсутствующие данные: {full_tag} → [-]")
                             unfilled_tags.append(full_tag)
 
-                    paragraph.text = text
+                    # Сохраняем форматирование (шрифт/размер) исходного
+                    # текста ячейки вместо пересоздания run с форматированием
+                    # по умолчанию — см. set_paragraph_text_keep_format.
+                    set_paragraph_text_keep_format(paragraph, text)
     
     # Сохраняем логи
     if log_path:
