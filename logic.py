@@ -1,6 +1,7 @@
 # logic.py
 from difflib import SequenceMatcher
 from pathlib import Path
+import csv
 import re
 from typing import Optional
 
@@ -735,7 +736,8 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                            near_miss_report_path: Path = None, squish_match_report_path: Path = None,
                            typo_match_report_path: Path = None, excel_dir: Path = None,
                            unit_annotation_report_path: Path = None, unit_annotations_path: Path = None,
-                           group_prefix_match_report_path: Path = None):
+                           group_prefix_match_report_path: Path = None,
+                           unused_indicator_report_path: Path = None):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}},
     {{MO_<code>_<indicator>[_22|_23]}} и {{OPF_<code>_<indicator>}}/{{FS_<code>_<indicator>}}
@@ -790,6 +792,20 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     Такие совпадения проходят автоматически, но стоит проверить, что
     остаток названия не совпал случайно не с той колонкой — а лучше
     почистить сам column_mapping_v2.csv, укоротив название показателя.
+
+    unused_indicator_report_path: если указан, сюда выгружается таблица
+    показателей из column_mapping_v2.csv, которые НИ РАЗУ не попали в пул
+    кандидатов ни одной таблицы своего файла-источника — то есть для них
+    нигде в документе не нашлось даже отдалённого текстового совпадения.
+    Для каждого такого показателя дополнительно считается лучшее нечёткое
+    совпадение (SequenceMatcher) среди всех текстов колонок этого файла:
+    высокий score (например, ближе к 1.0) — верный признак того, что
+    показатель просто по-другому написан в Excel и в Word (например,
+    "особо ценного" в Excel против "особо целевого" в самом
+    Word-документе — реальный случай, который эта проверка и должна
+    ловить), и это нужно поправить руками, сверив оба источника; низкий
+    score — показатель, вероятно, в этой редакции документа просто
+    отсутствует, и это не обязательно ошибка.
     """
     print("\n--- ШАГ 2: Генерация шаблона с умными тегами ---")
     _, name_to_okved_cleaned = load_okved_map(okved_map_path)
@@ -804,7 +820,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
 
     table_source_mapping = load_table_source_map(table_source_mapping_path)
     mo_source_files = {src for src in table_source_mapping.values() if 'mo' in src.lower()}
-    word_to_indicator, _, indicator_to_file, file_word_to_indicator, _, file_word_to_indicators = load_column_mapping_v2(column_mapping_path)
+    word_to_indicator, indicator_to_excel, indicator_to_file, file_word_to_indicator, _, file_word_to_indicators = load_column_mapping_v2(column_mapping_path)
 
     # Справочники "название категории -> код" для категорийных файлов (ОПФ,
     # форма собственности) — строятся прямо из соответствующего Excel-файла,
@@ -827,6 +843,15 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     typo_match_report = []
     unit_annotation_report = []
     group_prefix_match_report = []
+    # Для отчёта "показатель есть в column_mapping_v2.csv, но нигде не
+    # нашёл совпадения в Word" (см. unused_indicator_report_path ниже):
+    # какие названия показателей реально были включены в пул кандидатов
+    # хотя бы одной таблицы каждого файла-источника, и все тексты колонок,
+    # которые этот файл когда-либо предъявлял — второе нужно, чтобы потом
+    # honestly посчитать, насколько показатель "почти совпал" с чем-то
+    # реальным в документе (а не просто отсутствует).
+    used_names_by_file = {}
+    column_texts_by_file = {}
     current_source_file = None
     normalized_title_to_src = {k: v for k, v in table_source_mapping.items()}
 
@@ -911,6 +936,9 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             column_texts_norm.append(_normalize_match_text(col_text))
             column_texts_squished.append(_squish_text(col_text))
             column_cells_squished.append([_squish_text(t) for t in cell_texts if t])
+
+        if current_source_file:
+            column_texts_by_file.setdefault(current_source_file, []).extend(column_texts_norm)
 
         # Групповые префиксы, общие для нескольких показателей ЭТОГО файла
         # (см. _compute_shared_group_prefixes) — вычисляем один раз на всю
@@ -1057,6 +1085,9 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                         'matched_indicator': ','.join(indicators),
                     })
                 break
+
+        if current_source_file:
+            used_names_by_file.setdefault(current_source_file, set()).update(source_word_to_indicator.keys())
 
         if not source_word_to_indicator:
             # fallback на все показатели из Excel, если в Word ничего не найдено
@@ -1376,6 +1407,60 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         pd.DataFrame(unit_annotation_report, columns=columns).to_excel(unit_annotation_report_path, index=False)
         print(f"📏 Отчёт по отфильтрованным разметкам единиц измерения сохранён: {unit_annotation_report_path} "
               f"({len(unit_annotation_report)} строк)")
+    if unused_indicator_report_path:
+        # Номер строки в column_mapping_v2.csv для каждого кода показателя —
+        # чтобы в отчёте можно было сразу открыть файл и найти нужную строку,
+        # а не искать код по всему CSV вручную.
+        code_to_csv_line = {}
+        try:
+            with open(column_mapping_path, encoding='utf-8-sig', newline='') as f:
+                reader = csv.reader(f, delimiter=';', quotechar='"')
+                for line_no, row in enumerate(reader, start=1):
+                    if line_no == 1 or len(row) < 3:
+                        continue
+                    code = str(row[2]).strip()
+                    if code:
+                        code_to_csv_line[code] = line_no
+        except FileNotFoundError:
+            pass
+
+        unused_indicator_report = []
+        for (src_file, name), indicators in file_word_to_indicators.items():
+            if name in used_names_by_file.get(src_file, set()):
+                continue
+            name_norm = _normalize_match_text(name)
+            candidates = column_texts_by_file.get(src_file, [])
+            best_score = 0.0
+            best_text = ''
+            if name_norm and candidates:
+                for col_text in candidates:
+                    if not col_text:
+                        continue
+                    score = SequenceMatcher(None, name_norm, col_text).ratio()
+                    if score > best_score:
+                        best_score = score
+                        best_text = col_text
+            for indicator in indicators:
+                excel_cols = indicator_to_excel.get(indicator, ('', ''))
+                unused_indicator_report.append({
+                    'csv_line': code_to_csv_line.get(indicator, ''),
+                    'source_file': src_file,
+                    'indicator_name': name,
+                    'indicator_code': indicator,
+                    'excel_column_2022': excel_cols[0],
+                    'excel_column_2023': excel_cols[1],
+                    'best_match_score': round(best_score, 2),
+                    'best_match_text': best_text[:150],
+                })
+
+        unused_indicator_report_path = Path(unused_indicator_report_path)
+        unused_indicator_report_path.parent.mkdir(parents=True, exist_ok=True)
+        columns = ['csv_line', 'source_file', 'indicator_name', 'indicator_code',
+                   'excel_column_2022', 'excel_column_2023', 'best_match_score', 'best_match_text']
+        unused_indicator_report.sort(key=lambda r: r['best_match_score'], reverse=True)
+        pd.DataFrame(unused_indicator_report, columns=columns).to_excel(unused_indicator_report_path, index=False)
+        print(f"🕳️ Отчёт по неиспользованным показателям сохранён: {unused_indicator_report_path} "
+              f"({len(unused_indicator_report)} строк)")
 
 
 # ==========================================================

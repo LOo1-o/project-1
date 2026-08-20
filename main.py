@@ -74,6 +74,7 @@ def main(input_template_override=None, output_file_override=None):
         unit_annotation_report_path=output_dir / "отфильтрованные_разметки_единиц.xlsx",
         unit_annotations_path=unit_annotations_file,
         group_prefix_match_report_path=output_dir / "совпадения_после_отбрасывания_префикса.xlsx",
+        unused_indicator_report_path=output_dir / "неиспользованные_показатели.xlsx",
     )
     print(f"📄 Шаблон с тегами сохранен: {template_word_file}")
 
