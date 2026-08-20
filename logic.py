@@ -21,9 +21,9 @@ from config import (
 from mo import load_mo_map, find_mo_code, canonical_mo
 from config_v2 import load_column_mapping_v2
 from category_mapping import (
-    CATEGORY_FILE_PREFIXES,
     canonical_category,
     extract_category_codes_from_excel,
+    detect_category_prefix,
 )
 from docx import Document
 
@@ -761,7 +761,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
 
     excel_dir: папка с исходными Excel-файлами — нужна, чтобы построить
     справочник "название категории -> код" для категорийных файлов (см.
-    category_mapping.CATEGORY_FILE_PREFIXES). Если не указана, категорийные
+    category_mapping.detect_category_prefix). Если не указана, категорийные
     таблицы обрабатываются как раньше (строки останутся без тегов).
 
     near_miss_report_path: если указан, сюда выгружается таблица всех "почти
@@ -851,14 +851,17 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     # форма собственности) — строятся прямо из соответствующего Excel-файла,
     # см. category_mapping.py.
     category_name_maps = {}
+    category_prefix_by_file = {}
     if excel_dir is not None:
         excel_dir = Path(excel_dir)
-        for cat_filename in CATEGORY_FILE_PREFIXES:
-            cat_path = excel_dir / cat_filename
-            if cat_path.exists():
-                category_name_maps[cat_filename] = extract_category_codes_from_excel(cat_path)
-            else:
-                print(f"⚠️ Категорийный файл не найден: {cat_path}")
+        for src_filename in set(table_source_mapping.values()):
+            cat_path = excel_dir / src_filename
+            if not cat_path.exists():
+                continue
+            prefix = detect_category_prefix(cat_path)
+            if prefix:
+                category_prefix_by_file[src_filename] = prefix
+                category_name_maps[src_filename] = extract_category_codes_from_excel(cat_path)
 
     doc = Document(input_doc_path)
     total_tags = 0
@@ -1326,7 +1329,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
 
             first_cell_text = get_cleaned_cell_text(row.cells[0])
 
-            category_prefix = CATEGORY_FILE_PREFIXES.get(current_source_file)
+            category_prefix = category_prefix_by_file.get(current_source_file)
             if category_prefix:
                 # Категорийная таблица (ОПФ / форма собственности) — строки
                 # размечены названием категории, а не кодом ОКВЭД/МО.

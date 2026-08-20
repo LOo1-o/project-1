@@ -15,7 +15,7 @@ from typing import Dict, Set, Tuple, Optional
 from config import canonical_okved, find_okved_code, set_paragraph_text_keep_format
 from config_v2 import load_column_mapping_v2, build_column_mapping_v2_from_excel
 from mo import load_mo_map, canonical_mo, find_mo_code
-from category_mapping import CATEGORY_FILE_PREFIXES, canonical_category
+from category_mapping import CATEGORY_PREFIX_KEYWORDS, canonical_category, detect_category_prefix
 from smart_loader import (
     find_column_by_year,
     find_row_by_fuzzy_match,
@@ -146,7 +146,15 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
     }
     
     excel_files_to_load = set(table_source_mapping.values())
-    
+
+    # Имена файлов год от года (и от территории к территории) меняются —
+    # поэтому привязываем формат-специфичные правила не к конкретному имени
+    # файла, а к названию таблицы из table_source_data_mapping.csv, которое
+    # гораздо стабильнее физического имени Excel-файла.
+    table_names_by_file: Dict[str, list] = {}
+    for table_name, fname in table_source_mapping.items():
+        table_names_by_file.setdefault(fname, []).append(table_name)
+
     for filename in excel_files_to_load:
         excel_path = excel_dir / filename
         if not excel_path.exists():
@@ -164,7 +172,7 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 continue
             
             is_mo_file = 'mo' in filename.lower()
-            category_prefix = CATEGORY_FILE_PREFIXES.get(filename)
+            category_prefix = detect_category_prefix(excel_path)
             mo_codes_set = set(mo_name_to_mo_cleaned.values()) if mo_name_to_mo_cleaned else None
 
             if category_prefix:
@@ -204,7 +212,14 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
             stats['files_processed'] += 1
             
             # Обрабатываем каждый показатель для этого файла
-            force_decimal = filename == 'T23_000000_t13Ved14.xlsx'
+            # В таблицах "Оборачиваемость..." (длительность оборота в днях)
+            # Excel иногда хранит целое число без десятичной части (например,
+            # "295" вместо "295.0"), а в бюллетене все значения этой таблицы
+            # должны быть с одним знаком после запятой для единообразия.
+            force_decimal = any(
+                'оборачиваемост' in normalize_text(t)
+                for t in table_names_by_file.get(filename, [])
+            )
             for indicator, (col_22_hardcode, col_23_hardcode) in indicator_to_excel.items():
                 if indicator_to_file[indicator] != filename:
                     continue  # Пропускаем, если источник не совпадает
@@ -485,7 +500,7 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
     def _canonicalize_entity_candidate(entity_raw: str, source_prefix: Optional[str]) -> str:
         if source_prefix == "MO":
             return canonical_mo(entity_raw)
-        if source_prefix in CATEGORY_FILE_PREFIXES.values():
+        if source_prefix in CATEGORY_PREFIX_KEYWORDS.values():
             # Категорийные коды (ОПФ/форма собственности) хранятся в master_data
             # с префиксом прямо внутри ключа (например, "OPF_10000") — иначе
             # они пересекались бы с обычными кодами ОКВЭД/МО в общем плоском
@@ -553,7 +568,7 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                             source_prefix = "MO"
                             raw_tag = raw_tag[len("MO_"):]
                         else:
-                            for cat_prefix in CATEGORY_FILE_PREFIXES.values():
+                            for cat_prefix in CATEGORY_PREFIX_KEYWORDS.values():
                                 if raw_tag.startswith(f"{cat_prefix}_"):
                                     source_prefix = cat_prefix
                                     raw_tag = raw_tag[len(cat_prefix) + 1:]
