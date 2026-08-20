@@ -292,7 +292,66 @@ def _find_excel_header_row(df: pd.DataFrame) -> int:
             if any(cell and 'наименование' not in cell for cell in row):
                 candidates.append(idx)
 
-    return candidates[0] if candidates else None
+    if candidates:
+        return candidates[0]
+
+    # Fallback: некоторые файлы (например, отчёт о движении денежных
+    # средств) вообще не подписывают первые два столбца словами
+    # «Код»/«Наименование» — там просто буквы-нумераторы «А», «Б» прямо
+    # под шапкой (см. типичную вёрстку росстатовских таблиц: строка группы
+    # -> строка подзаголовка -> [опционально строка листового уточнения] ->
+    # строка "А", "Б", 1, 2, 3...). Эта строка-нумератор — надёжный якорь:
+    # она есть во ВСЕХ проверенных файлах, в отличие от текстовых меток.
+    # Идём от неё на 2 или 3 строки вверх (в зависимости от того, есть ли
+    # третья, "листовая" строка шапки) — выбираем тот вариант, где
+    # получившаяся "шапочная" строка действительно что-то содержит.
+    letter_row_idx = _find_letter_marker_row(df)
+    if letter_row_idx is not None:
+        for offset in (2, 3):
+            candidate = letter_row_idx - offset
+            if candidate < 0:
+                continue
+            row = df.iloc[candidate, :10].astype(str).fillna('').tolist()
+            if _looks_like_real_header_row(row):
+                return candidate
+
+    return None
+
+
+# Строки-"обёртка" над самой шапкой (единица измерения, отметка о том, что
+# страница — продолжение предыдущей, название региона и т.п.) — их
+# встречаем ДО настоящей строки группового заголовка и не должны спутать с
+# ней при поиске "снизу вверх" от строки-нумератора колонок.
+_BOILERPLATE_ROW_MARKERS = (
+    'тыс.руб', 'тыс. руб', 'продолжение', 'камчатский край',
+    'организации без субъектов',
+)
+
+
+def _looks_like_real_header_row(row_values) -> bool:
+    non_empty = [c.strip() for c in row_values[2:] if c.strip() and c.strip().lower() != 'nan']
+    if not non_empty:
+        return False
+    return not all(
+        any(marker in cell.lower() for marker in _BOILERPLATE_ROW_MARKERS)
+        for cell in non_empty
+    )
+
+
+def _find_letter_marker_row(df: pd.DataFrame) -> Optional[int]:
+    """Ищет строку-нумератор колонок вида "А", "Б", 1, 2, 3... — она стоит
+    сразу под шапкой (группа/подзаголовок[/лист]) практически во всех
+    росстатовских Excel-выгрузках, даже когда сама шапка не подписана
+    словами «Код»/«Наименование». Первые два непустых значения — это
+    буквы "а"/"б" (регистр не важен), дальше идут короткие числа-индексы
+    столбцов.
+    """
+    for idx in range(min(40, len(df))):
+        first = str(df.iloc[idx, 0]).strip().lower() if df.shape[1] > 0 else ''
+        second = str(df.iloc[idx, 1]).strip().lower() if df.shape[1] > 1 else ''
+        if first == 'а' and second == 'б':
+            return idx
+    return None
 
 
 def _transliterate_to_latin(text: str) -> str:
@@ -404,6 +463,22 @@ def _simplify_metric_suffix(base_name: str, suffix: str) -> str:
     
     # Иначе, оставляем суффикс как есть
     return suffix
+
+
+def _is_meaningful_footer_text(text: str) -> bool:
+    """Отсеивает "мусорные" тексты третьей строки шапки, которые не
+    являются настоящим третьим уровнем детализации:
+    - пустые;
+    - чисто цифровые (строка-нумератор колонок "А","Б",1,2,3... — она есть
+      почти под любой шапкой и не несёт содержательного различия между
+      столбцами одной группы).
+    """
+    text = (text or '').strip()
+    if not text:
+        return False
+    if text.replace('.', '', 1).isdigit():
+        return False
+    return True
 
 
 def _extract_keywords_for_year(base_name: str, suffix: str, year: str) -> str:
@@ -520,8 +595,7 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
 
     current_group_label = None
     current_indicator_name = None
-    groups = {}
-    col_metadata = {}  # Сохраняем метаданные для каждого столбца (базовое имя, суффикс)
+    col_entries = []  # список: {col_idx, name, code_source, base, suffix, footer, year}
 
     first_header = _normalize_text(str(headers[0])) if headers else ''
     second_header = _normalize_text(str(headers[1])) if len(headers) > 1 else ''
@@ -529,9 +603,15 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
 
     current_base = str(headers[start_col]).strip() if start_col < len(headers) else ''
 
+    # === Проход 1: та же логика, что и раньше (группа + подзаголовок),
+    # но результат по каждому столбцу складываем в список, а не сразу лепим
+    # в финальные группы — третьей строке шапки (footer) ещё нужно дать
+    # шанс подтвердить или переопределить итоговое имя показателя (см.
+    # проход 2 ниже).
     for col_idx in range(start_col, max_header_idx + 1):
         raw_header = _normalize_mapping_label(str(headers[col_idx] if col_idx < len(headers) else ''))
         suffix = _normalize_mapping_label(str(subheaders[col_idx]))
+        footer_text = _normalize_mapping_label(str(footer_row[col_idx] if col_idx < len(footer_row) else ''))
         year = _detect_year_by_text(suffix)
         code_source = None
 
@@ -540,7 +620,20 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
                 if not current_base or not suffix:
                     continue
                 current_group_label = _normalize_mapping_label(f"{current_base} {raw_header.strip(':')}".strip())
-                indicator_name = suffix
+                # Имя показателя всегда строим С групповым контекстом (а не
+                # голым suffix) — даже если сам групповой заголовок в Word
+                # не повторяется в каждой колонке. Это важно, когда суффикс
+                # (например, "прочие поступления"/"прочие платежи") —
+                # родовая формулировка, которая дословно повторяется в
+                # НЕСКОЛЬКИХ независимых секциях одного файла ("текущая",
+                # "инвестиционная", "финансовая" деятельность): без
+                # группового контекста в имени эти секции схлопнутся в один
+                # показатель с чужими колонками как "год 2022"/"год 2023".
+                # Несовпадение с коротким текстом Word разбирает runtime
+                # (см. shared_group_prefixes в logic.py) — там это уже
+                # безопасно, с проверкой, что префикс подтверждён в той же
+                # таблице.
+                indicator_name = _normalize_mapping_label(f"{current_group_label} {suffix}".strip())
                 code_source = indicator_name
             else:
                 current_base = raw_header
@@ -560,7 +653,13 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
             if not current_base:
                 continue
             if current_group_label:
-                indicator_name = suffix
+                # См. комментарий выше (в ветке connective-заголовка) — та
+                # же причина: сохраняем групповой контекст в имени, а не
+                # только голый suffix, иначе одноимённые listовые показатели
+                # разных секций ("прочие поступления" у текущей и у
+                # инвестиционной деятельности) схлопнутся в один.
+                indicator_name = _normalize_mapping_label(f"{current_group_label} {suffix}".strip())
+                code_source = indicator_name
             elif year:
                 indicator_name = current_indicator_name or current_base
             else:
@@ -573,36 +672,81 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
             code_source = indicator_name
 
         current_indicator_name = indicator_name
-        group_key = _normalize_text(indicator_name)
+        col_entries.append({
+            'col_idx': col_idx,
+            'name': indicator_name,
+            'code_source': code_source or indicator_name,
+            'base': current_base,
+            'suffix': suffix,
+            'footer': footer_text,
+            'year': year,
+        })
+
+    # === Проход 2: используем третью строку шапки, если она реально
+    # различает столбцы внутри одной и той же (по имени из прохода 1)
+    # группы. Без этого два РАЗНЫХ листовых показателя, у которых
+    # совпадают группа и подзаголовок (например, "убыточность в % :" —
+    # общий подзаголовок и для "к затратам на производство продаж", и для
+    # "к коммерческим и управленческим расходам"), схлопнутся в одну запись
+    # с двумя столбцами как "год 2022"/"год 2023" — хотя на деле это не
+    # два года одного показателя, а два разных показателя за один период.
+    #
+    # Признак настоящего потерянного уровня — среди столбцов ОДНОЙ группы
+    # встречается больше одного РАЗНОГО, содержательного (не число, не
+    # признак года) текста в footer. Если footer либо одинаковый у всех,
+    # либо это законный маркер года ("на конец отчетного года" и т.п.) —
+    # это НЕ баг, а обычная пара "тот же показатель, два периода", трогать
+    # не нужно.
+    by_name = {}
+    for entry in col_entries:
+        by_name.setdefault(entry['name'], []).append(entry)
+
+    for entries in by_name.values():
+        if len(entries) < 2:
+            continue
+        distinct_footers = {
+            e['footer'] for e in entries
+            if _is_meaningful_footer_text(e['footer']) and not _detect_year_by_text(e['footer'])
+        }
+        if len(distinct_footers) < 2:
+            continue
+        for e in entries:
+            if _is_meaningful_footer_text(e['footer']) and not _detect_year_by_text(e['footer']):
+                e['name'] = _normalize_mapping_label(f"{e['name']} {e['footer']}".strip())
+                e['code_source'] = e['name']
+
+    # === Проход 3: собираем финальные группы (имя -> код, столбцы по годам) ===
+    groups = {}
+    groups_order = []
+    for entry in col_entries:
+        group_key = _normalize_text(entry['name'])
         if group_key not in groups:
+            groups_order.append(group_key)
             groups[group_key] = {
-                'name': indicator_name,
-                'code': _slugify_indicator_code(code_source or indicator_name, excel_path.stem),
+                'name': entry['name'],
+                'code': _slugify_indicator_code(entry['code_source'], excel_path.stem),
                 'cols': {'22': None, '23': None},
                 'keywords_2022': [],
                 'keywords_2023': []
             }
-        
-        # Сохраняем метаданные столбца
-        col_metadata[col_idx] = {'base': current_base, 'suffix': suffix, 'year': year}
 
+        year = entry['year']
         if year:
-            groups[group_key]['cols'][year] = str(col_idx + 1)
-            # Извлекаем ключевые слова для соответствующего года
-            keywords = _extract_keywords_for_year(current_base, suffix, year)
+            groups[group_key]['cols'][year] = str(entry['col_idx'] + 1)
+            keywords = _extract_keywords_for_year(entry['base'], entry['suffix'], year)
             if year == '22':
                 groups[group_key]['keywords_2022'] = keywords
             else:
                 groups[group_key]['keywords_2023'] = keywords
         else:
             if groups[group_key]['cols']['22'] is None:
-                groups[group_key]['cols']['22'] = str(col_idx + 1)
+                groups[group_key]['cols']['22'] = str(entry['col_idx'] + 1)
             else:
-                groups[group_key]['cols']['23'] = str(col_idx + 1)
-
+                groups[group_key]['cols']['23'] = str(entry['col_idx'] + 1)
 
     rows = []
-    for group in groups.values():
+    for group_key in groups_order:
+        group = groups[group_key]
         col_22 = group['cols']['22'] or ''
         col_23 = group['cols']['23'] or ''
         kw_22 = group['keywords_2022'] if group['keywords_2022'] else group['name']

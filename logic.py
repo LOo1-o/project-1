@@ -1015,7 +1015,27 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 # действительно в "своей" секции, а не просто угадали по
                 # общему хвосту фразы.
                 prefix_text = ' '.join(prefix)
-                if not any(prefix_text in col_text for col_text in column_texts_norm):
+                # Групповой префикс, унаследованный от объединяющего
+                # заголовка вида "в том числе:" (см. _infer_mapping_from_excel
+                # в config_v2.py — там он теперь всегда входит в итоговое имя
+                # показателя), включает и саму эту связку. Но в Word базовая
+                # часть префикса (например, "внеоборотные активы" или
+                # "поступления по текущей деятельности") обычно стоит в
+                # ИТОГОВОЙ колонке группы, а связка "в том числе" — отдельно,
+                # в шапке НАД листовыми колонками. Это две разные ячейки одной
+                # таблицы — требовать, чтобы вся фраза целиком нашлась в одной
+                # колонке, было бы слишком строго. Поэтому подтверждаем либо
+                # полным префиксом, либо его базовой частью без хвостового
+                # "в том числе".
+                prefix_confirm_candidates = {prefix_text}
+                trimmed_prefix = re.sub(r'\s*в том числе:?\s*$', '', prefix_text).strip()
+                if trimmed_prefix:
+                    prefix_confirm_candidates.add(trimmed_prefix)
+                if not any(
+                    candidate in col_text
+                    for candidate in prefix_confirm_candidates
+                    for col_text in column_texts_norm
+                ):
                     continue
                 source_word_to_indicator[name] = indicators
                 # Помимо полного (длинного) названия регистрируем показатель
