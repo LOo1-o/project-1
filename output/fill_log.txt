@@ -4647,6 +4647,7 @@
 ✅ Заполнено: OKVED_101_АГ_KoeObeSobOboSre_23 → 35,6
 ✅ Заполнено: OKVED_101_АГ_KoeObeSobOboSre_24 → 41,7
 ✅ Заполнено: OKVED_101_АГ_DolDolObyKIstSobSreIDolOby_23 → 54,9
+✅ Заполнено: OKVED_101_АГ_DolDolObyKIstSobSreIDolOby_24 → 65,8
 ✅ Заполнено: OKVED_101_АГ_DolIstFin(isSobSreIDolObyVValBal_24 → 73,3
 ✅ Заполнено: OKVED_101_АГ_DolIstFin(isSobSreIDolObyVValBal_23 → 72,7
 ✅ Заполнено: OKVED_101_АГ_SooSobIZaeSre_23 → 48,7
@@ -4654,6 +4655,7 @@
 ✅ Заполнено: OKVED_A_KoeObeSobOboSre_23 → 54,9
 ✅ Заполнено: OKVED_A_KoeObeSobOboSre_24 → 49,3
 ✅ Заполнено: OKVED_A_DolDolObyKIstSobSreIDolOby_23 → 59,8
+✅ Заполнено: OKVED_A_DolDolObyKIstSobSreIDolOby_24 → 62,5
 ✅ Заполнено: OKVED_A_DolIstFin(isSobSreIDolObyVValBal_24 → 77,1
 ✅ Заполнено: OKVED_A_DolIstFin(isSobSreIDolObyVValBal_23 → 80,3
 ✅ Заполнено: OKVED_A_SooSobIZaeSre_23 → 47,7
@@ -4661,6 +4663,7 @@
 ✅ Заполнено: OKVED_01_KoeObeSobOboSre_23 → 42,2
 ✅ Заполнено: OKVED_01_KoeObeSobOboSre_24 → 36,6
 ✅ Заполнено: OKVED_01_DolDolObyKIstSobSreIDolOby_23 → 62
+✅ Заполнено: OKVED_01_DolDolObyKIstSobSreIDolOby_24 → 70
 ✅ Заполнено: OKVED_01_DolIstFin(isSobSreIDolObyVValBal_24 → 80,4
 ✅ Заполнено: OKVED_01_DolIstFin(isSobSreIDolObyVValBal_23 → 78,4
 ✅ Заполнено: OKVED_01_SooSobIZaeSre_23 → 42,5
@@ -4668,6 +4671,7 @@
 ✅ Заполнено: OKVED_03_KoeObeSobOboSre_23 → 55,1
 ✅ Заполнено: OKVED_03_KoeObeSobOboSre_24 → 49,5
 ✅ Заполнено: OKVED_03_DolDolObyKIstSobSreIDolOby_23 → 59,7
+✅ Заполнено: OKVED_03_DolDolObyKIstSobSreIDolOby_24 → 62,3
 ✅ Заполнено: OKVED_03_DolIstFin(isSobSreIDolObyVValBal_24 → 77
 ✅ Заполнено: OKVED_03_DolIstFin(isSobSreIDolObyVValBal_23 → 80,3
 ✅ Заполнено: OKVED_03_SooSobIZaeSre_23 → 47,8
@@ -4675,6 +4679,7 @@
 ✅ Заполнено: OKVED_B_KoeObeSobOboSre_23 → -10
 ✅ Заполнено: OKVED_B_KoeObeSobOboSre_24 → -74,9
 ✅ Заполнено: OKVED_B_DolDolObyKIstSobSreIDolOby_23 → 74,8
+✅ Заполнено: OKVED_B_DolDolObyKIstSobSreIDolOby_24 → 58,5
 ✅ Заполнено: OKVED_B_DolIstFin(isSobSreIDolObyVValBal_24 → 51
 ✅ Заполнено: OKVED_B_DolIstFin(isSobSreIDolObyVValBal_23 → 68,8
 ✅ Заполнено: OKVED_B_SooSobIZaeSre_23 → 20,9
@@ -4682,6 +4687,7 @@
 ✅ Заполнено: OKVED_07_KoeObeSobOboSre_23 → -10
 ✅ Заполнено: OKVED_07_KoeObeSobOboSre_24 → -74,9
 ✅ Заполнено: OKVED_07_DolDolObyKIstSobSreIDolOby_23 → 74,8
+✅ Заполнено: OKVED_07_DolDolObyKIstSobSreIDolOby_24 → 58,5
 ✅ Заполнено: OKVED_07_DolIstFin(isSobSreIDolObyVValBal_24 → 51
 ✅ Заполнено: OKVED_07_DolIstFin(isSobSreIDolObyVValBal_23 → 68,8
 ✅ Заполнено: OKVED_07_SooSobIZaeSre_23 → 20,9
@@ -4689,6 +4695,7 @@
 ✅ Заполнено: OKVED_C_KoeObeSobOboSre_23 → 52,4
 ✅ Заполнено: OKVED_C_KoeObeSobOboSre_24 → 69,3
 ✅ Заполнено: OKVED_C_DolDolObyKIstSobSreIDolOby_23 → 24,5
+✅ Заполнено: OKVED_C_DolDolObyKIstSobSreIDolOby_24 → 28,2
 ✅ Заполнено: OKVED_C_DolIstFin(isSobSreIDolObyVValBal_24 → 83,4
 ✅ Заполнено: OKVED_C_DolIstFin(isSobSreIDolObyVValBal_23 → 75,8
 ✅ Заполнено: OKVED_C_SooSobIZaeSre_23 → 133,7
@@ -4696,6 +4703,7 @@
 ✅ Заполнено: OKVED_10_KoeObeSobOboSre_23 → 51,6
 ✅ Заполнено: OKVED_10_KoeObeSobOboSre_24 → 71,4
 ✅ Заполнено: OKVED_10_DolDolObyKIstSobSreIDolOby_23 → 18,1
+✅ Заполнено: OKVED_10_DolDolObyKIstSobSreIDolOby_24 → 21,1
 ✅ Заполнено: OKVED_10_DolIstFin(isSobSreIDolObyVValBal_24 → 85,7
 ✅ Заполнено: OKVED_10_DolIstFin(isSobSreIDolObyVValBal_23 → 77,2
 ✅ Заполнено: OKVED_10_SooSobIZaeSre_23 → 171,6
@@ -4703,6 +4711,7 @@
 ✅ Заполнено: OKVED_11_KoeObeSobOboSre_23 → 89,2
 ✅ Заполнено: OKVED_11_KoeObeSobOboSre_24 → 89,6
 ✅ Заполнено: OKVED_11_DolDolObyKIstSobSreIDolOby_23 → 0
+✅ Заполнено: OKVED_11_DolDolObyKIstSobSreIDolOby_24 → 0,2
 ✅ Заполнено: OKVED_11_DolIstFin(isSobSreIDolObyVValBal_24 → 95,7
 ✅ Заполнено: OKVED_11_DolIstFin(isSobSreIDolObyVValBal_23 → 96,2
 ✅ Заполнено: OKVED_11_SooSobIZaeSre_23 → 2506,7
@@ -4710,6 +4719,7 @@
 ✅ Заполнено: OKVED_32_KoeObeSobOboSre_23 → 14
 ✅ Заполнено: OKVED_32_KoeObeSobOboSre_24 → 31,1
 ℹ️ Отсутствующие данные: OKVED_32_DolDolObyKIstSobSreIDolOby_23 → [-]
+ℹ️ Отсутствующие данные: OKVED_32_DolDolObyKIstSobSreIDolOby_24 → [-]
 ✅ Заполнено: OKVED_32_DolIstFin(isSobSreIDolObyVValBal_24 → 85,3
 ✅ Заполнено: OKVED_32_DolIstFin(isSobSreIDolObyVValBal_23 → 30,7
 ✅ Заполнено: OKVED_32_SooSobIZaeSre_23 → 44,3
@@ -4717,6 +4727,7 @@
 ✅ Заполнено: OKVED_33_KoeObeSobOboSre_23 → 51,3
 ✅ Заполнено: OKVED_33_KoeObeSobOboSre_24 → 60,5
 ✅ Заполнено: OKVED_33_DolDolObyKIstSobSreIDolOby_23 → 77,4
+✅ Заполнено: OKVED_33_DolDolObyKIstSobSreIDolOby_24 → 81,6
 ✅ Заполнено: OKVED_33_DolIstFin(isSobSreIDolObyVValBal_24 → 68,9
 ✅ Заполнено: OKVED_33_DolIstFin(isSobSreIDolObyVValBal_23 → 63,5
 ✅ Заполнено: OKVED_33_SooSobIZaeSre_23 → 16,8
@@ -4724,6 +4735,7 @@
 ✅ Заполнено: OKVED_35_KoeObeSobOboSre_23 → 31,3
 ✅ Заполнено: OKVED_35_KoeObeSobOboSre_24 → -13,2
 ✅ Заполнено: OKVED_35_DolDolObyKIstSobSreIDolOby_23 → 45,9
+✅ Заполнено: OKVED_35_DolDolObyKIstSobSreIDolOby_24 → 70,4
 ✅ Заполнено: OKVED_35_DolIstFin(isSobSreIDolObyVValBal_24 → 68,2
 ✅ Заполнено: OKVED_35_DolIstFin(isSobSreIDolObyVValBal_23 → 67,9
 ✅ Заполнено: OKVED_35_SooSobIZaeSre_23 → 58,2
