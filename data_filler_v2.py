@@ -172,6 +172,7 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 continue
             
             is_mo_file = 'mo' in filename.lower()
+            header_scan_rows = _detect_header_scan_depth(excel_path)
             category_prefix = detect_category_prefix(excel_path)
             mo_codes_set = set(mo_name_to_mo_cleaned.values()) if mo_name_to_mo_cleaned else None
 
@@ -229,8 +230,8 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 
                 # === ЭТАП 1: Динамический поиск колонок по году ===
                 context_label = f"{filename}: {indicator}"
-                col_idx_2022 = _find_column_smart(df, col_22_hardcode, "2022", keywords_2022, context_label)
-                col_idx_2023 = _find_column_smart(df, col_23_hardcode, "2023", keywords_2023, context_label)
+                col_idx_2022 = _find_column_smart(df, col_22_hardcode, "2022", keywords_2022, context_label, header_scan_rows)
+                col_idx_2023 = _find_column_smart(df, col_23_hardcode, "2023", keywords_2023, context_label, header_scan_rows)
                 suffix_2022 = _detect_year_suffix_for_column(df, col_idx_2022, "22")
                 suffix_2023 = _detect_year_suffix_for_column(df, col_idx_2023, "23")
                 
@@ -318,7 +319,30 @@ def _map_year_to_suffix(year: str) -> str:
     return None
 
 
-_HEADER_SCAN_ROWS = 8  # захватывает заголовок/подзаголовок/буквенный маркер А,Б,1,2...
+_HEADER_SCAN_ROWS = 8  # запасной вариант, если определить реальную глубину не удалось
+
+
+def _detect_header_scan_depth(excel_path: Path, fallback: int = _HEADER_SCAN_ROWS) -> int:
+    """Определяет, сколько строк сверху файла нужно просмотреть, чтобы
+    гарантированно захватить всю шапку (группа/подзаголовок/буквенный
+    маркер "А","Б",1,2...). Глубина преамбулы у разных периодов и разных
+    территориальных выгрузок отличается — фиксированное число строк рано
+    или поздно "срежет" настоящий заголовок, поэтому там, где возможно,
+    вычисляем её по буквенному маркеру (см. category_mapping._find_letter_marker_row
+    в config_v2.py — тот же самый надёжный якорь, что используется при
+    построении column_mapping_v2.csv)."""
+    try:
+        from config_v2 import _find_letter_marker_row
+        raw_df = pd.read_excel(excel_path, header=None, nrows=40)
+    except Exception:
+        return fallback
+    marker_idx = _find_letter_marker_row(raw_df)
+    if marker_idx is None:
+        return fallback
+    # +2 с запасом: маркер стоит СРАЗУ под шапкой, а после сдвига на строку
+    # из-за pandas-автозаголовка (df здесь читается уже БЕЗ header=None) нужен
+    # небольшой буфер, чтобы точно не отрезать последнюю строку подзаголовка.
+    return max(fallback, marker_idx + 2)
 
 
 def _column_header_text(df: pd.DataFrame, col_idx: int, max_row: int) -> str:
@@ -338,7 +362,7 @@ def _column_header_text(df: pd.DataFrame, col_idx: int, max_row: int) -> str:
 
 
 def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords: list,
-                        context_label: str = "") -> Optional[int]:
+                        context_label: str = "", header_scan_rows: Optional[int] = None) -> Optional[int]:
     """
     Умный поиск колонки.
 
@@ -358,11 +382,16 @@ def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords:
         year: Год для поиска ("2022" или "2023")
         keywords: Список ключевых слов для поиска
         context_label: Для сообщения в консоль, если жёсткий индекс не подтвердился
+        header_scan_rows: Сколько строк сверху файла просматривать в поисках
+            заголовка/подзаголовка. По умолчанию — _HEADER_SCAN_ROWS, но
+            вызывающий код может передать глубину, посчитанную по реальной
+            структуре КОНКРЕТНОГО файла (см. _detect_header_scan_depth) —
+            преамбула перед шапкой год от года может стать длиннее.
 
     Returns:
         Индекс колонки или None
     """
-    max_row = min(_HEADER_SCAN_ROWS, len(df))
+    max_row = min(header_scan_rows or _HEADER_SCAN_ROWS, len(df))
 
     def _keyword_match_at(col_idx: int) -> bool:
         if not keywords:
