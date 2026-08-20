@@ -543,8 +543,6 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
             prev_tc = cell._tc
             raw_year_text = get_cleaned_cell_text(cell).strip()
             year_text = _extract_year(raw_year_text)
-            if not year_text:
-                continue
 
             parts = []
             seen = set()
@@ -585,6 +583,19 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
                 if fuzzy_score >= 0.75:
                     best_match = _resolve_indicator(normalized_name_map, fuzzy_match_name, consumed)
                     print(f"   🔍 fuzzy match {fuzzy_score:.2f} для '{composed_header[:80]}' -> {best_match}")
+
+            if not year_text:
+                # Секция смешивает колонки, разбитые по годам (2023/2024,
+                # например "Уставный капитал"), с колонками БЕЗ такой
+                # разбивки — одно значение на весь период (например,
+                # "Себестоимость продаж" в той же таблице "Чистые активы").
+                # Раньше такая колонка просто пропускалась целиком (год не
+                # распознан → continue), хотя её заголовок находится точно
+                # так же, как и у остальных — просто без суффикса года.
+                if best_match:
+                    col_to_indicator_map[i] = (best_match, None)
+                    print(f"   🔍 Столбец {i} (без года): '{composed_header[:80]}' -> {best_match}")
+                continue
 
             if best_match:
                 last_indicator = best_match
