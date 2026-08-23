@@ -1352,6 +1352,35 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                     mo_code = find_mo_code(first_cell_text, mo_name_to_mo_cleaned)
 
                 if not okved_code and not mo_code:
+                    # ВАЖНО: раньше строка в этом случае просто пропускалась
+                    # (continue) — а значит, если название строки ("Алеутский"
+                    # и т.п.) не находится в справочнике МО/ОКВЭД (например,
+                    # потому что для другого региона подложили чужой mo.csv),
+                    # никакая ячейка этой строки не трогалась ВООБЩЕ — ни
+                    # тегом, ни очисткой. Числа из предыдущего периода
+                    # оставались в готовом бюллетене как будто это актуальные
+                    # данные, и это НИГДЕ не отражалось — ни прочерком, ни
+                    # записью в unfilled_tags.xlsx (тега там просто никогда не
+                    # было). Теперь: громко логируем и на всякий случай чистим
+                    # числовые ячейки строки, чтобы устаревшие данные не могли
+                    # тихо пережить прогон под видом свежих.
+                    warning = (f"⚠️ Строка {row_idx + 1} ({current_source_file}): "
+                               f"название '{first_cell_text}' не найдено ни в ОКВЭД, ни в МО "
+                               f"справочнике — строка НЕ будет заполнена, числовые ячейки очищены")
+                    print(f"   {warning}")
+                    validation_log.append(f"[TABLE {t_index + 1}] {warning}")
+                    for cell in row.cells[1:]:
+                        if cell._tc is row.cells[0]._tc:
+                            continue
+                        cell_text = get_cleaned_cell_text(cell)
+                        if any(ch.isdigit() for ch in cell_text):
+                            for p in cell.paragraphs:
+                                # "-" — тот же символ "нет данных", что и в
+                                # обычном заполнении по тегам (см.
+                                # fill_word_template_by_tags_v2), чтобы в
+                                # готовом документе не было видимой разницы
+                                # между "не нашли тег" и "не распознали строку".
+                                set_paragraph_text_keep_format(p, "-")
                     continue
 
                 if okved_code:

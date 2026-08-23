@@ -558,7 +558,14 @@ def _infer_entity_key(row: pd.Series, code_col_idx: int, is_mo_file: bool,
         # в бесполезный поиск по имени через find_mo_code.
         if mo_codes_set is not None and candidate not in mo_codes_set:
             candidate = find_mo_code(raw_value, mo_name_to_code)
-        return candidate if candidate else None
+        # Префикс "MO_" — по той же причине, по которой категорийные коды
+        # (ОПФ/ФС) хранятся как "OPF_10000"/"FS_17", а не голым числом: коды
+        # МО кладутся в ОБЩИЙ плоский словарь master_data вместе с кодами
+        # ОКВЭД и категорий, и без префикса код МО (например, "30501") может
+        # случайно совпасть с каким-то другим кодом в этом же словаре — тег
+        # тогда получит чужое значение вместо честного прочерка, вместо того
+        # чтобы просто не найтись, если реальный МО-источник не загрузился.
+        return f"MO_{candidate}" if candidate else None
 
     candidate = canonical_okved(raw_value)
     if candidate not in okved_codes_set:
@@ -589,12 +596,16 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
     log = []
     
     tag_regex = re.compile(r"\{\{([^}]+)\}\}")
-    # master_data ключи — это и коды ОКВЭД, и коды МО вперемешку (единый плоский словарь).
+    # master_data ключи — это коды ОКВЭД, МО (с префиксом "MO_") и категорий
+    # (с префиксом "OPF_"/"FS_") вперемешку в общем плоском словаре.
     known_entity_codes = set(master_data.keys())
 
     def _canonicalize_entity_candidate(entity_raw: str, source_prefix: Optional[str]) -> str:
         if source_prefix == "MO":
-            return canonical_mo(entity_raw)
+            # Префикс обязателен — см. комментарий в _infer_entity_key: без
+            # него код МО может случайно совпасть с чужим ключом в общем
+            # словаре master_data.
+            return f"MO_{canonical_mo(entity_raw)}"
         if source_prefix in CATEGORY_PREFIX_KEYWORDS.values():
             # Категорийные коды (ОПФ/форма собственности) хранятся в master_data
             # с префиксом прямо внутри ключа (например, "OPF_10000") — иначе

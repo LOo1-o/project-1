@@ -71,7 +71,10 @@ def parse_tag_to_keys(full_tag: str, known_entities: Set[str]) -> Tuple[List[str
     for split_idx in range(len(parts) - 1, 0, -1):
         entity_candidate_raw = "_".join(parts[:split_idx])
         if source_prefix == "MO":
-            entity_candidate = canonical_mo(entity_candidate_raw)
+            # Префикс "MO_" в ключе master_data — см. data_filler_v2.py,
+            # _infer_entity_key: без него код МО может случайно совпасть с
+            # чужим ключом в общем плоском словаре.
+            entity_candidate = f"MO_{canonical_mo(entity_candidate_raw)}"
         else:
             if "." in entity_candidate_raw or any(c.isalpha() for c in entity_candidate_raw):
                 entity_candidate = canonical_okved(entity_candidate_raw.replace("_", "."))
@@ -87,7 +90,7 @@ def parse_tag_to_keys(full_tag: str, known_entities: Set[str]) -> Tuple[List[str
     if entity_code is None:
         entity_raw = "_".join(parts[:-1])
         if source_prefix == "MO":
-            entity_code = canonical_mo(entity_raw)
+            entity_code = f"MO_{canonical_mo(entity_raw)}"
         else:
             if "." in entity_raw or any(c.isalpha() for c in entity_raw):
                 entity_code = canonical_okved(entity_raw.replace("_", "."))
