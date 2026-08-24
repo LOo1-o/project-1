@@ -109,7 +109,8 @@ def main(input_template_override=None, output_file_override=None):
         column_mapping_path=column_mapping_file,
         mo_map_path=mo_file,
         use_fuzzy_match=True,
-        fuzzy_threshold=0.80
+        fuzzy_threshold=0.80,
+        errors_report_path=output_dir / "ошибки_загрузки_excel.txt"
     )
     print(f"📊 Статистика загрузки: {stats}")
     print(f"✅ Загружено данных для {len(master_data)} кодов ОКВЭД")

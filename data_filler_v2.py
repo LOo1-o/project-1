@@ -94,11 +94,12 @@ def _detect_year_suffix_for_column(df: pd.DataFrame, col_idx: Optional[int], def
     return default_suffix
 
 
-def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict, 
+def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                                okved_codes_set: Set[str], okved_name_to_code: Dict[str, str],
                                column_mapping_path: Path,
                                mo_map_path: Optional[Path] = None,
-                               use_fuzzy_match: bool = True, fuzzy_threshold: float = 0.80) -> Tuple[Dict, dict]:
+                               use_fuzzy_match: bool = True, fuzzy_threshold: float = 0.80,
+                               errors_report_path: Optional[Path] = None) -> Tuple[Dict, dict]:
     """
     Загружает все данные из Excel с использованием умного поиска.
     
@@ -207,7 +208,16 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 df_filtered = df[df['__entity_key__'].notna()].copy()
 
             if df_filtered.empty:
+                # Не просто "info": если файл целиком не дал ни одной строки
+                # (например, справочник МО не смог опознать ни одно
+                # название, и колонку с кодами не удалось определить), все
+                # показатели этого файла останутся незаполненными без
+                # объяснения причины — в unfilled_tags.xlsx будет просто
+                # много прочерков без указания, что источник вообще не
+                # прочитался. Фиксируем это явно.
+                message = f"Файл прочитан, но не дал ни одной строки с кодом: {filename}"
                 print(f"ℹ️ Нет данных для нужных кодов ОКВЭД в файле {filename}")
+                stats['errors'].append(message)
                 continue
             
             stats['files_processed'] += 1
@@ -296,7 +306,19 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
         for c in conflicts[:5]:
             print(f"      - {c}")
     print(f"   - Ошибок: {len(stats['errors'])}")
-    
+
+    # Раньше ошибки загрузки (файл не найден/пуст/битый) были видны только в
+    # консоли — если вывод не сохранён или прогон запущен без присмотра, эта
+    # информация терялась безвозвратно. Пишем её в файл, как и остальные
+    # отчёты (mapping_validation_log.txt, unfilled_tags.xlsx и т.п.).
+    if errors_report_path is not None and stats['errors']:
+        try:
+            with open(errors_report_path, "w", encoding="utf-8") as f:
+                f.write("\n".join(stats['errors']))
+            print(f"📄 Отчёт об ошибках загрузки Excel сохранён: {errors_report_path}")
+        except Exception as exc:
+            print(f"⚠️ Не удалось сохранить отчёт об ошибках загрузки: {exc}")
+
     return master_data, stats
 
 

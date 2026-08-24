@@ -922,7 +922,9 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 print("ℹ️ Заголовок таблицы не определён, используем предыдущий источник")
 
         if not current_source_file:
-            print("⚠️ Источник не определён. Пропускаем таблицу.")
+            warning = "⚠️ Источник не определён. Пропускаем таблицу."
+            print(warning)
+            validation_log.append(f"[TABLE {t_index + 1}] {warning}")
             continue
 
         # Используем file_word_to_indicator для правильного маппирования по (файл, слово)
@@ -1128,7 +1130,9 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             source_word_to_indicator = all_file_entries.copy()
 
         if not source_word_to_indicator:
-            print(f"⚠️ Нет показателей для источника {current_source_file}. Пропускаем таблицу.")
+            warning = f"⚠️ Нет показателей для источника {current_source_file}. Пропускаем таблицу."
+            print(warning)
+            validation_log.append(f"[TABLE {t_index + 1}] {warning}")
             continue
 
         header_rows = _find_header_rows(
@@ -1308,7 +1312,9 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 mapped_sections.append((start, end, mapping))
 
         if not mapped_sections:
-            print("⚠️ Заголовки не найдены. Пропускаем таблицу.")
+            warning = "⚠️ Заголовки не найдены. Пропускаем таблицу."
+            print(warning)
+            validation_log.append(f"[TABLE {t_index + 1}] source={current_source_file} {warning}")
             continue
 
         matched_indicators = set()
@@ -1341,6 +1347,22 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 # размечены названием категории, а не кодом ОКВЭД/МО.
                 category_code = find_okved_code(first_cell_text, category_name_maps.get(current_source_file, {}))
                 if not category_code:
+                    # Та же опасность, что и для строк ОКВЭД/МО ниже: если
+                    # название категории не нашлось в справочнике, строку
+                    # нельзя просто пропускать — иначе числа прошлого периода
+                    # останутся в ячейках, выглядя как актуальные данные.
+                    warning = (f"⚠️ Строка {row_idx + 1} ({current_source_file}): "
+                               f"название категории '{first_cell_text}' не найдено — "
+                               f"строка НЕ будет заполнена, числовые ячейки очищены")
+                    print(f"   {warning}")
+                    validation_log.append(f"[TABLE {t_index + 1}] {warning}")
+                    for cell in row.cells[1:]:
+                        if cell._tc is row.cells[0]._tc:
+                            continue
+                        cell_text = get_cleaned_cell_text(cell)
+                        if any(ch.isdigit() for ch in cell_text):
+                            for p in cell.paragraphs:
+                                set_paragraph_text_keep_format(p, "-")
                     continue
                 prefix = category_prefix
                 code_value = canonical_category(category_code)
