@@ -40,7 +40,7 @@ def check_files():
         "input/mappings/okved_mapping.csv",
         "input/mappings/table_source_data_mapping.csv",
         "input/mappings/column_mapping_v2.csv",
-        "input/Бюллетень_17.2.8 раздел 1-8.docx",
+        "input/Бюллетень.docx",
     ]
     
     print("\n📄 Проверка файлов...")

@@ -23,7 +23,7 @@ def run_test():
     print("="*80)
     
     # Проверяем входные файлы
-    input_file = Path("input/Бюллетень_17.2.8 раздел 1-8.docx")
+    input_file = Path("input/Бюллетень.docx")
     if not input_file.exists():
         print(f"❌ Входной файл не найден: {input_file}")
         return 1
@@ -44,7 +44,7 @@ def run_test():
         output_dir = Path("output")
         output_files = [
             "Бюллетень_ШАБЛОН_С_ТЕГАМИ_v2.docx",
-            "Бюллетень_17.2.8_ГОТОВЫЙ.docx",
+            "Бюллетень_ГОТОВЫЙ.docx",
             "fill_log.txt",
         ]
         

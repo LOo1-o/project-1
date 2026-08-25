@@ -19,7 +19,7 @@ from analyze_table_tags import analyze_document_structure, print_analysis, gener
 def main():
     """Запускает анализ документа."""
     
-    doc_path = Path("input/Бюллетень_17.2.8 раздел 1-8.docx")
+    doc_path = Path("input/Бюллетень.docx")
     
     print("\n" + "="*80)
     print("🧪 ТЕСТ: Анализ заполнения тегов в документе")

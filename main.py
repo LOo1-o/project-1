@@ -42,10 +42,10 @@ def main(input_template_override=None, output_file_override=None):
     column_mapping_file = mappings_dir / "column_mapping_v2.csv"
     unit_annotations_file = mappings_dir / "unit_annotations.csv"
 
-    input_word_file = input_template_override or input_dir / "Бюллетень_17.2.8 раздел 1-8.docx"
+    input_word_file = input_template_override or input_dir / "Бюллетень.docx"
     cleared_word_file = output_dir / "Бюллетень_ОЧИЩЕННЫЙ.docx"
     template_word_file = output_dir / "Бюллетень_ШАБЛОН_С_ТЕГАМИ_v2.docx"
-    final_word_file = Path(output_file_override) if output_file_override else output_dir / "Бюллетень_17.2.8_ГОТОВЫЙ.docx"
+    final_word_file = Path(output_file_override) if output_file_override else output_dir / "Бюллетень_ГОТОВЫЙ.docx"
 
     # === ШАГ 1: Загрузка справочников ===
     print("\n=== ШАГ 1: Загрузка справочников ===")
