@@ -10,6 +10,7 @@ from config_v2 import (
     load_column_mapping_v2,
     ensure_column_mapping_v2,
     validate_table_source_mapping,
+    load_indicator_display_names,
 )
 from logic import (
     generate_word_template,
@@ -96,6 +97,7 @@ def main(input_template_override=None, output_file_override=None):
         unit_annotations_path=unit_annotations_file,
         group_prefix_match_report_path=output_dir / "совпадения_после_отбрасывания_префикса.xlsx",
         unused_indicator_report_path=output_dir / "неиспользованные_показатели.xlsx",
+        duplicate_year_report_path=output_dir / "повторяющиеся_года_в_шапке.xlsx",
     )
     print(f"📄 Шаблон с тегами сохранен: {template_word_file}")
 
@@ -118,11 +120,16 @@ def main(input_template_override=None, output_file_override=None):
     # === ШАГ 4: Заполнение шаблона по тегам ===
     print("\n=== ШАГ 4: Заполнение шаблона по умным тегам (с нормализацией) ===")
     doc = Document(template_word_file)
+    # code показателя -> человекочитаемое название (для отчёта о незаполненных
+    # тегах — чтобы его понимал человек, который готовит бюллетень, а не
+    # только разработчик).
+    indicator_display_names = load_indicator_display_names(column_mapping_file)
     unfilled_tags = fill_word_template_by_tags_v2(
         doc,
         master_data,
         log_path=output_dir / "fill_log.txt",
-        report_path=output_dir / "unfilled_tags.xlsx"
+        report_path=output_dir / "unfilled_tags.xlsx",
+        indicator_display_names=indicator_display_names
     )
     doc.save(final_word_file)
     print(f"📘 Заполненный документ сохранён: {final_word_file}")

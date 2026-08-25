@@ -128,6 +128,38 @@ def _parse_keywords_from_field(value: str) -> list:
     return [kw.strip() for kw in value.split(',') if kw.strip()]
 
 
+def load_indicator_display_names(filepath) -> Dict[str, str]:
+    """Код показателя -> человекочитаемое название («как в бюллетене»).
+
+    Отдельная функция, а не ещё один элемент кортежа, который возвращает
+    load_column_mapping_v2() — у той функции уже 8 мест вызова с позиционной
+    распаковкой фиксированной длины, менять сигнатуру рискованно ради
+    единственного отчёта. word_to_indicator (название -> код) там же не
+    подходит для обратного поиска "по коду название": одно и то же название
+    показателя нередко встречается в разных Excel-файлах с разными кодами
+    (например, "ValBal" и "ValBal_1" — это в column_mapping_v2.csv два
+    физически разных источника с одинаковым словом-подсказкой), и словарь
+    "название -> код" в таком случае молча теряет более ранние коды при
+    перезаписи одним и тем же ключом. Строим отдельно и однозначно —
+    по коду, а не по названию.
+    """
+    display_names: Dict[str, str] = {}
+    try:
+        rows = _read_csv_rows_robustly(filepath, delimiter=';', quotechar='"')
+        if rows:
+            rows = rows[1:]
+        for row in rows:
+            if not row or all(not str(cell).strip() for cell in row):
+                continue
+            word_name = _normalize_mapping_label(str(row[1])) if len(row) > 1 else ''
+            indicator = str(row[2]).strip() if len(row) > 2 else ''
+            if indicator and word_name:
+                display_names[indicator] = word_name
+    except FileNotFoundError:
+        pass
+    return display_names
+
+
 def load_column_mapping_v2(filepath) -> Tuple[Dict[str, str], Dict[str, Tuple[str, str]],
                                                Dict[str, str], Dict, Dict[str, Dict[str, str]], Dict]:
     """

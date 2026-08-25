@@ -479,7 +479,7 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=80, entit
 
 def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None, run_rows=None,
                               near_miss_sink=None, squish_match_sink=None, unit_annotation_sink=None,
-                              unit_annotation_texts=None):
+                              unit_annotation_texts=None, duplicate_year_sink=None):
     """Вычисляет маппинг столбцов для данной секции таблицы.
 
     near_miss_sink, если передан, получает по одному элементу
@@ -497,6 +497,15 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
     измерения/периода (см. _is_unit_annotation), выброшенную из составного
     заголовка колонки — чтобы было видно, где именно и что было отфильтровано,
     а не просто молча выброшено.
+
+    duplicate_year_sink, если передан, получает по одному элементу
+    (column_idx, indicator, year_code) на каждую колонку, которая была
+    выброшена ниже как дубликат (тот же показатель и тот же год, что уже
+    занял другую колонку). Реальная причина такого дубля почти всегда —
+    опечатка в самой шапке документа (например, «2023» напечатан дважды
+    подряд вместо «2023»/«2024») — см. НАЙДЕННЫЕ_ДЕФЕКТЫ_ШАБЛОНА.md, пункт 1.
+    Раньше это было видно только как строка в консоли, которую легко
+    пропустить в потоке вывода.
     """
     year_row = table.rows[header_idx]
     year_texts = [get_cleaned_cell_text(cell).strip() for cell in year_row.cells]
@@ -687,7 +696,10 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
     for col_idx in sorted(col_to_indicator_map):
         spec = col_to_indicator_map[col_idx]
         if spec in seen_specs:
-            print(f"   ⚠️ Пропускаем дубликат столбца {col_idx} для {spec[0]}_{spec[1] if spec[1] else ''}")
+            print(f"   ⚠️ Пропускаем дубликат столбца {col_idx} для {spec[0]}_{spec[1] if spec[1] else ''} "
+                  f"— похоже на опечатку в шапке (например, один и тот же год напечатан дважды)")
+            if duplicate_year_sink is not None and spec[1]:
+                duplicate_year_sink.append((col_idx, spec[0], spec[1]))
             continue
         seen_specs.add(spec)
         filtered_map[col_idx] = spec
@@ -748,6 +760,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                            unit_annotation_report_path: Path = None, unit_annotations_path: Path = None,
                            group_prefix_match_report_path: Path = None,
                            unused_indicator_report_path: Path = None,
+                           duplicate_year_report_path: Path = None,
                            clear_only: bool = False):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}},
@@ -866,6 +879,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     validation_log = []
     near_miss_report = []
     squish_match_report = []
+    duplicate_year_report = []
     typo_match_report = []
     unit_annotation_report = []
     group_prefix_match_report = []
@@ -1169,12 +1183,33 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             table_near_misses = [] if near_miss_report_path else None
             table_squish_matches = [] if squish_match_report_path else None
             table_unit_annotations = [] if unit_annotation_report_path else None
+            # Всегда собираем (не только если задан report_path) — эта запись
+            # ещё и уходит в validation_log ниже, независимо от того, нужен
+            # ли отдельный xlsx-отчёт.
+            table_duplicate_years = []
             mapping = _compute_section_mapping(table, header_idx, source_word_to_indicator,
                                                 header_rows=header_rows_set, run_rows=run,
                                                 near_miss_sink=table_near_misses,
                                                 squish_match_sink=table_squish_matches,
                                                 unit_annotation_sink=table_unit_annotations,
-                                                unit_annotation_texts=unit_annotation_texts)
+                                                unit_annotation_texts=unit_annotation_texts,
+                                                duplicate_year_sink=table_duplicate_years)
+            if table_duplicate_years:
+                for col_idx, indicator, year_code in table_duplicate_years:
+                    warning = (f"⚠️ Таблица {t_index + 1} ({current_source_file}), столбец {col_idx + 1}: "
+                               f"год «{year_code}» в шапке повторяется для показателя «{indicator}» — "
+                               f"похоже на опечатку в годах (например, «2023» напечатан вместо «2024»). "
+                               f"Этот столбец не заполнится, останется исходное значение из документа.")
+                    print(f"   {warning}")
+                    validation_log.append(f"[TABLE {t_index + 1}] {warning}")
+                    duplicate_year_report.append({
+                        'table': t_index + 1,
+                        'source_file': current_source_file,
+                        'column': col_idx + 1,
+                        'header_row': header_idx + 1,
+                        'indicator': indicator,
+                        'year_code': year_code,
+                    })
             if table_unit_annotations:
                 unit_annotation_report.extend(
                     {
@@ -1507,6 +1542,15 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         columns = ['table', 'source_file', 'column', 'header_row', 'cell_text',
                    'matched_candidate', 'matched_indicator']
         pd.DataFrame(squish_match_report, columns=columns).to_excel(squish_match_report_path, index=False)
+    if duplicate_year_report_path and duplicate_year_report:
+        duplicate_year_report_path = Path(duplicate_year_report_path)
+        duplicate_year_report_path.parent.mkdir(parents=True, exist_ok=True)
+        columns = ['table', 'source_file', 'column', 'header_row', 'indicator', 'year_code']
+        df = pd.DataFrame(duplicate_year_report, columns=columns)
+        df.insert(0, 'пояснение', 'Год в шапке повторяется — вероятно, опечатка (например, "2023" вместо "2024"). Столбец не заполнится.')
+        df.to_excel(duplicate_year_report_path, index=False)
+        print(f"📅 Отчёт по повторяющимся годам в шапке сохранён: {duplicate_year_report_path} "
+              f"({len(duplicate_year_report)} строк)")
         print(f"🧩 Отчёт по «склеенным» совпадениям сохранён: {squish_match_report_path} "
               f"({len(squish_match_report)} строк)")
     if typo_match_report_path:

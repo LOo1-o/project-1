@@ -12,7 +12,7 @@ from pathlib import Path
 import pandas as pd
 from typing import Dict, Set, Tuple, Optional
 
-from config import canonical_okved, find_okved_code, set_paragraph_text_keep_format
+from config import canonical_okved, find_okved_code, set_paragraph_text_keep_format, get_cleaned_cell_text
 from config_v2 import load_column_mapping_v2, build_column_mapping_v2_from_excel
 from mo import load_mo_map, canonical_mo, find_mo_code
 from category_mapping import CATEGORY_PREFIX_KEYWORDS, canonical_category, detect_category_prefix
@@ -595,17 +595,24 @@ def _infer_entity_key(row: pd.Series, code_col_idx: int, is_mo_file: bool,
     return candidate if candidate else None
 
 
-def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Path] = None, 
-                                  report_path: Optional[Path] = None) -> list:
+def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Path] = None,
+                                  report_path: Optional[Path] = None,
+                                  indicator_display_names: Optional[Dict[str, str]] = None) -> list:
     """
     Заполняет теги в Word с использованием нормализованных данных.
-    
+
     Args:
         doc: Document из python-docx
         master_data: Данные из Excel (с нормализацией)
         log_path: Путь для сохранения логов
         report_path: Путь для сохранения отчета о незаполненных тегах
-    
+        indicator_display_names: код показателя -> человекочитаемое название
+            (как оно называется в самом бюллетене), для отчёта. Без этого
+            параметра отчёт содержит только технический тег вида
+            "MO_30501_OtcGoPro_1" — понятный разработчику, но не человеку,
+            который просто готовит бюллетень и не знаком с внутренним
+            устройством программы.
+
     Returns:
         Список незаполненных тегов
     """
@@ -676,8 +683,9 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
         return None, None, None
 
     table_manager = TableManager(doc)
-    for table in table_manager.iter_tables():
-        for row in table.rows:
+    for t_idx, table in enumerate(table_manager.iter_tables()):
+        for r_idx, row in enumerate(table.rows):
+            row_name = get_cleaned_cell_text(row.cells[0]) if row.cells else ""
             for cell in row.cells:
                 for paragraph in cell.paragraphs:
                     text = paragraph.text
@@ -763,7 +771,16 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                         else:
                             text = text.replace(f"{{{{{full_tag}}}}}", "-")
                             log.append(f"ℹ️ Отсутствующие данные: {full_tag} → [-]")
-                            unfilled_tags.append(full_tag)
+                            display_indicator = (indicator_display_names or {}).get(indicator, indicator)
+                            display_year = f"20{lookup_suffix}" if lookup_suffix else ""
+                            unfilled_tags.append({
+                                'Таблица': t_idx + 1,
+                                'Строка': r_idx + 1,
+                                'Название строки': row_name,
+                                'Показатель': display_indicator,
+                                'Год': display_year,
+                                'Тег (для разработчика)': full_tag,
+                            })
 
                     # Сохраняем форматирование (шрифт/размер) исходного
                     # текста ячейки вместо пересоздания run с форматированием
@@ -776,10 +793,17 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
             f.write("\n".join(log))
         print(f"📝 Лог сохранён: {log_path}")
 
-    # Сохраняем отчет по незаполненным тегам
+    # Сохраняем отчет по незаполненным тегам. Колонки — не технический тег
+    # (его язык понятен только разработчику), а то, что реально видно в
+    # самом бюллетене: номер таблицы по счёту в документе, номер и название
+    # строки (то, что написано в первой колонке — код ОКВЭД/МО или
+    # показатель), человекочитаемое название показателя и год. Технический
+    # тег оставлен последней колонкой — на случай, если потребуется
+    # эскалация разработчику/Claude.
     if report_path is not None:
         try:
-            pd.DataFrame({'tag': unfilled_tags}).to_excel(report_path, index=False)
+            columns = ['Таблица', 'Строка', 'Название строки', 'Показатель', 'Год', 'Тег (для разработчика)']
+            pd.DataFrame(unfilled_tags, columns=columns).to_excel(report_path, index=False)
             print(f"📄 Отчёт по незаполненным тегам сохранён: {report_path}")
         except Exception as exc:
             print(f"⚠️ Не удалось сохранить отчет по незаполненным тегам: {exc}")
