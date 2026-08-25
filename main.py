@@ -1,4 +1,5 @@
 # main.py
+import sys
 from pathlib import Path
 from docx import Document
 
@@ -27,7 +28,16 @@ def main(input_template_override=None, output_file_override=None):
     print("\n🚀 === НАЧАЛО РАБОТЫ (v2.0 с умными тегами) ===")
 
     # 📁 Пути
-    base_dir = Path(__file__).parent.resolve()
+    # Внутри exe, собранного PyInstaller-ом, __file__ указывает не туда, где
+    # реально лежит .exe, а во временную папку распаковки (sys._MEIPASS) —
+    # она удаляется сразу после закрытия программы. Если считать base_dir от
+    # неё, папки input/output будут искаться там, где их никогда не положат.
+    # sys.frozen выставляется самим PyInstaller именно для этого случая;
+    # sys.executable тогда указывает на настоящий .exe-файл на диске.
+    if getattr(sys, "frozen", False):
+        base_dir = Path(sys.executable).parent.resolve()
+    else:
+        base_dir = Path(__file__).parent.resolve()
     input_dir = base_dir / "input"
     mappings_dir = input_dir / "mappings"
     excel_dir = input_dir / "excel"
