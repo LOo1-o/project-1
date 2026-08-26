@@ -94,6 +94,30 @@ def _detect_year_suffix_for_column(df: pd.DataFrame, col_idx: Optional[int], def
     return default_suffix
 
 
+_DECIMAL_VALUE_RE = re.compile(r'\d[.,]\d')
+
+
+def _column_has_decimal_values(df: pd.DataFrame, col_idx: Optional[int]) -> bool:
+    """Есть ли в столбце Excel хоть одно значение с десятичным разделителем.
+
+    Раньше единообразие "все значения столбца с одним знаком после запятой"
+    было включено только для таблиц с "оборачиваемость" в названии — узкий,
+    привязанный к конкретной таблице частный случай. Но проблема на самом
+    деле про сам СТОЛБЕЦ: если Excel хранит "205.3" в одной строке и просто
+    "4" (без ".0") в другой строке того же столбца, оба значения одного
+    показателя — и в бюллетене они должны выглядеть единообразно
+    ("205,3" и "4,0"), а не как будто это разные по точности величины.
+    """
+    if col_idx is None or df.empty or col_idx >= len(df.columns):
+        return False
+    for value in df.iloc[:, col_idx]:
+        if pd.isna(value):
+            continue
+        if _DECIMAL_VALUE_RE.search(str(value)):
+            return True
+    return False
+
+
 def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                                okved_codes_set: Set[str], okved_name_to_code: Dict[str, str],
                                column_mapping_path: Path,
@@ -117,11 +141,11 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
     print("\n📊 Шаг 3: Загрузка данных из Excel (УМНЫЙ поиск)")
     
     try:
-        _, indicator_to_excel, indicator_to_file, _, indicator_keywords = load_column_mapping_v2(str(column_mapping_path))
+        _, indicator_to_excel, indicator_to_file, _, indicator_keywords, _ = load_column_mapping_v2(str(column_mapping_path))
     except FileNotFoundError:
         print(f"⚠️ Файл {column_mapping_path} не найден. Генерируем его из Excel...")
         build_column_mapping_v2_from_excel(excel_dir, table_source_mapping, column_mapping_path)
-        _, indicator_to_excel, indicator_to_file, _, indicator_keywords = load_column_mapping_v2(str(column_mapping_path))
+        _, indicator_to_excel, indicator_to_file, _, indicator_keywords, _ = load_column_mapping_v2(str(column_mapping_path))
     except Exception as e:
         print(f"⚠️ Ошибка загрузки маппингов v2: {e}, используем fallback...")
         from config import load_column_mapping
@@ -244,6 +268,13 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 col_idx_2023 = _find_column_smart(df, col_23_hardcode, "2023", keywords_2023, context_label, header_scan_rows)
                 suffix_2022 = _detect_year_suffix_for_column(df, col_idx_2022, "22")
                 suffix_2023 = _detect_year_suffix_for_column(df, col_idx_2023, "23")
+                # force_decimal — по конкретному столбцу (плюс старый признак
+                # по названию таблицы, см. комментарий выше), а не по всему
+                # файлу целиком: у разных показателей в одном файле разная
+                # точность, единообразие нужно внутри одного столбца, а не
+                # между всеми столбцами файла.
+                force_decimal_2022 = force_decimal or _column_has_decimal_values(df, col_idx_2022)
+                force_decimal_2023 = force_decimal or _column_has_decimal_values(df, col_idx_2023)
                 
                 # === ЭТАП 2: Нечеткий поиск строк (экспериментально) ===
                 if use_fuzzy_match:
@@ -272,7 +303,7 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                         for idx, row in group.iterrows():
                             value = get_cell_value_safely(row, col_idx_2022)
                             if value:
-                                normalized = clean_excel_value_for_word(value, force_decimal=force_decimal)
+                                normalized = clean_excel_value_for_word(value, force_decimal=force_decimal_2022)
                                 master_data[entity_key][f"{indicator}_{suffix_2022}"] = normalized
                                 value_prev = normalized
                                 stats['found_by_keyword' if keywords_2022 else 'found_by_hardcode'] += 1
@@ -282,7 +313,7 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                         for idx, row in group.iterrows():
                             value = get_cell_value_safely(row, col_idx_2023)
                             if value:
-                                normalized = clean_excel_value_for_word(value, force_decimal=force_decimal)
+                                normalized = clean_excel_value_for_word(value, force_decimal=force_decimal_2023)
                                 master_data[entity_key][f"{indicator}_{suffix_2023}"] = normalized
                                 stats['found_by_keyword' if keywords_2023 else 'found_by_hardcode'] += 1
                                 break
