@@ -45,6 +45,38 @@ def get_cleaned_cell_text(cell: _Cell) -> str:
     return ' '.join(p.text.replace('\n', ' ').strip() for p in cell.paragraphs).strip()
 
 
+def dominant_row_bold(row, exclude_cell=None) -> "Optional[bool]":
+    """Определяет преобладающую жирность среди непустых ячеек строки данных.
+
+    Строки бюллетеня обычно жирные целиком (числа + прочерки одинаково),
+    но встречаются реальные дефекты исходного документа: одна ячейка в
+    строке набрана без жирности, хотя остальные — жирные (см.
+    НАЙДЕННЫЕ_ДЕФЕКТЫ_ШАБЛОНА.md — тот же класс несогласованного
+    оформления, что там уже нашли для "-"). Большинство соседей по строке —
+    надёжный сигнал, каким должно быть форматирование той единственной
+    ячейки, что выбивается.
+
+    exclude_cell: ячейку саму себя (обычно ту, что сейчас заполняем)
+    исключаем из подсчёта — иначе её собственная (возможно, как раз
+    дефектная) жирность перевесит счёт себя же.
+    """
+    votes = []
+    for cell in row.cells:
+        if exclude_cell is not None and cell._tc is exclude_cell._tc:
+            continue
+        for p in cell.paragraphs:
+            for run in p.runs:
+                if run.text.strip():
+                    votes.append(bool(run.bold))
+                    break
+            else:
+                continue
+            break
+    if not votes:
+        return None
+    return sum(votes) > len(votes) / 2
+
+
 def set_paragraph_text_keep_format(paragraph, text: str) -> None:
     """Заменяет текст параграфа, СОХРАНЯЯ форматирование (шрифт, размер,
     жирность и т.д.) уже существующего в нём текста.
@@ -70,6 +102,37 @@ def set_paragraph_text_keep_format(paragraph, text: str) -> None:
             extra_run.text = ""
     else:
         paragraph.add_run(text)
+
+
+def normalize_dash_bold_in_document(doc) -> int:
+    """Проходит по ВСЕМ таблицам готового документа и выравнивает жирность
+    ячеек-прочерков ("-") по преобладающей жирности остальной строки.
+
+    Точечные правки при заполнении тегов (see fill_word_template_by_tags_v2,
+    generate_word_template) чинят только те прочерки, которые сами
+    записываем в процессе работы программы. Но встречаются прочерки,
+    которые были жирностью None ещё в исходном input/Бюллетень.docx и
+    которые программа вообще не трогает (в них никогда не было тега —
+    это не заполняемая ячейка, а изначально статичный "-"). Такой прочерк
+    иначе так и остаётся несогласованным с соседями по строке в готовом
+    документе. Этот проход ловит оба случая разом, независимо от того,
+    когда и кем был записан текст ячейки.
+    """
+    fixed = 0
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                if get_cleaned_cell_text(cell) != "-":
+                    continue
+                dominant = dominant_row_bold(row, exclude_cell=cell)
+                if dominant is None:
+                    continue
+                for p in cell.paragraphs:
+                    for run in p.runs:
+                        if run.text.strip() and bool(run.bold) != dominant:
+                            run.bold = dominant
+                            fixed += 1
+    return fixed
 
 
 _ROBUST_ENCODINGS = ['utf-8-sig', 'windows-1251', 'cp1251', 'utf-8', 'latin1']

@@ -816,6 +816,9 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                     # Сохраняем форматирование (шрифт/размер) исходного
                     # текста ячейки вместо пересоздания run с форматированием
                     # по умолчанию — см. set_paragraph_text_keep_format.
+                    # Жирность прочерков относительно соседей по строке
+                    # выравнивается отдельным проходом по всему готовому
+                    # документу — см. normalize_dash_bold_in_document (main.py).
                     set_paragraph_text_keep_format(paragraph, text)
     
     # Сохраняем логи
