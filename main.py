@@ -7,6 +7,7 @@ from config import (
     load_okved_map,
     load_table_source_map,
     normalize_dash_bold_in_document,
+    autofit_tables_to_window,
 )
 from config_v2 import (
     load_column_mapping_v2,
@@ -144,6 +145,7 @@ def main(input_template_override=None, output_file_override=None):
     fixed_dashes = normalize_dash_bold_in_document(doc)
     if fixed_dashes:
         print(f"🔧 Выровнена жирность {fixed_dashes} прочерков, не совпадавшая с соседями по строке")
+    autofit_tables_to_window(doc)
     doc.save(final_word_file)
     print(f"📘 Заполненный документ сохранён: {final_word_file}")
 

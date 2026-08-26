@@ -4,6 +4,7 @@ import re
 from collections import Counter
 
 import pandas as pd
+from docx.oxml.ns import qn
 from docx.table import _Cell, Table
 
 # === Константы ===
@@ -133,6 +134,40 @@ def normalize_dash_bold_in_document(doc) -> int:
                             run.bold = dominant
                             fixed += 1
     return fixed
+
+
+def autofit_tables_to_window(doc) -> int:
+    """Включает для всех таблиц документа режим Word "Автоподбор по ширине
+    окна" (Таблица → Свойства таблицы → Автоподбор → Автоподбор по ширине
+    окна), а не оставляет их зафиксированной ширины.
+
+    В исходном бюллетене таблицы заданы фиксированной шириной (dxa),
+    которая местами шире печатной области страницы (обнаружено: сетка
+    таблицы ~14790 twips против ~14570 twips полезной ширины страницы —
+    таблица выходит за правый край примерно на 0.15 дюйма). Word не
+    подгоняет фиксированную по ширине таблицу под страницу сам — только
+    при явном включении автоподбора. Переключаем ширину таблицы на 100%
+    ширины окна (w:tblW type=pct) и включаем автоподбор (w:tblLayout
+    type=autofit): пропорции столбцов друг относительно друга сохраняются,
+    но вся таблица целиком масштабируется по ширине печатной области.
+    """
+    changed = 0
+    for table in doc.tables:
+        tblPr = table._tbl.tblPr
+        tblW = tblPr.find(qn('w:tblW'))
+        if tblW is None:
+            tblW = tblPr.makeelement(qn('w:tblW'), {})
+            jc = tblPr.find(qn('w:jc'))
+            if jc is not None:
+                jc.addprevious(tblW)
+            else:
+                tblPr.append(tblW)
+        if tblW.get(qn('w:type')) != 'pct' or tblW.get(qn('w:w')) != '5000':
+            tblW.set(qn('w:type'), 'pct')
+            tblW.set(qn('w:w'), '5000')
+            changed += 1
+        table.autofit = True
+    return changed
 
 
 _ROBUST_ENCODINGS = ['utf-8-sig', 'windows-1251', 'cp1251', 'utf-8', 'latin1']
