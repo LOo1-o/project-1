@@ -136,23 +136,57 @@ def normalize_dash_bold_in_document(doc) -> int:
     return fixed
 
 
-def autofit_tables_to_window(doc) -> int:
-    """Включает для всех таблиц документа режим Word "Автоподбор по ширине
-    окна" (Таблица → Свойства таблицы → Автоподбор → Автоподбор по ширине
-    окна), а не оставляет их зафиксированной ширины.
+def _table_declared_width_twips(table):
+    """Заявленная ширина таблицы в twips — по сумме столбцов сетки
+    (w:tblGrid), а если сетки нет, то по w:tblW (только если задан в dxa,
+    то есть в абсолютных единицах — проценты тут ни при чём)."""
+    tbl = table._tbl
+    grid = tbl.find(qn('w:tblGrid'))
+    if grid is not None:
+        total = 0
+        found = False
+        for gridCol in grid.findall(qn('w:gridCol')):
+            w = gridCol.get(qn('w:w'))
+            if w:
+                total += int(w)
+                found = True
+        if found:
+            return total
+    tblW = tbl.tblPr.find(qn('w:tblW'))
+    if tblW is not None and tblW.get(qn('w:type')) == 'dxa':
+        w = tblW.get(qn('w:w'))
+        if w:
+            return int(w)
+    return None
 
-    В исходном бюллетене таблицы заданы фиксированной шириной (dxa),
-    которая местами шире печатной области страницы (обнаружено: сетка
-    таблицы ~14790 twips против ~14570 twips полезной ширины страницы —
-    таблица выходит за правый край примерно на 0.15 дюйма). Word не
-    подгоняет фиксированную по ширине таблицу под страницу сам — только
-    при явном включении автоподбора. Переключаем ширину таблицы на 100%
-    ширины окна (w:tblW type=pct) и включаем автоподбор (w:tblLayout
-    type=autofit): пропорции столбцов друг относительно друга сохраняются,
-    но вся таблица целиком масштабируется по ширине печатной области.
+
+def autofit_tables_to_window(doc) -> int:
+    """Включает режим Word "Автоподбор по ширине окна" (Таблица → Свойства
+    таблицы → Автоподбор → Автоподбор по ширине окна) ТОЛЬКО для тех
+    таблиц, которые реально шире печатной области страницы.
+
+    В исходном бюллетене часть таблиц задана фиксированной шириной (dxa),
+    которая местами шире печатной области (обнаружено: сетка таблицы
+    ~14790 twips против ~14570 twips полезной ширины страницы — таблица
+    выходит за правый край примерно на 0.15 дюйма). Именно для таких
+    переключаем ширину на 100% окна (w:tblW type=pct) и включаем
+    автоподбор (w:tblLayout type=autofit) — пропорции столбцов друг
+    относительно друга сохраняются, вся таблица масштабируется под
+    печатную область.
+
+    Таблицы, которые и так укладываются в ширину страницы (например, уже
+    вручную подогнанные), НЕ трогаем — иначе растянули бы их на все окно
+    вместо того, чтобы просто убрать имеющееся переполнение.
     """
+    sec = doc.sections[0]
+    usable_twips = (sec.page_width - sec.left_margin - sec.right_margin - sec.gutter) / 635
+
     changed = 0
     for table in doc.tables:
+        declared_twips = _table_declared_width_twips(table)
+        if declared_twips is None or declared_twips <= usable_twips:
+            continue
+
         tblPr = table._tbl.tblPr
         tblW = tblPr.find(qn('w:tblW'))
         if tblW is None:
@@ -162,11 +196,10 @@ def autofit_tables_to_window(doc) -> int:
                 jc.addprevious(tblW)
             else:
                 tblPr.append(tblW)
-        if tblW.get(qn('w:type')) != 'pct' or tblW.get(qn('w:w')) != '5000':
-            tblW.set(qn('w:type'), 'pct')
-            tblW.set(qn('w:w'), '5000')
-            changed += 1
+        tblW.set(qn('w:type'), 'pct')
+        tblW.set(qn('w:w'), '5000')
         table.autofit = True
+        changed += 1
     return changed
 
 
