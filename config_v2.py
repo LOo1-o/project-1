@@ -8,6 +8,7 @@
 
 import csv
 import re
+import shutil
 import pandas as pd
 from pathlib import Path
 from typing import Dict, Tuple, Optional, Set
@@ -877,7 +878,23 @@ def ensure_column_mapping_v2(excel_dir: Path, table_source_mapping: dict, output
         _, _, _, file_word_to_indicator, _, _ = load_column_mapping_v2(output_path)
         existing_sources = {file for file, _ in file_word_to_indicator.keys()}
     except Exception as exc:
-        print(f"⚠️ Не удалось прочитать {output_path} ({exc}). Пересобираем из Excel...")
+        # Файл есть, но не читается. Пересобрать его из Excel можно, но это
+        # не безобидная операция: генератор заново выводит НАЗВАНИЯ И КОДЫ
+        # показателей, и они расходятся с выверенным вручную файлом (в этом
+        # проекте — 199 строк из 271). От кодов зависит разметка Word, так
+        # что подменённый маппинг оставит бюллетень почти пустым. Поэтому
+        # сначала сохраняем копию: потерять ручную выверку молча нельзя.
+        backup_path = output_path.with_name(output_path.name + ".backup")
+        try:
+            shutil.copy2(output_path, backup_path)
+            saved = f"   Копия прежнего файла сохранена: {backup_path}"
+        except OSError as copy_error:
+            saved = f"   ⚠️ Копию сохранить не удалось ({copy_error})"
+        print(f"⚠️ Не удалось прочитать {output_path} ({exc}).")
+        print(saved)
+        print("   Пересобираем маппинг из Excel. ВНИМАНИЕ: при пересборке коды")
+        print("   показателей выводятся заново и могут разойтись с разметкой")
+        print("   бюллетеня — если он заполнится плохо, верните копию.")
         build_column_mapping_v2_from_excel(excel_dir, table_source_mapping, output_path)
         return
 

@@ -117,6 +117,55 @@ class TestCrashResilience(unittest.TestCase):
             ensure_column_mapping_v2(excel_dir, table_mapping, output_path)
             self.assertIn("PokA", output_path.read_text(encoding="windows-1251"))
 
+    def test_existing_mapping_is_never_silently_overwritten(self):
+        # column_mapping_v2.csv правится вручную и лежит в репозитории.
+        # Пересборка выводит коды показателей заново, они расходятся с
+        # разметкой Word, и бюллетень остаётся почти пустым. Поэтому
+        # существующий файл не должен затираться, даже если он повреждён:
+        # либо он остаётся нетронутым, либо рядом появляется его копия.
+        with tempfile.TemporaryDirectory() as tmpdir:
+            excel_dir = Path(tmpdir) / "excel"
+            excel_dir.mkdir()
+            _write_good_excel(excel_dir / "good.xlsx")
+
+            output_path = Path(tmpdir) / "column_mapping_v2.csv"
+            output_path.write_bytes(b"\x00\x01\x02" + "битый файл".encode("utf-8"))
+            original = output_path.read_bytes()
+
+            ensure_column_mapping_v2(excel_dir, {"1. Таблица": "good.xlsx"}, output_path)
+
+            backup = output_path.with_name(output_path.name + ".backup")
+            survived = (output_path.read_bytes() == original
+                        or (backup.exists() and backup.read_bytes() == original))
+            self.assertTrue(survived, "повреждённый маппинг затёрт без копии")
+
+    def test_readable_existing_mapping_is_never_rebuilt(self):
+        # Обратная гарантия: пока файл читается, он остаётся нетронутым —
+        # даже если в нём нет части источников.
+        with tempfile.TemporaryDirectory() as tmpdir:
+            excel_dir = Path(tmpdir) / "excel"
+            excel_dir.mkdir()
+            _write_good_excel(excel_dir / "good.xlsx")
+            _write_good_excel(excel_dir / "other.xlsx")
+
+            output_path = Path(tmpdir) / "column_mapping_v2.csv"
+            content = (
+                "Excel файл;Название показателя;Код показателя;"
+                "Excel колонка 2022;Excel колонка 2023;"
+                "Ключевое слово 2022;Ключевое слово 2023\n"
+                "good.xlsx;Показатель А;РучнойКод;3;;Показатель А;\n"
+            )
+            output_path.write_text(content, encoding="utf-8-sig")
+
+            ensure_column_mapping_v2(
+                excel_dir,
+                {"1. Таблица": "good.xlsx", "2. Вторая": "other.xlsx"},
+                output_path,
+            )
+
+            self.assertIn("РучнойКод", output_path.read_text(encoding="utf-8-sig"),
+                          "выверенный вручную код показателя затёрт регенерацией")
+
     def test_all_excel_sources_corrupted_when_regenerating_gives_clear_error(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             excel_dir = Path(tmpdir) / "excel"
