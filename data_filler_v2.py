@@ -81,15 +81,23 @@ def _detect_year_suffix_for_column(df: pd.DataFrame, col_idx: Optional[int], def
     max_rows = min(12, len(df))
     column_text = " ".join(_dewrap_hyphen(str(df.iloc[row_idx, col_idx]).lower()) for row_idx in range(max_rows))
 
-    explicit_years = [int(match.group(1)) for match in _YEAR_RE.finditer(column_text)]
-    if explicit_years:
-        return str(explicit_years[-1])[-2:]
-
+    # Слова периода разбираем ПЕРЕД явными годами. Заголовок файла
+    # («Баланс организаций за 2025 год») в выгрузках Росстата лежит в одном
+    # из столбцов с данными, и его год попадал в текст этого столбца. Для
+    # столбца «на конец предыдущего года» это давало отчётный год вместо
+    # предыдущего: оба года показателя получали один суффикс, схлопывались
+    # в один ключ, и данные за первый год терялись. Слово «предыдущего»
+    # относится именно к своему столбцу, а год из заголовка — ко всему
+    # файлу, поэтому приоритет у слова.
     if report_year:
         if 'предыдущ' in column_text or 'начало' in column_text:
             return str(previous_year)[-2:]
         if 'отчет' in column_text or 'текущ' in column_text or 'конец' in column_text:
             return str(report_year)[-2:]
+
+    explicit_years = [int(match.group(1)) for match in _YEAR_RE.finditer(column_text)]
+    if explicit_years:
+        return str(explicit_years[-1])[-2:]
 
     return default_suffix
 
