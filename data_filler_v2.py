@@ -261,9 +261,24 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 
                 keywords_2022 = indicator_keywords.get(indicator, {}).get('2022', [])
                 keywords_2023 = indicator_keywords.get(indicator, {}).get('2023', [])
-                
-                # === ЭТАП 1: Динамический поиск колонок по году ===
                 context_label = f"{filename}: {indicator}"
+
+                # Если ключевые слова обоих годов совпадают, столбец второго
+                # года подтвердить нечем и оба года схлопнутся в один — см.
+                # _derive_year_keywords. Выводим различающий текст из шапки.
+                if keywords_2022 == keywords_2023:
+                    derived = _derive_year_keywords(df, col_22_hardcode, col_23_hardcode,
+                                                    header_scan_rows)
+                    if derived:
+                        keywords_2022 = [derived[0]] + keywords_2022
+                        keywords_2023 = [derived[1]]
+                    elif col_22_hardcode and col_23_hardcode:
+                        warning = (f"⚠️ {context_label}: столбцы {col_22_hardcode} и "
+                                   f"{col_23_hardcode} ничем не различаются в шапке — "
+                                   f"годы развести не удалось, проверьте файл вручную")
+                        print(f"   {warning}")
+
+                # === ЭТАП 1: Динамический поиск колонок по году ===
                 col_idx_2022 = _find_column_smart(df, col_22_hardcode, "2022", keywords_2022, context_label, header_scan_rows)
                 col_idx_2023 = _find_column_smart(df, col_23_hardcode, "2023", keywords_2023, context_label, header_scan_rows)
                 suffix_2022 = _detect_year_suffix_for_column(df, col_idx_2022, "22")
@@ -412,6 +427,47 @@ def _column_header_text(df: pd.DataFrame, col_idx: int, max_row: int) -> str:
             continue
         parts.append(str(cell).strip())
     return ' '.join(parts).lower()
+
+
+def _derive_year_keywords(df: pd.DataFrame, col_22_idx: str, col_23_idx: str,
+                          max_row: Optional[int] = None) -> Optional[Tuple[str, str]]:
+    """Ключевые слова, РАЗЛИЧАЮЩИЕ два столбца одного показателя, взятые из
+    самой шапки Excel, а не из заранее заданного списка слов.
+
+    Заголовок группы («Внеоборотные активы») в Excel — объединённая ячейка на
+    оба года, и pandas кладёт её текст только в ПЕРВЫЙ из двух столбцов. Когда
+    в column_mapping_v2.csv ключевым словом для обоих годов стоит это название
+    группы, у столбца второго года подтверждать нечем: _find_column_smart
+    считает структуру изменившейся, ищет слово заново и возвращается в столбец
+    первого года. Оба года схлопываются в один, данные второго года не
+    загружаются вообще, а в документе появляются одинаковые цифры за разные
+    годы.
+
+    Поэтому берём первую строку шапки, где у двух столбцов РАЗНЫЙ непустой
+    текст. Что именно там написано — «на конец предыдущего/отчетного года»,
+    «2023»/«2024» или «на 31.12.2023» — не важно: важно, что этот текст лежит
+    в самом столбце и различает годы. Так разметка переживает смену
+    формулировок в новых периодах и в файлах других регионов.
+    """
+    try:
+        idx_22, idx_23 = int(col_22_idx) - 1, int(col_23_idx) - 1
+    except (TypeError, ValueError):
+        return None
+    if min(idx_22, idx_23) < 0 or max(idx_22, idx_23) >= df.shape[1]:
+        return None
+
+    for row_idx in range(min(max_row or 10, len(df))):
+        first, second = df.iat[row_idx, idx_22], df.iat[row_idx, idx_23]
+        first = '' if pd.isna(first) else str(first).strip()
+        second = '' if pd.isna(second) else str(second).strip()
+        if not first or not second or first == second:
+            continue
+        if first.replace('.', '').isdigit() and second.replace('.', '').isdigit():
+            # Строка с номерами столбцов ("1", "2") годы различает, но как
+            # ключевое слово бесполезна — короткое число совпадёт где угодно.
+            continue
+        return first, second
+    return None
 
 
 def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords: list,
@@ -783,11 +839,13 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                             if value is None:
                                 value = master_data.get(entity_code, {}).get(f"{indicator}_23")
 
-                        if value is None and lookup_suffix:
-                            # Если прямой год не найден, пробуем fallback на относительные годы
-                            value = master_data.get(entity_code, {}).get(f"{indicator}_23")
-                            if value is None:
-                                value = master_data.get(entity_code, {}).get(f"{indicator}_22")
+                        # ВАЖНО: раньше здесь стояла подстановка соседнего года
+                        # (нет данных за _24 — берём _23). Она молча выдавала
+                        # данные прошлого года под видом текущего: в документе
+                        # оба года выглядели одинаковыми цифрами, в отчёт о
+                        # незаполненных тегах такая ячейка не попадала, и
+                        # отличить её от честно заполненной было нельзя.
+                        # Отсутствие данных должно быть видно прочерком.
 
                         # Применяем финальную нормализацию
                         # Важно: пустая строка "" - это тоже данные (значит значение есть, но оно пустое/нулевое)
