@@ -12,6 +12,7 @@ from config import (
     load_table_source_map,
     load_column_mapping,
     get_cleaned_cell_text,
+    looks_like_data_value,
     set_paragraph_text_keep_format,
     _normalize_text,
     find_okved_code,
@@ -1395,7 +1396,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                         if cell._tc is row.cells[0]._tc:
                             continue
                         cell_text = get_cleaned_cell_text(cell)
-                        if any(ch.isdigit() for ch in cell_text):
+                        if looks_like_data_value(cell_text):
                             for p in cell.paragraphs:
                                 set_paragraph_text_keep_format(p, "-")
                     continue
@@ -1430,7 +1431,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                         if cell._tc is row.cells[0]._tc:
                             continue
                         cell_text = get_cleaned_cell_text(cell)
-                        if any(ch.isdigit() for ch in cell_text):
+                        if looks_like_data_value(cell_text):
                             for p in cell.paragraphs:
                                 # "-" — тот же символ "нет данных", что и в
                                 # обычном заполнении по тегам (см.
@@ -1510,7 +1511,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                     if cell._tc is name_cell_tc:
                         continue
                     cell_text = get_cleaned_cell_text(cell)
-                    if any(ch.isdigit() for ch in cell_text):
+                    if looks_like_data_value(cell_text):
                         for p in cell.paragraphs:
                             set_paragraph_text_keep_format(p, "")
                         print(f"   🧹 Строка {row_idx + 1}: дополнительно очищена несопоставленная колонка {col_idx} (было {cell_text[:30]!r})")
