@@ -429,6 +429,10 @@ def _column_header_text(df: pd.DataFrame, col_idx: int, max_row: int) -> str:
     return ' '.join(parts).lower()
 
 
+def _looks_like_year(text: str) -> bool:
+    return len(text) == 4 and text.isdigit() and 1900 <= int(text) <= 2100
+
+
 def _derive_year_keywords(df: pd.DataFrame, col_22_idx: str, col_23_idx: str,
                           max_row: Optional[int] = None) -> Optional[Tuple[str, str]]:
     """Ключевые слова, РАЗЛИЧАЮЩИЕ два столбца одного показателя, взятые из
@@ -462,9 +466,13 @@ def _derive_year_keywords(df: pd.DataFrame, col_22_idx: str, col_23_idx: str,
         second = '' if pd.isna(second) else str(second).strip()
         if not first or not second or first == second:
             continue
-        if first.replace('.', '').isdigit() and second.replace('.', '').isdigit():
+        if (first.replace('.', '').isdigit() and second.replace('.', '').isdigit()
+                and not (_looks_like_year(first) and _looks_like_year(second))):
             # Строка с номерами столбцов ("1", "2") годы различает, но как
             # ключевое слово бесполезна — короткое число совпадёт где угодно.
+            # Пара годов ("2023"/"2024") — наоборот, годный ключ: она
+            # длинная и однозначная, и именно так шапка может выглядеть,
+            # если Росстат заменит "предыдущий/отчетный" на сами годы.
             continue
         return first, second
     return None
