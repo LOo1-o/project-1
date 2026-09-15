@@ -10,7 +10,12 @@ import unittest
 
 import pandas as pd
 
-from data_filler_v2 import _derive_year_keywords, _find_column_smart, get_cell_value_safely
+from data_filler_v2 import (
+    _derive_year_keywords,
+    _find_column_smart,
+    get_cell_value_safely,
+    is_count_indicator,
+)
 from data_normalizer import clean_excel_value_for_word
 
 
@@ -97,6 +102,42 @@ class TestValuesTypedByHand(unittest.TestCase):
         self.assertIn(clean_excel_value_for_word("-"), ("-", ""))
 
 
+class TestCountIndicatorDetection(unittest.TestCase):
+    """Программа не проверяет данные на осмысленность, и это уже дало
+    реальный случай: «Количество организаций, единиц = 2,3». Признак
+    счётчика нужен, чтобы такие значения попадали в отчёт, а не проходили
+    молча. Важнее всего отсутствие ложных срабатываний: доли и проценты
+    дробными быть обязаны."""
+
+    def test_counts_are_recognised(self):
+        for name in [
+            "Количество организаций, единиц",
+            "Организации, получившие прибыль количество организаций, единиц",
+            "Количество организаций, получивших убыток за предыдущий год, единиц",
+            "Число организаций",
+        ]:
+            with self.subTest(name=name):
+                self.assertTrue(is_count_indicator(name))
+
+    def test_shares_and_rates_are_not_counts(self):
+        for name in [
+            "Организации, получившие прибыль в % к общему количеству организаций",
+            "в % к общему количеству организаций",
+            "Доля долгосрочных обязательств",
+            "Темп роста прибыли в %",
+            "Коэффициент текущей ликвидности",
+            "Удельный вес организаций",
+        ]:
+            with self.subTest(name=name):
+                self.assertFalse(is_count_indicator(name),
+                                 "доля или процент приняты за счётчик")
+
+    def test_unrelated_indicators_are_not_counts(self):
+        for name in ["Валюта баланса", "Внеоборотные активы", "", None]:
+            with self.subTest(name=name):
+                self.assertFalse(is_count_indicator(name))
+
+
 class TestMissingData(unittest.TestCase):
     def test_reading_past_the_last_column_returns_nothing(self):
         """Если номер столбца в маппинге больше, чем есть столбцов, нужно
@@ -104,6 +145,23 @@ class TestMissingData(unittest.TestCase):
         df = _sheet()
         row = df.iloc[5]
         self.assertIn(get_cell_value_safely(row, 99), ("", None))
+
+    def test_negative_column_index_does_not_read_the_last_column(self):
+        """pandas трактует отрицательный индекс как отсчёт с конца: -1 молча
+        вернул бы значение ПОСЛЕДНЕГО столбца. Для нас это худший исход —
+        чужая цифра, неотличимая от правильной."""
+        row = _sheet().iloc[5]
+        last_value = str(row.iloc[-1])
+        for bad_index in (-1, -2, -99):
+            with self.subTest(index=bad_index):
+                got = get_cell_value_safely(row, bad_index)
+                self.assertEqual(got, "")
+                self.assertNotEqual(got, last_value)
+
+    def test_missing_column_index_returns_nothing_instead_of_crashing(self):
+        """Вызовы защищены проверкой на None, но функция называется
+        «safely» — падать посреди прогона она не должна в любом случае."""
+        self.assertEqual(get_cell_value_safely(_sheet().iloc[5], None), "")
 
     def test_missing_column_index_is_not_silently_replaced(self):
         df = _sheet()

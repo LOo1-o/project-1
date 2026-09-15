@@ -13,7 +13,11 @@ import pandas as pd
 from typing import Dict, Set, Tuple, Optional
 
 from config import canonical_okved, find_okved_code, set_paragraph_text_keep_format, get_cleaned_cell_text
-from config_v2 import load_column_mapping_v2, build_column_mapping_v2_from_excel
+from config_v2 import (
+    load_column_mapping_v2,
+    build_column_mapping_v2_from_excel,
+    load_indicator_display_names,
+)
 from mo import load_mo_map, canonical_mo, find_mo_code
 from category_mapping import CATEGORY_PREFIX_KEYWORDS, canonical_category, detect_category_prefix
 from smart_loader import (
@@ -131,7 +135,8 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                                column_mapping_path: Path,
                                mo_map_path: Optional[Path] = None,
                                use_fuzzy_match: bool = True, fuzzy_threshold: float = 0.80,
-                               errors_report_path: Optional[Path] = None) -> Tuple[Dict, dict]:
+                               errors_report_path: Optional[Path] = None,
+                               implausible_report_path: Optional[Path] = None) -> Tuple[Dict, dict]:
     """
     Загружает все данные из Excel с использованием умного поиска.
     
@@ -168,6 +173,10 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
     
     master_data = {}
     conflicts = []
+    implausible_values = []
+    # Человекочитаемые названия показателей: по ним видно, что показатель
+    # считает штуки, и значит дробное значение у него — дефект выгрузки.
+    indicator_display_names = load_indicator_display_names(column_mapping_path)
     stats = {
         'files_processed': 0,
         'errors': [],
@@ -298,6 +307,27 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                 # между всеми столбцами файла.
                 force_decimal_2022 = force_decimal or _column_has_decimal_values(df, col_idx_2022)
                 force_decimal_2023 = force_decimal or _column_has_decimal_values(df, col_idx_2023)
+
+                # Дробное «количество организаций» — признак дефекта в самой
+                # выгрузке (см. is_count_indicator). Заполнение не блокируем:
+                # наше дело — показать значение как есть и назвать место, где
+                # его стоит перепроверить глазами.
+                if is_count_indicator(indicator_display_names.get(indicator, '')):
+                    for col_idx in (col_idx_2022, col_idx_2023):
+                        if col_idx is None:
+                            continue
+                        for row_pos in range(len(df)):
+                            cell = df.iat[row_pos, col_idx]
+                            if pd.isna(cell) or not _is_fractional(cell):
+                                continue
+                            implausible_values.append({
+                                'Файл Excel': filename,
+                                'Показатель': indicator_display_names.get(indicator, indicator),
+                                'Строка Excel': row_pos + 1,
+                                'Название строки': str(df.iat[row_pos, 1])[:80] if df.shape[1] > 1 else '',
+                                'Значение': str(cell).strip(),
+                                'Что не так': 'дробное значение у показателя, считающего штуки',
+                            })
                 
                 # === ЭТАП 2: Нечеткий поиск строк (экспериментально) ===
                 if use_fuzzy_match:
@@ -373,6 +403,16 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
         except Exception as exc:
             print(f"⚠️ Не удалось сохранить отчёт об ошибках загрузки: {exc}")
 
+    if implausible_report_path is not None and implausible_values:
+        try:
+            report_path = Path(implausible_report_path)
+            report_path.parent.mkdir(parents=True, exist_ok=True)
+            pd.DataFrame(implausible_values).to_excel(report_path, index=False)
+            print(f"🔎 Найдено {len(implausible_values)} подозрительных значений "
+                  f"(дробные там, где считаются штуки): {report_path}")
+        except Exception as exc:
+            print(f"⚠️ Не удалось сохранить отчёт о подозрительных значениях: {exc}")
+
     return master_data, stats
 
 
@@ -435,6 +475,38 @@ def _column_header_text(df: pd.DataFrame, col_idx: int, max_row: int) -> str:
             continue
         parts.append(str(cell).strip())
     return ' '.join(parts).lower()
+
+
+_COUNT_INDICATOR_RE = re.compile(r'количеств|число организац|единиц', re.I)
+_NOT_COUNT_INDICATOR_RE = re.compile(r'%|процент|доля|удельн|темп|коэффициент', re.I)
+
+
+def is_count_indicator(name: str) -> bool:
+    """Показатель, значения которого обязаны быть целыми (штуки организаций).
+
+    Программа не проверяет данные на осмысленность, и это уже дало реальный
+    случай: в t25OpfVed14.xlsx в столбце «Количество организаций, единиц»
+    стоит 2,3 — столько организаций не бывает. В готовый бюллетень это
+    попало как есть, и заметил ошибку человек, а не программа.
+
+    Название вида «в % к общему КОЛИЧЕСТВУ организаций» — это доля, она
+    дробной быть обязана, поэтому слова процентов/долей снимают признак
+    счётчика. На реальных данных правило даёт ровно одно срабатывание —
+    тот самый дефект — и ни одного ложного.
+    """
+    if not name:
+        return False
+    return bool(_COUNT_INDICATOR_RE.search(name)) and not _NOT_COUNT_INDICATOR_RE.search(name)
+
+
+def _is_fractional(value: str) -> bool:
+    text = str(value).strip().replace(',', '.')
+    if not re.fullmatch(r'-?\d+\.\d+', text):
+        return False
+    try:
+        return not float(text).is_integer()
+    except ValueError:
+        return False
 
 
 def _looks_like_year(text: str) -> bool:
@@ -577,8 +649,17 @@ def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords:
     return None
 
 
-def get_cell_value_safely(row: pd.Series, col_idx: int) -> str:
-    """Безопасно получает значение ячейки"""
+def get_cell_value_safely(row: pd.Series, col_idx: Optional[int]) -> str:
+    """Безопасно получает значение ячейки.
+
+    Отрицательный индекс отсекаем явно: pandas трактует его как отсчёт с
+    конца, то есть -1 молча вернул бы значение ПОСЛЕДНЕГО столбца вместо
+    отказа. Для нас это худший исход — чужая цифра, неотличимая от
+    правильной. То же и с None: лучше пустая строка (её видно прочерком и
+    отчётом), чем исключение посреди прогона.
+    """
+    if col_idx is None or col_idx < 0:
+        return ""
     try:
         value = row.iloc[col_idx]
         if pd.isna(value):
