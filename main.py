@@ -2,6 +2,7 @@
 import sys
 from pathlib import Path
 from docx import Document
+import os
 
 from config import (
     load_okved_map,
@@ -24,6 +25,14 @@ from data_filler_v2 import (
     pre_load_all_excel_data_v2,
     fill_word_template_by_tags_v2
 )
+
+# Переключаем кодировку на UTF-8, если поддерживается
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
+# На всякий случай — задаём переменную окружения (работает в PyInstaller)
+os.environ.setdefault('PYTHONIOENCODING', 'utf-8')
 
 
 def main(input_template_override=None, output_file_override=None):
