@@ -172,12 +172,12 @@
 ✅ Заполнено: MO_30510_VneAkt_1_25 → 186454
 ✅ Заполнено: MO_30510_OboAkt_1_24 → 445190
 ✅ Заполнено: MO_30510_OboAkt_1_25 → 441862
-ℹ️ Отсутствующие данные: MO_30604_ValBal_1_24 → [-]
-ℹ️ Отсутствующие данные: MO_30604_ValBal_1_25 → [-]
-ℹ️ Отсутствующие данные: MO_30604_VneAkt_1_24 → [-]
-ℹ️ Отсутствующие данные: MO_30604_VneAkt_1_25 → [-]
-ℹ️ Отсутствующие данные: MO_30604_OboAkt_1_24 → [-]
-ℹ️ Отсутствующие данные: MO_30604_OboAkt_1_25 → [-]
+✅ Заполнено: MO_30504_ValBal_1_24 → 402574
+✅ Заполнено: MO_30504_ValBal_1_25 → 416488
+✅ Заполнено: MO_30504_VneAkt_1_24 → 237679
+✅ Заполнено: MO_30504_VneAkt_1_25 → 264138
+✅ Заполнено: MO_30504_OboAkt_1_24 → 164895
+✅ Заполнено: MO_30504_OboAkt_1_25 → 152350
 ✅ Заполнено: MO_30607_ValBal_1_24 → 40732283
 ✅ Заполнено: MO_30607_ValBal_1_25 → 45925529
 ✅ Заполнено: MO_30607_VneAkt_1_24 → 17828562
@@ -202,24 +202,24 @@
 ✅ Заполнено: MO_30616_VneAkt_1_25 → 1843569
 ✅ Заполнено: MO_30616_OboAkt_1_24 → 3460078
 ✅ Заполнено: MO_30616_OboAkt_1_25 → 3965986
-ℹ️ Отсутствующие данные: MO_30619_ValBal_1_24 → [-]
-ℹ️ Отсутствующие данные: MO_30619_ValBal_1_25 → [-]
-ℹ️ Отсутствующие данные: MO_30619_VneAkt_1_24 → [-]
-ℹ️ Отсутствующие данные: MO_30619_VneAkt_1_25 → [-]
-ℹ️ Отсутствующие данные: MO_30619_OboAkt_1_24 → [-]
-ℹ️ Отсутствующие данные: MO_30619_OboAkt_1_25 → [-]
+✅ Заполнено: MO_30519_ValBal_1_24 → 2321025
+✅ Заполнено: MO_30519_ValBal_1_25 → 2631228
+✅ Заполнено: MO_30519_VneAkt_1_24 → 636699
+✅ Заполнено: MO_30519_VneAkt_1_25 → 786752
+✅ Заполнено: MO_30519_OboAkt_1_24 → 1684326
+✅ Заполнено: MO_30519_OboAkt_1_25 → 1844476
 ✅ Заполнено: MO_30824_ValBal_1_24 → 5123295
 ✅ Заполнено: MO_30824_ValBal_1_25 → 5804565
 ✅ Заполнено: MO_30824_VneAkt_1_24 → 2745025
 ✅ Заполнено: MO_30824_VneAkt_1_25 → 2837789
 ✅ Заполнено: MO_30824_OboAkt_1_24 → 2378270
 ✅ Заполнено: MO_30824_OboAkt_1_25 → 2966776
-ℹ️ Отсутствующие данные: MO_30832_ValBal_1_24 → [-]
-ℹ️ Отсутствующие данные: MO_30832_ValBal_1_25 → [-]
-ℹ️ Отсутствующие данные: MO_30832_VneAkt_1_24 → [-]
-ℹ️ Отсутствующие данные: MO_30832_VneAkt_1_25 → [-]
-ℹ️ Отсутствующие данные: MO_30832_OboAkt_1_24 → [-]
-ℹ️ Отсутствующие данные: MO_30832_OboAkt_1_25 → [-]
+✅ Заполнено: MO_30532_ValBal_1_24 → 1438832
+✅ Заполнено: MO_30532_ValBal_1_25 → 1879672
+✅ Заполнено: MO_30532_VneAkt_1_24 → 340496
+✅ Заполнено: MO_30532_VneAkt_1_25 → 310711
+✅ Заполнено: MO_30532_OboAkt_1_24 → 1098336
+✅ Заполнено: MO_30532_OboAkt_1_25 → 1568961
 ✅ Заполнено: OKVED_101_АГ_VneAkt_2_24 → 84627963
 ✅ Заполнено: OKVED_101_АГ_VneAkt_2_25 → 100988454
 ✅ Заполнено: OKVED_101_АГ_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 63069439
@@ -686,12 +686,12 @@
 ✅ Заполнено: MO_30510_Pri(ubDoNal_2 → -9981
 ✅ Заполнено: MO_30510_NalNaPri_2 → -10948
 ✅ Заполнено: MO_30510_ChiPri(ubOtcPer_2 → -31042
-ℹ️ Отсутствующие данные: MO_30604_DohIRasPoObyVidDeyVyr_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_DohIRasPoObyVidDeyPriUby(-OtPro_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_SalProDohIRas_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_Pri(ubDoNal_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_NalNaPri_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_ChiPri(ubOtcPer_2 → [-]
+✅ Заполнено: MO_30504_DohIRasPoObyVidDeyVyr_2 → 452986
+✅ Заполнено: MO_30504_DohIRasPoObyVidDeyPriUby(-OtPro_2 → 10983
+✅ Заполнено: MO_30504_SalProDohIRas_2 → 17584
+✅ Заполнено: MO_30504_Pri(ubDoNal_2 → 28567
+✅ Заполнено: MO_30504_NalNaPri_2 → -4387
+✅ Заполнено: MO_30504_ChiPri(ubOtcPer_2 → 24180
 ✅ Заполнено: MO_30607_DohIRasPoObyVidDeyVyr_2 → 33537817
 ✅ Заполнено: MO_30607_DohIRasPoObyVidDeyPriUby(-OtPro_2 → 3842497
 ✅ Заполнено: MO_30607_SalProDohIRas_2 → -352557
@@ -716,24 +716,24 @@
 ✅ Заполнено: MO_30616_Pri(ubDoNal_2 → 1326020
 ✅ Заполнено: MO_30616_NalNaPri_2 → -100716
 ✅ Заполнено: MO_30616_ChiPri(ubOtcPer_2 → 1215688
-ℹ️ Отсутствующие данные: MO_30619_DohIRasPoObyVidDeyVyr_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_DohIRasPoObyVidDeyPriUby(-OtPro_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_SalProDohIRas_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_Pri(ubDoNal_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_NalNaPri_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_ChiPri(ubOtcPer_2 → [-]
+✅ Заполнено: MO_30519_DohIRasPoObyVidDeyVyr_2 → 2837106
+✅ Заполнено: MO_30519_DohIRasPoObyVidDeyPriUby(-OtPro_2 → 468340
+✅ Заполнено: MO_30519_SalProDohIRas_2 → -47239
+✅ Заполнено: MO_30519_Pri(ubDoNal_2 → 421101
+✅ Заполнено: MO_30519_NalNaPri_2 → -51063
+✅ Заполнено: MO_30519_ChiPri(ubOtcPer_2 → 370038
 ✅ Заполнено: MO_30824_DohIRasPoObyVidDeyVyr_2 → 4306302
 ✅ Заполнено: MO_30824_DohIRasPoObyVidDeyPriUby(-OtPro_2 → 984691
 ✅ Заполнено: MO_30824_SalProDohIRas_2 → -161069
 ✅ Заполнено: MO_30824_Pri(ubDoNal_2 → 823622
 ✅ Заполнено: MO_30824_NalNaPri_2 → -52744
 ✅ Заполнено: MO_30824_ChiPri(ubOtcPer_2 → 748756
-ℹ️ Отсутствующие данные: MO_30832_DohIRasPoObyVidDeyVyr_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_DohIRasPoObyVidDeyPriUby(-OtPro_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_SalProDohIRas_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_Pri(ubDoNal_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_NalNaPri_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_ChiPri(ubOtcPer_2 → [-]
+✅ Заполнено: MO_30532_DohIRasPoObyVidDeyVyr_2 → 1456371
+✅ Заполнено: MO_30532_DohIRasPoObyVidDeyPriUby(-OtPro_2 → 284117
+✅ Заполнено: MO_30532_SalProDohIRas_2 → 30746
+✅ Заполнено: MO_30532_Pri(ubDoNal_2 → 314863
+✅ Заполнено: MO_30532_NalNaPri_2 → -19917
+✅ Заполнено: MO_30532_ChiPri(ubOtcPer_2 → 270187
 ✅ Заполнено: OKVED_101_АГ_KolOrgEdi → 4083
 ✅ Заполнено: OKVED_101_АГ_PriUby(-DoNal → 26221193
 ✅ Заполнено: OKVED_101_АГ_OrgPolPriKolOrgEdi → 3078
@@ -947,14 +947,14 @@
 ✅ Заполнено: MO_30510_OrgPolUbyKolOrgEdi_2 → 9
 ✅ Заполнено: MO_30510_OrgPolUbyV%KObsKol_2 → 26,5
 ✅ Заполнено: MO_30510_OrgPolUbyUby_2 → 76342
-ℹ️ Отсутствующие данные: MO_30604_KolOrgEdi_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_PriUby(-DoNal_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_OrgPolPriKolOrgEdi_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_OrgPolPriV%KObsKol_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_OrgPolPriPriDoNal_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_OrgPolUbyKolOrgEdi_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_OrgPolUbyV%KObsKol_2 → [-]
-ℹ️ Отсутствующие данные: MO_30604_OrgPolUbyUby_2 → [-]
+✅ Заполнено: MO_30504_KolOrgEdi_2 → 21
+✅ Заполнено: MO_30504_PriUby(-DoNal_2 → 28567
+✅ Заполнено: MO_30504_OrgPolPriKolOrgEdi_2 → 14
+✅ Заполнено: MO_30504_OrgPolPriV%KObsKol_2 → 66,7
+✅ Заполнено: MO_30504_OrgPolPriPriDoNal_2 → 56213
+✅ Заполнено: MO_30504_OrgPolUbyKolOrgEdi_2 → 7
+✅ Заполнено: MO_30504_OrgPolUbyV%KObsKol_2 → 33,3
+✅ Заполнено: MO_30504_OrgPolUbyUby_2 → 27646
 ✅ Заполнено: MO_30607_KolOrgEdi_2 → 691
 ✅ Заполнено: MO_30607_PriUby(-DoNal_2 → 3489940
 ✅ Заполнено: MO_30607_OrgPolPriKolOrgEdi_2 → 478
@@ -987,14 +987,14 @@
 ✅ Заполнено: MO_30616_OrgPolUbyKolOrgEdi_2 → 17
 ✅ Заполнено: MO_30616_OrgPolUbyV%KObsKol_2 → 22,1
 ✅ Заполнено: MO_30616_OrgPolUbyUby_2 → 30970
-ℹ️ Отсутствующие данные: MO_30619_KolOrgEdi_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_PriUby(-DoNal_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_OrgPolPriKolOrgEdi_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_OrgPolPriV%KObsKol_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_OrgPolPriPriDoNal_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_OrgPolUbyKolOrgEdi_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_OrgPolUbyV%KObsKol_2 → [-]
-ℹ️ Отсутствующие данные: MO_30619_OrgPolUbyUby_2 → [-]
+✅ Заполнено: MO_30519_KolOrgEdi_2 → 43
+✅ Заполнено: MO_30519_PriUby(-DoNal_2 → 421101
+✅ Заполнено: MO_30519_OrgPolPriKolOrgEdi_2 → 37
+✅ Заполнено: MO_30519_OrgPolPriV%KObsKol_2 → 86,0
+✅ Заполнено: MO_30519_OrgPolPriPriDoNal_2 → 426871
+✅ Заполнено: MO_30519_OrgPolUbyKolOrgEdi_2 → 6
+✅ Заполнено: MO_30519_OrgPolUbyV%KObsKol_2 → 14,0
+✅ Заполнено: MO_30519_OrgPolUbyUby_2 → 5770
 ✅ Заполнено: MO_30824_KolOrgEdi_2 → 29
 ✅ Заполнено: MO_30824_PriUby(-DoNal_2 → 823622
 ✅ Заполнено: MO_30824_OrgPolPriKolOrgEdi_2 → 22
@@ -1003,14 +1003,14 @@
 ✅ Заполнено: MO_30824_OrgPolUbyKolOrgEdi_2 → 7
 ✅ Заполнено: MO_30824_OrgPolUbyV%KObsKol_2 → 24,1
 ✅ Заполнено: MO_30824_OrgPolUbyUby_2 → 153751
-ℹ️ Отсутствующие данные: MO_30832_KolOrgEdi_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_PriUby(-DoNal_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_OrgPolPriKolOrgEdi_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_OrgPolPriV%KObsKol_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_OrgPolPriPriDoNal_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_OrgPolUbyKolOrgEdi_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_OrgPolUbyV%KObsKol_2 → [-]
-ℹ️ Отсутствующие данные: MO_30832_OrgPolUbyUby_2 → [-]
+✅ Заполнено: MO_30532_KolOrgEdi_2 → 22
+✅ Заполнено: MO_30532_PriUby(-DoNal_2 → 314863
+✅ Заполнено: MO_30532_OrgPolPriKolOrgEdi_2 → 15
+✅ Заполнено: MO_30532_OrgPolPriV%KObsKol_2 → 68,2
+✅ Заполнено: MO_30532_OrgPolPriPriDoNal_2 → 317580
+✅ Заполнено: MO_30532_OrgPolUbyKolOrgEdi_2 → 7
+✅ Заполнено: MO_30532_OrgPolUbyV%KObsKol_2 → 31,8
+✅ Заполнено: MO_30532_OrgPolUbyUby_2 → 2717
 ✅ Заполнено: OKVED_101_АГ_KolOrgEdi_3 → 4083
 ✅ Заполнено: OKVED_101_АГ_PriUby(-OtPro → 29213540
 ✅ Заполнено: OKVED_101_АГ_SebProSUchKomIUprRas → 195643000
@@ -1044,9 +1044,9 @@
 ✅ Заполнено: MO_30510_KolOrgEdi_4 → 34
 ✅ Заполнено: MO_30510_PriUby(-OtPro_1 → 54193
 ✅ Заполнено: MO_30510_SebProSUchKomIUprRas_1 → 854562
-ℹ️ Отсутствующие данные: MO_30604_KolOrgEdi_4 → [-]
-ℹ️ Отсутствующие данные: MO_30604_PriUby(-OtPro_1 → [-]
-ℹ️ Отсутствующие данные: MO_30604_SebProSUchKomIUprRas_1 → [-]
+✅ Заполнено: MO_30504_KolOrgEdi_4 → 21
+✅ Заполнено: MO_30504_PriUby(-OtPro_1 → 10983
+✅ Заполнено: MO_30504_SebProSUchKomIUprRas_1 → 442003
 ✅ Заполнено: MO_30607_KolOrgEdi_4 → 691
 ✅ Заполнено: MO_30607_PriUby(-OtPro_1 → 3842497
 ✅ Заполнено: MO_30607_SebProSUchKomIUprRas_1 → 29695320
@@ -1059,15 +1059,15 @@
 ✅ Заполнено: MO_30616_KolOrgEdi_4 → 77
 ✅ Заполнено: MO_30616_PriUby(-OtPro_1 → 1364935
 ✅ Заполнено: MO_30616_SebProSUchKomIUprRas_1 → 3029311
-ℹ️ Отсутствующие данные: MO_30619_KolOrgEdi_4 → [-]
-ℹ️ Отсутствующие данные: MO_30619_PriUby(-OtPro_1 → [-]
-ℹ️ Отсутствующие данные: MO_30619_SebProSUchKomIUprRas_1 → [-]
+✅ Заполнено: MO_30519_KolOrgEdi_4 → 43
+✅ Заполнено: MO_30519_PriUby(-OtPro_1 → 468340
+✅ Заполнено: MO_30519_SebProSUchKomIUprRas_1 → 2368766
 ✅ Заполнено: MO_30824_KolOrgEdi_4 → 29
 ✅ Заполнено: MO_30824_PriUby(-OtPro_1 → 984691
 ✅ Заполнено: MO_30824_SebProSUchKomIUprRas_1 → 3321611
-ℹ️ Отсутствующие данные: MO_30832_KolOrgEdi_4 → [-]
-ℹ️ Отсутствующие данные: MO_30832_PriUby(-OtPro_1 → [-]
-ℹ️ Отсутствующие данные: MO_30832_SebProSUchKomIUprRas_1 → [-]
+✅ Заполнено: MO_30532_KolOrgEdi_4 → 22
+✅ Заполнено: MO_30532_PriUby(-OtPro_1 → 284117
+✅ Заполнено: MO_30532_SebProSUchKomIUprRas_1 → 1172254
 ✅ Заполнено: MO_30_OrgPolUbyOtProKolOrg(ed_1 → 912
 ✅ Заполнено: MO_30_OrgPolUbyOtProV%KObsKolOrg_1 → 22,3
 ✅ Заполнено: MO_30_OrgPolUbyOtProUbyOtPro_1 → 5467834
@@ -1088,11 +1088,11 @@
 ✅ Заполнено: MO_30510_OrgPolUbyOtProUbyOtPro_1 → 57537
 ✅ Заполнено: MO_30510_SebProSUchKomIUprRas_1 → 854562
 ✅ Заполнено: MO_30510_OrgPolUbyOtProUbyV%:_1 → 31,0
-ℹ️ Отсутствующие данные: MO_30604_OrgPolUbyOtProKolOrg(ed_1 → [-]
-ℹ️ Отсутствующие данные: MO_30604_OrgPolUbyOtProV%KObsKolOrg_1 → [-]
-ℹ️ Отсутствующие данные: MO_30604_OrgPolUbyOtProUbyOtPro_1 → [-]
-ℹ️ Отсутствующие данные: MO_30604_SebProSUchKomIUprRas_1 → [-]
-ℹ️ Отсутствующие данные: MO_30604_OrgPolUbyOtProUbyV%:_1 → [-]
+✅ Заполнено: MO_30504_OrgPolUbyOtProKolOrg(ed_1 → 7
+✅ Заполнено: MO_30504_OrgPolUbyOtProV%KObsKolOrg_1 → 33,3
+✅ Заполнено: MO_30504_OrgPolUbyOtProUbyOtPro_1 → 31759
+✅ Заполнено: MO_30504_SebProSUchKomIUprRas_1 → 442003
+✅ Заполнено: MO_30504_OrgPolUbyOtProUbyV%:_1 → 14,5
 ✅ Заполнено: MO_30607_OrgPolUbyOtProKolOrg(ed_1 → 193
 ✅ Заполнено: MO_30607_OrgPolUbyOtProV%KObsKolOrg_1 → 27,9
 ✅ Заполнено: MO_30607_OrgPolUbyOtProUbyOtPro_1 → 1368197
@@ -1113,21 +1113,21 @@
 ✅ Заполнено: MO_30616_OrgPolUbyOtProUbyOtPro_1 → 27827
 ✅ Заполнено: MO_30616_SebProSUchKomIUprRas_1 → 3029311
 ✅ Заполнено: MO_30616_OrgPolUbyOtProUbyV%:_1 → 9,4
-ℹ️ Отсутствующие данные: MO_30619_OrgPolUbyOtProKolOrg(ed_1 → [-]
-ℹ️ Отсутствующие данные: MO_30619_OrgPolUbyOtProV%KObsKolOrg_1 → [-]
-ℹ️ Отсутствующие данные: MO_30619_OrgPolUbyOtProUbyOtPro_1 → [-]
-ℹ️ Отсутствующие данные: MO_30619_SebProSUchKomIUprRas_1 → [-]
-ℹ️ Отсутствующие данные: MO_30619_OrgPolUbyOtProUbyV%:_1 → [-]
+✅ Заполнено: MO_30519_OrgPolUbyOtProKolOrg(ed_1 → 6
+✅ Заполнено: MO_30519_OrgPolUbyOtProV%KObsKolOrg_1 → 14,0
+✅ Заполнено: MO_30519_OrgPolUbyOtProUbyOtPro_1 → 4371
+✅ Заполнено: MO_30519_SebProSUchKomIUprRas_1 → 2368766
+✅ Заполнено: MO_30519_OrgPolUbyOtProUbyV%:_1 → 3,8
 ✅ Заполнено: MO_30824_OrgPolUbyOtProKolOrg(ed_1 → 5
 ✅ Заполнено: MO_30824_OrgPolUbyOtProV%KObsKolOrg_1 → 17,2
 ✅ Заполнено: MO_30824_OrgPolUbyOtProUbyOtPro_1 → 53183
 ✅ Заполнено: MO_30824_SebProSUchKomIUprRas_1 → 3321611
 ✅ Заполнено: MO_30824_OrgPolUbyOtProUbyV%:_1 → 29,7
-ℹ️ Отсутствующие данные: MO_30832_OrgPolUbyOtProKolOrg(ed_1 → [-]
-ℹ️ Отсутствующие данные: MO_30832_OrgPolUbyOtProV%KObsKolOrg_1 → [-]
-ℹ️ Отсутствующие данные: MO_30832_OrgPolUbyOtProUbyOtPro_1 → [-]
-ℹ️ Отсутствующие данные: MO_30832_SebProSUchKomIUprRas_1 → [-]
-ℹ️ Отсутствующие данные: MO_30832_OrgPolUbyOtProUbyV%:_1 → [-]
+✅ Заполнено: MO_30532_OrgPolUbyOtProKolOrg(ed_1 → 6
+✅ Заполнено: MO_30532_OrgPolUbyOtProV%KObsKolOrg_1 → 27,3
+✅ Заполнено: MO_30532_OrgPolUbyOtProUbyOtPro_1 → 45077
+✅ Заполнено: MO_30532_SebProSUchKomIUprRas_1 → 1172254
+✅ Заполнено: MO_30532_OrgPolUbyOtProUbyV%:_1 → 49,1
 ✅ Заполнено: OKVED_101_АГ_Pri(ubDoNalV%K:VsAkt → 12,4
 ✅ Заполнено: OKVED_101_АГ_Pri(ubDoNalV%K:VneAkt → 28,3
 ✅ Заполнено: OKVED_101_АГ_Pri(ubDoNalV%K:OboAkt → 22,2
@@ -1513,13 +1513,13 @@
 ✅ Заполнено: MO_30510_Pri(ubDoNalV%K:DolOby_1 → -20,1
 ✅ Заполнено: MO_30510_Pri(ubDoNalV%K:KraOby_1 → -2,8
 ✅ Заполнено: MO_30510_FinRezUbyOrgV%KItoAktUbyOrg_1 → 59,2
-ℹ️ Отсутствующие данные: MO_30604_Pri(ubDoNalV%K:VsAkt_1 → [-]
-ℹ️ Отсутствующие данные: MO_30604_Pri(ubDoNalV%K:VneAkt_1 → [-]
-ℹ️ Отсутствующие данные: MO_30604_Pri(ubDoNalV%K:OboAkt_1 → [-]
-ℹ️ Отсутствующие данные: MO_30604_Pri(ubDoNalV%K:KapIRez_1 → [-]
-ℹ️ Отсутствующие данные: MO_30604_Pri(ubDoNalV%K:DolOby_1 → [-]
-ℹ️ Отсутствующие данные: MO_30604_Pri(ubDoNalV%K:KraOby_1 → [-]
-ℹ️ Отсутствующие данные: MO_30604_FinRezUbyOrgV%KItoAktUbyOrg_1 → [-]
+✅ Заполнено: MO_30504_Pri(ubDoNalV%K:VsAkt_1 → 7,0
+✅ Заполнено: MO_30504_Pri(ubDoNalV%K:VneAkt_1 → 11,4
+✅ Заполнено: MO_30504_Pri(ubDoNalV%K:OboAkt_1 → 18,0
+✅ Заполнено: MO_30504_Pri(ubDoNalV%K:KapIRez_1 → 8,8
+✅ Заполнено: MO_30504_Pri(ubDoNalV%K:DolOby_1 → 592,5
+✅ Заполнено: MO_30504_Pri(ubDoNalV%K:KraOby_1 → 36,0
+✅ Заполнено: MO_30504_FinRezUbyOrgV%KItoAktUbyOrg_1 → 25,2
 ✅ Заполнено: MO_30607_Pri(ubDoNalV%K:VsAkt_1 → 8,1
 ✅ Заполнено: MO_30607_Pri(ubDoNalV%K:VneAkt_1 → 18,2
 ✅ Заполнено: MO_30607_Pri(ubDoNalV%K:OboAkt_1 → 14,5
@@ -1548,13 +1548,13 @@
 ✅ Заполнено: MO_30616_Pri(ubDoNalV%K:DolOby_1 → 641,5
 ✅ Заполнено: MO_30616_Pri(ubDoNalV%K:KraOby_1 → 81,5
 ✅ Заполнено: MO_30616_FinRezUbyOrgV%KItoAktUbyOrg_1 → 13,2
-ℹ️ Отсутствующие данные: MO_30619_Pri(ubDoNalV%K:VsAkt_1 → [-]
-ℹ️ Отсутствующие данные: MO_30619_Pri(ubDoNalV%K:VneAkt_1 → [-]
-ℹ️ Отсутствующие данные: MO_30619_Pri(ubDoNalV%K:OboAkt_1 → [-]
-ℹ️ Отсутствующие данные: MO_30619_Pri(ubDoNalV%K:KapIRez_1 → [-]
-ℹ️ Отсутствующие данные: MO_30619_Pri(ubDoNalV%K:DolOby_1 → [-]
-ℹ️ Отсутствующие данные: MO_30619_Pri(ubDoNalV%K:KraOby_1 → [-]
-ℹ️ Отсутствующие данные: MO_30619_FinRezUbyOrgV%KItoAktUbyOrg_1 → [-]
+✅ Заполнено: MO_30519_Pri(ubDoNalV%K:VsAkt_1 → 17,0
+✅ Заполнено: MO_30519_Pri(ubDoNalV%K:VneAkt_1 → 59,2
+✅ Заполнено: MO_30519_Pri(ubDoNalV%K:OboAkt_1 → 23,9
+✅ Заполнено: MO_30519_Pri(ubDoNalV%K:KapIRez_1 → 29,8
+✅ Заполнено: MO_30519_Pri(ubDoNalV%K:DolOby_1 → 65,8
+✅ Заполнено: MO_30519_Pri(ubDoNalV%K:KraOby_1 → 99,3
+✅ Заполнено: MO_30519_FinRezUbyOrgV%KItoAktUbyOrg_1 → 3,6
 ✅ Заполнено: MO_30824_Pri(ubDoNalV%K:VsAkt_1 → 15,1
 ✅ Заполнено: MO_30824_Pri(ubDoNalV%K:VneAkt_1 → 29,5
 ✅ Заполнено: MO_30824_Pri(ubDoNalV%K:OboAkt_1 → 30,8
@@ -1562,13 +1562,13 @@
 ✅ Заполнено: MO_30824_Pri(ubDoNalV%K:DolOby_1 → 76,1
 ✅ Заполнено: MO_30824_Pri(ubDoNalV%K:KraOby_1 → 114,0
 ✅ Заполнено: MO_30824_FinRezUbyOrgV%KItoAktUbyOrg_1 → 8,5
-ℹ️ Отсутствующие данные: MO_30832_Pri(ubDoNalV%K:VsAkt_1 → [-]
-ℹ️ Отсутствующие данные: MO_30832_Pri(ubDoNalV%K:VneAkt_1 → [-]
-ℹ️ Отсутствующие данные: MO_30832_Pri(ubDoNalV%K:OboAkt_1 → [-]
-ℹ️ Отсутствующие данные: MO_30832_Pri(ubDoNalV%K:KapIRez_1 → [-]
-ℹ️ Отсутствующие данные: MO_30832_Pri(ubDoNalV%K:DolOby_1 → [-]
-ℹ️ Отсутствующие данные: MO_30832_Pri(ubDoNalV%K:KraOby_1 → [-]
-ℹ️ Отсутствующие данные: MO_30832_FinRezUbyOrgV%KItoAktUbyOrg_1 → [-]
+✅ Заполнено: MO_30532_Pri(ubDoNalV%K:VsAkt_1 → 19,0
+✅ Заполнено: MO_30532_Pri(ubDoNalV%K:VneAkt_1 → 96,7
+✅ Заполнено: MO_30532_Pri(ubDoNalV%K:OboAkt_1 → 23,6
+✅ Заполнено: MO_30532_Pri(ubDoNalV%K:KapIRez_1 → 23,6
+✅ Заполнено: MO_30532_Pri(ubDoNalV%K:DolOby_1 → 578,5
+✅ Заполнено: MO_30532_Pri(ubDoNalV%K:KraOby_1 → 115,8
+✅ Заполнено: MO_30532_FinRezUbyOrgV%KItoAktUbyOrg_1 → 6,2
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10KolOrg(ed → 3508
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10V%KObsKol → 85,9
 ✅ Заполнено: OKVED_101_АГ_KoeTekLikDo<10FinIDruAkt → 45624116
