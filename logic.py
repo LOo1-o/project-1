@@ -745,7 +745,36 @@ def get_continuation_table_number(table):
 
 
 def get_table_source_by_number(table_source_mapping, table_number):
-    if table_number < 1 or table_number > len(table_source_mapping):
+    """Источник для метки "Продолжение таблицы N".
+
+    Номер берём из самого названия таблицы ("13. ФОРМИРОВАНИЕ ..."), а не из
+    позиции строки в маппинге. Позиции доверять нельзя: load_table_source_map
+    отбрасывает строки с пустым источником (сводные таблицы, которые ничем не
+    заполняются), и порядковый номер перестаёт совпадать с номером таблицы в
+    бюллетене. В бюллетене с тремя такими строками в начале сдвиг составлял 3:
+    "Продолжение таблицы 4" получало источник таблицы 7, а продолжения таблиц
+    21-23 выходили за границу списка и не получали источника вовсе.
+
+    Если ни одно название не пронумеровано, поведение прежнее — по позиции.
+    """
+    if table_number < 1:
+        return None
+
+    numbered = False
+    for title, source in table_source_mapping.items():
+        match = re.match(r'\s*(\d+)\s*[.)]', str(title))
+        if not match:
+            continue
+        numbered = True
+        if int(match.group(1)) == table_number:
+            return source
+
+    if numbered:
+        # Нумерация есть, но такого номера в маппинге нет — это не повод
+        # молча отдать чужой источник по позиции.
+        return None
+
+    if table_number > len(table_source_mapping):
         return None
     return list(table_source_mapping.values())[table_number - 1]
 
@@ -922,8 +951,14 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             continuation_source = get_table_source_by_number(table_source_mapping, continuation_number)
             if continuation_source:
                 if current_source_file and current_source_file != continuation_source:
-                    print(
+                    conflict = (
                         f"🔁 Источник по метке продолжения таблицы {continuation_number} ({continuation_source}) отличается от источника заголовка ({current_source_file}). Предпочитаем продолжение таблицы.")
+                    print(conflict)
+                    # Оба способа определения источника надёжны, поэтому их
+                    # расхождение означает ошибку в одном из них — такое
+                    # нельзя оставлять только в консоли, иначе таблица молча
+                    # заполнится чужими данными.
+                    validation_log.append(f"[TABLE {t_index + 1}] {conflict}")
                 current_source_file = continuation_source
                 print(f"🔁 Источник по метке продолжения таблицы {continuation_number}: {current_source_file}")
 
