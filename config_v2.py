@@ -310,6 +310,37 @@ def validate_table_source_mapping(table_source_mapping: dict, excel_dir: Path):
     return missing_files, unused_files
 
 
+def _cell_text(value) -> str:
+    """Текст ячейки Excel; пустая ячейка — пустая строка.
+
+    Нельзя делать так: df.iloc[row].astype(str).fillna(''). astype(str)
+    выполняется первым, и что он делает с пустой ячейкой, зависит от версии
+    pandas. В pandas 3 пустая ячейка остаётся пустой, и fillna('') делает из
+    неё ''. В pandas 2.x (последняя ветка для Windows 7 и Python 3.8) пустая
+    ячейка к этому моменту уже стала текстом 'nan', и fillna ей ничего не
+    заменяет. В шапках Росстата пустые ячейки есть всегда — под
+    объединёнными над двумя годами названиями, — и на pandas 2.x генератор
+    принимал 'nan' за название нового показателя: настоящий показатель
+    терял вторую колонку года.
+
+    Настоящий текст 'nan' в ячейке — не пустота, его не трогаем.
+    """
+    if value is None:
+        return ''
+    try:
+        if pd.isna(value):
+            return ''
+    except (TypeError, ValueError):
+        pass
+    return str(value)
+
+
+def _row_texts(df: pd.DataFrame, row_idx: int, max_cols: Optional[int] = None) -> list:
+    """Строка Excel как список текстов ячеек (см. _cell_text)."""
+    row = df.iloc[row_idx] if max_cols is None else df.iloc[row_idx, :max_cols]
+    return [_cell_text(value) for value in row.tolist()]
+
+
 def _detect_year_by_text(text: str) -> str:
     if not isinstance(text, str):
         return None
@@ -324,7 +355,7 @@ def _detect_year_by_text(text: str) -> str:
 def _find_excel_header_row(df: pd.DataFrame) -> int:
     candidates = []
     for idx in range(min(40, len(df))):
-        row = df.iloc[idx, :10].astype(str).fillna('').str.lower().tolist()
+        row = [cell.lower() for cell in _row_texts(df, idx, 10)]
         joined = ' '.join(row)
         if 'код' in joined and 'наименование' in joined:
             return idx
@@ -353,7 +384,7 @@ def _find_excel_header_row(df: pd.DataFrame) -> int:
             candidate = letter_row_idx - offset
             if candidate < 0:
                 continue
-            row = df.iloc[candidate, :10].astype(str).fillna('').tolist()
+            row = _row_texts(df, candidate, 10)
             if _looks_like_real_header_row(row):
                 return candidate
 
@@ -625,9 +656,9 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
         print(f"⚠️ Не найден заголовок с 'Код' и 'Наименование' в {excel_path.name}")
         return []
 
-    headers = df.iloc[header_row].astype(str).fillna('').tolist()
-    subheaders = df.iloc[header_row + 1].astype(str).fillna('').tolist() if header_row + 1 < len(df) else [''] * len(headers)
-    footer_row = df.iloc[header_row + 2].astype(str).fillna('').tolist() if header_row + 2 < len(df) else [''] * len(headers)
+    headers = _row_texts(df, header_row)
+    subheaders = _row_texts(df, header_row + 1) if header_row + 1 < len(df) else [''] * len(headers)
+    footer_row = _row_texts(df, header_row + 2) if header_row + 2 < len(df) else [''] * len(headers)
     max_header_idx = max(
         [i for i, v in enumerate(headers) if str(v).strip()] +
         [i for i, v in enumerate(subheaders) if str(v).strip()] +
