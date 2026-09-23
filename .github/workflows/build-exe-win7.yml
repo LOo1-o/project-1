@@ -23,6 +23,7 @@ on:
   push:
     paths:
       - '*.py'
+      - 'tests/**'
       - 'requirements-win7.txt'
       - '.github/workflows/build-exe-win7.yml'
 
