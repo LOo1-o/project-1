@@ -40,6 +40,36 @@ def _extract_year(text: str) -> Optional[str]:
     return match.group(1) if match else None
 
 
+def _is_year_header_row(row) -> bool:
+    """Строка шапки с годами: название пустое, все непустые ячейки — годы.
+
+    Строка без узнанного названия зачищается как «неизвестная отрасль»:
+    числовые ячейки заменяются прочерком. Число от подписи отличается по
+    отсутствию букв (looks_like_data_value), и год «2024» под это попадает.
+    Когда в одну таблицу Word склеено несколько страниц-продолжений, их шапки
+    с годами оказываются среди строк данных — и очистка стирала в них годы.
+    В готовых документах вместо «2023 | 2024» стояли прочерки: бюллетень №1,
+    таблица 33 — 18 ячеек; бюллетень №2, таблица 29 — 16. В бюллетене №2 без
+    годов блок ниже ещё и размечался неверно: теги без года, 6 колонок из 8
+    без тегов.
+
+    Проверка по строке, а не по ячейке: число 2024 в ячейке данных вполне
+    возможно, а строка без названия, где ВСЕ значения — годы, — нет.
+    """
+    if get_cleaned_cell_text(row.cells[0]).strip():
+        return False
+    texts = []
+    prev_tc = row.cells[0]._tc
+    for cell in row.cells[1:]:
+        if cell._tc is prev_tc:
+            continue
+        prev_tc = cell._tc
+        text = get_cleaned_cell_text(cell).strip()
+        if text:
+            texts.append(text)
+    return len(texts) >= 2 and all(re.fullmatch(r'20\d\d', text) for text in texts)
+
+
 def _squish_text(text: str) -> str:
     """
     Самый толерантный уровень сравнения: убирает вообще все пробелы и
@@ -422,8 +452,17 @@ def _build_composed_header_for_column(table, base_row_idx: int, col_idx: int, de
     return " ".join(parts).strip()
 
 
-def _find_header_rows(table, source_word_to_indicator, max_search_rows=80, entity_name_maps=None):
+def _find_header_rows(table, source_word_to_indicator, max_search_rows=None, entity_name_maps=None):
     """Собирает все строки заголовков таблицы (year или indicator rows).
+
+    По умолчанию просматривается вся таблица. Раньше — только первые 80
+    строк, но в одну таблицу Word бывает склеено несколько страниц-
+    продолжений, каждая со своей шапкой. В бюллетене №2 таблица 29 — это 102
+    строки, и шапки последних страниц (строки 78–82 и 91–95) оказывались за
+    границей: их строки размечались по раскладке предыдущей страницы, где
+    колонки начинаются с другого места, — 28 тегов без года и 6 колонок из 8
+    без тегов. В бюллетене №1 то же было в таблице 33 (127 строк), но там у
+    всех страниц одинаковая раскладка, и чужая шапка случайно подходила.
 
     entity_name_maps: необязательный список справочников "название -> код"
     (ОКВЭД/МО/категория — см. category_mapping.py), которые заведомо
@@ -1423,6 +1462,12 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 continue
 
             first_cell_text = get_cleaned_cell_text(row.cells[0])
+
+            # Шапка с годами у страницы-продолжения, склеенной в эту же
+            # таблицу, — не строка данных: ни тегов, ни очистки
+            # (см. _is_year_header_row).
+            if _is_year_header_row(row):
+                continue
 
             category_prefix = category_prefix_by_file.get(current_source_file)
             if category_prefix:
