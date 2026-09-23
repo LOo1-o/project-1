@@ -328,63 +328,72 @@
 ✅ Заполнено: OKVED_101_АГ_DolOby_25 → 70965054
 ✅ Заполнено: OKVED_101_АГ_KraOby_24 → 68377317
 ✅ Заполнено: OKVED_101_АГ_KraOby_25 → 73574004
-ℹ️ Отсутствующие данные: OKVED_101_АГ_ValBal → [-]
+✅ Заполнено: OKVED_101_АГ_ValBalUbyOrgNaKonGoItAktUbyOrg → 70383597
+✅ Заполнено: OKVED_101_АГ_ValBalUbyOrgNaKonGoV%KValBal → 31,4
 ✅ Заполнено: OKVED_A_KapIRez_24 → 16615556
 ✅ Заполнено: OKVED_A_KapIRez_25 → 18664374
 ✅ Заполнено: OKVED_A_DolOby_24 → 9412746
 ✅ Заполнено: OKVED_A_DolOby_25 → 10834949
 ✅ Заполнено: OKVED_A_KraOby_24 → 7425097
 ✅ Заполнено: OKVED_A_KraOby_25 → 8678808
-ℹ️ Отсутствующие данные: OKVED_A_ValBal → [-]
+✅ Заполнено: OKVED_A_ValBalUbyOrgNaKonGoItAktUbyOrg → 8896924
+✅ Заполнено: OKVED_A_ValBalUbyOrgNaKonGoV%KValBal → 23,3
 ✅ Заполнено: OKVED_01_KapIRez_24 → 1376309
 ✅ Заполнено: OKVED_01_KapIRez_25 → 1180383
 ✅ Заполнено: OKVED_01_DolOby_24 → 4115015
 ✅ Заполнено: OKVED_01_DolOby_25 → 4127089
 ✅ Заполнено: OKVED_01_KraOby_24 → 508013
 ✅ Заполнено: OKVED_01_KraOby_25 → 750872
-ℹ️ Отсутствующие данные: OKVED_01_ValBal → [-]
+✅ Заполнено: OKVED_01_ValBalUbyOrgNaKonGoItAktUbyOrg → 4031953
+✅ Заполнено: OKVED_01_ValBalUbyOrgNaKonGoV%KValBal → 66,6
 ✅ Заполнено: OKVED_03_KapIRez_24 → 15145613
 ✅ Заполнено: OKVED_03_KapIRez_25 → 17419385
 ✅ Заполнено: OKVED_03_DolOby_24 → 5280692
 ✅ Заполнено: OKVED_03_DolOby_25 → 6691841
 ✅ Заполнено: OKVED_03_KraOby_24 → 6834565
 ✅ Заполнено: OKVED_03_KraOby_25 → 7815965
-ℹ️ Отсутствующие данные: OKVED_03_ValBal → [-]
+✅ Заполнено: OKVED_03_ValBalUbyOrgNaKonGoItAktUbyOrg → 4695794
+✅ Заполнено: OKVED_03_ValBalUbyOrgNaKonGoV%KValBal → 14,7
 ✅ Заполнено: OKVED_B_KapIRez_24 → 496764
 ✅ Заполнено: OKVED_B_KapIRez_25 → 420088
 ✅ Заполнено: OKVED_B_DolOby_24 → 1320943
 ✅ Заполнено: OKVED_B_DolOby_25 → 998338
 ✅ Заполнено: OKVED_B_KraOby_24 → 1680576
 ✅ Заполнено: OKVED_B_KraOby_25 → 1875929
-ℹ️ Отсутствующие данные: OKVED_B_ValBal → [-]
+✅ Заполнено: OKVED_B_ValBalUbyOrgNaKonGoItAktUbyOrg → 665192
+✅ Заполнено: OKVED_B_ValBalUbyOrgNaKonGoV%KValBal → 20,2
 ✅ Заполнено: OKVED_07_KapIRez_24 → -423815
 ✅ Заполнено: OKVED_07_KapIRez_25 → -527471
 ✅ Заполнено: OKVED_07_DolOby_24 → 350131
 ✅ Заполнено: OKVED_07_DolOby_25 → 114261
 ✅ Заполнено: OKVED_07_KraOby_24 → 517216
 ✅ Заполнено: OKVED_07_KraOby_25 → 663186
-ℹ️ Отсутствующие данные: OKVED_07_ValBal → [-]
+✅ Заполнено: OKVED_07_ValBalUbyOrgNaKonGoItAktUbyOrg → 6339
+✅ Заполнено: OKVED_07_ValBalUbyOrgNaKonGoV%KValBal → 2,5
 ✅ Заполнено: OKVED_C_KapIRez_24 → 7182655
 ✅ Заполнено: OKVED_C_KapIRez_25 → 8372433
 ✅ Заполнено: OKVED_C_DolOby_24 → 9284357
 ✅ Заполнено: OKVED_C_DolOby_25 → 8605648
 ✅ Заполнено: OKVED_C_KraOby_24 → 7837742
 ✅ Заполнено: OKVED_C_KraOby_25 → 10585094
-ℹ️ Отсутствующие данные: OKVED_C_ValBal → [-]
+✅ Заполнено: OKVED_C_ValBalUbyOrgNaKonGoItAktUbyOrg → 3928654
+✅ Заполнено: OKVED_C_ValBalUbyOrgNaKonGoV%KValBal → 14,3
 ✅ Заполнено: OKVED_10_KapIRez_24 → 2008991
 ✅ Заполнено: OKVED_10_KapIRez_25 → 2116528
 ✅ Заполнено: OKVED_10_DolOby_24 → 1385476
 ✅ Заполнено: OKVED_10_DolOby_25 → 1468622
 ✅ Заполнено: OKVED_10_KraOby_24 → 2040999
 ✅ Заполнено: OKVED_10_KraOby_25 → 2692106
-ℹ️ Отсутствующие данные: OKVED_10_ValBal → [-]
+✅ Заполнено: OKVED_10_ValBalUbyOrgNaKonGoItAktUbyOrg → 946339
+✅ Заполнено: OKVED_10_ValBalUbyOrgNaKonGoV%KValBal → 15,1
 ✅ Заполнено: OKVED_11_KapIRez_24 → 207824
 ✅ Заполнено: OKVED_11_KapIRez_25 → 55726
 ✅ Заполнено: OKVED_11_DolOby_24 → 1154125
 ✅ Заполнено: OKVED_11_DolOby_25 → 1187114
 ✅ Заполнено: OKVED_11_KraOby_24 → 247605
 ✅ Заполнено: OKVED_11_KraOby_25 → 397819
-ℹ️ Отсутствующие данные: OKVED_11_ValBal → [-]
+✅ Заполнено: OKVED_11_ValBalUbyOrgNaKonGoItAktUbyOrg → 1027901
+✅ Заполнено: OKVED_11_ValBalUbyOrgNaKonGoV%KValBal → 62,7
 ℹ️ Отсутствующие данные: OKVED_32_KapIRez → [-]
 ℹ️ Отсутствующие данные: OKVED_32_DolOby → [-]
 ℹ️ Отсутствующие данные: OKVED_32_KraOby → [-]
@@ -406,189 +415,216 @@
 ✅ Заполнено: OKVED_E_DolOby_25 → 932895
 ✅ Заполнено: OKVED_E_KraOby_24 → 988564
 ✅ Заполнено: OKVED_E_KraOby_25 → 1371786
-ℹ️ Отсутствующие данные: OKVED_E_ValBal → [-]
+✅ Заполнено: OKVED_E_ValBalUbyOrgNaKonGoItAktUbyOrg → 696024
+✅ Заполнено: OKVED_E_ValBalUbyOrgNaKonGoV%KValBal → 21,2
 ✅ Заполнено: OKVED_36_KapIRez_24 → 1548
 ✅ Заполнено: OKVED_36_KapIRez_25 → 17316
 ℹ️ Отсутствующие данные: OKVED_36_DolOby_24 → [-]
 ✅ Заполнено: OKVED_36_DolOby_25 → 2380
 ✅ Заполнено: OKVED_36_KraOby_24 → 23473
 ✅ Заполнено: OKVED_36_KraOby_25 → 28541
-ℹ️ Отсутствующие данные: OKVED_36_ValBal → [-]
+ℹ️ Отсутствующие данные: OKVED_36_ValBalUbyOrgNaKonGoItAktUbyOrg → [-]
+ℹ️ Отсутствующие данные: OKVED_36_ValBalUbyOrgNaKonGoV%KValBal → [-]
 ✅ Заполнено: OKVED_38_KapIRez_24 → 603966
 ✅ Заполнено: OKVED_38_KapIRez_25 → 964447
 ✅ Заполнено: OKVED_38_DolOby_24 → 771269
 ✅ Заполнено: OKVED_38_DolOby_25 → 929750
 ✅ Заполнено: OKVED_38_KraOby_24 → 945133
 ✅ Заполнено: OKVED_38_KraOby_25 → 1316850
-ℹ️ Отсутствующие данные: OKVED_38_ValBal → [-]
+✅ Заполнено: OKVED_38_ValBalUbyOrgNaKonGoItAktUbyOrg → 695598
+✅ Заполнено: OKVED_38_ValBalUbyOrgNaKonGoV%KValBal → 21,7
 ✅ Заполнено: OKVED_F_KapIRez_24 → 8120539
 ✅ Заполнено: OKVED_F_KapIRez_25 → 8877284
 ✅ Заполнено: OKVED_F_DolOby_24 → 6068374
 ✅ Заполнено: OKVED_F_DolOby_25 → 12196230
 ✅ Заполнено: OKVED_F_KraOby_24 → 8920707
 ✅ Заполнено: OKVED_F_KraOby_25 → 10355464
-ℹ️ Отсутствующие данные: OKVED_F_ValBal → [-]
+✅ Заполнено: OKVED_F_ValBalUbyOrgNaKonGoItAktUbyOrg → 8781673
+✅ Заполнено: OKVED_F_ValBalUbyOrgNaKonGoV%KValBal → 27,9
 ✅ Заполнено: OKVED_41_KapIRez_24 → 3380271
 ✅ Заполнено: OKVED_41_KapIRez_25 → 3725089
 ✅ Заполнено: OKVED_41_DolOby_24 → 5183250
 ✅ Заполнено: OKVED_41_DolOby_25 → 11254388
 ✅ Заполнено: OKVED_41_KraOby_24 → 4081465
 ✅ Заполнено: OKVED_41_KraOby_25 → 5316042
-ℹ️ Отсутствующие данные: OKVED_41_ValBal → [-]
+✅ Заполнено: OKVED_41_ValBalUbyOrgNaKonGoItAktUbyOrg → 7296618
+✅ Заполнено: OKVED_41_ValBalUbyOrgNaKonGoV%KValBal → 36,0
 ✅ Заполнено: OKVED_42_KapIRez_24 → 1547753
 ✅ Заполнено: OKVED_42_KapIRez_25 → 1911293
 ✅ Заполнено: OKVED_42_DolOby_24 → 241825
 ✅ Заполнено: OKVED_42_DolOby_25 → 388741
 ✅ Заполнено: OKVED_42_KraOby_24 → 1768080
 ✅ Заполнено: OKVED_42_KraOby_25 → 1734030
-ℹ️ Отсутствующие данные: OKVED_42_ValBal → [-]
+✅ Заполнено: OKVED_42_ValBalUbyOrgNaKonGoItAktUbyOrg → 311118
+✅ Заполнено: OKVED_42_ValBalUbyOrgNaKonGoV%KValBal → 7,7
 ✅ Заполнено: OKVED_43_KapIRez_24 → 3192515
 ✅ Заполнено: OKVED_43_KapIRez_25 → 3240902
 ✅ Заполнено: OKVED_43_DolOby_24 → 643299
 ✅ Заполнено: OKVED_43_DolOby_25 → 553101
 ✅ Заполнено: OKVED_43_KraOby_24 → 3071162
 ✅ Заполнено: OKVED_43_KraOby_25 → 3305392
-ℹ️ Отсутствующие данные: OKVED_43_ValBal → [-]
+✅ Заполнено: OKVED_43_ValBalUbyOrgNaKonGoItAktUbyOrg → 1173937
+✅ Заполнено: OKVED_43_ValBalUbyOrgNaKonGoV%KValBal → 16,5
 ✅ Заполнено: OKVED_G_KapIRez_24 → 16196670
 ✅ Заполнено: OKVED_G_KapIRez_25 → 15660275
 ✅ Заполнено: OKVED_G_DolOby_24 → 3132348
 ✅ Заполнено: OKVED_G_DolOby_25 → 3584853
 ✅ Заполнено: OKVED_G_KraOby_24 → 11253228
 ✅ Заполнено: OKVED_G_KraOby_25 → 11967419
-ℹ️ Отсутствующие данные: OKVED_G_ValBal → [-]
+✅ Заполнено: OKVED_G_ValBalUbyOrgNaKonGoItAktUbyOrg → 5104972
+✅ Заполнено: OKVED_G_ValBalUbyOrgNaKonGoV%KValBal → 16,4
 ✅ Заполнено: OKVED_46_KapIRez_24 → 9127411
 ✅ Заполнено: OKVED_46_KapIRez_25 → 8853845
 ✅ Заполнено: OKVED_46_DolOby_24 → 1905117
 ✅ Заполнено: OKVED_46_DolOby_25 → 2185411
 ✅ Заполнено: OKVED_46_KraOby_24 → 7751740
 ✅ Заполнено: OKVED_46_KraOby_25 → 8118318
-ℹ️ Отсутствующие данные: OKVED_46_ValBal → [-]
+✅ Заполнено: OKVED_46_ValBalUbyOrgNaKonGoItAktUbyOrg → 3263624
+✅ Заполнено: OKVED_46_ValBalUbyOrgNaKonGoV%KValBal → 17,0
 ✅ Заполнено: OKVED_47_KapIRez_24 → 5152992
 ✅ Заполнено: OKVED_47_KapIRez_25 → 4993717
 ✅ Заполнено: OKVED_47_DolOby_24 → 815747
 ✅ Заполнено: OKVED_47_DolOby_25 → 862055
 ✅ Заполнено: OKVED_47_KraOby_24 → 2879253
 ✅ Заполнено: OKVED_47_KraOby_25 → 3107338
-ℹ️ Отсутствующие данные: OKVED_47_ValBal → [-]
+✅ Заполнено: OKVED_47_ValBalUbyOrgNaKonGoItAktUbyOrg → 1099933
+✅ Заполнено: OKVED_47_ValBalUbyOrgNaKonGoV%KValBal → 12,3
 ✅ Заполнено: OKVED_H_KapIRez_24 → 5480038
 ✅ Заполнено: OKVED_H_KapIRez_25 → 6057425
 ✅ Заполнено: OKVED_H_DolOby_24 → 3840334
 ✅ Заполнено: OKVED_H_DolOby_25 → 3228119
 ✅ Заполнено: OKVED_H_KraOby_24 → 6087714
 ✅ Заполнено: OKVED_H_KraOby_25 → 7277696
-ℹ️ Отсутствующие данные: OKVED_H_ValBal → [-]
+✅ Заполнено: OKVED_H_ValBalUbyOrgNaKonGoItAktUbyOrg → 5089751
+✅ Заполнено: OKVED_H_ValBalUbyOrgNaKonGoV%KValBal → 30,7
 ✅ Заполнено: OKVED_49_KapIRez_24 → 1120072
 ✅ Заполнено: OKVED_49_KapIRez_25 → 1557481
 ✅ Заполнено: OKVED_49_DolOby_24 → 555259
 ✅ Заполнено: OKVED_49_DolOby_25 → 570479
 ✅ Заполнено: OKVED_49_KraOby_24 → 705889
 ✅ Заполнено: OKVED_49_KraOby_25 → 891769
-ℹ️ Отсутствующие данные: OKVED_49_ValBal → [-]
+✅ Заполнено: OKVED_49_ValBalUbyOrgNaKonGoItAktUbyOrg → 301543
+✅ Заполнено: OKVED_49_ValBalUbyOrgNaKonGoV%KValBal → 10,0
 ✅ Заполнено: OKVED_50_KapIRez_24 → 591801
 ✅ Заполнено: OKVED_50_KapIRez_25 → 442445
 ✅ Заполнено: OKVED_50_DolOby_24 → 611477
 ✅ Заполнено: OKVED_50_DolOby_25 → 472816
 ✅ Заполнено: OKVED_50_KraOby_24 → 1540063
 ✅ Заполнено: OKVED_50_KraOby_25 → 1729212
-ℹ️ Отсутствующие данные: OKVED_50_ValBal → [-]
+✅ Заполнено: OKVED_50_ValBalUbyOrgNaKonGoItAktUbyOrg → 1204884
+✅ Заполнено: OKVED_50_ValBalUbyOrgNaKonGoV%KValBal → 45,6
 ✅ Заполнено: OKVED_51_KapIRez_24 → 149138
 ✅ Заполнено: OKVED_51_KapIRez_25 → 78698
 ✅ Заполнено: OKVED_51_DolOby_24 → 30413
 ✅ Заполнено: OKVED_51_DolOby_25 → 9413
 ✅ Заполнено: OKVED_51_KraOby_24 → 34990
 ✅ Заполнено: OKVED_51_KraOby_25 → 81183
-ℹ️ Отсутствующие данные: OKVED_51_ValBal → [-]
+✅ Заполнено: OKVED_51_ValBalUbyOrgNaKonGoItAktUbyOrg → 13751
+✅ Заполнено: OKVED_51_ValBalUbyOrgNaKonGoV%KValBal → 8,1
 ✅ Заполнено: OKVED_52_KapIRez_24 → 3536359
 ✅ Заполнено: OKVED_52_KapIRez_25 → 3894002
 ✅ Заполнено: OKVED_52_DolOby_24 → 2639228
 ✅ Заполнено: OKVED_52_DolOby_25 → 2172577
 ✅ Заполнено: OKVED_52_KraOby_24 → 3781613
 ✅ Заполнено: OKVED_52_KraOby_25 → 4558881
-ℹ️ Отсутствующие данные: OKVED_52_ValBal → [-]
+✅ Заполнено: OKVED_52_ValBalUbyOrgNaKonGoItAktUbyOrg → 3568920
+✅ Заполнено: OKVED_52_ValBalUbyOrgNaKonGoV%KValBal → 33,6
 ✅ Заполнено: OKVED_I_KapIRez_24 → 5289916
 ✅ Заполнено: OKVED_I_KapIRez_25 → 5231951
 ✅ Заполнено: OKVED_I_DolOby_24 → 9146640
 ✅ Заполнено: OKVED_I_DolOby_25 → 12465635
 ✅ Заполнено: OKVED_I_KraOby_24 → 2603620
 ✅ Заполнено: OKVED_I_KraOby_25 → 2805869
-ℹ️ Отсутствующие данные: OKVED_I_ValBal → [-]
+✅ Заполнено: OKVED_I_ValBalUbyOrgNaKonGoItAktUbyOrg → 16790049
+✅ Заполнено: OKVED_I_ValBalUbyOrgNaKonGoV%KValBal → 81,9
 ✅ Заполнено: OKVED_55_KapIRez_24 → 4323378
 ✅ Заполнено: OKVED_55_KapIRez_25 → 4266688
 ✅ Заполнено: OKVED_55_DolOby_24 → 8809359
 ✅ Заполнено: OKVED_55_DolOby_25 → 12111427
 ✅ Заполнено: OKVED_55_KraOby_24 → 2070191
 ✅ Заполнено: OKVED_55_KraOby_25 → 2296453
-ℹ️ Отсутствующие данные: OKVED_55_ValBal → [-]
+✅ Заполнено: OKVED_55_ValBalUbyOrgNaKonGoItAktUbyOrg → 16471552
+✅ Заполнено: OKVED_55_ValBalUbyOrgNaKonGoV%KValBal → 88,2
 ✅ Заполнено: OKVED_56_KapIRez_24 → 966538
 ✅ Заполнено: OKVED_56_KapIRez_25 → 965263
 ✅ Заполнено: OKVED_56_DolOby_24 → 337281
 ✅ Заполнено: OKVED_56_DolOby_25 → 354208
 ✅ Заполнено: OKVED_56_KraOby_24 → 533429
 ✅ Заполнено: OKVED_56_KraOby_25 → 509416
-ℹ️ Отсутствующие данные: OKVED_56_ValBal → [-]
+✅ Заполнено: OKVED_56_ValBalUbyOrgNaKonGoItAktUbyOrg → 318497
+✅ Заполнено: OKVED_56_ValBalUbyOrgNaKonGoV%KValBal → 17,4
 ✅ Заполнено: OKVED_J_KapIRez_24 → 743122
 ✅ Заполнено: OKVED_J_KapIRez_25 → 838644
 ✅ Заполнено: OKVED_J_DolOby_24 → 447129
 ✅ Заполнено: OKVED_J_DolOby_25 → 439198
 ✅ Заполнено: OKVED_J_KraOby_24 → 524758
 ✅ Заполнено: OKVED_J_KraOby_25 → 568167
-ℹ️ Отсутствующие данные: OKVED_J_ValBal → [-]
+✅ Заполнено: OKVED_J_ValBalUbyOrgNaKonGoItAktUbyOrg → 95823
+✅ Заполнено: OKVED_J_ValBalUbyOrgNaKonGoV%KValBal → 5,2
 ✅ Заполнено: OKVED_63_KapIRez_24 → 62698
 ✅ Заполнено: OKVED_63_KapIRez_25 → 66980
 ✅ Заполнено: OKVED_63_DolOby_24 → 4861
 ✅ Заполнено: OKVED_63_DolOby_25 → 8501
 ✅ Заполнено: OKVED_63_KraOby_24 → 28449
 ✅ Заполнено: OKVED_63_KraOby_25 → 46842
-ℹ️ Отсутствующие данные: OKVED_63_ValBal → [-]
+✅ Заполнено: OKVED_63_ValBalUbyOrgNaKonGoItAktUbyOrg → 9970
+✅ Заполнено: OKVED_63_ValBalUbyOrgNaKonGoV%KValBal → 8,2
 ✅ Заполнено: OKVED_K_KapIRez_24 → 1524868
 ✅ Заполнено: OKVED_K_KapIRez_25 → 1485212
 ✅ Заполнено: OKVED_K_DolOby_24 → 1980661
 ✅ Заполнено: OKVED_K_DolOby_25 → 8445905
 ✅ Заполнено: OKVED_K_KraOby_24 → 4028974
 ✅ Заполнено: OKVED_K_KraOby_25 → 1018005
-ℹ️ Отсутствующие данные: OKVED_K_ValBal → [-]
+✅ Заполнено: OKVED_K_ValBalUbyOrgNaKonGoItAktUbyOrg → 6967747
+✅ Заполнено: OKVED_K_ValBalUbyOrgNaKonGoV%KValBal → 63,6
 ✅ Заполнено: OKVED_64_KapIRez_24 → 1524589
 ✅ Заполнено: OKVED_64_KapIRez_25 → 1484773
 ✅ Заполнено: OKVED_64_DolOby_24 → 1980661
 ✅ Заполнено: OKVED_64_DolOby_25 → 8445905
 ✅ Заполнено: OKVED_64_KraOby_24 → 4028753
 ✅ Заполнено: OKVED_64_KraOby_25 → 1017739
-ℹ️ Отсутствующие данные: OKVED_64_ValBal → [-]
+✅ Заполнено: OKVED_64_ValBalUbyOrgNaKonGoItAktUbyOrg → 6967747
+✅ Заполнено: OKVED_64_ValBalUbyOrgNaKonGoV%KValBal → 63,6
 ✅ Заполнено: OKVED_L_KapIRez_24 → 5857613
 ✅ Заполнено: OKVED_L_KapIRez_25 → 5562360
 ✅ Заполнено: OKVED_L_DolOby_24 → 3381349
 ✅ Заполнено: OKVED_L_DolOby_25 → 3451315
 ✅ Заполнено: OKVED_L_KraOby_24 → 10193307
 ✅ Заполнено: OKVED_L_KraOby_25 → 9825238
-ℹ️ Отсутствующие данные: OKVED_L_ValBal → [-]
+✅ Заполнено: OKVED_L_ValBalUbyOrgNaKonGoItAktUbyOrg → 5885831
+✅ Заполнено: OKVED_L_ValBalUbyOrgNaKonGoV%KValBal → 31,2
 ✅ Заполнено: OKVED_M_KapIRez_24 → 2837348
 ✅ Заполнено: OKVED_M_KapIRez_25 → 3091476
 ✅ Заполнено: OKVED_M_DolOby_24 → 949397
 ✅ Заполнено: OKVED_M_DolOby_25 → 727840
 ✅ Заполнено: OKVED_M_KraOby_24 → 3772620
 ✅ Заполнено: OKVED_M_KraOby_25 → 3712046
-ℹ️ Отсутствующие данные: OKVED_M_ValBal → [-]
+✅ Заполнено: OKVED_M_ValBalUbyOrgNaKonGoItAktUbyOrg → 1093447
+✅ Заполнено: OKVED_M_ValBalUbyOrgNaKonGoV%KValBal → 14,5
 ✅ Заполнено: OKVED_69_KapIRez_24 → 723685
 ✅ Заполнено: OKVED_69_KapIRez_25 → 750652
 ✅ Заполнено: OKVED_69_DolOby_24 → 119185
 ✅ Заполнено: OKVED_69_DolOby_25 → 105453
 ✅ Заполнено: OKVED_69_KraOby_24 → 158135
 ✅ Заполнено: OKVED_69_KraOby_25 → 176984
-ℹ️ Отсутствующие данные: OKVED_69_ValBal → [-]
+✅ Заполнено: OKVED_69_ValBalUbyOrgNaKonGoItAktUbyOrg → 25454
+✅ Заполнено: OKVED_69_ValBalUbyOrgNaKonGoV%KValBal → 2,5
 ✅ Заполнено: OKVED_70_KapIRez_24 → 965506
 ✅ Заполнено: OKVED_70_KapIRez_25 → 571677
 ✅ Заполнено: OKVED_70_DolOby_24 → 366523
 ✅ Заполнено: OKVED_70_DolOby_25 → 324750
 ✅ Заполнено: OKVED_70_KraOby_24 → 1486358
 ✅ Заполнено: OKVED_70_KraOby_25 → 1911866
-ℹ️ Отсутствующие данные: OKVED_70_ValBal → [-]
+✅ Заполнено: OKVED_70_ValBalUbyOrgNaKonGoItAktUbyOrg → 665767
+✅ Заполнено: OKVED_70_ValBalUbyOrgNaKonGoV%KValBal → 23,7
 ✅ Заполнено: OKVED_71_KapIRez_24 → 1002924
 ✅ Заполнено: OKVED_71_KapIRez_25 → 1486398
 ✅ Заполнено: OKVED_71_DolOby_24 → 443784
 ✅ Заполнено: OKVED_71_DolOby_25 → 276813
 ✅ Заполнено: OKVED_71_KraOby_24 → 1465672
 ✅ Заполнено: OKVED_71_KraOby_25 → 1266461
-ℹ️ Отсутствующие данные: OKVED_71_ValBal → [-]
+✅ Заполнено: OKVED_71_ValBalUbyOrgNaKonGoItAktUbyOrg → 390521
+✅ Заполнено: OKVED_71_ValBalUbyOrgNaKonGoV%KValBal → 12,9
 ℹ️ Отсутствующие данные: OKVED_74_KapIRez → [-]
 ℹ️ Отсутствующие данные: OKVED_74_DolOby → [-]
 ℹ️ Отсутствующие данные: OKVED_74_KraOby → [-]
@@ -620,70 +656,80 @@
 ✅ Заполнено: OKVED_82_DolOby_25 → 4812
 ✅ Заполнено: OKVED_82_KraOby_24 → 22494
 ✅ Заполнено: OKVED_82_KraOby_25 → 20483
-ℹ️ Отсутствующие данные: OKVED_82_ValBal → [-]
+✅ Заполнено: OKVED_82_ValBalUbyOrgNaKonGoItAktUbyOrg → 4831
+✅ Заполнено: OKVED_82_ValBalUbyOrgNaKonGoV%KValBal → 10,5
 ✅ Заполнено: OKVED_O_KapIRez_24 → 1507
 ✅ Заполнено: OKVED_O_KapIRez_25 → 2576
 ℹ️ Отсутствующие данные: OKVED_O_DolOby_24 → [-]
 ℹ️ Отсутствующие данные: OKVED_O_DolOby_25 → [-]
 ✅ Заполнено: OKVED_O_KraOby_24 → 5464
 ✅ Заполнено: OKVED_O_KraOby_25 → 1595
-ℹ️ Отсутствующие данные: OKVED_O_ValBal → [-]
+ℹ️ Отсутствующие данные: OKVED_O_ValBalUbyOrgNaKonGoItAktUbyOrg → [-]
+ℹ️ Отсутствующие данные: OKVED_O_ValBalUbyOrgNaKonGoV%KValBal → [-]
 ✅ Заполнено: OKVED_85_KapIRez_24 → 22008
 ✅ Заполнено: OKVED_85_KapIRez_25 → 17784
 ✅ Заполнено: OKVED_85_DolOby_24 → 3000
 ✅ Заполнено: OKVED_85_DolOby_25 → 12668
 ✅ Заполнено: OKVED_85_KraOby_24 → 5304
 ✅ Заполнено: OKVED_85_KraOby_25 → 8416
-ℹ️ Отсутствующие данные: OKVED_85_ValBal → [-]
+✅ Заполнено: OKVED_85_ValBalUbyOrgNaKonGoItAktUbyOrg → 7567
+✅ Заполнено: OKVED_85_ValBalUbyOrgNaKonGoV%KValBal → 19,5
 ✅ Заполнено: OKVED_Q_KapIRez_24 → 733125
 ✅ Заполнено: OKVED_Q_KapIRez_25 → 767671
 ✅ Заполнено: OKVED_Q_DolOby_24 → 1445677
 ✅ Заполнено: OKVED_Q_DolOby_25 → 2662044
 ✅ Заполнено: OKVED_Q_KraOby_24 → 301285
 ✅ Заполнено: OKVED_Q_KraOby_25 → 280143
-ℹ️ Отсутствующие данные: OKVED_Q_ValBal → [-]
+✅ Заполнено: OKVED_Q_ValBalUbyOrgNaKonGoItAktUbyOrg → 2185547
+✅ Заполнено: OKVED_Q_ValBalUbyOrgNaKonGoV%KValBal → 58,9
 ✅ Заполнено: OKVED_86_KapIRez_24 → 731315
 ✅ Заполнено: OKVED_86_KapIRez_25 → 764138
 ✅ Заполнено: OKVED_86_DolOby_24 → 1443819
 ✅ Заполнено: OKVED_86_DolOby_25 → 2659610
 ✅ Заполнено: OKVED_86_KraOby_24 → 300259
 ✅ Заполнено: OKVED_86_KraOby_25 → 278970
-ℹ️ Отсутствующие данные: OKVED_86_ValBal → [-]
+✅ Заполнено: OKVED_86_ValBalUbyOrgNaKonGoItAktUbyOrg → 2183752
+✅ Заполнено: OKVED_86_ValBalUbyOrgNaKonGoV%KValBal → 59,0
 ✅ Заполнено: OKVED_88_KapIRez_24 → -1018
 ✅ Заполнено: OKVED_88_KapIRez_25 → -1016
 ✅ Заполнено: OKVED_88_DolOby_24 → 1858
 ✅ Заполнено: OKVED_88_DolOby_25 → 2184
 ✅ Заполнено: OKVED_88_KraOby_24 → 651
 ✅ Заполнено: OKVED_88_KraOby_25 → 727
-ℹ️ Отсутствующие данные: OKVED_88_ValBal → [-]
+✅ Заполнено: OKVED_88_ValBalUbyOrgNaKonGoItAktUbyOrg → 1795
+✅ Заполнено: OKVED_88_ValBalUbyOrgNaKonGoV%KValBal → 94,7
 ✅ Заполнено: OKVED_R_KapIRez_24 → -211619
 ✅ Заполнено: OKVED_R_KapIRez_25 → 71834
 ✅ Заполнено: OKVED_R_DolOby_24 → 658209
 ✅ Заполнено: OKVED_R_DolOby_25 → 453704
 ✅ Заполнено: OKVED_R_KraOby_24 → 69107
 ✅ Заполнено: OKVED_R_KraOby_25 → 78164
-ℹ️ Отсутствующие данные: OKVED_R_ValBal → [-]
+✅ Заполнено: OKVED_R_ValBalUbyOrgNaKonGoItAktUbyOrg → 203299
+✅ Заполнено: OKVED_R_ValBalUbyOrgNaKonGoV%KValBal → 33,7
 ✅ Заполнено: OKVED_93_KapIRez_24 → -233154
 ✅ Заполнено: OKVED_93_KapIRez_25 → 20886
 ✅ Заполнено: OKVED_93_DolOby_24 → 657702
 ✅ Заполнено: OKVED_93_DolOby_25 → 451730
 ✅ Заполнено: OKVED_93_KraOby_24 → 53183
 ✅ Заполнено: OKVED_93_KraOby_25 → 74661
-ℹ️ Отсутствующие данные: OKVED_93_ValBal → [-]
+✅ Заполнено: OKVED_93_ValBalUbyOrgNaKonGoItAktUbyOrg → 203299
+✅ Заполнено: OKVED_93_ValBalUbyOrgNaKonGoV%KValBal → 37,1
 ✅ Заполнено: OKVED_S_KapIRez_24 → 159102
 ✅ Заполнено: OKVED_S_KapIRez_25 → 229062
 ✅ Заполнено: OKVED_S_DolOby_24 → 27129
 ✅ Заполнено: OKVED_S_DolOby_25 → 24025
 ✅ Заполнено: OKVED_S_KraOby_24 → 128463
 ✅ Заполнено: OKVED_S_KraOby_25 → 156807
-ℹ️ Отсутствующие данные: OKVED_S_ValBal → [-]
+✅ Заполнено: OKVED_S_ValBalUbyOrgNaKonGoItAktUbyOrg → 23862
+✅ Заполнено: OKVED_S_ValBalUbyOrgNaKonGoV%KValBal → 5,8
 ✅ Заполнено: OKVED_96_KapIRez_24 → 138323
 ✅ Заполнено: OKVED_96_KapIRez_25 → 181141
 ✅ Заполнено: OKVED_96_DolOby_24 → 23825
 ✅ Заполнено: OKVED_96_DolOby_25 → 20700
 ✅ Заполнено: OKVED_96_KraOby_24 → 88274
 ✅ Заполнено: OKVED_96_KraOby_25 → 87618
-ℹ️ Отсутствующие данные: OKVED_96_ValBal → [-]
+✅ Заполнено: OKVED_96_ValBalUbyOrgNaKonGoItAktUbyOrg → 9464
+✅ Заполнено: OKVED_96_ValBalUbyOrgNaKonGoV%KValBal → 3,3
 ✅ Заполнено: MO_30_ValBal_1_24 → 197570389
 ✅ Заполнено: MO_30_ValBal_1_25 → 223848875
 ✅ Заполнено: MO_30_VneAkt_1_24 → 84627963
@@ -768,91 +814,104 @@
 ✅ Заполнено: MO_30_DolOby_1_25 → 70965054
 ✅ Заполнено: MO_30_KraOby_1_24 → 68377317
 ✅ Заполнено: MO_30_KraOby_1_25 → 73574004
-ℹ️ Отсутствующие данные: MO_30_ValBal_1 → [-]
+✅ Заполнено: MO_30_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 70383597
+✅ Заполнено: MO_30_ValBalUbyOrgNaKonGoV%KValBal_1 → 31,4
 ✅ Заполнено: MO_30701_KapIRez_1_24 → 48325903
 ✅ Заполнено: MO_30701_KapIRez_1_25 → 50549356
 ✅ Заполнено: MO_30701_DolOby_1_24 → 37190645
 ✅ Заполнено: MO_30701_DolOby_1_25 → 50958202
 ✅ Заполнено: MO_30701_KraOby_1_24 → 48757626
 ✅ Заполнено: MO_30701_KraOby_1_25 → 50702756
-ℹ️ Отсутствующие данные: MO_30701_ValBal_1 → [-]
+✅ Заполнено: MO_30701_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 52322665
+✅ Заполнено: MO_30701_ValBalUbyOrgNaKonGoV%KValBal_1 → 34,4
 ✅ Заполнено: MO_30851_KapIRez_1_24 → 694811
 ✅ Заполнено: MO_30851_KapIRez_1_25 → 837074
 ✅ Заполнено: MO_30851_DolOby_1_24 → 9465
 ✅ Заполнено: MO_30851_DolOby_1_25 → 9877
 ✅ Заполнено: MO_30851_KraOby_1_24 → 172098
 ✅ Заполнено: MO_30851_KraOby_1_25 → 151546
-ℹ️ Отсутствующие данные: MO_30851_ValBal_1 → [-]
+ℹ️ Отсутствующие данные: MO_30851_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → [-]
+ℹ️ Отсутствующие данные: MO_30851_ValBalUbyOrgNaKonGoV%KValBal_1 → [-]
 ✅ Заполнено: MO_30501_KapIRez_1_24 → 53054
 ✅ Заполнено: MO_30501_KapIRez_1_25 → 56665
 ✅ Заполнено: MO_30501_DolOby_1_24 → 11471
 ✅ Заполнено: MO_30501_DolOby_1_25 → 7994
 ✅ Заполнено: MO_30501_KraOby_1_24 → 31480
 ✅ Заполнено: MO_30501_KraOby_1_25 → 12071
-ℹ️ Отсутствующие данные: MO_30501_ValBal_1 → [-]
+✅ Заполнено: MO_30501_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 28116
+✅ Заполнено: MO_30501_ValBalUbyOrgNaKonGoV%KValBal_1 → 36,6
 ✅ Заполнено: MO_30510_KapIRez_1_24 → 254100
 ✅ Заполнено: MO_30510_KapIRez_1_25 → 157428
 ✅ Заполнено: MO_30510_DolOby_1_24 → 45794
 ✅ Заполнено: MO_30510_DolOby_1_25 → 53757
 ✅ Заполнено: MO_30510_KraOby_1_24 → 298909
 ✅ Заполнено: MO_30510_KraOby_1_25 → 417131
-ℹ️ Отсутствующие данные: MO_30510_ValBal_1 → [-]
+✅ Заполнено: MO_30510_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 102393
+✅ Заполнено: MO_30510_ValBalUbyOrgNaKonGoV%KValBal_1 → 16,3
 ✅ Заполнено: MO_30504_KapIRez_1_24 → 331616
 ✅ Заполнено: MO_30504_KapIRez_1_25 → 319067
 ✅ Заполнено: MO_30504_DolOby_1_24 → 650
 ✅ Заполнено: MO_30504_DolOby_1_25 → 8993
 ✅ Заполнено: MO_30504_KraOby_1_24 → 70308
 ✅ Заполнено: MO_30504_KraOby_1_25 → 88428
-ℹ️ Отсутствующие данные: MO_30504_ValBal_1 → [-]
+✅ Заполнено: MO_30504_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 96777
+✅ Заполнено: MO_30504_ValBalUbyOrgNaKonGoV%KValBal_1 → 23,2
 ✅ Заполнено: MO_30607_KapIRez_1_24 → 12149956
 ✅ Заполнено: MO_30607_KapIRez_1_25 → 12936533
 ✅ Заполнено: MO_30607_DolOby_1_24 → 14320128
 ✅ Заполнено: MO_30607_DolOby_1_25 → 16687633
 ✅ Заполнено: MO_30607_KraOby_1_24 → 14262199
 ✅ Заполнено: MO_30607_KraOby_1_25 → 16301363
-ℹ️ Отсутствующие данные: MO_30607_ValBal_1 → [-]
+✅ Заполнено: MO_30607_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 13720407
+✅ Заполнено: MO_30607_ValBalUbyOrgNaKonGoV%KValBal_1 → 29,9
 ✅ Заполнено: MO_30607101_KapIRez_1_24 → 5659930
 ✅ Заполнено: MO_30607101_KapIRez_1_25 → 6560939
 ✅ Заполнено: MO_30607101_DolOby_1_24 → 5375539
 ✅ Заполнено: MO_30607101_DolOby_1_25 → 6008381
 ✅ Заполнено: MO_30607101_KraOby_1_24 → 7350581
 ✅ Заполнено: MO_30607101_KraOby_1_25 → 7287887
-ℹ️ Отсутствующие данные: MO_30607101_ValBal_1 → [-]
+✅ Заполнено: MO_30607101_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 2721984
+✅ Заполнено: MO_30607101_ValBalUbyOrgNaKonGoV%KValBal_1 → 13,7
 ✅ Заполнено: MO_30613_KapIRez_1_24 → 1044206
 ✅ Заполнено: MO_30613_KapIRez_1_25 → 1337521
 ✅ Заполнено: MO_30613_DolOby_1_24 → 13127
 ✅ Заполнено: MO_30613_DolOby_1_25 → 36700
 ✅ Заполнено: MO_30613_KraOby_1_24 → 459752
 ✅ Заполнено: MO_30613_KraOby_1_25 → 173020
-ℹ️ Отсутствующие данные: MO_30613_ValBal_1 → [-]
+✅ Заполнено: MO_30613_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 33605
+✅ Заполнено: MO_30613_ValBalUbyOrgNaKonGoV%KValBal_1 → 2,2
 ✅ Заполнено: MO_30616_KapIRez_1_24 → 2924837
 ✅ Заполнено: MO_30616_KapIRez_1_25 → 3449022
 ✅ Заполнено: MO_30616_DolOby_1_24 → 184585
 ✅ Заполнено: MO_30616_DolOby_1_25 → 228848
 ✅ Заполнено: MO_30616_KraOby_1_24 → 1121971
 ✅ Заполнено: MO_30616_KraOby_1_25 → 2131685
-ℹ️ Отсутствующие данные: MO_30616_ValBal_1 → [-]
+✅ Заполнено: MO_30616_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 218582
+✅ Заполнено: MO_30616_ValBalUbyOrgNaKonGoV%KValBal_1 → 3,8
 ✅ Заполнено: MO_30519_KapIRez_1_24 → 1228866
 ✅ Заполнено: MO_30519_KapIRez_1_25 → 1595597
 ✅ Заполнено: MO_30519_DolOby_1_24 → 657248
 ✅ Заполнено: MO_30519_DolOby_1_25 → 622198
 ✅ Заполнено: MO_30519_KraOby_1_24 → 434911
 ✅ Заполнено: MO_30519_KraOby_1_25 → 413433
-ℹ️ Отсутствующие данные: MO_30519_ValBal_1 → [-]
+✅ Заполнено: MO_30519_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 166402
+✅ Заполнено: MO_30519_ValBalUbyOrgNaKonGoV%KValBal_1 → 6,3
 ✅ Заполнено: MO_30824_KapIRez_1_24 → 3380871
 ✅ Заполнено: MO_30824_KapIRez_1_25 → 3937846
 ✅ Заполнено: MO_30824_DolOby_1_24 → 1015253
 ✅ Заполнено: MO_30824_DolOby_1_25 → 1148507
 ✅ Заполнено: MO_30824_KraOby_1_24 → 727171
 ✅ Заполнено: MO_30824_KraOby_1_25 → 718212
-ℹ️ Отсутствующие данные: MO_30824_ValBal_1 → [-]
+✅ Заполнено: MO_30824_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 1782361
+✅ Заполнено: MO_30824_ValBalUbyOrgNaKonGoV%KValBal_1 → 30,7
 ✅ Заполнено: MO_30532_KapIRez_1_24 → 1213616
 ✅ Заполнено: MO_30532_KapIRez_1_25 → 1452023
 ✅ Заполнено: MO_30532_DolOby_1_24 → 60746
 ✅ Заполнено: MO_30532_DolOby_1_25 → 48104
 ✅ Заполнено: MO_30532_KraOby_1_24 → 164470
 ✅ Заполнено: MO_30532_KraOby_1_25 → 379545
-ℹ️ Отсутствующие данные: MO_30532_ValBal_1 → [-]
+✅ Заполнено: MO_30532_ValBalUbyOrgNaKonGoItAktUbyOrg_1 → 39927
+✅ Заполнено: MO_30532_ValBalUbyOrgNaKonGoV%KValBal_1 → 2,1
 ✅ Заполнено: OKVED_101_АГ_VneAkt_2_24 → 84627963
 ✅ Заполнено: OKVED_101_АГ_VneAkt_2_25 → 100988454
 ✅ Заполнено: OKVED_101_АГ_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 63069439

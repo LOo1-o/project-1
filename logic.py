@@ -563,6 +563,18 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
                     continue
                 seen.add(header_part)
                 parts.append(header_part)
+            # Строка годов бывает смешанной: у одних колонок в ней год, у
+            # других — последняя строка их шапки. В бюллетене №2 у колонок
+            # «Валюта баланса убыточных организаций, на конец года» в этой
+            # строке стоят подписи «итог актива убыточных организаций» и
+            # «в % к валюте баланса». Без них от шапки оставалось только
+            # групповое название, оно по началу совпадало с «Валютой баланса»,
+            # и колонка убыточных организаций размечалась как валюта баланса
+            # всех организаций (без года — данных не нашлось, иначе встало бы
+            # чужое число), а колонка процентов не размечалась вовсе.
+            year_row_label = _normalize_text(raw_year_text) if not year_text else ""
+            if year_row_label and year_row_label not in seen:
+                parts.append(year_row_label)
             composed_header = " ".join(parts)
             composed_header_norm = _normalize_match_text(composed_header)
 
