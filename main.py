@@ -118,6 +118,7 @@ def main(input_template_override=None, output_file_override=None):
         group_prefix_match_report_path=output_dir / "совпадения_после_отбрасывания_префикса.xlsx",
         unused_indicator_report_path=output_dir / "неиспользованные_показатели.xlsx",
         duplicate_year_report_path=output_dir / "повторяющиеся_года_в_шапке.xlsx",
+        name_check_report_path=output_dir / "проверьте_названия_Word_и_Excel.xlsx",
     )
     print(f"📄 Шаблон с тегами сохранен: {template_word_file}")
 

@@ -127,6 +127,51 @@ def _one_letter_diff(a: str, b: str) -> bool:
     return True
 
 
+# Короткое слово в скобках, которое в Word могли просто не написать: в Excel
+# бюллетеня №2 «Темп роста прибыли (убытка) в %», а в Word — «Темп роста
+# прибыли, в %». Это не опечатка в букве, а пропущенное целиком слово, поэтому
+# _one_letter_diff его не ловит, а нечёткое сравнение выбирало более похожий,
+# но чужой показатель «Темп роста суммы прибыли». Скобка — ровно одно слово из
+# букв (не «(-)», не «(в % к итогу)»), чтобы правило не съедало смысл.
+_BRACKET_WORD_RE = re.compile(r'\(\s*([^\W\d_]{2,12})\s*\)')
+# Остаток названия без слова в скобках должен быть не короче трёх слов, иначе
+# «Прибыль (убыток)» превратилась бы в «прибыль» и совпала бы с чем угодно.
+_BRACKET_VARIANT_MIN_WORDS = 3
+
+
+def _bracket_word_variants(name: str) -> dict:
+    """
+    Варианты названия показателя без одного короткого слова в скобках:
+    нормализованный вариант -> выброшенное слово. Сравниваются только
+    ЦЕЛИКОМ с заголовком колонки Word (не по вхождению).
+    """
+    variants = {}
+    if not name:
+        return variants
+    for match in _BRACKET_WORD_RE.finditer(name):
+        shortened = _normalize_match_text(name[:match.start()] + ' ' + name[match.end():])
+        if len(shortened.split()) >= _BRACKET_VARIANT_MIN_WORDS:
+            variants[shortened] = match.group(1)
+    return variants
+
+
+def _build_bracket_variant_map(names) -> dict:
+    """нормализованный вариант без слова в скобках -> список нормализованных названий."""
+    variant_map = {}
+    for name in names:
+        name_norm = _normalize_match_text(name)
+        for variant in _bracket_word_variants(name):
+            if name_norm not in variant_map.setdefault(variant, []):
+                variant_map[variant].append(name_norm)
+    return variant_map
+
+
+# Насколько надёжно колонка сопоставлена с показателем: меньше — надёжнее.
+# Нужно, когда две колонки получили один и тот же показатель: его забирает
+# колонка с дословным совпадением, а не та, что стоит левее.
+_MATCH_RANK = {'exact': 0, 'bracket': 1, 'fuzzy': 2, 'squish': 3}
+
+
 def _resolve_indicator(normalized_name_map: dict, name_norm: str, consumed: Optional[dict]) -> str:
     """
     Превращает список индикаторов, зарегистрированных под одним и тем же
@@ -155,7 +200,10 @@ def _resolve_indicator(normalized_name_map: dict, name_norm: str, consumed: Opti
 def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: float = 0.80,
                          near_miss_sink: Optional[list] = None,
                          squish_match_sink: Optional[list] = None,
-                         consumed: Optional[dict] = None) -> str:
+                         consumed: Optional[dict] = None,
+                         bracket_variants: Optional[dict] = None,
+                         bracket_match_sink: Optional[list] = None,
+                         match_kind_sink: Optional[list] = None) -> str:
     """
     Ищет наилучшее совпадение заголовка с использованием Fuzzy Matching.
     Возвращает код индикатора или None.
@@ -164,9 +212,22 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
     индикаторов (обычно из одного элемента; больше одного — когда одно и то же
     название текста в Word соответствует нескольким разным показателям CSV,
     см. _resolve_indicator).
+
+    bracket_variants: вариант названия без короткого слова в скобках ->
+    названия (см. _build_bracket_variant_map). Совпадение по нему пишется в
+    bracket_match_sink как (заголовок, название, код), чтобы попасть в отчёт.
+
+    match_kind_sink, если передан, получает вид найденного совпадения
+    (ключ _MATCH_RANK) — по нему решается, какая из двух колонок с одним и
+    тем же показателем его получит.
     """
     if not target_text:
         return None
+
+    def _found(kind, indicator):
+        if match_kind_sink is not None:
+            match_kind_sink.append(kind)
+        return indicator
 
     # 1. Точное вхождение (в любую сторону). Среди ВСЕХ кандидатов с вхождением
     # выбираем тот, у кого выше итоговый Ratio, а не первый попавшийся по порядку
@@ -186,7 +247,21 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
                 best_exact_name = name_norm
 
     if best_exact_name is not None:
-        return _resolve_indicator(normalized_name_map, best_exact_name, consumed)
+        return _found('exact', _resolve_indicator(normalized_name_map, best_exact_name, consumed))
+
+    # 1а. Название из Excel без одного короткого слова в скобках совпало с
+    # заголовком Word ЦЕЛИКОМ: «Темп роста прибыли (убытка) в %» и «Темп
+    # роста прибыли, в %». Проверяем раньше нечёткого сравнения — оно здесь
+    # выбирало «Темп роста суммы прибыли» (0,87 против 0,85). Если под вариант
+    # подходят два разных показателя — не угадываем.
+    bracket_names = (bracket_variants or {}).get(target_text, [])
+    bracket_names = [name for name in bracket_names if name in normalized_name_map]
+    if len(bracket_names) == 1:
+        bracket_match = _resolve_indicator(normalized_name_map, bracket_names[0], consumed)
+        print(f"   🔗 [Слово в скобках] '{target_text[:50]}' -> '{bracket_names[0][:50]}' -> {bracket_match}")
+        if bracket_match_sink is not None:
+            bracket_match_sink.append((target_text, bracket_names[0], bracket_match))
+        return _found('bracket', bracket_match)
 
     # 2. Нечеткое сравнение (Fuzzy Match) для случаев без точного вхождения
     best_match_name = None
@@ -200,7 +275,7 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
             best_match_name = name_norm
 
     if best_score >= threshold:
-        return _resolve_indicator(normalized_name_map, best_match_name, consumed)
+        return _found('fuzzy', _resolve_indicator(normalized_name_map, best_match_name, consumed))
 
     # 3. Последний, самый толерантный уровень: сравнение "склеенных" (без
     # пробелов и любых спецсимволов) форм. Ловит разрывы слова, которые не
@@ -230,7 +305,7 @@ def _fuzzy_match_header(target_text: str, normalized_name_map: dict, threshold: 
             print(f"   🧩 [Squish-match] '{target_text[:50]}' -> '{best_squish_name[:50]}' -> {best_squish_match}")
             if squish_match_sink is not None:
                 squish_match_sink.append((target_text, best_squish_name, best_squish_match))
-            return best_squish_match
+            return _found('squish', best_squish_match)
 
     # Диагностика: если показатель почти нашелся, но не дотянул до порога — это
     # тег, который остаётся без значения молча (или, что хуже, ячейка так и
@@ -542,8 +617,18 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=None, ent
 
 def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None, run_rows=None,
                               near_miss_sink=None, squish_match_sink=None, unit_annotation_sink=None,
-                              unit_annotation_texts=None, duplicate_year_sink=None):
+                              unit_annotation_texts=None, duplicate_year_sink=None,
+                              bracket_match_sink=None, taken_column_sink=None):
     """Вычисляет маппинг столбцов для данной секции таблицы.
+
+    bracket_match_sink, если передан, получает (column_idx, header_text,
+    matched_name, matched_indicator) на каждую колонку, узнанную только
+    правилом «в Word не написано короткое слово в скобках» (см.
+    _bracket_word_variants).
+
+    taken_column_sink, если передан, получает (column_idx, header_text,
+    indicator, winner_column_idx) на каждую колонку, оставленную пустой,
+    потому что её показатель надёжнее (дословно) совпал с другой колонкой.
 
     near_miss_sink, если передан, получает по одному элементу
     (column_idx, cell_text, score, closest_name, closest_indicator) на каждую
@@ -575,6 +660,8 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
     has_years = sum(1 for text in year_texts if _extract_year(text)) >= 2
 
     col_to_indicator_map = {}
+    col_rank = {}
+    col_header_text = {}
     if has_years:
         header_start = max(0, header_idx - 6)
         header_rows_filled = []
@@ -591,10 +678,12 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
             header_rows_filled.append(row_values)
 
         last_indicator = None
+        last_rank = None
         normalized_name_map = {
             _normalize_match_text(name): indicators
             for name, indicators in source_word_to_indicator.items()
         }
+        bracket_variants = _build_bracket_variant_map(source_word_to_indicator)
         # Отслеживает, сколько раз уже было "занято" каждое название — нужно,
         # когда одно название соответствует НЕСКОЛЬКИМ разным индикаторам
         # (см. _resolve_indicator).
@@ -643,14 +732,22 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
             # Используем Fuzzy-поиск вместо жесткого вхождения
             column_near_misses = [] if near_miss_sink is not None else None
             column_squish_matches = [] if squish_match_sink is not None else None
+            column_bracket_matches = []
+            match_kinds = []
             best_match = _fuzzy_match_header(composed_header_norm, normalized_name_map, threshold=0.80,
                                               near_miss_sink=column_near_misses,
                                               squish_match_sink=column_squish_matches,
-                                              consumed=consumed)
+                                              consumed=consumed,
+                                              bracket_variants=bracket_variants,
+                                              bracket_match_sink=column_bracket_matches,
+                                              match_kind_sink=match_kinds)
             if column_near_misses:
                 near_miss_sink.extend((i, *entry) for entry in column_near_misses)
             if column_squish_matches:
                 squish_match_sink.extend((i, *entry) for entry in column_squish_matches)
+            if column_bracket_matches and bracket_match_sink is not None:
+                bracket_match_sink.extend((i, *entry) for entry in column_bracket_matches)
+            match_rank = _MATCH_RANK[match_kinds[-1]] if match_kinds else None
 
             # Fuzzy-fallback для случаев с переносами, дефисами и неявными формулировками
             if not best_match and composed_header_norm:
@@ -665,6 +762,7 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
                         fuzzy_match_name = name_norm
                 if fuzzy_score >= 0.75:
                     best_match = _resolve_indicator(normalized_name_map, fuzzy_match_name, consumed)
+                    match_rank = _MATCH_RANK['fuzzy']
                     print(f"   🔍 fuzzy match {fuzzy_score:.2f} для '{composed_header[:80]}' -> {best_match}")
 
             if not year_text:
@@ -677,13 +775,17 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
                 # так же, как и у остальных — просто без суффикса года.
                 if best_match:
                     col_to_indicator_map[i] = (best_match, None)
+                    col_rank[i] = match_rank
+                    col_header_text[i] = composed_header
                     print(f"   🔍 Столбец {i} (без года): '{composed_header[:80]}' -> {best_match}")
                 continue
 
             if best_match:
                 last_indicator = best_match
+                last_rank = match_rank
             elif last_indicator and not composed_header_norm:
                 best_match = last_indicator
+                match_rank = last_rank
 
             if not best_match:
                 print(f"   ⚠️ Нет match для колонки {i} ('{composed_header[:80]}')")
@@ -693,6 +795,8 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
             # Это даёт гибкие теги на будущее без правки кода из-за нового календарного года.
             year_code = year_text[-2:]
             col_to_indicator_map[i] = (best_match, year_code)
+            col_rank[i] = match_rank
+            col_header_text[i] = composed_header
             print(f"   🔍 Столбец {i}: '{composed_header[:90]}' -> {best_match}, год {year_text} -> код {year_code}")
     else:
         header_row = year_row
@@ -704,6 +808,7 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
         # когда одно название соответствует НЕСКОЛЬКИМ разным индикаторам
         # (см. _resolve_indicator).
         consumed = {}
+        bracket_variants = _build_bracket_variant_map(source_word_to_indicator)
         # header_idx — это ПОСЛЕДНЯЯ строка своего "run"-а подряд идущих
         # заголовочных строк (см. вызывающий код), поэтому строка header_idx+1 —
         # это уже настоящие данные, а не продолжение шапки. Составной заголовок
@@ -752,32 +857,63 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
 
             column_near_misses = [] if near_miss_sink is not None else None
             column_squish_matches = [] if squish_match_sink is not None else None
+            column_bracket_matches = []
+            match_kinds = []
             best_match = _fuzzy_match_header(header_text, normalized_name_map, threshold=0.80,
                                               near_miss_sink=column_near_misses,
                                               squish_match_sink=column_squish_matches,
-                                              consumed=consumed)
+                                              consumed=consumed,
+                                              bracket_variants=bracket_variants,
+                                              bracket_match_sink=column_bracket_matches,
+                                              match_kind_sink=match_kinds)
             if column_near_misses:
                 near_miss_sink.extend((i, *entry) for entry in column_near_misses)
             if column_squish_matches:
                 squish_match_sink.extend((i, *entry) for entry in column_squish_matches)
+            if column_bracket_matches and bracket_match_sink is not None:
+                bracket_match_sink.extend((i, *entry) for entry in column_bracket_matches)
 
             if best_match:
                 col_to_indicator_map[i] = (best_match, None)
+                col_rank[i] = _MATCH_RANK[match_kinds[-1]] if match_kinds else None
+                col_header_text[i] = header_text
                 print(f"   🔍 Индикаторный заголовок: столбец {i}, текст '{header_text[:50]}' -> {best_match}")
 
-    # Убираем дубликаты
-    seen_specs = set()
+    # Убираем дубликаты. Показатель с годом получает одна колонка. Раньше —
+    # всегда самая левая, даже если она узнана лишь приблизительно, а правее
+    # стоит колонка с дословно тем же названием: в бюллетене №2 «Темп роста
+    # прибыли» (похожесть 0,87) забрала показатель «Темп роста суммы
+    # прибыли», получила его числа, а настоящая колонка осталась пустой.
+    # Теперь показатель достаётся самому надёжному совпадению, при равной
+    # надёжности — по-прежнему самой левой колонке.
+    def _rank(col_idx):
+        rank = col_rank.get(col_idx)
+        return len(_MATCH_RANK) if rank is None else rank
+
+    winner_by_spec = {}
+    for col_idx in sorted(col_to_indicator_map):
+        spec = col_to_indicator_map[col_idx]
+        winner = winner_by_spec.get(spec)
+        if winner is None or _rank(col_idx) < _rank(winner):
+            winner_by_spec[spec] = col_idx
+
     filtered_map = {}
     for col_idx in sorted(col_to_indicator_map):
         spec = col_to_indicator_map[col_idx]
-        if spec in seen_specs:
-            print(f"   ⚠️ Пропускаем дубликат столбца {col_idx} для {spec[0]}_{spec[1] if spec[1] else ''} "
-                  f"— похоже на опечатку в шапке (например, один и тот же год напечатан дважды)")
-            if duplicate_year_sink is not None and spec[1]:
-                duplicate_year_sink.append((col_idx, spec[0], spec[1]))
+        winner = winner_by_spec[spec]
+        if col_idx == winner:
+            filtered_map[col_idx] = spec
             continue
-        seen_specs.add(spec)
-        filtered_map[col_idx] = spec
+        if _rank(col_idx) > _rank(winner):
+            print(f"   ⚠️ Столбец {col_idx} оставлен пустым: показатель {spec[0]}_{spec[1] if spec[1] else ''} "
+                  f"надёжнее совпал со столбцом {winner}")
+            if taken_column_sink is not None:
+                taken_column_sink.append((col_idx, col_header_text.get(col_idx, ''), spec[0], winner))
+            continue
+        print(f"   ⚠️ Пропускаем дубликат столбца {col_idx} для {spec[0]}_{spec[1] if spec[1] else ''} "
+              f"— похоже на опечатку в шапке (например, один и тот же год напечатан дважды)")
+        if duplicate_year_sink is not None and spec[1]:
+            duplicate_year_sink.append((col_idx, spec[0], spec[1]))
 
     return filtered_map
 
@@ -865,6 +1001,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                            group_prefix_match_report_path: Path = None,
                            unused_indicator_report_path: Path = None,
                            duplicate_year_report_path: Path = None,
+                           name_check_report_path: Path = None,
                            clear_only: bool = False):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}},
@@ -935,6 +1072,13 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     score — показатель, вероятно, в этой редакции документа просто
     отсутствует, и это не обязательно ошибка.
 
+    name_check_report_path: если указан, сюда выгружается отчёт для
+    специалиста «проверьте названия Word и Excel»: колонки, узнанные только
+    правилом «в Word не написано короткое слово в скобках», и колонки,
+    оставленные пустыми, потому что их показатель дословно совпал с другой
+    колонкой. По каждой — где она в Word, из какого Excel и какой колонки
+    берутся числа, и что поправить, если это неверно.
+
     clear_only: если True, функция работает как отдельный шаг "очистка
     данных" — находит те же самые ячейки, что и обычно, но вместо
     вставки тега просто ОПУСТОШАЕТ ячейку (старое число из исходного
@@ -984,6 +1128,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     near_miss_report = []
     squish_match_report = []
     duplicate_year_report = []
+    name_check_report = {}
     typo_match_report = []
     unit_annotation_report = []
     group_prefix_match_report = []
@@ -1153,6 +1298,18 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                             })
                         break
 
+            # Название из Excel без короткого слова в скобках («Темп роста
+            # прибыли (убытка) в %» -> «темп роста прибыли в»). Здесь только
+            # решается, может ли показатель быть в этой таблице; колонку ему
+            # даст лишь дословное совпадение заголовка с этим вариантом (см.
+            # _fuzzy_match_header), и каждое такое решение уходит в отчёт.
+            if name not in source_word_to_indicator and any(
+                variant in col_text
+                for variant in _bracket_word_variants(name)
+                for col_text in column_texts_norm
+            ):
+                source_word_to_indicator[name] = indicators
+
             if name in source_word_to_indicator:
                 continue
             # В Excel-исходнике заголовок показателя часто склеен из общего
@@ -1297,13 +1454,23 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             # ещё и уходит в validation_log ниже, независимо от того, нужен
             # ли отдельный xlsx-отчёт.
             table_duplicate_years = []
+            table_bracket_matches = []
+            table_taken_columns = []
             mapping = _compute_section_mapping(table, header_idx, source_word_to_indicator,
                                                 header_rows=header_rows_set, run_rows=run,
                                                 near_miss_sink=table_near_misses,
                                                 squish_match_sink=table_squish_matches,
                                                 unit_annotation_sink=table_unit_annotations,
                                                 unit_annotation_texts=unit_annotation_texts,
-                                                duplicate_year_sink=table_duplicate_years)
+                                                duplicate_year_sink=table_duplicate_years,
+                                                bracket_match_sink=table_bracket_matches,
+                                                taken_column_sink=table_taken_columns)
+            if (table_bracket_matches or table_taken_columns) and not clear_only:
+                _collect_name_check_entries(
+                    name_check_report, validation_log, table, t_index, header_idx, header_rows_set,
+                    _describe_word_table(table_title, continuation_number, table_source_mapping, t_index),
+                    current_source_file, source_word_to_indicator, indicator_to_excel,
+                    table_bracket_matches, table_taken_columns)
             if table_duplicate_years:
                 for col_idx, indicator, year_code in table_duplicate_years:
                     warning = (f"⚠️ Таблица {t_index + 1} ({current_source_file}), столбец {col_idx + 1}: "
@@ -1638,6 +1805,8 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     else:
         print(f"\n✅ Шаблон с тегами сохранён: {output_doc_path}")
         print(f"🔢 Всего вставлено тегов: {total_tags}")
+    if name_check_report_path:
+        _write_name_check_report(name_check_report, name_check_report_path, column_mapping_path)
     if validation_log_path:
         validation_log_path = Path(validation_log_path)
         validation_log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -1694,17 +1863,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         # Номер строки в column_mapping_v2.csv для каждого кода показателя —
         # чтобы в отчёте можно было сразу открыть файл и найти нужную строку,
         # а не искать код по всему CSV вручную.
-        code_to_csv_line = {}
-        try:
-            rows = _read_csv_rows_robustly(column_mapping_path, delimiter=';', quotechar='"')
-            for line_no, row in enumerate(rows, start=1):
-                if line_no == 1 or len(row) < 3:
-                    continue
-                code = str(row[2]).strip()
-                if code:
-                    code_to_csv_line[code] = line_no
-        except FileNotFoundError:
-            pass
+        code_to_csv_line = _mapping_csv_lines(column_mapping_path)
 
         unused_indicator_report = []
         for (src_file, name), indicators in file_word_to_indicators.items():
@@ -1743,6 +1902,192 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         pd.DataFrame(unused_indicator_report, columns=columns).to_excel(unused_indicator_report_path, index=False)
         print(f"🕳️ Отчёт по неиспользованным показателям сохранён: {unused_indicator_report_path} "
               f"({len(unused_indicator_report)} строк)")
+
+
+# ==========================================================
+# === ОТЧЁТ «ПРОВЕРЬТЕ НАЗВАНИЯ WORD И EXCEL» ===============
+# ==========================================================
+_NAME_CHECK_COLUMNS = [
+    'Что случилось', 'Таблица в Word', 'Страница начинается со строки', 'Колонка в Word',
+    'Excel-источник', 'Показатель в Excel', 'Колонка Excel', 'Строка в column_mapping_v2.csv',
+    'Сколько страниц', 'Что сделала программа', 'Что сделать',
+]
+
+
+def _mapping_csv_lines(column_mapping_path, with_names: bool = False) -> dict:
+    """Номер строки column_mapping_v2.csv для каждого кода показателя
+    (with_names=True: (номер строки, название показателя как в файле))."""
+    code_to_csv_line = {}
+    try:
+        rows = _read_csv_rows_robustly(column_mapping_path, delimiter=';', quotechar='"')
+    except FileNotFoundError:
+        return code_to_csv_line
+    for line_no, row in enumerate(rows, start=1):
+        if line_no == 1 or len(row) < 3:
+            continue
+        code = str(row[2]).strip()
+        if code:
+            code_to_csv_line[code] = (line_no, str(row[1]).strip()) if with_names else line_no
+    return code_to_csv_line
+
+
+def _excel_column_label(number) -> str:
+    """«12» -> «12 (столбец L)»: номер из маппинга и буква, как в самом Excel."""
+    try:
+        n = int(float(number))
+    except (TypeError, ValueError):
+        return str(number)
+    letters = ''
+    k = n
+    while k > 0:
+        k, rem = divmod(k - 1, 26)
+        letters = chr(ord('A') + rem) + letters
+    return f"{n} (столбец {letters})" if letters else str(n)
+
+
+def _describe_word_table(table_title, continuation_number, table_source_mapping, t_index) -> str:
+    """Таблица так, как её ищет человек: по номеру и названию из бюллетеня,
+    а не по порядковому номеру таблицы внутри файла Word."""
+    if continuation_number:
+        title = next(
+            (str(key) for key in table_source_mapping
+             if (m := re.match(r'\s*(\d+)\s*[.)]', str(key))) and int(m.group(1)) == continuation_number),
+            '',
+        )
+        title = re.sub(r'^\s*\d+\s*[.)]\s*', '', title).strip()
+        suffix = f" «{title[:1].upper() + title[1:]}»" if title else ''
+        return f"Таблица {continuation_number}{suffix}, страница «Продолжение таблицы {continuation_number}»"
+    if table_title:
+        return f"Таблица «{str(table_title).strip()}»"
+    return f"Таблица №{t_index + 1} по порядку в файле Word (заголовок не распознан)"
+
+
+def _one_line(text) -> str:
+    return re.sub(r'\s+', ' ', str(text or '')).strip()
+
+
+def _raw_column_header(table, header_idx, header_rows_set, col_idx) -> str:
+    """Название колонки так, как оно напечатано в Word (все строки шапки)."""
+    parts = []
+    for row_idx in range(max(0, header_idx - 6), header_idx + 1):
+        if row_idx != header_idx and row_idx not in (header_rows_set or ()):
+            continue
+        cells = table.rows[row_idx].cells
+        if col_idx >= len(cells):
+            continue
+        text = _one_line(get_cleaned_cell_text(cells[col_idx]))
+        if not text or _extract_year(text) == text or _strip_continuation_label(text.lower()) == '':
+            continue
+        if text not in parts:
+            parts.append(text)
+    return ' / '.join(parts)
+
+
+def _first_data_row_label(table, header_idx) -> str:
+    for row in table.rows[header_idx + 1:]:
+        text = _one_line(get_cleaned_cell_text(row.cells[0]))
+        if text:
+            return text
+    return ''
+
+
+def _collect_name_check_entries(report, validation_log, table, t_index, header_idx, header_rows_set,
+                                table_label, source_file, source_word_to_indicator, indicator_to_excel,
+                                bracket_matches, taken_columns):
+    """Складывает в report (dict, чтобы одинаковые колонки на разных страницах
+    стали одной строкой) записи отчёта name_check_report_path."""
+    raw_by_norm = {_normalize_match_text(name): name for name in source_word_to_indicator}
+    raw_by_indicator = {
+        indicator: name
+        for name, indicators in source_word_to_indicator.items()
+        for indicator in indicators
+    }
+    first_row = _first_data_row_label(table, header_idx)
+
+    def excel_column(indicator):
+        cols = [str(c) for c in indicator_to_excel.get(indicator, ('', '')) if str(c).strip()]
+        return ' и '.join(_excel_column_label(c) for c in dict.fromkeys(cols))
+
+    def add(kind, col_idx, indicator, excel_name, did, todo):
+        word_header = _raw_column_header(table, header_idx, header_rows_set, col_idx)
+        key = (kind, table_label, word_header, source_file, indicator)
+        if key in report:
+            report[key]['Сколько страниц'] += 1
+            return
+        report[key] = {
+            'Что случилось': kind,
+            'Таблица в Word': table_label,
+            'Страница начинается со строки': first_row,
+            'Колонка в Word': word_header,
+            'Excel-источник': source_file,
+            'Показатель в Excel': excel_name,
+            'Колонка Excel': excel_column(indicator),
+            'indicator': indicator,
+            'Сколько страниц': 1,
+            'Что сделала программа': did.format(word=word_header),
+            'Что сделать': todo.format(word=word_header),
+        }
+        validation_log.append(f"[TABLE {t_index + 1}] ⚠️ {kind}: {table_label}, колонка «{word_header}» "
+                              f"— {source_file}, «{excel_name}» ({indicator})")
+
+    for col_idx, header_text, matched_name, indicator in bracket_matches:
+        excel_name = raw_by_norm.get(matched_name, matched_name)
+        dropped = _bracket_word_variants(excel_name).get(header_text, '')
+        add(
+            'Названия отличаются словом в скобках', col_idx, indicator, excel_name,
+            f"В Word колонка называется «{{word}}», в Excel — «{excel_name}». Без слова «({dropped})» "
+            f"в скобках названия совпадают, поэтому программа сочла их одним показателем и поставила "
+            f"в колонку числа из {source_file}, колонка {excel_column(indicator)}.",
+            f"Если числа верные — ничего делать не нужно. Чтобы строка больше не появлялась, "
+            f"в input/mappings/column_mapping_v2.csv (строка указана слева) в поле «Название показателя» "
+            f"замените «{excel_name}» на «{{word}}».\n"
+            f"Если числа неверные (в колонке Word другой показатель) — сделайте так, чтобы нужный показатель "
+            f"назывался в Word и в Excel одинаково. Любой из способов: "
+            f"1) в Word (input/Бюллетень.docx) переименуйте колонку так, как нужный показатель назван в Excel; "
+            f"2) в Excel-источнике {source_file} переименуйте нужный показатель так, как колонка названа в Word; "
+            f"3) в input/mappings/column_mapping_v2.csv найдите строку нужного показателя этого файла "
+            f"и в поле «Название показателя» впишите «{{word}}».",
+        )
+
+    for col_idx, _header_text, indicator, winner_col in taken_columns:
+        excel_name = raw_by_indicator.get(indicator, indicator)
+        winner_header = _raw_column_header(table, header_idx, header_rows_set, winner_col)
+        add(
+            'Колонка оставлена пустой', col_idx, indicator, excel_name,
+            f"Колонка Word «{{word}}» похожа на показатель Excel «{excel_name}», но этот показатель "
+            f"дословно совпал с другой колонкой — «{winner_header}». Чтобы не поставить одни и те же "
+            f"числа в две колонки, колонка «{{word}}» оставлена пустой.",
+            f"Найдите в Excel-источнике {source_file} показатель, который соответствует колонке «{{word}}», "
+            f"и сделайте так, чтобы он назывался в Word и в Excel одинаково. Любой из способов: "
+            f"1) в Word (input/Бюллетень.docx) переименуйте колонку так, как показатель назван в Excel; "
+            f"2) в Excel-источнике переименуйте показатель так, как колонка названа в Word; "
+            f"3) в input/mappings/column_mapping_v2.csv найдите строку этого показателя "
+            f"и в поле «Название показателя» впишите «{{word}}».",
+        )
+
+
+def _write_name_check_report(report, report_path, column_mapping_path):
+    report_path = Path(report_path)
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    code_to_csv_line = _mapping_csv_lines(column_mapping_path, with_names=True)
+    rows = []
+    for entry in report.values():
+        row = dict(entry)
+        line_no, csv_name = code_to_csv_line.get(row.pop('indicator'), ('', ''))
+        row['Строка в column_mapping_v2.csv'] = line_no
+        # Загрузчик маппинга хранит названия строчными — в отчёте показываем
+        # название так, как оно записано в column_mapping_v2.csv.
+        loaded_name = row['Показатель в Excel']
+        if csv_name and csv_name.lower() == str(loaded_name).lower():
+            row['Показатель в Excel'] = csv_name
+            for column in ('Что сделала программа', 'Что сделать'):
+                row[column] = row[column].replace(f"«{loaded_name}»", f"«{csv_name}»")
+        rows.append(row)
+    pd.DataFrame(rows, columns=_NAME_CHECK_COLUMNS).to_excel(report_path, index=False)
+    print(f"📝 Отчёт «проверьте названия Word и Excel» сохранён: {report_path} ({len(rows)} строк)")
+    for row in rows:
+        print(f"   • {row['Что случилось']}: {row['Таблица в Word']}, колонка «{row['Колонка в Word']}» "
+              f"← {row['Excel-источник']}, «{row['Показатель в Excel']}»")
 
 
 # ==========================================================
