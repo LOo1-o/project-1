@@ -10,9 +10,15 @@ sys.frozen выставляет сам PyInstaller, а sys.executable в это�
 указывает на настоящий .exe на диске — от него и надо считать.
 """
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
+
+
+# Настоящий абсолютный путь этой системы: «/opt/...» на Windows не
+# абсолютный, и resolve() дописал бы к нему букву диска.
+ROOT = Path(tempfile.gettempdir()).resolve()
 
 
 class TestFrozenExePaths(unittest.TestCase):
@@ -26,10 +32,10 @@ class TestFrozenExePaths(unittest.TestCase):
         return Path(module_file).parent.resolve()
 
     def test_frozen_run_uses_the_folder_with_the_exe(self):
-        exe = Path("/opt/бюллетень/Бюллетень_автоматизация.exe")
+        exe = ROOT / "бюллетень" / "Бюллетень_автоматизация.exe"
         with mock.patch.object(sys, "executable", str(exe)), \
                 mock.patch.object(sys, "frozen", True, create=True):
-            base = self._resolve_base_dir("/tmp/_MEI123456/main.py")
+            base = self._resolve_base_dir(str(ROOT / "_MEI123456" / "main.py"))
 
         self.assertEqual(base, exe.parent)
         self.assertNotIn("_MEI", str(base),
@@ -38,14 +44,14 @@ class TestFrozenExePaths(unittest.TestCase):
     def test_normal_run_uses_the_folder_with_the_sources(self):
         # sys.frozen у обычного интерпретатора отсутствует.
         self.assertFalse(getattr(sys, "frozen", False))
-        base = self._resolve_base_dir("/home/user/project-1/main.py")
-        self.assertEqual(base, Path("/home/user/project-1"))
+        base = self._resolve_base_dir(str(ROOT / "project-1" / "main.py"))
+        self.assertEqual(base, ROOT / "project-1")
 
     def test_input_and_output_sit_next_to_the_exe(self):
-        exe = Path("/opt/бюллетень/Бюллетень_автоматизация.exe")
+        exe = ROOT / "бюллетень" / "Бюллетень_автоматизация.exe"
         with mock.patch.object(sys, "executable", str(exe)), \
                 mock.patch.object(sys, "frozen", True, create=True):
-            base = self._resolve_base_dir("/tmp/_MEI123456/main.py")
+            base = self._resolve_base_dir(str(ROOT / "_MEI123456" / "main.py"))
 
         self.assertEqual(base / "input" / "mappings" / "column_mapping_v2.csv",
                          exe.parent / "input" / "mappings" / "column_mapping_v2.csv")
