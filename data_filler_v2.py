@@ -296,8 +296,18 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
                         print(f"   {warning}")
 
                 # === ЭТАП 1: Динамический поиск колонок по году ===
-                col_idx_2022 = _find_column_smart(df, col_22_hardcode, "2022", keywords_2022, context_label, header_scan_rows)
-                col_idx_2023 = _find_column_smart(df, col_23_hardcode, "2023", keywords_2023, context_label, header_scan_rows)
+                indicator_name = indicator_display_names.get(indicator, '')
+                col_idx_2022 = _find_column_smart(df, col_22_hardcode, "2022", keywords_2022, context_label,
+                                                  header_scan_rows, indicator_name, implausible_values)
+                col_idx_2023 = _find_column_smart(df, col_23_hardcode, "2023", keywords_2023, context_label,
+                                                  header_scan_rows, indicator_name, implausible_values)
+                # Одна колонка Excel не может быть двумя годами. Так бывает у
+                # показателя с единственной колонкой: номера второго года в
+                # маппинге нет, и поиск по названию находит для него ту же
+                # колонку, что и для первого. Значит, второго года у
+                # показателя нет — как если бы поиск ничего не нашёл.
+                if col_idx_2023 is not None and col_idx_2023 == col_idx_2022:
+                    col_idx_2023 = None
                 suffix_2022 = _detect_year_suffix_for_column(df, col_idx_2022, "22")
                 suffix_2023 = _detect_year_suffix_for_column(df, col_idx_2023, "23")
                 # force_decimal — по конкретному столбцу (плюс старый признак
@@ -409,7 +419,7 @@ def pre_load_all_excel_data_v2(excel_dir: Path, table_source_mapping: Dict,
             report_path.parent.mkdir(parents=True, exist_ok=True)
             pd.DataFrame(implausible_values).to_excel(report_path, index=False)
             print(f"🔎 Найдено {len(implausible_values)} подозрительных значений "
-                  f"(дробные там, где считаются штуки): {report_path}")
+                  f"(дробные «штуки», подменённые столбцы): {report_path}")
         except Exception as exc:
             print(f"⚠️ Не удалось сохранить отчёт о подозрительных значениях: {exc}")
 
@@ -475,6 +485,37 @@ def _column_header_text(df: pd.DataFrame, col_idx: int, max_row: int) -> str:
             continue
         parts.append(str(cell).strip())
     return ' '.join(parts).lower()
+
+
+def _normalize_header_text(text: str) -> str:
+    """Приводит текст шапки или ключевого слова к виду, в котором их можно
+    сравнивать: нижний регистр, ё -> е, склеенные переносы, одиночные пробелы.
+
+    Переносы — главное. В узкой ячейке Excel слово разрывается дефисом:
+    «управлен-ческие». Ключевое слово в маппинге записано целым словом, и без
+    склейки подстрока не находилась: колонка из маппинга считалась
+    неподтверждённой, программа решала, что структура файла сдвинулась, и
+    брала другую колонку с тем же текстом. В бюллетене №1 так в колонку
+    «коммерческие и управленческие расходы» ВСЕХ организаций попали расходы
+    только УБЫТОЧНЫХ — 30 ячеек таблицы 17.
+    """
+    text = str(text).lower().replace('ё', 'е')
+    text = _SOFT_WRAP_HYPHEN_RE.sub('', text)
+    return re.sub(r'\s+', ' ', text).strip()
+
+
+def _phrase_in_header(header_text: str, phrase: str) -> bool:
+    """Есть ли фраза в тексте шапки — с начала слова, а не где угодно.
+
+    Раньше это была простая подстрока, и «оборотные активы» находились внутри
+    «внеоборотные активы». Если колонка «Внеоборотные активы» стоит левее —
+    а в балансе она всегда левее, — поиск по ключевому слову возвращал её.
+    Конец фразы не ограничиваем: ключевые слова бывают основами слов.
+    """
+    phrase = _normalize_header_text(phrase)
+    if not phrase:
+        return False
+    return re.search(r'(?<![0-9a-zа-я])' + re.escape(phrase), header_text) is not None
 
 
 _COUNT_INDICATOR_RE = re.compile(r'количеств|число организац|единиц', re.I)
@@ -559,7 +600,8 @@ def _derive_year_keywords(df: pd.DataFrame, col_22_idx: str, col_23_idx: str,
 
 
 def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords: list,
-                        context_label: str = "", header_scan_rows: Optional[int] = None) -> Optional[int]:
+                        context_label: str = "", header_scan_rows: Optional[int] = None,
+                        indicator_name: str = "", events: Optional[list] = None) -> Optional[int]:
     """
     Умный поиск колонки.
 
@@ -584,25 +626,53 @@ def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords:
             вызывающий код может передать глубину, посчитанную по реальной
             структуре КОНКРЕТНОГО файла (см. _detect_header_scan_depth) —
             преамбула перед шапкой год от года может стать длиннее.
+        indicator_name: Название показателя из маппинга. Если оно стоит в шапке
+            колонки из маппинга, колонка правильная — что бы ни говорило
+            ключевое слово. Иначе одно испорченное ключевое слово уводит
+            показатель в чужую колонку: в бюллетене №1 у «дивидендов» оно было
+            скопировано со строки «от продажи акций», и 30 ячеек таблицы 20
+            заполнились выручкой от продажи акций.
+        events: Сюда дописывается каждый случай, когда программа заменила
+            колонку из маппинга другой, — для отчёта, а не только для консоли.
 
     Returns:
         Индекс колонки или None
     """
     max_row = min(header_scan_rows or _HEADER_SCAN_ROWS, len(df))
+    header_cache = {}
+
+    def _header(col_idx: int) -> str:
+        if col_idx not in header_cache:
+            header_cache[col_idx] = _normalize_header_text(_column_header_text(df, col_idx, max_row))
+        return header_cache[col_idx]
 
     def _keyword_match_at(col_idx: int) -> bool:
         if not keywords:
             return False
-        header_text = _column_header_text(df, col_idx, max_row)
-        return any(keyword.lower() in header_text for keyword in keywords)
+        return any(_phrase_in_header(_header(col_idx), keyword) for keyword in keywords)
+
+    def _name_match_at(col_idx: int) -> bool:
+        return bool(indicator_name) and _phrase_in_header(_header(col_idx), indicator_name)
 
     def _find_by_keyword() -> Optional[int]:
         for keyword in keywords:
-            keyword_lower = keyword.lower()
             for col_idx in range(df.shape[1]):
-                if keyword_lower in _column_header_text(df, col_idx, max_row):
+                if _phrase_in_header(_header(col_idx), keyword):
                     return col_idx
         return None
+
+    def _report(what: str, value: str) -> None:
+        if events is None:
+            return
+        source = context_label.split(': ', 1)[0] if ': ' in context_label else ''
+        events.append({
+            'Файл Excel': source,
+            'Показатель': indicator_name or context_label,
+            'Строка Excel': '',
+            'Название строки': '',
+            'Значение': value,
+            'Что не так': what,
+        })
 
     hardcode_col = None
     if hardcode_idx and hardcode_idx.strip():
@@ -614,8 +684,10 @@ def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords:
             pass
 
     # 1️⃣ Жёсткий индекс — доверяем, если заголовок над ним подтверждён
-    #    ключевыми словами (или ключевых слов вообще не задано).
-    if hardcode_col is not None and (not keywords or _keyword_match_at(hardcode_col)):
+    #    ключевыми словами или названием самого показателя (или ключевых
+    #    слов вообще не задано).
+    if hardcode_col is not None and (not keywords or _keyword_match_at(hardcode_col)
+                                     or _name_match_at(hardcode_col)):
         return hardcode_col
 
     # 2️⃣ Структура похожа на изменившуюся — пересчитываем колонку по ключевым словам.
@@ -626,6 +698,12 @@ def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords:
                 f"   🔄 Структура Excel сдвинулась{(' (' + context_label + ')') if context_label else ''}: "
                 f"столбец {hardcode_col + 1} больше не подтверждён ключевыми словами, "
                 f"используем столбец {keyword_col + 1}."
+            )
+            _report(
+                f"столбец {hardcode_col + 1} из маппинга не подтвердился по шапке "
+                f"(«{_header(hardcode_col)[:80]}»), взят столбец {keyword_col + 1} "
+                f"(«{_header(keyword_col)[:80]}») — проверьте, что это тот же показатель",
+                f"столбец {hardcode_col + 1} → {keyword_col + 1}",
             )
         return keyword_col
 
@@ -644,6 +722,12 @@ def _find_column_smart(df: pd.DataFrame, hardcode_idx: str, year: str, keywords:
                 f"   ⚠️ Не удалось подтвердить столбец {hardcode_col + 1}{(' (' + context_label + ')') if context_label else ''} "
                 f"по ключевым словам — используем его как есть, проверьте вручную."
             )
+            # В отчёт не пишем: это та же колонка, что в маппинге, решение
+            # маппинга программа здесь не отменяет. На реальных бюллетенях
+            # таких случаев 77–84, и почти все — составные имена показателей,
+            # групповая часть которых в Excel стоит только над первой
+            # колонкой группы. Отчёт из сотни ложных тревог никто не читает,
+            # и настоящая подмена в нём потерялась бы.
         return hardcode_col
 
     return None
