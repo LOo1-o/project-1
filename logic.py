@@ -379,6 +379,23 @@ def _is_unit_annotation(part_norm: str, unit_annotation_texts: Optional[set] = N
     return part_norm in texts
 
 
+# Метка страницы-продолжения ("Продолжение таблицы 13.") стоит над шапкой
+# справа, в ячейке, объединённой над последними колонками, и попадает в
+# составной заголовок этих колонок. Точное вхождение названия показателя это
+# не ломает, а нечёткое сравнение — ломает: у «Прибыль (убыток) до
+# налогооблажения» (опечатка в Excel бюллетеня №2) точного вхождения нет,
+# а с приставкой «продолжение таблицы 13» сходство падает с 0,97 до 0,72,
+# ниже порога 0,80. Колонка оставалась без тегов на всех продолжениях.
+_CONTINUATION_LABEL_RE = re.compile(r'продолжение\s+таблицы\s*\d+\s*[.)]?')
+
+
+def _strip_continuation_label(text: str) -> str:
+    """Убирает из нормализованного текста шапки метку "продолжение таблицы N"."""
+    if not text or 'продолжение' not in text:
+        return text
+    return re.sub(r'\s+', ' ', _CONTINUATION_LABEL_RE.sub(' ', text)).strip()
+
+
 def _text_matches_name(cell_text: str, name_norm: str, min_len: int = 5) -> bool:
     """
     Проверяет совпадение нормализованного названия показателя с текстом ячейки
@@ -603,7 +620,7 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
             for header_row in header_rows_filled:
                 if i >= len(header_row):
                     continue
-                header_part = header_row[i].strip()
+                header_part = _strip_continuation_label(header_row[i].strip())
                 if not header_part or header_part in seen:
                     continue
                 seen.add(header_part)
@@ -715,7 +732,7 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
                 row_cells = table.rows[r_idx].cells
                 if i >= len(row_cells):
                     continue
-                part = _normalize_match_text(get_cleaned_cell_text(row_cells[i]))
+                part = _strip_continuation_label(_normalize_match_text(get_cleaned_cell_text(row_cells[i])))
                 # Строка-разметка единиц измерения ("на конец года, тысяч
                 # рублей" и т.п.) иногда попадает в run строки-заголовка (когда
                 # секция начинается со страницы "Продолжение таблицы N.") и
