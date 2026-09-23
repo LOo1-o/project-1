@@ -496,8 +496,14 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=None, ent
 
         if year_count >= 2 or indicator_score >= 2 or combined_score >= 2:
             headers.append(row_idx)
-            if combined_score >= 2:
-                # Помечаем и следующую строку как часть шапки
+            # Следующая строка — часть шапки, только если склейка с ней нашла
+            # БОЛЬШЕ показателей, чем эта строка в одиночку, то есть
+            # следующая строка действительно продолжает шапку. Раньше хватало
+            # combined_score >= 2, и если строка шапки сама набирала два
+            # совпадения, в шапку уходила и строка данных под ней. Строки
+            # шапки не очищаются, и в бюллетене №2 в строке «азартные игры»
+            # таблицы 21 остались цифры прошлого бюллетеня.
+            if combined_score >= 2 and combined_score > indicator_score:
                 headers.append(row_idx + 1)
 
     if not entity_name_maps:
