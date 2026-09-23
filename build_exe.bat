@@ -10,8 +10,20 @@ if errorlevel 1 (
     exit /b 1
 )
 
-echo Устанавливаю PyInstaller...
+REM Для Windows 7 exe нужно собирать на Python 3.8 (32-бит): exe, собранный
+REM на Python 3.9 и новее, на Windows 7 не запускается. Версии библиотек —
+REM те же, что проверены: requirements-win7.txt. Готовый exe для Windows 7
+REM собирается и автоматически — см. .github/workflows/build-exe-win7.yml.
+echo Устанавливаю библиотеки и PyInstaller...
+python -c "import sys; sys.exit(0 if sys.version_info[:2] == (3, 8) else 1)"
+if errorlevel 1 goto not_py38
+python -m pip install -r requirements-win7.txt "pyinstaller==5.13.2" "pyinstaller-hooks-contrib==2023.8"
+goto after_install
+:not_py38
+echo ВНИМАНИЕ: это не Python 3.8 — собранный exe НЕ запустится на Windows 7.
+python --version
 python -m pip install pyinstaller
+:after_install
 if errorlevel 1 (
     echo ОШИБКА: pip install pyinstaller не выполнился ^(см. вывод выше —
     echo обычно это нет интернета, либо pip слишком старый: попробуйте
