@@ -1,0 +1,139 @@
+# Сборка Бюллетень_автоматизация.exe, который запускается на Windows 7.
+#
+# Почему именно так:
+# - Python 3.8 — последний Python, который работает на Windows 7. exe,
+#   собранный на Python 3.9 и новее, на Windows 7 не запускается вовсе.
+# - 32-битный (x86) exe запускается и на 32-, и на 64-битной Windows 7/10/11.
+# - Библиотеки — точные версии из requirements-win7.txt (с ними проверено,
+#   что документы совпадают ячейка в ячейку с обычной сборкой).
+# - Внутрь exe кладутся DLL Universal C Runtime из Windows SDK: на Windows 7
+#   без обновления KB2999226 их нет, и exe не запустился бы с ошибкой
+#   «api-ms-win-crt-runtime-l1-1-0.dll не найден». На Windows 10/11 система
+#   берёт свои, встроенные.
+# - После сборки exe прогоняется на данных бюллетеня из репозитория, и
+#   готовый документ сравнивается с output/Бюллетень_ГОТОВЫЙ.docx ячейка в
+#   ячейку. Если хоть одна ячейка отличается — сборка считается упавшей.
+#
+# Где взять exe: вкладка Actions → последний зелёный запуск «Сборка exe для
+# Windows 7» → внизу раздел Artifacts → «Бюллетень_автоматизация_Windows7».
+name: Сборка exe для Windows 7
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '*.py'
+      - 'requirements-win7.txt'
+      - '.github/workflows/build-exe-win7.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2022
+    defaults:
+      run:
+        shell: bash
+    env:
+      PYTHONUTF8: '1'
+      EXE_NAME: Бюллетень_автоматизация
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.8.10'
+          architecture: x86
+
+      - name: Установить библиотеки (точные версии для Windows 7)
+        run: |
+          python -m pip install --upgrade "pip<25"
+          python -m pip install -r requirements-win7.txt
+          python -m pip install "pyinstaller==5.13.2" "pyinstaller-hooks-contrib==2023.8" "pytest==8.3.5"
+          python --version
+          python -c "import struct; print('разрядность Python:', struct.calcsize('P') * 8, 'бит')"
+
+      - name: Тесты
+        run: python -m pytest -q tests
+
+      - name: Найти DLL Universal C Runtime (для Windows 7 без обновлений)
+        shell: pwsh
+        run: |
+          $dirs = Get-ChildItem "${env:ProgramFiles(x86)}\Windows Kits\10\Redist" -Recurse -Directory -Filter x86 -ErrorAction SilentlyContinue |
+                  Where-Object { $_.FullName -match '\\ucrt\\DLLs\\x86$' } |
+                  Sort-Object FullName -Descending
+          if (-not $dirs) { throw "DLL Universal C Runtime (ucrt\DLLs\x86) не найдены в Windows SDK" }
+          New-Item -ItemType Directory -Force ucrt | Out-Null
+          Copy-Item "$($dirs[0].FullName)\*.dll" ucrt\
+          Write-Host "Взяты из: $($dirs[0].FullName)"
+          Get-ChildItem ucrt | Measure-Object | ForEach-Object { Write-Host "DLL: $($_.Count)" }
+
+      - name: Собрать exe
+        run: |
+          python -m PyInstaller --noconfirm --clean --onefile --console \
+            --name "$EXE_NAME" \
+            --add-binary "ucrt/*.dll;." \
+            main.py
+          ls -la dist
+
+      - name: Проверить exe на данных бюллетеня из репозитория
+        run: |
+          mkdir -p exe_check
+          cp "dist/$EXE_NAME.exe" exe_check/
+          cp -r input exe_check/
+          cd exe_check
+          ./"$EXE_NAME.exe" > run.log 2>&1 || { tail -50 run.log; exit 1; }
+          tail -5 run.log
+          python - <<'PY'
+          import sys
+          from docx import Document
+
+          ref = Document('../output/Бюллетень_ГОТОВЫЙ.docx')
+          got = Document('output/Бюллетень_ГОТОВЫЙ.docx')
+          if len(ref.tables) != len(got.tables):
+              sys.exit(f'Число таблиц отличается: {len(ref.tables)} против {len(got.tables)}')
+          cells = diffs = 0
+          for t_idx, (ta, tb) in enumerate(zip(ref.tables, got.tables)):
+              for r_idx, (ra, rb) in enumerate(zip(ta.rows, tb.rows)):
+                  for c_idx, (ca, cb) in enumerate(zip(ra.cells, rb.cells)):
+                      cells += 1
+                      if ca.text != cb.text:
+                          diffs += 1
+                          if diffs <= 20:
+                              print(f'таблица {t_idx + 1}, строка {r_idx + 1}, колонка {c_idx + 1}: '
+                                    f'{ca.text!r} -> {cb.text!r}')
+          print(f'Сравнено ячеек: {cells}, различий: {diffs}')
+          sys.exit(1 if diffs else 0)
+          PY
+
+      - name: Инструкция к exe
+        run: |
+          cat > dist/КАК_ЗАПУСТИТЬ.txt <<'TXT'
+          Бюллетень_автоматизация.exe — сборка для Windows 7, 8, 10 и 11 (32- и 64-бит).
+          Python устанавливать не нужно.
+
+          1. Положите exe в отдельную папку.
+          2. Рядом с exe положите папку input (как в проекте): Бюллетень.docx,
+             папки excel и mappings.
+          3. Запустите exe двойным щелчком или из командной строки (cmd):
+             так окно не закроется, и будут видны сообщения программы.
+          4. Результат появится в папке output рядом с exe.
+
+          Если Windows покажет «Windows защитила ваш компьютер» — нажмите
+          «Подробнее» → «Выполнить в любом случае»: exe не подписан цифровой
+          подписью, это обычное предупреждение для нового файла.
+          TXT
+          # Метка UTF-8 в начале: без неё Блокнот Windows 7 может показать
+          # русский текст «кракозябрами».
+          { printf '\xEF\xBB\xBF'; cat dist/КАК_ЗАПУСТИТЬ.txt; } > dist/tmp.txt
+          mv dist/tmp.txt dist/КАК_ЗАПУСТИТЬ.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Бюллетень_автоматизация_Windows7
+          path: |
+            dist/Бюллетень_автоматизация.exe
+            dist/КАК_ЗАПУСТИТЬ.txt
+          if-no-files-found: error
+          retention-days: 90
