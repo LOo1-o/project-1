@@ -659,10 +659,26 @@ def _infer_mapping_from_excel(excel_path: Path) -> list:
     headers = _row_texts(df, header_row)
     subheaders = _row_texts(df, header_row + 1) if header_row + 1 < len(df) else [''] * len(headers)
     footer_row = _row_texts(df, header_row + 2) if header_row + 2 < len(df) else [''] * len(headers)
+    # Ширину шапки смотрим ещё по двум строкам ниже footer: между
+    # подзаголовками и строкой периодов («на конец предыдущего / отчетного
+    # года») в Excel бывает пустая строка-разделитель. В t10Ved14 бюллетеня
+    # №2 так и было: подпись последней колонки (2025 год) стоит только в
+    # строке периодов, генератор её не видел, и у показателя «финансовые и
+    # другие оборотные активы» не оказалось колонки 2025 года.
+    # Строки ниже берём, только пока колонки «Код» и «Наименование» пусты
+    # (у строк данных и нумерации «А, Б, 1, 2…» там всегда что-то есть), и
+    # только текстовые ячейки — иначе ширину шапки задали бы числа данных.
+    below_rows = []
+    for row in range(header_row + 3, min(header_row + 5, len(df))):
+        texts = _row_texts(df, row)
+        if any(str(text).strip() for text in texts[:2]):
+            break
+        below_rows.append(['' if re.fullmatch(r'[\d\s.,-]*', str(text)) else text for text in texts])
     max_header_idx = max(
         [i for i, v in enumerate(headers) if str(v).strip()] +
         [i for i, v in enumerate(subheaders) if str(v).strip()] +
         [i for i, v in enumerate(footer_row) if str(v).strip()] +
+        [i for texts in below_rows for i, v in enumerate(texts) if str(v).strip()] +
         [0]
     )
 
