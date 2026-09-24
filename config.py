@@ -1,11 +1,13 @@
 # confic.py
 import csv
+from pathlib import Path
 import re
 from collections import Counter
 
 import pandas as pd
 from docx.oxml.ns import qn
 from docx.table import _Cell, Table
+from docx.text.paragraph import Paragraph
 
 # === Константы ===
 EMPTY_CELL_MARKER = "—"
@@ -313,6 +315,51 @@ def load_table_source_map(filepath):
     return mapping_dict
 
 
+def load_manual_table_numbers(filepath) -> dict:
+    """Таблицы, у которых в списке таблиц не указан Excel-файл: {номер: название}.
+
+    Это сводные таблицы («1. ОСНОВНЫЕ ФИНАНСОВЫЕ ПОКАЗАТЕЛИ …»), их
+    заполняют вручную. load_table_source_map такие строки отбрасывает — и
+    программа о них не знала: одна оставалась с числами прошлого периода,
+    другую «узнавала» по совпавшему названию показателя и частично ставила
+    прочерки. По этому списку их числа стираются целиком, а ячейки остаются
+    пустыми под ручное заполнение.
+
+    Номер берётся из названия («2. БАЛАНС …» → 2): заголовок в Word бывает
+    набран так, что по полному тексту он не находится.
+    """
+    rows = [row for row in _read_csv_rows_robustly(filepath, delimiter=';') if row]
+    if rows:
+        header = [str(col).strip().lower() for col in rows[0]]
+        if 'таблица' in header and ('файл' in header or 'источник' in header):
+            rows = rows[1:]
+    manual = {}
+    for row in rows:
+        raw_name = ' '.join(str(row[0]).strip().strip('"').split())
+        raw_src = str(row[1]).strip().strip('"').strip() if len(row) > 1 else ''
+        number = _title_number(raw_name)
+        if raw_name and not raw_src and number is not None:
+            manual[number] = raw_name
+    return manual
+
+
+def load_missing_file_table_numbers(filepath, excel_dir) -> dict:
+    """Таблицы, чей Excel-файл из списка таблиц не лежит в excel_dir:
+    {номер: имя файла}. Числа в них программа стирает (см.
+    generate_word_template), а отчёт объясняет, почему ячейки пустые."""
+    excel_dir = Path(excel_dir)
+    missing = {}
+    for row in _read_csv_rows_robustly(filepath, delimiter=';'):
+        if len(row) < 2:
+            continue
+        raw_name = ' '.join(str(row[0]).strip().strip('"').split())
+        raw_src = str(row[1]).strip().strip('"').strip()
+        number = _title_number(raw_name)
+        if raw_src and number is not None and not (excel_dir / raw_src).exists():
+            missing[number] = raw_src
+    return missing
+
+
 def load_column_mapping(filepath):
     """
     Загружает column_mapping.csv и возвращает:
@@ -360,6 +407,44 @@ def load_column_mapping(filepath):
             print(f"⚠️ Дублирующийся код индикатора '{indicator}' для разных названий: {sorted(names)}")
 
     return word_to_indicator, indicator_to_excel, indicator_to_file, file_word_to_indicator
+
+
+# === Номер таблицы бюллетеня по заголовку в Word ===
+# Общие для заполнения (logic.py) и отчёта для проверки (check_report.py):
+# оба должны одинаково понимать, к какой таблице бюллетеня относится
+# таблица Word.
+_TITLE_RE = re.compile(r'^\s*(\d{1,2})\s*\.\s+\S')
+
+
+def _is_table_title(text: str) -> bool:
+    """«6. ВНЕОБОРОТНЫЕ АКТИВЫ …» — номер и текст заглавными буквами."""
+    return bool(_TITLE_RE.match(text)) and text == text.upper() and any(ch.isalpha() for ch in text)
+
+
+def _title_number(text: str):
+    match = _TITLE_RE.match(text or '')
+    return int(match.group(1)) if match else None
+
+
+def _table_numbers(doc, tables) -> list:
+    """Номер таблицы бюллетеня для каждой таблицы Word (из TableManager) —
+    по ближайшему заголовку выше. Вложенная таблица получает номер внешней."""
+    number_by_top = {}
+    current = None
+    for element in doc.element.body.iterchildren():
+        if element.tag == qn('w:p'):
+            text = ' '.join(Paragraph(element, doc).text.split())
+            if _is_table_title(text):
+                current = _title_number(text)
+        elif element.tag == qn('w:tbl'):
+            number_by_top[element] = current
+    numbers = []
+    for table in tables:
+        element = table._tbl
+        while element is not None and element not in number_by_top:
+            element = element.getparent()
+        numbers.append(number_by_top.get(element))
+    return numbers
 
 
 # === Поиск названия таблицы ===
@@ -463,6 +548,16 @@ def get_table_name(table: Table, known_table_names, return_details: bool = False
                         score = len(known_norm) / (para_count + 1)
                         exact_matches.append((score, known_title, para_count))
 
+        elif prev_elem.tag == qn('w:tbl'):
+            # Выше — предыдущая таблица: её заголовок уже не наш. Раньше
+            # поиск шёл дальше и, если собственное название не совпало со
+            # списком (бюллетень №3, таблица 19: «…ТОВАРОВ, РАБОТ, УСЛУГ…»
+            # вместо «…ТОВАРОВ, ПРОДУКЦИИ, РАБОТ…»), находил заголовок
+            # таблицы 18 и брал её Excel-файл — строки не узнавались, в
+            # таблице вставали прочерки. Без чужого заголовка таблица либо
+            # продолжает предыдущую (над ней ничего нет), либо попадает в
+            # отчёт как таблица без источника.
+            break
         else:
             prev_elem = prev_elem.getprevious()
             para_count += 1

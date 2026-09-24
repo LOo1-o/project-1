@@ -24,7 +24,10 @@ from docx.oxml.ns import qn
 from docx.text.paragraph import Paragraph
 from openpyxl.styles import Alignment
 
-from config import _normalize_text, _read_csv_rows_robustly, get_cleaned_cell_text, looks_like_data_value
+from config import (
+    _is_table_title, _normalize_text, _read_csv_rows_robustly, _table_numbers, _title_number,
+    get_cleaned_cell_text, looks_like_data_value,
+)
 from data_filler_v2 import UNFILLED_DASH_IN_EXCEL
 from logic import _one_letter_diff, _squish_text
 from table_manager import TableManager
@@ -33,23 +36,12 @@ IMPORTANT = 'Важно'
 FYI = 'Для сведения'
 YELLOW = 'FFF2A8'   # тег есть, но числа нет по нашей вине
 ORANGE = 'FFC58A'   # программа не поставила сюда тег вовсе
-_TITLE_RE = re.compile(r'^\s*(\d{1,2})\s*\.\s+\S')
 _YEAR_RE = re.compile(r'(19|20)\d\d')
 
 
 # ---------------------------------------------------------------------------
 # Названия таблиц в Word
 # ---------------------------------------------------------------------------
-def _is_table_title(text: str) -> bool:
-    """«6. ВНЕОБОРОТНЫЕ АКТИВЫ …» — номер и текст заглавными буквами."""
-    return bool(_TITLE_RE.match(text)) and text == text.upper() and any(ch.isalpha() for ch in text)
-
-
-def _title_number(text: str):
-    match = _TITLE_RE.match(text or '')
-    return int(match.group(1)) if match else None
-
-
 def word_table_titles(doc) -> list:
     """Заголовки таблиц бюллетеня в порядке следования: [(номер, текст)].
 
@@ -73,27 +65,6 @@ def word_table_titles(doc) -> list:
         else:
             current = None
     return [tuple(title) for title in titles]
-
-
-def _table_numbers(doc, tables) -> list:
-    """Номер таблицы бюллетеня для каждой таблицы Word (из TableManager) —
-    по ближайшему заголовку выше. Вложенная таблица получает номер внешней."""
-    number_by_top = {}
-    current = None
-    for element in doc.element.body.iterchildren():
-        if element.tag == qn('w:p'):
-            text = ' '.join(Paragraph(element, doc).text.split())
-            if _is_table_title(text):
-                current = _title_number(text)
-        elif element.tag == qn('w:tbl'):
-            number_by_top[element] = current
-    numbers = []
-    for table in tables:
-        element = table._tbl
-        while element is not None and element not in number_by_top:
-            element = element.getparent()
-        numbers.append(number_by_top.get(element))
-    return numbers
 
 
 # ---------------------------------------------------------------------------
@@ -229,7 +200,7 @@ def _is_label_or_header_row(cells) -> bool:
 
 
 def mark_problem_cells(input_doc_path, template_doc_path, final_doc_path, unfilled, out_path,
-                       numbers_without_source=(), unknown_row_names=()) -> list:
+                       numbers_without_source=(), unknown_row_names=(), numbers_missing_file=None) -> list:
     """Подсвечивает в копии готового бюллетеня ячейки без чисел по нашей вине
     и возвращает их список для отчёта.
 
@@ -247,11 +218,15 @@ def mark_problem_cells(input_doc_path, template_doc_path, final_doc_path, unfill
     unfilled_by_cell = {(u['Таблица'], u['Строка'], u.get('Колонка')): u for u in unfilled}
     unknown_rows = {_normalize_text(name) for name in unknown_row_names}
     numbers_without_source = set(numbers_without_source)
+    numbers_missing_file = dict(numbers_missing_file or {})
 
     problems = []
     for t_idx, (src_table, tpl_table, fin_table) in enumerate(
             zip(TableManager(source).iter_tables(), TableManager(template).iter_tables(), final_tables)):
         number = numbers[t_idx]
+        # Ни одного тега на странице — программа не определила для неё
+        # Excel-файл (название не совпало со списком таблиц).
+        page_has_tags = '{{' in ''.join(cell.text for row in tpl_table.rows for cell in row.cells)
         for r_idx, (src_row, tpl_row, fin_row) in enumerate(zip(src_table.rows, tpl_table.rows, fin_table.rows)):
             fin_cells = fin_row.cells
             if not fin_cells:
@@ -275,8 +250,14 @@ def mark_problem_cells(input_doc_path, template_doc_path, final_doc_path, unfill
                 elif '{{' not in tpl_cell.text and looks_like_data_value(get_cleaned_cell_text(src_cell)):
                     indicator = ''
                     color = ORANGE
-                    if number in numbers_without_source or number is None:
+                    if number in numbers_missing_file:
+                        why = (f'Excel-файл «{numbers_missing_file[number]}» не найден — исправьте имя по листу '
+                               '«1 Перед запуском» и запустите программу снова')
+                    elif number in numbers_without_source or number is None:
                         why = 'Эту таблицу программа не заполняет (в списке таблиц нет Excel-файла) — заполните вручную'
+                    elif not page_has_tags:
+                        why = ('Программа не определила Excel-файл для этой страницы таблицы: её название не '
+                               'совпало со списком таблиц — исправьте по листу «1 Перед запуском» и запустите снова')
                     elif _normalize_text(row_name) in unknown_rows:
                         why = 'Название строки не узнано — см. лист «3 Названия Word и Excel»'
                     else:
