@@ -392,6 +392,28 @@ def _normalize_match_text(text: str) -> str:
     return normalized
 
 
+def _file_wide_prefix(names_norm, min_words=2) -> tuple:
+    """
+    Начальные слова, общие для ВСЕХ показателей файла, если у каждого после
+    них есть ещё слова. В t23-пр бюллетеня №3 все десять показателей
+    начинаются с «Предыдущий год (сопоставимый круг)» — это заголовок всего
+    файла, а не раздела. Разделов, которые можно перепутать, у такой
+    приставки нет, поэтому искать её в таблице Word не нужно (в Word её и
+    нет — заголовок таблицы сформулирован иначе).
+    """
+    lists = [n.split() for n in names_norm if n]
+    if len(lists) < 2:
+        return ()
+    prefix = []
+    for words in zip(*lists):
+        if any(word != words[0] for word in words):
+            break
+        prefix.append(words[0])
+    if len(prefix) < min_words or any(len(words) <= len(prefix) for words in lists):
+        return ()
+    return tuple(prefix)
+
+
 def _compute_shared_group_prefixes(names_norm, min_siblings=2, min_prefix_words=2):
     """Находит "групповые" префиксы, общие для нескольких показателей одного
     Excel-файла — например, "отчетный год" в "отчетный год сальдо прочих
@@ -1309,6 +1331,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             _compute_shared_group_prefixes(all_names_norm.values()),
             key=len, reverse=True
         )
+        file_prefix = _file_wide_prefix(all_names_norm.values())
 
         source_word_to_indicator = {}
         for name, indicators in all_file_entries.items():
@@ -1433,10 +1456,22 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 # полным префиксом, либо его базовой частью без хвостового
                 # "в том числе".
                 prefix_confirm_candidates = {prefix_text}
-                trimmed_prefix = re.sub(r'\s*в том числе:?\s*$', '', prefix_text).strip()
-                if trimmed_prefix:
-                    prefix_confirm_candidates.add(trimmed_prefix)
-                if not any(
+                # Часть префикса, общую для всех показателей файла (см.
+                # _file_wide_prefix), в таблице не ищем: подтверждаем только
+                # то, что после неё, а если после неё ничего — префикс
+                # подтверждён сам собой.
+                file_prefix_only = False
+                if file_prefix and prefix[:len(file_prefix)] == file_prefix:
+                    rest_text = ' '.join(prefix[len(file_prefix):])
+                    if rest_text:
+                        prefix_confirm_candidates.add(rest_text)
+                    else:
+                        file_prefix_only = True
+                for candidate in list(prefix_confirm_candidates):
+                    trimmed_prefix = re.sub(r'\s*в том числе:?\s*$', '', candidate).strip()
+                    if trimmed_prefix:
+                        prefix_confirm_candidates.add(trimmed_prefix)
+                if not file_prefix_only and not any(
                     candidate in col_text
                     for candidate in prefix_confirm_candidates
                     for col_text in column_texts_norm
