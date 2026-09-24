@@ -155,12 +155,42 @@ def _bracket_word_variants(name: str) -> dict:
     return variants
 
 
+# Слова, которые Росстат добавил к названиям показателей в Excel, а в Word их
+# нет. В бюллетене №3 (форма отчётности 2025 года): «Прибыль (убыток) от
+# продолжающейся деятельности до налогообложения» — в Word по-прежнему
+# «Прибыль (убыток) до налогообложения». Это есть в t23, t25 и t27, и без
+# правила колонки оставались пустыми во всех этих таблицах — и так будет у
+# любого региона. Совпадение, как и у слова в скобках, — только целиком и
+# с записью в отчёт «проверьте названия Word и Excel».
+_OPTIONAL_PHRASES = ('от продолжающейся деятельности',)
+
+
+def _name_variants(name: str) -> dict:
+    """
+    Все допустимые укороченные варианты названия показателя из Excel:
+    нормализованный вариант -> что выброшено (для отчёта): «(убытка)» —
+    короткое слово в скобках (см. _bracket_word_variants) или фраза из
+    _OPTIONAL_PHRASES.
+    """
+    variants = {variant: f"({word})" for variant, word in _bracket_word_variants(name).items()}
+    name_norm = _normalize_match_text(name)
+    for phrase in _OPTIONAL_PHRASES:
+        phrase_norm = _normalize_match_text(phrase)
+        padded = f" {name_norm} "
+        if f" {phrase_norm} " not in padded:
+            continue
+        shortened = ' '.join(padded.replace(f" {phrase_norm} ", ' ', 1).split())
+        if len(shortened.split()) >= _BRACKET_VARIANT_MIN_WORDS:
+            variants.setdefault(shortened, phrase)
+    return variants
+
+
 def _build_bracket_variant_map(names) -> dict:
-    """нормализованный вариант без слова в скобках -> список нормализованных названий."""
+    """нормализованный укороченный вариант (см. _name_variants) -> список нормализованных названий."""
     variant_map = {}
     for name in names:
         name_norm = _normalize_match_text(name)
-        for variant in _bracket_word_variants(name):
+        for variant in _name_variants(name):
             if name_norm not in variant_map.setdefault(variant, []):
                 variant_map[variant].append(name_norm)
     return variant_map
@@ -1329,7 +1359,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             # _fuzzy_match_header), и каждое такое решение уходит в отчёт.
             if name not in source_word_to_indicator and any(
                 variant in col_text
-                for variant in _bracket_word_variants(name)
+                for variant in _name_variants(name)
                 for col_text in column_texts_norm
             ):
                 source_word_to_indicator[name] = indicators
@@ -1362,8 +1392,14 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 # ним алиас (см. ниже), может увести тег в чужую колонку.
                 if len(name_words[len(prefix):]) < 2 or len(remainder) < 10:
                     continue
+                # Остаток ищем и в укороченных вариантах (см. _name_variants):
+                # в t23 бюллетеня №3 у показателя сразу и групповой префикс
+                # «Предыдущий год (сопоставимый круг)», и слова «от
+                # продолжающейся деятельности», которых в Word нет.
+                remainder_forms = [remainder] + list(_name_variants(remainder))
                 matched_col = next(
-                    (col_text for col_text in column_texts_norm if remainder in col_text),
+                    (col_text for col_text in column_texts_norm
+                     if any(form in col_text for form in remainder_forms)),
                     None
                 )
                 if matched_col is None:
@@ -2056,11 +2092,14 @@ def _collect_name_check_entries(report, validation_log, table, t_index, header_i
 
     for col_idx, header_text, matched_name, indicator in bracket_matches:
         excel_name = raw_by_norm.get(matched_name, matched_name)
-        dropped = _bracket_word_variants(excel_name).get(header_text, '')
+        dropped = _name_variants(excel_name).get(header_text, '')
+        in_brackets = dropped.startswith('(')
         add(
-            'Названия отличаются словом в скобках', col_idx, indicator, excel_name,
-            f"В Word колонка называется «{{word}}», в Excel — «{excel_name}». Без слова «({dropped})» "
-            f"в скобках названия совпадают, поэтому программа сочла их одним показателем и поставила "
+            'Названия отличаются словом в скобках' if in_brackets else f'В Excel лишние слова «{dropped}»',
+            col_idx, indicator, excel_name,
+            f"В Word колонка называется «{{word}}», в Excel — «{excel_name}». Без "
+            f"{'слова' if in_brackets else 'слов'} «{dropped}» "
+            f"названия совпадают, поэтому программа сочла их одним показателем и поставила "
             f"в колонку числа из {source_file}, колонка {excel_column(indicator)}.",
             f"Если числа верные — ничего делать не нужно. Чтобы строка больше не появлялась, "
             f"в input/mappings/column_mapping_v2.csv (строка указана слева) в поле «Название показателя» "
