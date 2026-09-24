@@ -10,6 +10,7 @@ from config import (
     get_excel_data,
     load_okved_map,
     load_table_source_map,
+    load_manual_table_numbers,
     load_column_mapping,
     get_cleaned_cell_text,
     looks_like_data_value,
@@ -19,6 +20,7 @@ from config import (
     get_table_name,
     canonical_okved,
     _read_csv_rows_robustly,
+    _table_numbers,
 )
 from mo import load_mo_map, find_mo_code, canonical_mo
 from config_v2 import load_column_mapping_v2
@@ -1030,6 +1032,32 @@ def get_continuation_table_number(table):
     return None
 
 
+def _clear_manual_table(table) -> int:
+    """Стирает числа прошлого периода в таблице, которую заполняют вручную.
+
+    Ячейки остаются ПУСТЫМИ, а не с прочерком: прочерк значит «данных нет»,
+    а здесь данные есть — их просто вносит человек. Шапка не трогается:
+    в её строках нет названия в первой колонке (годы, «на конец года»).
+    Ячейка, объединённая с названием строки, тоже не трогается.
+    """
+    cleared = 0
+    for row in table.rows:
+        cells = row.cells
+        if not cells or not get_cleaned_cell_text(cells[0]).strip():
+            continue
+        name_tc = cells[0]._tc
+        prev_tc = name_tc
+        for cell in cells[1:]:
+            if cell._tc is name_tc or cell._tc is prev_tc:
+                continue
+            prev_tc = cell._tc
+            if looks_like_data_value(get_cleaned_cell_text(cell)):
+                for p in cell.paragraphs:
+                    set_paragraph_text_keep_format(p, "")
+                cleared += 1
+    return cleared
+
+
 def get_table_source_by_number(table_source_mapping, table_number):
     """Источник для метки "Продолжение таблицы N".
 
@@ -1179,6 +1207,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     )
 
     table_source_mapping = load_table_source_map(table_source_mapping_path)
+    manual_tables = load_manual_table_numbers(table_source_mapping_path)
     mo_source_files = {src for src in table_source_mapping.values() if 'mo' in src.lower()}
     word_to_indicator, indicator_to_excel, indicator_to_file, file_word_to_indicator, _, file_word_to_indicators = load_column_mapping_v2(column_mapping_path)
 
@@ -1219,6 +1248,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     column_texts_by_file = {}
     current_source_file = None
     normalized_title_to_src = {k: v for k, v in table_source_mapping.items()}
+    table_numbers = _table_numbers(doc, doc.tables)
 
     for t_index, table in enumerate(doc.tables):
         print(f"\n📄 Таблица {t_index + 1}")
@@ -1242,6 +1272,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             current_source_file = None
 
         continuation_number = get_continuation_table_number(table)
+        continuation_source = None
         if continuation_number:
             continuation_source = get_table_source_by_number(table_source_mapping, continuation_number)
             if continuation_source:
@@ -1257,7 +1288,28 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 current_source_file = continuation_source
                 print(f"🔁 Источник по метке продолжения таблицы {continuation_number}: {current_source_file}")
 
-        if not current_source_file:
+        manual_number = table_numbers[t_index]
+        if manual_number in manual_tables and not table_title and not continuation_source:
+            # Таблица из списка без Excel-файла (сводная, заполняется
+            # вручную). Источник по содержимому не угадываем: раньше таблица
+            # «узнавалась» по совпавшему названию показателя (Баланс —
+            # как t01Ved14) и очищалась лишь частично, а если не
+            # узнавалась — оставалась с числами прошлого периода.
+            cleared = _clear_manual_table(table)
+            note = (f"✋ Таблица {manual_number} «{manual_tables[manual_number]}» — в списке таблиц нет "
+                    f"Excel-файла, заполняется вручную: стёрто чисел {cleared}, ячейки оставлены пустыми.")
+            print(note)
+            validation_log.append(f"[TABLE {t_index + 1}] {note}")
+            current_source_file = None
+            continue
+
+        if not current_source_file and not saw_heading_text:
+            # Угадываем файл по содержимому, только когда над таблицей нет
+            # своего заголовка. Если заголовок есть, но его нет в списке
+            # таблиц (опечатка в названии), угадывание брало первый файл,
+            # чей показатель встретился в шапке: бюллетень №3, таблица 14
+            # получила файл таблицы 19. С верным списком ни один бюллетень
+            # до угадывания не доходит.
             print(f"   → Пытаемся определить по содержимому таблицы...")
             detected = auto_detect_table_source(table, table_source_mapping, file_word_to_indicator)
             if detected:
@@ -1267,7 +1319,25 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 print("ℹ️ Заголовок таблицы не определён, используем предыдущий источник")
 
         if not current_source_file:
-            warning = "⚠️ Источник не определён. Пропускаем таблицу."
+            # Раньше таблица просто пропускалась — с числами прошлого
+            # периода, будто заполнена. Стираем их; название, которого нет
+            # в списке таблиц, — на листе «1 Перед запуском».
+            cleared = _clear_manual_table(table)
+            warning = (f"⚠️ Источник не определён (название таблицы не найдено в списке таблиц): "
+                       f"стёрто чисел прошлого периода {cleared}, ячейки оставлены пустыми.")
+            print(warning)
+            validation_log.append(f"[TABLE {t_index + 1}] {warning}")
+            continue
+
+        if excel_dir is not None and not (excel_dir / current_source_file).exists():
+            # Файл из списка таблиц не найден (бюллетень №3: «M25_…» вместо
+            # «S25_…», имя без «.xlsx»). Раньше тегов не ставилось и ничего
+            # не очищалось — таблица оставалась с числами прошлого периода и
+            # выглядела заполненной. Стираем их, как в таблице без файла;
+            # ошибка в имени файла — на листе «1 Перед запуском».
+            cleared = _clear_manual_table(table)
+            warning = (f"⚠️ Excel-файл «{current_source_file}» не найден в {excel_dir}: "
+                       f"стёрто чисел прошлого периода {cleared}, ячейки оставлены пустыми.")
             print(warning)
             validation_log.append(f"[TABLE {t_index + 1}] {warning}")
             continue
