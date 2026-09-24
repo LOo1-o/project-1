@@ -198,10 +198,74 @@ def _build_bracket_variant_map(names) -> dict:
     return variant_map
 
 
+def load_name_synonyms(path) -> list:
+    """
+    input/mappings/синонимы.csv — пары «Как в Word;Как в Excel» для слов,
+    которые по написанию не похожи, но означают одно и то же: «затраты на
+    производство продаж» и «Себестоимость с учетом коммерческих и
+    управленческих расходов» (бюллетень №2). Пара действует во всех
+    таблицах и бюллетенях и, в отличие от правки названия в
+    column_mapping_v2.csv, не пропадает, если маппинг создать заново.
+
+    Возвращает [(как в Word, как в Excel)] в нормализованном виде.
+    """
+    if not path or not Path(path).exists():
+        return []
+    pairs = []
+    for row in _read_csv_rows_robustly(path, delimiter=';'):
+        if len(row) < 2 or str(row[0]).strip().lower().startswith('как в word'):
+            continue
+        word = _normalize_match_text(str(row[0]).strip().strip('"'))
+        excel = _normalize_match_text(str(row[1]).strip().strip('"'))
+        if word and excel and word != excel and (word, excel) not in pairs:
+            pairs.append((word, excel))
+    return pairs
+
+
+def _synonym_variants(name_norm: str, synonyms) -> dict:
+    """Название показателя из Excel, где слова из Excel заменены словами из
+    Word по синонимам: вариант -> (как в Word, как в Excel)."""
+    variants = {}
+    padded = f" {name_norm} "
+    for word, excel in synonyms or ():
+        if f" {excel} " in padded:
+            variant = ' '.join(padded.replace(f" {excel} ", f" {word} ").split())
+            variants.setdefault(variant, (word, excel))
+    return variants
+
+
+# Последнее правило сопоставления колонок — «совпали основы слов»: для
+# колонки, которую не узнало ни одно правило выше, среди ещё не занятых
+# показателей того же Excel-файла. В бюллетенях №2 и №3 в Word «Уровень
+# рентабельности, убыточности (-), в % к выручке», в Excel «Рентабельность,
+# убыточность (-) в % к выручке»: слова те же, окончания другие, плюс
+# «Уровень». Сравниваем первые _STEM_LEN букв каждого слова без предлогов
+# (доля общих основ). Колонку получает кандидат, только если он и похож
+# (_STEM_MATCH_MIN), и заметно лучше второго (_STEM_MATCH_MARGIN): на
+# реальных случаях 0,75–0,89 против 0,43–0,67 у следующего.
+_STEM_LEN = 5
+_STEM_MATCH_MIN = 0.70
+_STEM_MATCH_MARGIN = 0.15
+# Ниже этого сходства ближайший показатель в отчёт как подсказку не даём —
+# это уже не «похожее название», а просто другой показатель.
+_STEM_HINT_MIN = 0.40
+_STEM_STOP_WORDS = frozenset('в во к ко с со и по на от до за из о об а или у'.split())
+
+
+def _word_stems(text: str) -> frozenset:
+    words = re.findall(r'[^\W\d_]+', _normalize_match_text(text).replace('ё', 'е'))
+    return frozenset(w[:_STEM_LEN] for w in words if len(w) > 1 and w not in _STEM_STOP_WORDS)
+
+
+def _stem_similarity(a: frozenset, b: frozenset) -> float:
+    union = a | b
+    return len(a & b) / len(union) if union else 0.0
+
+
 # Насколько надёжно колонка сопоставлена с показателем: меньше — надёжнее.
 # Нужно, когда две колонки получили один и тот же показатель: его забирает
 # колонка с дословным совпадением, а не та, что стоит левее.
-_MATCH_RANK = {'exact': 0, 'bracket': 1, 'fuzzy': 2, 'squish': 3}
+_MATCH_RANK = {'exact': 0, 'bracket': 1, 'fuzzy': 2, 'squish': 3, 'stem': 4}
 
 
 def _resolve_indicator(normalized_name_map: dict, name_norm: str, consumed: Optional[dict]) -> str:
@@ -693,11 +757,77 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=None, ent
     return filtered_headers
 
 
+def _match_by_word_stems(unmatched_cols, stem_candidates, col_to_indicator_map, col_rank, col_header_text,
+                         stem_match_sink=None, unmatched_column_sink=None):
+    """Правило «совпали основы слов» для колонок, не узнанных остальными
+    правилами (см. _STEM_MATCH_MIN). Дописывает найденное в
+    col_to_indicator_map; кандидат — только показатель, ещё не занятый
+    другой колонкой секции, и один на одно название колонки Word."""
+    used = {spec[0] for spec in col_to_indicator_map.values()}
+    candidates = {}
+    for name in sorted(stem_candidates):
+        name_norm = _normalize_match_text(name)
+        if name_norm and name_norm not in candidates:
+            candidates[name_norm] = (_word_stems(name_norm), list(stem_candidates[name]))
+
+    choice = {}
+    for col_idx, header_norm, year_code in unmatched_cols:
+        header_stems = _word_stems(header_norm)
+        if len(header_stems) < 2:
+            continue
+        scored = sorted(
+            ((_stem_similarity(header_stems, stems), name_norm, indicators)
+             for name_norm, (stems, indicators) in candidates.items()),
+            key=lambda item: (-item[0], item[1]),
+        )
+        if not scored:
+            continue
+        best_score, best_name, best_indicators = scored[0]
+        # Второй кандидат — другой показатель: у одного показателя бывает
+        # несколько названий (синоним, короткий остаток без группового префикса).
+        second = next((score for score, _name, indicators in scored[1:]
+                       if set(indicators) != set(best_indicators)), 0.0)
+        confident = (best_score >= _STEM_MATCH_MIN and best_score - second >= _STEM_MATCH_MARGIN
+                     and len(best_indicators) == 1 and best_indicators[0] not in used)
+        if confident:
+            choice[col_idx] = (header_norm, year_code, best_name, best_indicators[0], best_score)
+        elif unmatched_column_sink is not None and best_indicators[0] not in used:
+            # Если ближайший показатель уже занят другой колонкой, это скорее
+            # другой показатель — подсказывать его не будем.
+            unmatched_column_sink.append((col_idx, header_norm, best_name, best_indicators[0], best_score))
+
+    headers_by_indicator = {}
+    for header_norm, _year, _name, indicator, _score in choice.values():
+        headers_by_indicator.setdefault(indicator, set()).add(header_norm)
+    for col_idx in sorted(choice):
+        header_norm, year_code, name, indicator, score = choice[col_idx]
+        if len(headers_by_indicator[indicator]) > 1:
+            # Две разные колонки Word похожи на один показатель — не угадываем.
+            if unmatched_column_sink is not None:
+                unmatched_column_sink.append((col_idx, header_norm, name, indicator, score))
+            continue
+        col_to_indicator_map[col_idx] = (indicator, year_code)
+        col_rank[col_idx] = _MATCH_RANK['stem']
+        col_header_text[col_idx] = header_norm
+        print(f"   🌱 [Основы слов {score:.2f}] столбец {col_idx}: '{header_norm[:60]}' -> '{name[:60]}' -> {indicator}")
+        if stem_match_sink is not None:
+            stem_match_sink.append((col_idx, header_norm, name, indicator, score))
+
+
 def _compute_section_mapping(table, header_idx, source_word_to_indicator, header_rows=None, run_rows=None,
                               near_miss_sink=None, squish_match_sink=None, unit_annotation_sink=None,
                               unit_annotation_texts=None, duplicate_year_sink=None,
-                              bracket_match_sink=None, taken_column_sink=None):
+                              bracket_match_sink=None, taken_column_sink=None,
+                              stem_candidates=None, stem_match_sink=None, unmatched_column_sink=None):
     """Вычисляет маппинг столбцов для данной секции таблицы.
+
+    stem_candidates — все показатели Excel-файла таблицы (название -> коды),
+    а не только найденные в тексте Word: для колонки, которую не узнало ни
+    одно правило, ищется показатель с теми же основами слов (см.
+    _word_stems). Узнанные так колонки уходят в stem_match_sink как
+    (column_idx, header_text, matched_name, indicator, score), оставшиеся
+    неузнанными — в unmatched_column_sink как (column_idx, header_text,
+    closest_name, closest_indicator, score) для подсказки в отчёте.
 
     bracket_match_sink, если передан, получает (column_idx, header_text,
     matched_name, matched_indicator) на каждую колонку, узнанную только
@@ -740,6 +870,9 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
     col_to_indicator_map = {}
     col_rank = {}
     col_header_text = {}
+    # Колонки с названием, которое не узнало ни одно правило:
+    # (column_idx, нормализованное название, код года или None).
+    unmatched_cols = []
     if has_years:
         header_start = max(0, header_idx - 6)
         header_rows_filled = []
@@ -856,6 +989,8 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
                     col_rank[i] = match_rank
                     col_header_text[i] = composed_header
                     print(f"   🔍 Столбец {i} (без года): '{composed_header[:80]}' -> {best_match}")
+                elif composed_header_norm and i > 0:
+                    unmatched_cols.append((i, composed_header_norm, None))
                 continue
 
             if best_match:
@@ -867,6 +1002,8 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
 
             if not best_match:
                 print(f"   ⚠️ Нет match для колонки {i} ('{composed_header[:80]}')")
+                if composed_header_norm and i > 0:
+                    unmatched_cols.append((i, composed_header_norm, year_text[-2:]))
                 continue
 
             # Используем сокращенный год из Word: 2023 -> 23, 2024 -> 24
@@ -956,6 +1093,12 @@ def _compute_section_mapping(table, header_idx, source_word_to_indicator, header
                 col_rank[i] = _MATCH_RANK[match_kinds[-1]] if match_kinds else None
                 col_header_text[i] = header_text
                 print(f"   🔍 Индикаторный заголовок: столбец {i}, текст '{header_text[:50]}' -> {best_match}")
+            elif i > 0:
+                unmatched_cols.append((i, header_text, None))
+
+    if unmatched_cols and stem_candidates:
+        _match_by_word_stems(unmatched_cols, stem_candidates, col_to_indicator_map, col_rank, col_header_text,
+                             stem_match_sink, unmatched_column_sink)
 
     # Убираем дубликаты. Показатель с годом получает одна колонка. Раньше —
     # всегда самая левая, даже если она узнана лишь приблизительно, а правее
@@ -1106,7 +1249,8 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                            unused_indicator_report_path: Path = None,
                            duplicate_year_report_path: Path = None,
                            name_check_report_path: Path = None,
-                           clear_only: bool = False):
+                           clear_only: bool = False,
+                           synonyms_path: Path = None):
     """
     Генерация шаблона Word с тегами {{OKVED_<code>_<indicator>[_22|_23]}},
     {{MO_<code>_<indicator>[_22|_23]}} и {{OPF_<code>_<indicator>}}/{{FS_<code>_<indicator>}}
@@ -1208,6 +1352,9 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
 
     table_source_mapping = load_table_source_map(table_source_mapping_path)
     manual_tables = load_manual_table_numbers(table_source_mapping_path)
+    name_synonyms = load_name_synonyms(synonyms_path)
+    if name_synonyms:
+        print(f"📘 Синонимов названий (синонимы.csv): {len(name_synonyms)}")
     mo_source_files = {src for src in table_source_mapping.values() if 'mo' in src.lower()}
     word_to_indicator, indicator_to_excel, indicator_to_file, file_word_to_indicator, _, file_word_to_indicators = load_column_mapping_v2(column_mapping_path)
 
@@ -1348,6 +1495,12 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             for (file, name), indicators in file_word_to_indicators.items()
             if file == current_source_file
         }
+        # Синонимы (синонимы.csv): у показателя появляется ещё одно название —
+        # со словами из Word вместо слов из Excel. Дальше оно проходит все те
+        # же правила, что и название из маппинга (групповой префикс и т.д.).
+        for name, indicators in list(all_file_entries.items()):
+            for variant in _synonym_variants(_normalize_match_text(name), name_synonyms):
+                all_file_entries.setdefault(variant, indicators)
 
         # Приоритет: если в текущей таблице из Word встречаются названия показателей —
         # используем только их (Word главный источник). В противном случае — все записи из Excel.
@@ -1621,6 +1774,8 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             table_duplicate_years = []
             table_bracket_matches = []
             table_taken_columns = []
+            table_stem_matches = []
+            table_unmatched_columns = []
             mapping = _compute_section_mapping(table, header_idx, source_word_to_indicator,
                                                 header_rows=header_rows_set, run_rows=run,
                                                 near_miss_sink=table_near_misses,
@@ -1629,13 +1784,22 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                                                 unit_annotation_texts=unit_annotation_texts,
                                                 duplicate_year_sink=table_duplicate_years,
                                                 bracket_match_sink=table_bracket_matches,
-                                                taken_column_sink=table_taken_columns)
-            if (table_bracket_matches or table_taken_columns) and not clear_only:
+                                                taken_column_sink=table_taken_columns,
+                                                stem_candidates={**all_file_entries, **source_word_to_indicator},
+                                                stem_match_sink=table_stem_matches,
+                                                unmatched_column_sink=table_unmatched_columns)
+            if table_stem_matches and current_source_file:
+                used_names_by_file.setdefault(current_source_file, set()).update(
+                    name for _col, _header, name, _ind, _score in table_stem_matches)
+            if (table_bracket_matches or table_taken_columns or table_stem_matches
+                    or table_unmatched_columns) and not clear_only:
                 _collect_name_check_entries(
                     name_check_report, validation_log, table, t_index, header_idx, header_rows_set,
                     _describe_word_table(table_title, continuation_number, table_source_mapping, t_index),
                     current_source_file, source_word_to_indicator, indicator_to_excel,
-                    table_bracket_matches, table_taken_columns)
+                    table_bracket_matches, table_taken_columns,
+                    stem_matches=table_stem_matches, unmatched_columns=table_unmatched_columns,
+                    all_names={**all_file_entries, **source_word_to_indicator})
             if table_duplicate_years:
                 for col_idx, indicator, year_code in table_duplicate_years:
                     warning = (f"⚠️ Таблица {t_index + 1} ({current_source_file}), столбец {col_idx + 1}: "
@@ -2176,10 +2340,12 @@ def _first_data_row_label(table, header_idx) -> str:
 
 def _collect_name_check_entries(report, validation_log, table, t_index, header_idx, header_rows_set,
                                 table_label, source_file, source_word_to_indicator, indicator_to_excel,
-                                bracket_matches, taken_columns):
+                                bracket_matches, taken_columns, stem_matches=(), unmatched_columns=(),
+                                all_names=None):
     """Складывает в report (dict, чтобы одинаковые колонки на разных страницах
     стали одной строкой) записи отчёта name_check_report_path."""
     raw_by_norm = {_normalize_match_text(name): name for name in source_word_to_indicator}
+    all_raw_by_norm = {_normalize_match_text(name): name for name in (all_names or source_word_to_indicator)}
     raw_by_indicator = {
         indicator: name
         for name, indicators in source_word_to_indicator.items()
@@ -2233,6 +2399,35 @@ def _collect_name_check_entries(report, validation_log, table, t_index, header_i
             f"2) в Excel-источнике {source_file} переименуйте нужный показатель так, как колонка названа в Word; "
             f"3) в input/mappings/column_mapping_v2.csv найдите строку нужного показателя этого файла "
             f"и в поле «Название показателя» впишите «{{word}}».",
+        )
+
+    synonyms_hint = ("добавьте в input/mappings/синонимы.csv строку (сначала как в Word, потом как в Excel):\n"
+                     "{word};{excel}")
+    for col_idx, _header_text, matched_name, indicator, score in stem_matches:
+        excel_name = all_raw_by_norm.get(matched_name, matched_name)
+        add(
+            'Названия похожи (совпали основы слов)', col_idx, indicator, excel_name,
+            f"В Word колонка называется «{{word}}», в Excel — «{excel_name}». Слова те же, но в другой форме "
+            f"(общих основ слов {score:.0%}), а других похожих показателей в {source_file} нет. Программа сочла "
+            f"их одним показателем и поставила в колонку числа из {source_file}, колонка {excel_column(indicator)}.",
+            "Проверьте числа в этой колонке. Если верные — ничего делать не нужно; чтобы строка больше не "
+            "появлялась, " + synonyms_hint.format(word='{word}', excel=excel_name) + "\n"
+            "Если неверные — в Excel-источнике этого показателя нет или он назван иначе: найдите нужный "
+            f"показатель в {source_file} и впишите пару названий в синонимы.csv так же.",
+        )
+
+    for col_idx, _header_text, closest_name, indicator, score in unmatched_columns:
+        if score < _STEM_HINT_MIN:
+            continue
+        excel_name = all_raw_by_norm.get(closest_name, closest_name)
+        add(
+            'Колонка не узнана', col_idx, indicator, excel_name,
+            f"Колонка Word «{{word}}» не совпала ни с одним показателем {source_file}. Ближе всего — "
+            f"«{excel_name}» (общих основ слов {score:.0%}), но этого мало, чтобы решить самой: колонка "
+            f"оставлена пустой.",
+            "Если это тот же показатель — " + synonyms_hint.format(word='{word}', excel=excel_name)
+            + "\nи запустите программу снова. Если в Excel такого показателя нет — ничего делать не нужно, "
+            "заполните колонку вручную.",
         )
 
     for col_idx, _header_text, indicator, winner_col in taken_columns:
