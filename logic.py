@@ -1498,6 +1498,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         # Синонимы (синонимы.csv): у показателя появляется ещё одно название —
         # со словами из Word вместо слов из Excel. Дальше оно проходит все те
         # же правила, что и название из маппинга (групповой префикс и т.д.).
+        mapping_names = list(all_file_entries)
         for name, indicators in list(all_file_entries.items()):
             for variant in _synonym_variants(_normalize_match_text(name), name_synonyms):
                 all_file_entries.setdefault(variant, indicators)
@@ -1550,11 +1551,19 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
         # "это групповой заголовок или нет" опиралось на структуру всего
         # набора показателей, а не на длину одного случайно взятого слова.
         all_names_norm = {name: _normalize_match_text(name) for name in all_file_entries}
+        # Префиксы ищем только среди названий из маппинга: синоним — второе
+        # название ТОГО ЖЕ показателя, и вместе с оригиналом они выглядели бы
+        # как группа с общим началом. В бюллетене №2 «Прибыль… за
+        # соответствующий период предыдущего года» и «Прибыль… за предыдущий
+        # год» дали «префикс» «прибыль убыток до налогообложения за», остаток
+        # «предыдущий год» нашёлся в колонке «Количество организаций… за
+        # предыдущий год» — и она получила чужой показатель.
+        mapping_names_norm = [all_names_norm[name] for name in mapping_names]
         shared_group_prefixes = sorted(
-            _compute_shared_group_prefixes(all_names_norm.values()),
+            _compute_shared_group_prefixes(mapping_names_norm),
             key=len, reverse=True
         )
-        file_prefix = _file_wide_prefix(all_names_norm.values())
+        file_prefix = _file_wide_prefix(mapping_names_norm)
 
         source_word_to_indicator = {}
         for name, indicators in all_file_entries.items():
