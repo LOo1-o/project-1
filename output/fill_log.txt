@@ -816,6 +816,14 @@
 ✅ Заполнено: OKVED_G_KraOby_25 → 28594282
 ✅ Заполнено: OKVED_G_ValBalUbyOrgNaKonGoItAktUbyOrg → 9317203
 ✅ Заполнено: OKVED_G_ValBalUbyOrgNaKonGoV%KValBal → 13,7
+✅ Заполнено: OKVED_45_KapIRez_24 → 1916267
+✅ Заполнено: OKVED_45_KapIRez_25 → 1812713
+✅ Заполнено: OKVED_45_DolOby_24 → 411484
+✅ Заполнено: OKVED_45_DolOby_25 → 537387
+✅ Заполнено: OKVED_45_KraOby_24 → 622235
+✅ Заполнено: OKVED_45_KraOby_25 → 741763
+✅ Заполнено: OKVED_45_ValBalUbyOrgNaKonGoItAktUbyOrg → 741415
+✅ Заполнено: OKVED_45_ValBalUbyOrgNaKonGoV%KValBal → 24,0
 ✅ Заполнено: OKVED_46_KapIRez_24 → 18170095
 ✅ Заполнено: OKVED_46_KapIRez_25 → 19676213
 ✅ Заполнено: OKVED_46_DolOby_24 → 10512477
