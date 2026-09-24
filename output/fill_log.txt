@@ -1418,6 +1418,90 @@
 ✅ Заполнено: OKVED_101_АГ_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 68775033
 ✅ Заполнено: OKVED_101_АГ_VneAktVToChiNem,fiIDruVneAkt_24 → 21558524
 ✅ Заполнено: OKVED_101_АГ_VneAktVToChiNem,fiIDruVneAkt_25 → 32213421
+✅ Заполнено: OKVED_A_VneAkt_2_24 → 17547951
+✅ Заполнено: OKVED_A_VneAkt_2_25 → 18780584
+✅ Заполнено: OKVED_A_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 14125737
+✅ Заполнено: OKVED_A_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 13566574
+✅ Заполнено: OKVED_A_VneAktVToChiNem,fiIDruVneAkt_24 → 3422214
+✅ Заполнено: OKVED_A_VneAktVToChiNem,fiIDruVneAkt_25 → 5214010
+✅ Заполнено: OKVED_01_VneAkt_2_24 → 4592706
+✅ Заполнено: OKVED_01_VneAkt_2_25 → 4641969
+✅ Заполнено: OKVED_01_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 4565361
+✅ Заполнено: OKVED_01_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 4572027
+✅ Заполнено: OKVED_01_VneAktVToChiNem,fiIDruVneAkt_24 → 27345
+✅ Заполнено: OKVED_01_VneAktVToChiNem,fiIDruVneAkt_25 → 69942
+✅ Заполнено: OKVED_02_VneAkt_2_24 → 39563
+✅ Заполнено: OKVED_02_VneAkt_2_25 → 66645
+✅ Заполнено: OKVED_02_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 19363
+✅ Заполнено: OKVED_02_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 32410
+✅ Заполнено: OKVED_02_VneAktVToChiNem,fiIDruVneAkt_24 → 20200
+✅ Заполнено: OKVED_02_VneAktVToChiNem,fiIDruVneAkt_25 → 34235
+✅ Заполнено: OKVED_03_VneAkt_2_24 → 12915682
+✅ Заполнено: OKVED_03_VneAkt_2_25 → 14071970
+✅ Заполнено: OKVED_03_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 9541013
+✅ Заполнено: OKVED_03_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 8962137
+✅ Заполнено: OKVED_03_VneAktVToChiNem,fiIDruVneAkt_24 → 3374669
+✅ Заполнено: OKVED_03_VneAktVToChiNem,fiIDruVneAkt_25 → 5109833
+✅ Заполнено: OKVED_B_VneAkt_2_24 → 1509262
+✅ Заполнено: OKVED_B_VneAkt_2_25 → 1412119
+✅ Заполнено: OKVED_B_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 1329239
+✅ Заполнено: OKVED_B_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 1176543
+✅ Заполнено: OKVED_B_VneAktVToChiNem,fiIDruVneAkt_24 → 180023
+✅ Заполнено: OKVED_B_VneAktVToChiNem,fiIDruVneAkt_25 → 235576
+✅ Заполнено: OKVED_05_VneAkt_2_24 → 12115
+✅ Заполнено: OKVED_05_VneAkt_2_25 → 7862
+✅ Заполнено: OKVED_05_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 12115
+✅ Заполнено: OKVED_05_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 7862
+ℹ️ Отсутствующие данные: OKVED_05_VneAktVToChiNem,fiIDruVneAkt_24 → [-]
+ℹ️ Отсутствующие данные: OKVED_05_VneAktVToChiNem,fiIDruVneAkt_25 → [-]
+✅ Заполнено: OKVED_07_VneAkt_2_24 → 208444
+✅ Заполнено: OKVED_07_VneAkt_2_25 → 107583
+✅ Заполнено: OKVED_07_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 198840
+✅ Заполнено: OKVED_07_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 99603
+✅ Заполнено: OKVED_07_VneAktVToChiNem,fiIDruVneAkt_24 → 9604
+✅ Заполнено: OKVED_07_VneAktVToChiNem,fiIDruVneAkt_25 → 7980
+✅ Заполнено: OKVED_08_VneAkt_2_24 → 1261808
+✅ Заполнено: OKVED_08_VneAkt_2_25 → 1262130
+✅ Заполнено: OKVED_08_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 1092494
+✅ Заполнено: OKVED_08_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 1051936
+✅ Заполнено: OKVED_08_VneAktVToChiNem,fiIDruVneAkt_24 → 169314
+✅ Заполнено: OKVED_08_VneAktVToChiNem,fiIDruVneAkt_25 → 210194
+✅ Заполнено: OKVED_09_VneAkt_2_24 → 26895
+✅ Заполнено: OKVED_09_VneAkt_2_25 → 34544
+✅ Заполнено: OKVED_09_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 25790
+✅ Заполнено: OKVED_09_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 17142
+✅ Заполнено: OKVED_09_VneAktVToChiNem,fiIDruVneAkt_24 → 1105
+✅ Заполнено: OKVED_09_VneAktVToChiNem,fiIDruVneAkt_25 → 17402
+✅ Заполнено: OKVED_C_VneAkt_2_24 → 11499769
+✅ Заполнено: OKVED_C_VneAkt_2_25 → 13370589
+✅ Заполнено: OKVED_C_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 6445032
+✅ Заполнено: OKVED_C_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 7375180
+✅ Заполнено: OKVED_C_VneAktVToChiNem,fiIDruVneAkt_24 → 5054737
+✅ Заполнено: OKVED_C_VneAktVToChiNem,fiIDruVneAkt_25 → 5995409
+✅ Заполнено: OKVED_10_VneAkt_2_24 → 1920233
+✅ Заполнено: OKVED_10_VneAkt_2_25 → 2087323
+✅ Заполнено: OKVED_10_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 1393289
+✅ Заполнено: OKVED_10_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 1377811
+✅ Заполнено: OKVED_10_VneAktVToChiNem,fiIDruVneAkt_24 → 526944
+✅ Заполнено: OKVED_10_VneAktVToChiNem,fiIDruVneAkt_25 → 709512
+✅ Заполнено: OKVED_11_VneAkt_2_24 → 1090977
+✅ Заполнено: OKVED_11_VneAkt_2_25 → 922550
+✅ Заполнено: OKVED_11_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 791338
+✅ Заполнено: OKVED_11_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 668639
+✅ Заполнено: OKVED_11_VneAktVToChiNem,fiIDruVneAkt_24 → 299639
+✅ Заполнено: OKVED_11_VneAktVToChiNem,fiIDruVneAkt_25 → 253911
+✅ Заполнено: OKVED_13_VneAkt_2_24 → 23309
+✅ Заполнено: OKVED_13_VneAkt_2_25 → 20666
+✅ Заполнено: OKVED_13_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 19701
+✅ Заполнено: OKVED_13_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 17058
+✅ Заполнено: OKVED_13_VneAktVToChiNem,fiIDruVneAkt_24 → 3608
+✅ Заполнено: OKVED_13_VneAktVToChiNem,fiIDruVneAkt_25 → 3608
+✅ Заполнено: OKVED_16_VneAkt_2_24 → 18806
+✅ Заполнено: OKVED_16_VneAkt_2_25 → 46774
+✅ Заполнено: OKVED_16_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 18806
+✅ Заполнено: OKVED_16_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_25 → 26774
+ℹ️ Отсутствующие данные: OKVED_16_VneAktVToChiNem,fiIDruVneAkt_24 → [-]
+✅ Заполнено: OKVED_16_VneAktVToChiNem,fiIDruVneAkt_25 → 20000
 ✅ Заполнено: OKVED_18_VneAkt_2_24 → 42128
 ✅ Заполнено: OKVED_18_VneAkt_2_25 → 31014
 ✅ Заполнено: OKVED_18_VneAktVToChiMatVneAktOsnSreNezKapVloVOsnSre_24 → 40885
@@ -1821,7 +1905,79 @@
 ✅ Заполнено: OKVED_101_АГ_VToChi:DenSreIDenEkv_24 → 12530849
 ✅ Заполнено: OKVED_101_АГ_VToChi:DenSreIDenEkv_25 → 13586149
 ✅ Заполнено: OKVED_101_АГ_VToChi:FinIDruOboAkt(vkDebZad_24 → 69917998
-ℹ️ Отсутствующие данные: OKVED_101_АГ_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_101_АГ_VToChi:FinIDruOboAkt(vkDebZad_25 → 75000565
+✅ Заполнено: OKVED_A_OboAkt_2_24 → 15905448
+✅ Заполнено: OKVED_A_OboAkt_2_25 → 19397547
+✅ Заполнено: OKVED_A_VToChi:Zap_24 → 4071957
+✅ Заполнено: OKVED_A_VToChi:Zap_25 → 4088214
+✅ Заполнено: OKVED_A_VToChi:DenSreIDenEkv_24 → 1678059
+✅ Заполнено: OKVED_A_VToChi:DenSreIDenEkv_25 → 2557727
+✅ Заполнено: OKVED_A_VToChi:FinIDruOboAkt(vkDebZad_24 → 10155432
+✅ Заполнено: OKVED_A_VToChi:FinIDruOboAkt(vkDebZad_25 → 12751606
+✅ Заполнено: OKVED_01_OboAkt_2_24 → 1406631
+✅ Заполнено: OKVED_01_OboAkt_2_25 → 1416375
+✅ Заполнено: OKVED_01_VToChi:Zap_24 → 576163
+✅ Заполнено: OKVED_01_VToChi:Zap_25 → 719365
+✅ Заполнено: OKVED_01_VToChi:DenSreIDenEkv_24 → 205449
+✅ Заполнено: OKVED_01_VToChi:DenSreIDenEkv_25 → 139500
+✅ Заполнено: OKVED_01_VToChi:FinIDruOboAkt(vkDebZad_24 → 625019
+✅ Заполнено: OKVED_01_VToChi:FinIDruOboAkt(vkDebZad_25 → 557510
+✅ Заполнено: OKVED_02_OboAkt_2_24 → 153629
+✅ Заполнено: OKVED_02_OboAkt_2_25 → 125951
+✅ Заполнено: OKVED_02_VToChi:Zap_24 → 52543
+✅ Заполнено: OKVED_02_VToChi:Zap_25 → 38062
+✅ Заполнено: OKVED_02_VToChi:DenSreIDenEkv_24 → 46363
+✅ Заполнено: OKVED_02_VToChi:DenSreIDenEkv_25 → 27434
+✅ Заполнено: OKVED_02_VToChi:FinIDruOboAkt(vkDebZad_24 → 54723
+✅ Заполнено: OKVED_02_VToChi:FinIDruOboAkt(vkDebZad_25 → 60455
+✅ Заполнено: OKVED_03_OboAkt_2_24 → 14345188
+✅ Заполнено: OKVED_03_OboAkt_2_25 → 17855221
+✅ Заполнено: OKVED_03_VToChi:Zap_24 → 3443251
+✅ Заполнено: OKVED_03_VToChi:Zap_25 → 3330787
+✅ Заполнено: OKVED_03_VToChi:DenSreIDenEkv_24 → 1426247
+✅ Заполнено: OKVED_03_VToChi:DenSreIDenEkv_25 → 2390793
+✅ Заполнено: OKVED_03_VToChi:FinIDruOboAkt(vkDebZad_24 → 9475690
+✅ Заполнено: OKVED_03_VToChi:FinIDruOboAkt(vkDebZad_25 → 12133641
+✅ Заполнено: OKVED_B_OboAkt_2_24 → 1989021
+✅ Заполнено: OKVED_B_OboAkt_2_25 → 1882236
+✅ Заполнено: OKVED_B_VToChi:Zap_24 → 734646
+✅ Заполнено: OKVED_B_VToChi:Zap_25 → 617442
+✅ Заполнено: OKVED_B_VToChi:DenSreIDenEkv_24 → 93894
+✅ Заполнено: OKVED_B_VToChi:DenSreIDenEkv_25 → 201220
+✅ Заполнено: OKVED_B_VToChi:FinIDruOboAkt(vkDebZad_24 → 1160481
+✅ Заполнено: OKVED_B_VToChi:FinIDruOboAkt(vkDebZad_25 → 1063574
+✅ Заполнено: OKVED_05_OboAkt_2_24 → 64185
+✅ Заполнено: OKVED_05_OboAkt_2_25 → 85526
+✅ Заполнено: OKVED_05_VToChi:Zap_24 → 22631
+✅ Заполнено: OKVED_05_VToChi:Zap_25 → 54728
+✅ Заполнено: OKVED_05_VToChi:DenSreIDenEkv_24 → 5124
+✅ Заполнено: OKVED_05_VToChi:DenSreIDenEkv_25 → 20698
+✅ Заполнено: OKVED_05_VToChi:FinIDruOboAkt(vkDebZad_24 → 36430
+✅ Заполнено: OKVED_05_VToChi:FinIDruOboAkt(vkDebZad_25 → 10100
+✅ Заполнено: OKVED_07_OboAkt_2_24 → 235088
+✅ Заполнено: OKVED_07_OboAkt_2_25 → 142393
+✅ Заполнено: OKVED_07_VToChi:Zap_24 → 74703
+✅ Заполнено: OKVED_07_VToChi:Zap_25 → 16544
+✅ Заполнено: OKVED_07_VToChi:DenSreIDenEkv_24 → 7186
+✅ Заполнено: OKVED_07_VToChi:DenSreIDenEkv_25 → 33746
+✅ Заполнено: OKVED_07_VToChi:FinIDruOboAkt(vkDebZad_24 → 153199
+✅ Заполнено: OKVED_07_VToChi:FinIDruOboAkt(vkDebZad_25 → 92103
+✅ Заполнено: OKVED_08_OboAkt_2_24 → 1441966
+✅ Заполнено: OKVED_08_OboAkt_2_25 → 1427562
+✅ Заполнено: OKVED_08_VToChi:Zap_24 → 533685
+✅ Заполнено: OKVED_08_VToChi:Zap_25 → 495725
+✅ Заполнено: OKVED_08_VToChi:DenSreIDenEkv_24 → 80475
+✅ Заполнено: OKVED_08_VToChi:DenSreIDenEkv_25 → 111991
+✅ Заполнено: OKVED_08_VToChi:FinIDruOboAkt(vkDebZad_24 → 827806
+✅ Заполнено: OKVED_08_VToChi:FinIDruOboAkt(vkDebZad_25 → 819846
+✅ Заполнено: OKVED_09_OboAkt_2_24 → 247782
+✅ Заполнено: OKVED_09_OboAkt_2_25 → 226755
+✅ Заполнено: OKVED_09_VToChi:Zap_24 → 103627
+✅ Заполнено: OKVED_09_VToChi:Zap_25 → 50445
+✅ Заполнено: OKVED_09_VToChi:DenSreIDenEkv_24 → 1109
+✅ Заполнено: OKVED_09_VToChi:DenSreIDenEkv_25 → 34785
+✅ Заполнено: OKVED_09_VToChi:FinIDruOboAkt(vkDebZad_24 → 143046
+✅ Заполнено: OKVED_09_VToChi:FinIDruOboAkt(vkDebZad_25 → 141525
 ✅ Заполнено: OKVED_C_OboAkt_2_24 → 12804985
 ✅ Заполнено: OKVED_C_OboAkt_2_25 → 14192586
 ✅ Заполнено: OKVED_C_VToChi:Zap_24 → 4170650
@@ -1829,7 +1985,7 @@
 ✅ Заполнено: OKVED_C_VToChi:DenSreIDenEkv_24 → 1427468
 ✅ Заполнено: OKVED_C_VToChi:DenSreIDenEkv_25 → 1745623
 ✅ Заполнено: OKVED_C_VToChi:FinIDruOboAkt(vkDebZad_24 → 7206867
-ℹ️ Отсутствующие данные: OKVED_C_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_C_VToChi:FinIDruOboAkt(vkDebZad_25 → 7983765
 ✅ Заполнено: OKVED_10_OboAkt_2_24 → 3515233
 ✅ Заполнено: OKVED_10_OboAkt_2_25 → 4189933
 ✅ Заполнено: OKVED_10_VToChi:Zap_24 → 863618
@@ -1837,7 +1993,7 @@
 ✅ Заполнено: OKVED_10_VToChi:DenSreIDenEkv_24 → 212003
 ✅ Заполнено: OKVED_10_VToChi:DenSreIDenEkv_25 → 261339
 ✅ Заполнено: OKVED_10_VToChi:FinIDruOboAkt(vkDebZad_24 → 2439612
-ℹ️ Отсутствующие данные: OKVED_10_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_10_VToChi:FinIDruOboAkt(vkDebZad_25 → 2724643
 ✅ Заполнено: OKVED_11_OboAkt_2_24 → 518577
 ✅ Заполнено: OKVED_11_OboAkt_2_25 → 718109
 ✅ Заполнено: OKVED_11_VToChi:Zap_24 → 116159
@@ -1845,7 +2001,7 @@
 ✅ Заполнено: OKVED_11_VToChi:DenSreIDenEkv_24 → 11129
 ✅ Заполнено: OKVED_11_VToChi:DenSreIDenEkv_25 → 14420
 ✅ Заполнено: OKVED_11_VToChi:FinIDruOboAkt(vkDebZad_24 → 391289
-ℹ️ Отсутствующие данные: OKVED_11_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_11_VToChi:FinIDruOboAkt(vkDebZad_25 → 498346
 ✅ Заполнено: OKVED_13_OboAkt_2_24 → 127602
 ✅ Заполнено: OKVED_13_OboAkt_2_25 → 130469
 ✅ Заполнено: OKVED_13_VToChi:Zap_24 → 85977
@@ -1853,7 +2009,7 @@
 ✅ Заполнено: OKVED_13_VToChi:DenSreIDenEkv_24 → 2390
 ✅ Заполнено: OKVED_13_VToChi:DenSreIDenEkv_25 → 6297
 ✅ Заполнено: OKVED_13_VToChi:FinIDruOboAkt(vkDebZad_24 → 39235
-ℹ️ Отсутствующие данные: OKVED_13_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_13_VToChi:FinIDruOboAkt(vkDebZad_25 → 57956
 ✅ Заполнено: OKVED_16_OboAkt_2_24 → 110091
 ✅ Заполнено: OKVED_16_OboAkt_2_25 → 120673
 ✅ Заполнено: OKVED_16_VToChi:Zap_24 → 47790
@@ -1861,7 +2017,7 @@
 ✅ Заполнено: OKVED_16_VToChi:DenSreIDenEkv_24 → 15167
 ✅ Заполнено: OKVED_16_VToChi:DenSreIDenEkv_25 → 2502
 ✅ Заполнено: OKVED_16_VToChi:FinIDruOboAkt(vkDebZad_24 → 47134
-ℹ️ Отсутствующие данные: OKVED_16_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_16_VToChi:FinIDruOboAkt(vkDebZad_25 → 84392
 ✅ Заполнено: OKVED_18_OboAkt_2_24 → 257631
 ✅ Заполнено: OKVED_18_OboAkt_2_25 → 269458
 ✅ Заполнено: OKVED_18_VToChi:Zap_24 → 91926
@@ -1869,7 +2025,7 @@
 ✅ Заполнено: OKVED_18_VToChi:DenSreIDenEkv_24 → 7636
 ✅ Заполнено: OKVED_18_VToChi:DenSreIDenEkv_25 → 20356
 ✅ Заполнено: OKVED_18_VToChi:FinIDruOboAkt(vkDebZad_24 → 158069
-ℹ️ Отсутствующие данные: OKVED_18_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_18_VToChi:FinIDruOboAkt(vkDebZad_25 → 152505
 ✅ Заполнено: OKVED_20_OboAkt_2_24 → 69218
 ✅ Заполнено: OKVED_20_OboAkt_2_25 → 77713
 ✅ Заполнено: OKVED_20_VToChi:Zap_24 → 49290
@@ -1877,7 +2033,7 @@
 ✅ Заполнено: OKVED_20_VToChi:DenSreIDenEkv_24 → 9527
 ✅ Заполнено: OKVED_20_VToChi:DenSreIDenEkv_25 → 9238
 ✅ Заполнено: OKVED_20_VToChi:FinIDruOboAkt(vkDebZad_24 → 10401
-ℹ️ Отсутствующие данные: OKVED_20_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_20_VToChi:FinIDruOboAkt(vkDebZad_25 → 15652
 ✅ Заполнено: OKVED_22_OboAkt_2_24 → 185720
 ✅ Заполнено: OKVED_22_OboAkt_2_25 → 174004
 ✅ Заполнено: OKVED_22_VToChi:Zap_24 → 79637
@@ -1885,7 +2041,7 @@
 ✅ Заполнено: OKVED_22_VToChi:DenSreIDenEkv_24 → 11033
 ✅ Заполнено: OKVED_22_VToChi:DenSreIDenEkv_25 → 13177
 ✅ Заполнено: OKVED_22_VToChi:FinIDruOboAkt(vkDebZad_24 → 95050
-ℹ️ Отсутствующие данные: OKVED_22_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_22_VToChi:FinIDruOboAkt(vkDebZad_25 → 81953
 ✅ Заполнено: OKVED_23_OboAkt_2_24 → 3277747
 ✅ Заполнено: OKVED_23_OboAkt_2_25 → 3153420
 ✅ Заполнено: OKVED_23_VToChi:Zap_24 → 1384126
@@ -1893,7 +2049,7 @@
 ✅ Заполнено: OKVED_23_VToChi:DenSreIDenEkv_24 → 106511
 ✅ Заполнено: OKVED_23_VToChi:DenSreIDenEkv_25 → 105454
 ✅ Заполнено: OKVED_23_VToChi:FinIDruOboAkt(vkDebZad_24 → 1787110
-ℹ️ Отсутствующие данные: OKVED_23_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_23_VToChi:FinIDruOboAkt(vkDebZad_25 → 1795279
 ✅ Заполнено: OKVED_24_OboAkt_2_24 → 290614
 ✅ Заполнено: OKVED_24_OboAkt_2_25 → 217882
 ✅ Заполнено: OKVED_24_VToChi:Zap_24 → 170468
@@ -1901,7 +2057,7 @@
 ✅ Заполнено: OKVED_24_VToChi:DenSreIDenEkv_24 → 20211
 ✅ Заполнено: OKVED_24_VToChi:DenSreIDenEkv_25 → 10297
 ✅ Заполнено: OKVED_24_VToChi:FinIDruOboAkt(vkDebZad_24 → 99935
-ℹ️ Отсутствующие данные: OKVED_24_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_24_VToChi:FinIDruOboAkt(vkDebZad_25 → 77763
 ✅ Заполнено: OKVED_25_OboAkt_2_24 → 577807
 ✅ Заполнено: OKVED_25_OboAkt_2_25 → 653114
 ✅ Заполнено: OKVED_25_VToChi:Zap_24 → 134510
@@ -1909,7 +2065,7 @@
 ✅ Заполнено: OKVED_25_VToChi:DenSreIDenEkv_24 → 125006
 ✅ Заполнено: OKVED_25_VToChi:DenSreIDenEkv_25 → 165042
 ✅ Заполнено: OKVED_25_VToChi:FinIDruOboAkt(vkDebZad_24 → 318291
-ℹ️ Отсутствующие данные: OKVED_25_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_25_VToChi:FinIDruOboAkt(vkDebZad_25 → 430819
 ✅ Заполнено: OKVED_27_OboAkt_2_24 → 21002
 ✅ Заполнено: OKVED_27_OboAkt_2_25 → 12962
 ℹ️ Отсутствующие данные: OKVED_27_VToChi:Zap_24 → [-]
@@ -1917,7 +2073,7 @@
 ✅ Заполнено: OKVED_27_VToChi:DenSreIDenEkv_24 → 5698
 ✅ Заполнено: OKVED_27_VToChi:DenSreIDenEkv_25 → 2154
 ✅ Заполнено: OKVED_27_VToChi:FinIDruOboAkt(vkDebZad_24 → 15304
-ℹ️ Отсутствующие данные: OKVED_27_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_27_VToChi:FinIDruOboAkt(vkDebZad_25 → 10808
 ✅ Заполнено: OKVED_28_OboAkt_2_24 → 399590
 ✅ Заполнено: OKVED_28_OboAkt_2_25 → 310565
 ✅ Заполнено: OKVED_28_VToChi:Zap_24 → 158882
@@ -1925,7 +2081,7 @@
 ✅ Заполнено: OKVED_28_VToChi:DenSreIDenEkv_24 → 28340
 ✅ Заполнено: OKVED_28_VToChi:DenSreIDenEkv_25 → 35998
 ✅ Заполнено: OKVED_28_VToChi:FinIDruOboAkt(vkDebZad_24 → 212368
-ℹ️ Отсутствующие данные: OKVED_28_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_28_VToChi:FinIDruOboAkt(vkDebZad_25 → 178303
 ✅ Заполнено: OKVED_30_OboAkt_2_24 → 145444
 ✅ Заполнено: OKVED_30_OboAkt_2_25 → 207412
 ✅ Заполнено: OKVED_30_VToChi:Zap_24 → 33955
@@ -1933,7 +2089,7 @@
 ✅ Заполнено: OKVED_30_VToChi:DenSreIDenEkv_24 → 20104
 ✅ Заполнено: OKVED_30_VToChi:DenSreIDenEkv_25 → 27237
 ✅ Заполнено: OKVED_30_VToChi:FinIDruOboAkt(vkDebZad_24 → 91385
-ℹ️ Отсутствующие данные: OKVED_30_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_30_VToChi:FinIDruOboAkt(vkDebZad_25 → 140685
 ✅ Заполнено: OKVED_31_OboAkt_2_24 → 76415
 ✅ Заполнено: OKVED_31_OboAkt_2_25 → 108856
 ✅ Заполнено: OKVED_31_VToChi:Zap_24 → 27692
@@ -1941,7 +2097,7 @@
 ✅ Заполнено: OKVED_31_VToChi:DenSreIDenEkv_24 → 8932
 ✅ Заполнено: OKVED_31_VToChi:DenSreIDenEkv_25 → 8854
 ✅ Заполнено: OKVED_31_VToChi:FinIDruOboAkt(vkDebZad_24 → 39791
-ℹ️ Отсутствующие данные: OKVED_31_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_31_VToChi:FinIDruOboAkt(vkDebZad_25 → 81137
 ✅ Заполнено: OKVED_32_OboAkt_2_24 → 731
 ℹ️ Отсутствующие данные: OKVED_32_OboAkt_2_25 → [-]
 ℹ️ Отсутствующие данные: OKVED_32_VToChi:Zap_24 → [-]
@@ -1957,7 +2113,7 @@
 ✅ Заполнено: OKVED_33_VToChi:DenSreIDenEkv_24 → 843781
 ✅ Заполнено: OKVED_33_VToChi:DenSreIDenEkv_25 → 1063258
 ✅ Заполнено: OKVED_33_VToChi:FinIDruOboAkt(vkDebZad_24 → 1461162
-ℹ️ Отсутствующие данные: OKVED_33_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_33_VToChi:FinIDruOboAkt(vkDebZad_25 → 1653524
 ✅ Заполнено: OKVED_35_OboAkt_2_24 → 1146336
 ✅ Заполнено: OKVED_35_OboAkt_2_25 → 871969
 ✅ Заполнено: OKVED_35_VToChi:Zap_24 → 128441
@@ -1965,7 +2121,7 @@
 ✅ Заполнено: OKVED_35_VToChi:DenSreIDenEkv_24 → 220153
 ✅ Заполнено: OKVED_35_VToChi:DenSreIDenEkv_25 → 141867
 ✅ Заполнено: OKVED_35_VToChi:FinIDruOboAkt(vkDebZad_24 → 797742
-ℹ️ Отсутствующие данные: OKVED_35_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_35_VToChi:FinIDruOboAkt(vkDebZad_25 → 602970
 ✅ Заполнено: OKVED_E_OboAkt_2_24 → 1430842
 ✅ Заполнено: OKVED_E_OboAkt_2_25 → 1260916
 ✅ Заполнено: OKVED_E_VToChi:Zap_24 → 213578
@@ -1973,7 +2129,7 @@
 ✅ Заполнено: OKVED_E_VToChi:DenSreIDenEkv_24 → 76762
 ✅ Заполнено: OKVED_E_VToChi:DenSreIDenEkv_25 → 66072
 ✅ Заполнено: OKVED_E_VToChi:FinIDruOboAkt(vkDebZad_24 → 1140502
-ℹ️ Отсутствующие данные: OKVED_E_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_E_VToChi:FinIDruOboAkt(vkDebZad_25 → 929514
 ✅ Заполнено: OKVED_36_OboAkt_2_24 → 8357
 ✅ Заполнено: OKVED_36_OboAkt_2_25 → 28273
 ✅ Заполнено: OKVED_36_VToChi:Zap_24 → 3972
@@ -1981,7 +2137,7 @@
 ✅ Заполнено: OKVED_36_VToChi:DenSreIDenEkv_24 → 1618
 ✅ Заполнено: OKVED_36_VToChi:DenSreIDenEkv_25 → 22928
 ✅ Заполнено: OKVED_36_VToChi:FinIDruOboAkt(vkDebZad_24 → 2767
-ℹ️ Отсутствующие данные: OKVED_36_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_36_VToChi:FinIDruOboAkt(vkDebZad_25 → 5279
 ✅ Заполнено: OKVED_37_OboAkt_2_24 → 16761
 ✅ Заполнено: OKVED_37_OboAkt_2_25 → 25585
 ✅ Заполнено: OKVED_37_VToChi:Zap_24 → 345
@@ -1989,7 +2145,7 @@
 ✅ Заполнено: OKVED_37_VToChi:DenSreIDenEkv_24 → 1391
 ✅ Заполнено: OKVED_37_VToChi:DenSreIDenEkv_25 → 2754
 ✅ Заполнено: OKVED_37_VToChi:FinIDruOboAkt(vkDebZad_24 → 15025
-ℹ️ Отсутствующие данные: OKVED_37_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_37_VToChi:FinIDruOboAkt(vkDebZad_25 → 22831
 ✅ Заполнено: OKVED_38_OboAkt_2_24 → 1405724
 ✅ Заполнено: OKVED_38_OboAkt_2_25 → 1207058
 ✅ Заполнено: OKVED_38_VToChi:Zap_24 → 209261
@@ -1997,7 +2153,7 @@
 ✅ Заполнено: OKVED_38_VToChi:DenSreIDenEkv_24 → 73753
 ✅ Заполнено: OKVED_38_VToChi:DenSreIDenEkv_25 → 40390
 ✅ Заполнено: OKVED_38_VToChi:FinIDruOboAkt(vkDebZad_24 → 1122710
-ℹ️ Отсутствующие данные: OKVED_38_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_38_VToChi:FinIDruOboAkt(vkDebZad_25 → 901404
 ✅ Заполнено: OKVED_F_OboAkt_2_24 → 16439949
 ✅ Заполнено: OKVED_F_OboAkt_2_25 → 23509693
 ✅ Заполнено: OKVED_F_VToChi:Zap_24 → 3790760
@@ -2005,7 +2161,7 @@
 ✅ Заполнено: OKVED_F_VToChi:DenSreIDenEkv_24 → 1968697
 ✅ Заполнено: OKVED_F_VToChi:DenSreIDenEkv_25 → 1775482
 ✅ Заполнено: OKVED_F_VToChi:FinIDruOboAkt(vkDebZad_24 → 10680492
-ℹ️ Отсутствующие данные: OKVED_F_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_F_VToChi:FinIDruOboAkt(vkDebZad_25 → 14435629
 ✅ Заполнено: OKVED_41_OboAkt_2_24 → 7865811
 ✅ Заполнено: OKVED_41_OboAkt_2_25 → 14701641
 ✅ Заполнено: OKVED_41_VToChi:Zap_24 → 2008061
@@ -2013,7 +2169,7 @@
 ✅ Заполнено: OKVED_41_VToChi:DenSreIDenEkv_24 → 780829
 ✅ Заполнено: OKVED_41_VToChi:DenSreIDenEkv_25 → 748385
 ✅ Заполнено: OKVED_41_VToChi:FinIDruOboAkt(vkDebZad_24 → 5076921
-ℹ️ Отсутствующие данные: OKVED_41_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_41_VToChi:FinIDruOboAkt(vkDebZad_25 → 8787052
 ✅ Заполнено: OKVED_42_OboAkt_2_24 → 2534580
 ✅ Заполнено: OKVED_42_OboAkt_2_25 → 3044005
 ✅ Заполнено: OKVED_42_VToChi:Zap_24 → 639733
@@ -2021,7 +2177,7 @@
 ✅ Заполнено: OKVED_42_VToChi:DenSreIDenEkv_24 → 384411
 ✅ Заполнено: OKVED_42_VToChi:DenSreIDenEkv_25 → 307992
 ✅ Заполнено: OKVED_42_VToChi:FinIDruOboAkt(vkDebZad_24 → 1510436
-ℹ️ Отсутствующие данные: OKVED_42_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_42_VToChi:FinIDruOboAkt(vkDebZad_25 → 1884696
 ✅ Заполнено: OKVED_43_OboAkt_2_24 → 6039558
 ✅ Заполнено: OKVED_43_OboAkt_2_25 → 5764047
 ✅ Заполнено: OKVED_43_VToChi:Zap_24 → 1142966
@@ -2029,7 +2185,7 @@
 ✅ Заполнено: OKVED_43_VToChi:DenSreIDenEkv_24 → 803457
 ✅ Заполнено: OKVED_43_VToChi:DenSreIDenEkv_25 → 719105
 ✅ Заполнено: OKVED_43_VToChi:FinIDruOboAkt(vkDebZad_24 → 4093135
-ℹ️ Отсутствующие данные: OKVED_43_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_43_VToChi:FinIDruOboAkt(vkDebZad_25 → 3763881
 ✅ Заполнено: OKVED_G_OboAkt_2_24 → 26491442
 ✅ Заполнено: OKVED_G_OboAkt_2_25 → 26221262
 ✅ Заполнено: OKVED_G_VToChi:Zap_24 → 13065302
@@ -2037,7 +2193,7 @@
 ✅ Заполнено: OKVED_G_VToChi:DenSreIDenEkv_24 → 1910161
 ✅ Заполнено: OKVED_G_VToChi:DenSreIDenEkv_25 → 2014260
 ✅ Заполнено: OKVED_G_VToChi:FinIDruOboAkt(vkDebZad_24 → 11515979
-ℹ️ Отсутствующие данные: OKVED_G_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_G_VToChi:FinIDruOboAkt(vkDebZad_25 → 10865250
 ✅ Заполнено: OKVED_45_OboAkt_2_24 → 2537002
 ✅ Заполнено: OKVED_45_OboAkt_2_25 → 2649912
 ✅ Заполнено: OKVED_45_VToChi:Zap_24 → 1655370
@@ -2045,7 +2201,7 @@
 ✅ Заполнено: OKVED_45_VToChi:DenSreIDenEkv_24 → 182714
 ✅ Заполнено: OKVED_45_VToChi:DenSreIDenEkv_25 → 230002
 ✅ Заполнено: OKVED_45_VToChi:FinIDruOboAkt(vkDebZad_24 → 698918
-ℹ️ Отсутствующие данные: OKVED_45_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_45_VToChi:FinIDruOboAkt(vkDebZad_25 → 817533
 ✅ Заполнено: OKVED_46_OboAkt_2_24 → 16594793
 ✅ Заполнено: OKVED_46_OboAkt_2_25 → 16127072
 ✅ Заполнено: OKVED_46_VToChi:Zap_24 → 6906791
@@ -2053,7 +2209,7 @@
 ✅ Заполнено: OKVED_46_VToChi:DenSreIDenEkv_24 → 1047486
 ✅ Заполнено: OKVED_46_VToChi:DenSreIDenEkv_25 → 1094603
 ✅ Заполнено: OKVED_46_VToChi:FinIDruOboAkt(vkDebZad_24 → 8640516
-ℹ️ Отсутствующие данные: OKVED_46_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_46_VToChi:FinIDruOboAkt(vkDebZad_25 → 7816053
 ✅ Заполнено: OKVED_47_OboAkt_2_24 → 7359647
 ✅ Заполнено: OKVED_47_OboAkt_2_25 → 7444278
 ✅ Заполнено: OKVED_47_VToChi:Zap_24 → 4503141
@@ -2061,7 +2217,7 @@
 ✅ Заполнено: OKVED_47_VToChi:DenSreIDenEkv_24 → 679961
 ✅ Заполнено: OKVED_47_VToChi:DenSreIDenEkv_25 → 689655
 ✅ Заполнено: OKVED_47_VToChi:FinIDruOboAkt(vkDebZad_24 → 2176545
-ℹ️ Отсутствующие данные: OKVED_47_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_47_VToChi:FinIDruOboAkt(vkDebZad_25 → 2231664
 ✅ Заполнено: OKVED_H_OboAkt_2_24 → 8130074
 ✅ Заполнено: OKVED_H_OboAkt_2_25 → 8211135
 ✅ Заполнено: OKVED_H_VToChi:Zap_24 → 1058065
@@ -2069,7 +2225,7 @@
 ✅ Заполнено: OKVED_H_VToChi:DenSreIDenEkv_24 → 526453
 ✅ Заполнено: OKVED_H_VToChi:DenSreIDenEkv_25 → 928599
 ✅ Заполнено: OKVED_H_VToChi:FinIDruOboAkt(vkDebZad_24 → 6545556
-ℹ️ Отсутствующие данные: OKVED_H_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_H_VToChi:FinIDruOboAkt(vkDebZad_25 → 6103375
 ✅ Заполнено: OKVED_49_OboAkt_2_24 → 1354392
 ✅ Заполнено: OKVED_49_OboAkt_2_25 → 1407208
 ✅ Заполнено: OKVED_49_VToChi:Zap_24 → 218685
@@ -2077,7 +2233,7 @@
 ✅ Заполнено: OKVED_49_VToChi:DenSreIDenEkv_24 → 92071
 ✅ Заполнено: OKVED_49_VToChi:DenSreIDenEkv_25 → 104431
 ✅ Заполнено: OKVED_49_VToChi:FinIDruOboAkt(vkDebZad_24 → 1043636
-ℹ️ Отсутствующие данные: OKVED_49_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_49_VToChi:FinIDruOboAkt(vkDebZad_25 → 1057021
 ✅ Заполнено: OKVED_50_OboAkt_2_24 → 1533952
 ✅ Заполнено: OKVED_50_OboAkt_2_25 → 1450849
 ✅ Заполнено: OKVED_50_VToChi:Zap_24 → 278361
@@ -2085,7 +2241,7 @@
 ✅ Заполнено: OKVED_50_VToChi:DenSreIDenEkv_24 → 42255
 ✅ Заполнено: OKVED_50_VToChi:DenSreIDenEkv_25 → 89611
 ✅ Заполнено: OKVED_50_VToChi:FinIDruOboAkt(vkDebZad_24 → 1213336
-ℹ️ Отсутствующие данные: OKVED_50_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_50_VToChi:FinIDruOboAkt(vkDebZad_25 → 1077205
 ✅ Заполнено: OKVED_51_OboAkt_2_24 → 130483
 ✅ Заполнено: OKVED_51_OboAkt_2_25 → 147208
 ✅ Заполнено: OKVED_51_VToChi:Zap_24 → 21563
@@ -2093,7 +2249,7 @@
 ✅ Заполнено: OKVED_51_VToChi:DenSreIDenEkv_24 → 6061
 ✅ Заполнено: OKVED_51_VToChi:DenSreIDenEkv_25 → 1964
 ✅ Заполнено: OKVED_51_VToChi:FinIDruOboAkt(vkDebZad_24 → 102859
-ℹ️ Отсутствующие данные: OKVED_51_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_51_VToChi:FinIDruOboAkt(vkDebZad_25 → 141568
 ✅ Заполнено: OKVED_52_OboAkt_2_24 → 5040217
 ✅ Заполнено: OKVED_52_OboAkt_2_25 → 5155363
 ✅ Заполнено: OKVED_52_VToChi:Zap_24 → 537210
@@ -2101,7 +2257,7 @@
 ✅ Заполнено: OKVED_52_VToChi:DenSreIDenEkv_24 → 369212
 ✅ Заполнено: OKVED_52_VToChi:DenSreIDenEkv_25 → 696834
 ✅ Заполнено: OKVED_52_VToChi:FinIDruOboAkt(vkDebZad_24 → 4133795
-ℹ️ Отсутствующие данные: OKVED_52_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_52_VToChi:FinIDruOboAkt(vkDebZad_25 → 3812833
 ✅ Заполнено: OKVED_53_OboAkt_2_24 → 71030
 ✅ Заполнено: OKVED_53_OboAkt_2_25 → 50507
 ✅ Заполнено: OKVED_53_VToChi:Zap_24 → 2246
@@ -2109,7 +2265,7 @@
 ✅ Заполнено: OKVED_53_VToChi:DenSreIDenEkv_24 → 16854
 ✅ Заполнено: OKVED_53_VToChi:DenSreIDenEkv_25 → 35759
 ✅ Заполнено: OKVED_53_VToChi:FinIDruOboAkt(vkDebZad_24 → 51930
-ℹ️ Отсутствующие данные: OKVED_53_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_53_VToChi:FinIDruOboAkt(vkDebZad_25 → 14748
 ✅ Заполнено: OKVED_I_OboAkt_2_24 → 4019984
 ✅ Заполнено: OKVED_I_OboAkt_2_25 → 4665754
 ✅ Заполнено: OKVED_I_VToChi:Zap_24 → 743388
@@ -2117,7 +2273,7 @@
 ✅ Заполнено: OKVED_I_VToChi:DenSreIDenEkv_24 → 782766
 ✅ Заполнено: OKVED_I_VToChi:DenSreIDenEkv_25 → 572652
 ✅ Заполнено: OKVED_I_VToChi:FinIDruOboAkt(vkDebZad_24 → 2493830
-ℹ️ Отсутствующие данные: OKVED_I_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_I_VToChi:FinIDruOboAkt(vkDebZad_25 → 2862577
 ✅ Заполнено: OKVED_55_OboAkt_2_24 → 2502263
 ✅ Заполнено: OKVED_55_OboAkt_2_25 → 3173125
 ✅ Заполнено: OKVED_55_VToChi:Zap_24 → 229161
@@ -2125,7 +2281,7 @@
 ✅ Заполнено: OKVED_55_VToChi:DenSreIDenEkv_24 → 547347
 ✅ Заполнено: OKVED_55_VToChi:DenSreIDenEkv_25 → 333915
 ✅ Заполнено: OKVED_55_VToChi:FinIDruOboAkt(vkDebZad_24 → 1725755
-ℹ️ Отсутствующие данные: OKVED_55_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_55_VToChi:FinIDruOboAkt(vkDebZad_25 → 2096511
 ✅ Заполнено: OKVED_56_OboAkt_2_24 → 1517721
 ✅ Заполнено: OKVED_56_OboAkt_2_25 → 1492629
 ✅ Заполнено: OKVED_56_VToChi:Zap_24 → 514227
@@ -2133,7 +2289,7 @@
 ✅ Заполнено: OKVED_56_VToChi:DenSreIDenEkv_24 → 235419
 ✅ Заполнено: OKVED_56_VToChi:DenSreIDenEkv_25 → 238737
 ✅ Заполнено: OKVED_56_VToChi:FinIDruOboAkt(vkDebZad_24 → 768075
-ℹ️ Отсутствующие данные: OKVED_56_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_56_VToChi:FinIDruOboAkt(vkDebZad_25 → 766066
 ✅ Заполнено: OKVED_J_OboAkt_2_24 → 920924
 ✅ Заполнено: OKVED_J_OboAkt_2_25 → 930805
 ✅ Заполнено: OKVED_J_VToChi:Zap_24 → 127395
@@ -2141,7 +2297,7 @@
 ✅ Заполнено: OKVED_J_VToChi:DenSreIDenEkv_24 → 159217
 ✅ Заполнено: OKVED_J_VToChi:DenSreIDenEkv_25 → 258330
 ✅ Заполнено: OKVED_J_VToChi:FinIDruOboAkt(vkDebZad_24 → 634312
-ℹ️ Отсутствующие данные: OKVED_J_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_J_VToChi:FinIDruOboAkt(vkDebZad_25 → 517823
 ✅ Заполнено: OKVED_58_OboAkt_2_24 → 10256
 ✅ Заполнено: OKVED_58_OboAkt_2_25 → 27568
 ✅ Заполнено: OKVED_58_VToChi:Zap_24 → 326
@@ -2149,7 +2305,7 @@
 ✅ Заполнено: OKVED_58_VToChi:DenSreIDenEkv_24 → 1732
 ✅ Заполнено: OKVED_58_VToChi:DenSreIDenEkv_25 → 2165
 ✅ Заполнено: OKVED_58_VToChi:FinIDruOboAkt(vkDebZad_24 → 8198
-ℹ️ Отсутствующие данные: OKVED_58_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_58_VToChi:FinIDruOboAkt(vkDebZad_25 → 10670
 ✅ Заполнено: OKVED_59_OboAkt_2_24 → 29671
 ✅ Заполнено: OKVED_59_OboAkt_2_25 → 35003
 ✅ Заполнено: OKVED_59_VToChi:Zap_24 → 24047
@@ -2157,7 +2313,7 @@
 ✅ Заполнено: OKVED_59_VToChi:DenSreIDenEkv_24 → 2190
 ✅ Заполнено: OKVED_59_VToChi:DenSreIDenEkv_25 → 1305
 ✅ Заполнено: OKVED_59_VToChi:FinIDruOboAkt(vkDebZad_24 → 3434
-ℹ️ Отсутствующие данные: OKVED_59_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_59_VToChi:FinIDruOboAkt(vkDebZad_25 → 4071
 ✅ Заполнено: OKVED_60_OboAkt_2_24 → 64876
 ✅ Заполнено: OKVED_60_OboAkt_2_25 → 81547
 ✅ Заполнено: OKVED_60_VToChi:Zap_24 → 728
@@ -2165,7 +2321,7 @@
 ✅ Заполнено: OKVED_60_VToChi:DenSreIDenEkv_24 → 2672
 ✅ Заполнено: OKVED_60_VToChi:DenSreIDenEkv_25 → 4852
 ✅ Заполнено: OKVED_60_VToChi:FinIDruOboAkt(vkDebZad_24 → 61476
-ℹ️ Отсутствующие данные: OKVED_60_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_60_VToChi:FinIDruOboAkt(vkDebZad_25 → 75722
 ✅ Заполнено: OKVED_61_OboAkt_2_24 → 469462
 ✅ Заполнено: OKVED_61_OboAkt_2_25 → 421784
 ✅ Заполнено: OKVED_61_VToChi:Zap_24 → 48065
@@ -2173,7 +2329,7 @@
 ✅ Заполнено: OKVED_61_VToChi:DenSreIDenEkv_24 → 83058
 ✅ Заполнено: OKVED_61_VToChi:DenSreIDenEkv_25 → 146861
 ✅ Заполнено: OKVED_61_VToChi:FinIDruOboAkt(vkDebZad_24 → 338339
-ℹ️ Отсутствующие данные: OKVED_61_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_61_VToChi:FinIDruOboAkt(vkDebZad_25 → 211712
 ✅ Заполнено: OKVED_62_OboAkt_2_24 → 258077
 ✅ Заполнено: OKVED_62_OboAkt_2_25 → 261978
 ✅ Заполнено: OKVED_62_VToChi:Zap_24 → 40070
@@ -2181,7 +2337,7 @@
 ✅ Заполнено: OKVED_62_VToChi:DenSreIDenEkv_24 → 48191
 ✅ Заполнено: OKVED_62_VToChi:DenSreIDenEkv_25 → 82929
 ✅ Заполнено: OKVED_62_VToChi:FinIDruOboAkt(vkDebZad_24 → 169816
-ℹ️ Отсутствующие данные: OKVED_62_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_62_VToChi:FinIDruOboAkt(vkDebZad_25 → 145724
 ✅ Заполнено: OKVED_63_OboAkt_2_24 → 88582
 ✅ Заполнено: OKVED_63_OboAkt_2_25 → 102925
 ✅ Заполнено: OKVED_63_VToChi:Zap_24 → 14159
@@ -2189,7 +2345,7 @@
 ✅ Заполнено: OKVED_63_VToChi:DenSreIDenEkv_24 → 21374
 ✅ Заполнено: OKVED_63_VToChi:DenSreIDenEkv_25 → 20218
 ✅ Заполнено: OKVED_63_VToChi:FinIDruOboAkt(vkDebZad_24 → 53049
-ℹ️ Отсутствующие данные: OKVED_63_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_63_VToChi:FinIDruOboAkt(vkDebZad_25 → 69924
 ✅ Заполнено: OKVED_K_OboAkt_2_24 → 3715216
 ✅ Заполнено: OKVED_K_OboAkt_2_25 → 2485957
 ✅ Заполнено: OKVED_K_VToChi:Zap_24 → 4895
@@ -2197,7 +2353,7 @@
 ✅ Заполнено: OKVED_K_VToChi:DenSreIDenEkv_24 → 1722691
 ✅ Заполнено: OKVED_K_VToChi:DenSreIDenEkv_25 → 685004
 ✅ Заполнено: OKVED_K_VToChi:FinIDruOboAkt(vkDebZad_24 → 1987630
-ℹ️ Отсутствующие данные: OKVED_K_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_K_VToChi:FinIDruOboAkt(vkDebZad_25 → 1795343
 ✅ Заполнено: OKVED_64_OboAkt_2_24 → 3714716
 ✅ Заполнено: OKVED_64_OboAkt_2_25 → 2485252
 ✅ Заполнено: OKVED_64_VToChi:Zap_24 → 4497
@@ -2205,7 +2361,7 @@
 ✅ Заполнено: OKVED_64_VToChi:DenSreIDenEkv_24 → 1722687
 ✅ Заполнено: OKVED_64_VToChi:DenSreIDenEkv_25 → 684876
 ✅ Заполнено: OKVED_64_VToChi:FinIDruOboAkt(vkDebZad_24 → 1987532
-ℹ️ Отсутствующие данные: OKVED_64_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_64_VToChi:FinIDruOboAkt(vkDebZad_25 → 1795164
 ✅ Заполнено: OKVED_L_OboAkt_2_24 → 8868573
 ✅ Заполнено: OKVED_L_OboAkt_2_25 → 7774406
 ✅ Заполнено: OKVED_L_VToChi:Zap_24 → 455062
@@ -2213,7 +2369,7 @@
 ✅ Заполнено: OKVED_L_VToChi:DenSreIDenEkv_24 → 786523
 ✅ Заполнено: OKVED_L_VToChi:DenSreIDenEkv_25 → 672898
 ✅ Заполнено: OKVED_L_VToChi:FinIDruOboAkt(vkDebZad_24 → 7626988
-ℹ️ Отсутствующие данные: OKVED_L_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_L_VToChi:FinIDruOboAkt(vkDebZad_25 → 6621718
 ✅ Заполнено: OKVED_M_OboAkt_2_24 → 5976160
 ✅ Заполнено: OKVED_M_OboAkt_2_25 → 6009741
 ✅ Заполнено: OKVED_M_VToChi:Zap_24 → 1380153
@@ -2221,7 +2377,7 @@
 ✅ Заполнено: OKVED_M_VToChi:DenSreIDenEkv_24 → 428544
 ✅ Заполнено: OKVED_M_VToChi:DenSreIDenEkv_25 → 1020076
 ✅ Заполнено: OKVED_M_VToChi:FinIDruOboAkt(vkDebZad_24 → 4167463
-ℹ️ Отсутствующие данные: OKVED_M_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_M_VToChi:FinIDruOboAkt(vkDebZad_25 → 4595738
 ✅ Заполнено: OKVED_69_OboAkt_2_24 → 847292
 ✅ Заполнено: OKVED_69_OboAkt_2_25 → 945286
 ✅ Заполнено: OKVED_69_VToChi:Zap_24 → 51513
@@ -2229,7 +2385,7 @@
 ✅ Заполнено: OKVED_69_VToChi:DenSreIDenEkv_24 → 79616
 ✅ Заполнено: OKVED_69_VToChi:DenSreIDenEkv_25 → 99748
 ✅ Заполнено: OKVED_69_VToChi:FinIDruOboAkt(vkDebZad_24 → 716163
-ℹ️ Отсутствующие данные: OKVED_69_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_69_VToChi:FinIDruOboAkt(vkDebZad_25 → 794167
 ✅ Заполнено: OKVED_70_OboAkt_2_24 → 1843627
 ✅ Заполнено: OKVED_70_OboAkt_2_25 → 2049069
 ✅ Заполнено: OKVED_70_VToChi:Zap_24 → 379694
@@ -2237,7 +2393,7 @@
 ✅ Заполнено: OKVED_70_VToChi:DenSreIDenEkv_24 → 48930
 ✅ Заполнено: OKVED_70_VToChi:DenSreIDenEkv_25 → 183136
 ✅ Заполнено: OKVED_70_VToChi:FinIDruOboAkt(vkDebZad_24 → 1415003
-ℹ️ Отсутствующие данные: OKVED_70_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_70_VToChi:FinIDruOboAkt(vkDebZad_25 → 1835728
 ✅ Заполнено: OKVED_71_OboAkt_2_24 → 2551698
 ✅ Заполнено: OKVED_71_OboAkt_2_25 → 2466203
 ✅ Заполнено: OKVED_71_VToChi:Zap_24 → 885473
@@ -2245,7 +2401,7 @@
 ✅ Заполнено: OKVED_71_VToChi:DenSreIDenEkv_24 → 222040
 ✅ Заполнено: OKVED_71_VToChi:DenSreIDenEkv_25 → 713036
 ✅ Заполнено: OKVED_71_VToChi:FinIDruOboAkt(vkDebZad_24 → 1444185
-ℹ️ Отсутствующие данные: OKVED_71_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_71_VToChi:FinIDruOboAkt(vkDebZad_25 → 1510727
 ✅ Заполнено: OKVED_72_OboAkt_2_24 → 19425
 ✅ Заполнено: OKVED_72_OboAkt_2_25 → 40142
 ✅ Заполнено: OKVED_72_VToChi:Zap_24 → 9164
@@ -2253,7 +2409,7 @@
 ✅ Заполнено: OKVED_72_VToChi:DenSreIDenEkv_24 → 707
 ✅ Заполнено: OKVED_72_VToChi:DenSreIDenEkv_25 → 624
 ✅ Заполнено: OKVED_72_VToChi:FinIDruOboAkt(vkDebZad_24 → 9554
-ℹ️ Отсутствующие данные: OKVED_72_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_72_VToChi:FinIDruOboAkt(vkDebZad_25 → 26669
 ✅ Заполнено: OKVED_73_OboAkt_2_24 → 708528
 ✅ Заполнено: OKVED_73_OboAkt_2_25 → 501354
 ✅ Заполнено: OKVED_73_VToChi:Zap_24 → 53509
@@ -2261,7 +2417,7 @@
 ✅ Заполнено: OKVED_73_VToChi:DenSreIDenEkv_24 → 76139
 ✅ Заполнено: OKVED_73_VToChi:DenSreIDenEkv_25 → 21160
 ✅ Заполнено: OKVED_73_VToChi:FinIDruOboAkt(vkDebZad_24 → 578880
-ℹ️ Отсутствующие данные: OKVED_73_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_73_VToChi:FinIDruOboAkt(vkDebZad_25 → 424382
 ✅ Заполнено: OKVED_74_OboAkt_2_24 → 5590
 ✅ Заполнено: OKVED_74_OboAkt_2_25 → 7687
 ✅ Заполнено: OKVED_74_VToChi:Zap_24 → 800
@@ -2269,7 +2425,7 @@
 ✅ Заполнено: OKVED_74_VToChi:DenSreIDenEkv_24 → 1112
 ✅ Заполнено: OKVED_74_VToChi:DenSreIDenEkv_25 → 2372
 ✅ Заполнено: OKVED_74_VToChi:FinIDruOboAkt(vkDebZad_24 → 3678
-ℹ️ Отсутствующие данные: OKVED_74_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_74_VToChi:FinIDruOboAkt(vkDebZad_25 → 4065
 ✅ Заполнено: OKVED_N_OboAkt_2_24 → 3352893
 ✅ Заполнено: OKVED_N_OboAkt_2_25 → 3301136
 ✅ Заполнено: OKVED_N_VToChi:Zap_24 → 287343
@@ -2277,7 +2433,7 @@
 ✅ Заполнено: OKVED_N_VToChi:DenSreIDenEkv_24 → 400707
 ✅ Заполнено: OKVED_N_VToChi:DenSreIDenEkv_25 → 510597
 ✅ Заполнено: OKVED_N_VToChi:FinIDruOboAkt(vkDebZad_24 → 2664843
-ℹ️ Отсутствующие данные: OKVED_N_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_N_VToChi:FinIDruOboAkt(vkDebZad_25 → 2482587
 ✅ Заполнено: OKVED_77_OboAkt_2_24 → 596280
 ✅ Заполнено: OKVED_77_OboAkt_2_25 → 574010
 ✅ Заполнено: OKVED_77_VToChi:Zap_24 → 49575
@@ -2285,7 +2441,7 @@
 ✅ Заполнено: OKVED_77_VToChi:DenSreIDenEkv_24 → 17467
 ✅ Заполнено: OKVED_77_VToChi:DenSreIDenEkv_25 → 55846
 ✅ Заполнено: OKVED_77_VToChi:FinIDruOboAkt(vkDebZad_24 → 529238
-ℹ️ Отсутствующие данные: OKVED_77_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_77_VToChi:FinIDruOboAkt(vkDebZad_25 → 467912
 ✅ Заполнено: OKVED_78_OboAkt_2_24 → 20
 ✅ Заполнено: OKVED_78_OboAkt_2_25 → 20
 ℹ️ Отсутствующие данные: OKVED_78_VToChi:Zap_24 → [-]
@@ -2301,7 +2457,7 @@
 ✅ Заполнено: OKVED_79_VToChi:DenSreIDenEkv_24 → 193404
 ✅ Заполнено: OKVED_79_VToChi:DenSreIDenEkv_25 → 209116
 ✅ Заполнено: OKVED_79_VToChi:FinIDruOboAkt(vkDebZad_24 → 834639
-ℹ️ Отсутствующие данные: OKVED_79_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_79_VToChi:FinIDruOboAkt(vkDebZad_25 → 927894
 ✅ Заполнено: OKVED_80_OboAkt_2_24 → 939056
 ✅ Заполнено: OKVED_80_OboAkt_2_25 → 799763
 ✅ Заполнено: OKVED_80_VToChi:Zap_24 → 47852
@@ -2309,7 +2465,7 @@
 ✅ Заполнено: OKVED_80_VToChi:DenSreIDenEkv_24 → 147407
 ✅ Заполнено: OKVED_80_VToChi:DenSreIDenEkv_25 → 199426
 ✅ Заполнено: OKVED_80_VToChi:FinIDruOboAkt(vkDebZad_24 → 743797
-ℹ️ Отсутствующие данные: OKVED_80_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_80_VToChi:FinIDruOboAkt(vkDebZad_25 → 530416
 ✅ Заполнено: OKVED_81_OboAkt_2_24 → 581109
 ✅ Заполнено: OKVED_81_OboAkt_2_25 → 599337
 ✅ Заполнено: OKVED_81_VToChi:Zap_24 → 12964
@@ -2317,7 +2473,7 @@
 ✅ Заполнено: OKVED_81_VToChi:DenSreIDenEkv_24 → 38706
 ✅ Заполнено: OKVED_81_VToChi:DenSreIDenEkv_25 → 39084
 ✅ Заполнено: OKVED_81_VToChi:FinIDruOboAkt(vkDebZad_24 → 529439
-ℹ️ Отсутствующие данные: OKVED_81_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_81_VToChi:FinIDruOboAkt(vkDebZad_25 → 534292
 ✅ Заполнено: OKVED_82_OboAkt_2_24 → 36009
 ✅ Заполнено: OKVED_82_OboAkt_2_25 → 30677
 ✅ Заполнено: OKVED_82_VToChi:Zap_24 → 4576
@@ -2325,7 +2481,7 @@
 ✅ Заполнено: OKVED_82_VToChi:DenSreIDenEkv_24 → 3703
 ✅ Заполнено: OKVED_82_VToChi:DenSreIDenEkv_25 → 7105
 ✅ Заполнено: OKVED_82_VToChi:FinIDruOboAkt(vkDebZad_24 → 27730
-ℹ️ Отсутствующие данные: OKVED_82_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_82_VToChi:FinIDruOboAkt(vkDebZad_25 → 22073
 ✅ Заполнено: OKVED_O_OboAkt_2_24 → 6971
 ✅ Заполнено: OKVED_O_OboAkt_2_25 → 4171
 ✅ Заполнено: OKVED_O_VToChi:Zap_24 → 296
@@ -2333,7 +2489,7 @@
 ✅ Заполнено: OKVED_O_VToChi:DenSreIDenEkv_24 → 1968
 ✅ Заполнено: OKVED_O_VToChi:DenSreIDenEkv_25 → 2400
 ✅ Заполнено: OKVED_O_VToChi:FinIDruOboAkt(vkDebZad_24 → 4707
-ℹ️ Отсутствующие данные: OKVED_O_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_O_VToChi:FinIDruOboAkt(vkDebZad_25 → 963
 ✅ Заполнено: OKVED_85_OboAkt_2_24 → 29389
 ✅ Заполнено: OKVED_85_OboAkt_2_25 → 22231
 ✅ Заполнено: OKVED_85_VToChi:Zap_24 → 1423
@@ -2341,7 +2497,7 @@
 ✅ Заполнено: OKVED_85_VToChi:DenSreIDenEkv_24 → 11461
 ✅ Заполнено: OKVED_85_VToChi:DenSreIDenEkv_25 → 5415
 ✅ Заполнено: OKVED_85_VToChi:FinIDruOboAkt(vkDebZad_24 → 16505
-ℹ️ Отсутствующие данные: OKVED_85_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_85_VToChi:FinIDruOboAkt(vkDebZad_25 → 15561
 ✅ Заполнено: OKVED_Q_OboAkt_2_24 → 1308163
 ✅ Заполнено: OKVED_Q_OboAkt_2_25 → 1679630
 ✅ Заполнено: OKVED_Q_VToChi:Zap_24 → 172791
@@ -2349,7 +2505,7 @@
 ✅ Заполнено: OKVED_Q_VToChi:DenSreIDenEkv_24 → 247981
 ✅ Заполнено: OKVED_Q_VToChi:DenSreIDenEkv_25 → 338815
 ✅ Заполнено: OKVED_Q_VToChi:FinIDruOboAkt(vkDebZad_24 → 887391
-ℹ️ Отсутствующие данные: OKVED_Q_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_Q_VToChi:FinIDruOboAkt(vkDebZad_25 → 1097109
 ✅ Заполнено: OKVED_86_OboAkt_2_24 → 1306669
 ✅ Заполнено: OKVED_86_OboAkt_2_25 → 1675748
 ✅ Заполнено: OKVED_86_VToChi:Zap_24 → 172781
@@ -2357,7 +2513,7 @@
 ✅ Заполнено: OKVED_86_VToChi:DenSreIDenEkv_24 → 246777
 ✅ Заполнено: OKVED_86_VToChi:DenSreIDenEkv_25 → 335997
 ✅ Заполнено: OKVED_86_VToChi:FinIDruOboAkt(vkDebZad_24 → 887111
-ℹ️ Отсутствующие данные: OKVED_86_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_86_VToChi:FinIDruOboAkt(vkDebZad_25 → 1096055
 ✅ Заполнено: OKVED_87_OboAkt_2_24 → 3
 ✅ Заполнено: OKVED_87_OboAkt_2_25 → 2147
 ℹ️ Отсутствующие данные: OKVED_87_VToChi:Zap_24 → [-]
@@ -2365,7 +2521,7 @@
 ✅ Заполнено: OKVED_87_VToChi:DenSreIDenEkv_24 → 3
 ✅ Заполнено: OKVED_87_VToChi:DenSreIDenEkv_25 → 2031
 ℹ️ Отсутствующие данные: OKVED_87_VToChi:FinIDruOboAkt(vkDebZad_24 → [-]
-ℹ️ Отсутствующие данные: OKVED_87_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_87_VToChi:FinIDruOboAkt(vkDebZad_25 → 116
 ✅ Заполнено: OKVED_88_OboAkt_2_24 → 1491
 ✅ Заполнено: OKVED_88_OboAkt_2_25 → 1735
 ✅ Заполнено: OKVED_88_VToChi:Zap_24 → 10
@@ -2373,7 +2529,7 @@
 ✅ Заполнено: OKVED_88_VToChi:DenSreIDenEkv_24 → 1201
 ✅ Заполнено: OKVED_88_VToChi:DenSreIDenEkv_25 → 787
 ✅ Заполнено: OKVED_88_VToChi:FinIDruOboAkt(vkDebZad_24 → 280
-ℹ️ Отсутствующие данные: OKVED_88_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_88_VToChi:FinIDruOboAkt(vkDebZad_25 → 938
 ✅ Заполнено: OKVED_R_OboAkt_2_24 → 221283
 ✅ Заполнено: OKVED_R_OboAkt_2_25 → 184091
 ✅ Заполнено: OKVED_R_VToChi:Zap_24 → 57351
@@ -2381,7 +2537,7 @@
 ✅ Заполнено: OKVED_R_VToChi:DenSreIDenEkv_24 → 45391
 ✅ Заполнено: OKVED_R_VToChi:DenSreIDenEkv_25 → 37928
 ✅ Заполнено: OKVED_R_VToChi:FinIDruOboAkt(vkDebZad_24 → 118541
-ℹ️ Отсутствующие данные: OKVED_R_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_R_VToChi:FinIDruOboAkt(vkDebZad_25 → 113296
 ✅ Заполнено: OKVED_90_OboAkt_2_24 → 816
 ✅ Заполнено: OKVED_90_OboAkt_2_25 → 2217
 ℹ️ Отсутствующие данные: OKVED_90_VToChi:Zap_24 → [-]
@@ -2389,7 +2545,7 @@
 ✅ Заполнено: OKVED_90_VToChi:DenSreIDenEkv_24 → 803
 ✅ Заполнено: OKVED_90_VToChi:DenSreIDenEkv_25 → 2006
 ✅ Заполнено: OKVED_90_VToChi:FinIDruOboAkt(vkDebZad_24 → 13
-ℹ️ Отсутствующие данные: OKVED_90_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_90_VToChi:FinIDruOboAkt(vkDebZad_25 → 211
 ✅ Заполнено: OKVED_91_OboAkt_2_24 → 36697
 ✅ Заполнено: OKVED_91_OboAkt_2_25 → 27525
 ✅ Заполнено: OKVED_91_VToChi:Zap_24 → 10097
@@ -2397,7 +2553,7 @@
 ✅ Заполнено: OKVED_91_VToChi:DenSreIDenEkv_24 → 5196
 ✅ Заполнено: OKVED_91_VToChi:DenSreIDenEkv_25 → 6049
 ✅ Заполнено: OKVED_91_VToChi:FinIDruOboAkt(vkDebZad_24 → 21404
-ℹ️ Отсутствующие данные: OKVED_91_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_91_VToChi:FinIDruOboAkt(vkDebZad_25 → 7446
 ✅ Заполнено: OKVED_93_OboAkt_2_24 → 183770
 ✅ Заполнено: OKVED_93_OboAkt_2_25 → 154349
 ✅ Заполнено: OKVED_93_VToChi:Zap_24 → 47254
@@ -2405,7 +2561,7 @@
 ✅ Заполнено: OKVED_93_VToChi:DenSreIDenEkv_24 → 39392
 ✅ Заполнено: OKVED_93_VToChi:DenSreIDenEkv_25 → 29873
 ✅ Заполнено: OKVED_93_VToChi:FinIDruOboAkt(vkDebZad_24 → 97124
-ℹ️ Отсутствующие данные: OKVED_93_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_93_VToChi:FinIDruOboAkt(vkDebZad_25 → 105639
 ✅ Заполнено: OKVED_S_OboAkt_2_24 → 184773
 ✅ Заполнено: OKVED_S_OboAkt_2_25 → 255155
 ✅ Заполнено: OKVED_S_VToChi:Zap_24 → 30083
@@ -2413,7 +2569,7 @@
 ✅ Заполнено: OKVED_S_VToChi:DenSreIDenEkv_24 → 41953
 ✅ Заполнено: OKVED_S_VToChi:DenSreIDenEkv_25 → 51184
 ✅ Заполнено: OKVED_S_VToChi:FinIDruOboAkt(vkDebZad_24 → 112737
-ℹ️ Отсутствующие данные: OKVED_S_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_S_VToChi:FinIDruOboAkt(vkDebZad_25 → 162167
 ✅ Заполнено: OKVED_95_OboAkt_2_24 → 55477
 ✅ Заполнено: OKVED_95_OboAkt_2_25 → 100953
 ✅ Заполнено: OKVED_95_VToChi:Zap_24 → 10578
@@ -2421,7 +2577,7 @@
 ✅ Заполнено: OKVED_95_VToChi:DenSreIDenEkv_24 → 5293
 ✅ Заполнено: OKVED_95_VToChi:DenSreIDenEkv_25 → 9207
 ✅ Заполнено: OKVED_95_VToChi:FinIDruOboAkt(vkDebZad_24 → 39606
-ℹ️ Отсутствующие данные: OKVED_95_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_95_VToChi:FinIDruOboAkt(vkDebZad_25 → 75743
 ✅ Заполнено: OKVED_96_OboAkt_2_24 → 129296
 ✅ Заполнено: OKVED_96_OboAkt_2_25 → 154192
 ✅ Заполнено: OKVED_96_VToChi:Zap_24 → 19505
@@ -2429,7 +2585,7 @@
 ✅ Заполнено: OKVED_96_VToChi:DenSreIDenEkv_24 → 36660
 ✅ Заполнено: OKVED_96_VToChi:DenSreIDenEkv_25 → 41967
 ✅ Заполнено: OKVED_96_VToChi:FinIDruOboAkt(vkDebZad_24 → 73131
-ℹ️ Отсутствующие данные: OKVED_96_VToChi:FinIDruOboAkt(vkDebZad_25 → [-]
+✅ Заполнено: OKVED_96_VToChi:FinIDruOboAkt(vkDebZad_25 → 86424
 ✅ Заполнено: OKVED_101_АГ_OboAktDli1Obo → 191,0
 ✅ Заполнено: OKVED_101_АГ_ZapDli1Obo → 59,6
 ✅ Заполнено: OKVED_101_АГ_KraKreZadSreSrPog → 86,4
