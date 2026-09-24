@@ -169,6 +169,11 @@ Always available:
 ## visual_diff.py
 - Outputs human-readable differences
 
+## check_report.py
+- Preflight checks before filling (files, table titles vs Word)
+- ЧТО_ПРОВЕРИТЬ.xlsx and highlighted Бюллетень_ПРОВЕРКА.docx for the economist
+- Must never change Бюллетень_ГОТОВЫЙ.docx
+
 ---
 
 # ⚠️ FAILURE HANDLING
