@@ -77,6 +77,17 @@ class PreflightTest(unittest.TestCase):
         ])
         self.assertEqual([i for i in issues if i['Важность'] == IMPORTANT], [])
 
+    def test_one_letter_typo_in_title_is_not_important(self):
+        issues = self._issues([
+            '"13. ФИНАНСОВАЯ УСТОЙЧИВОСТЬ";S25_t22mo8.xlsx',
+            '"14. ФОРМИРОВАНИЕ РЕЗУЛЬТАТОВ ОРГАНИЗАЦИЙ ПО ВИДАМ ЭКОНОМИЧЕСКОЙ ДЕЯТЕЛЬНСТИ";S25_t23.xlsx',
+            '"20. РЕНТАБЕЛЬНОСТЬ АКТИВОВ";S25_t27.xlsx',
+            '"1. ОСНОВНЫЕ ПОКАЗАТЕЛИ";S25_лишний.xlsx',
+        ])
+        typo = [i for i in issues if 'одной буквой' in i['Что не так']]
+        self.assertEqual(len(typo), 1)
+        self.assertNotEqual(typo[0]['Важность'], IMPORTANT)
+
     def test_missing_word(self):
         self.word.unlink()
         issues = self._issues(['"1. ОСНОВНЫЕ ПОКАЗАТЕЛИ";S25_t27.xlsx'])

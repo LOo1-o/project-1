@@ -26,6 +26,7 @@ from openpyxl.styles import Alignment
 
 from config import _normalize_text, _read_csv_rows_robustly, get_cleaned_cell_text, looks_like_data_value
 from data_filler_v2 import UNFILLED_DASH_IN_EXCEL
+from logic import _one_letter_diff, _squish_text
 from table_manager import TableManager
 
 IMPORTANT = 'Важно'
@@ -154,7 +155,12 @@ def preflight(input_word_path, table_mapping_path, excel_dir, mo_path=None) -> l
             if word_title is None and word_titles:
                 word_title = max(word_by_norm.values(),
                                  key=lambda text: SequenceMatcher(None, _normalize_text(title), _normalize_text(text)).ratio())
-            add(IMPORTANT, f'Название таблицы не совпадает с Word: «{title}»', where,
+            # Опечатку в одну букву программа прощает (см. get_table_name) —
+            # это не повод останавливаться, но поправить стоит.
+            one_letter = bool(word_title) and _one_letter_diff(_squish_text(title), _squish_text(word_title))
+            add(FYI if one_letter else IMPORTANT,
+                f'Название таблицы {"отличается от Word одной буквой" if one_letter else "не совпадает с Word"}: '
+                f'«{title}»', where,
                 f'Впишите название точно как в Word: «{word_title}».' if word_title
                 else 'Такой таблицы в Word не нашлось — проверьте номер и название.')
 
