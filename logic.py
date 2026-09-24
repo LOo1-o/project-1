@@ -1146,10 +1146,10 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
     """
     print("\n--- ШАГ 2: Генерация шаблона с умными тегами ---" if not clear_only
           else "\n--- ШАГ 1.5: Очистка шаблона от данных ---")
-    _, name_to_okved_cleaned = load_okved_map(okved_map_path)
-    _, mo_name_to_mo_cleaned = ({}, {})
+    okved_to_name, name_to_okved_cleaned = load_okved_map(okved_map_path)
+    mo_to_name, mo_name_to_mo_cleaned = ({}, {})
     if mo_map_path is not None:
-        _, mo_name_to_mo_cleaned = load_mo_map(mo_map_path)
+        mo_to_name, mo_name_to_mo_cleaned = load_mo_map(mo_map_path)
     unit_annotation_texts = (
         load_unit_annotation_texts(unit_annotations_path)
         if unit_annotations_path is not None
@@ -1734,6 +1734,12 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                                f"строка НЕ будет заполнена, числовые ячейки очищены")
                     print(f"   {warning}")
                     validation_log.append(f"[TABLE {t_index + 1}] {warning}")
+                    if not clear_only and not _is_row_label_only(row):
+                        category_map = category_name_maps.get(current_source_file, {})
+                        _collect_unknown_row_entry(
+                            name_check_report, table_title, continuation_number, table_source_mapping, t_index,
+                            first_cell_text, current_source_file, 'категорий (из самого Excel-файла)',
+                            {name: (code, name) for name, code in category_map.items()})
                     for cell in row.cells[1:]:
                         if cell._tc is row.cells[0]._tc:
                             continue
@@ -1769,6 +1775,18 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                                f"справочнике — строка НЕ будет заполнена, числовые ячейки очищены")
                     print(f"   {warning}")
                     validation_log.append(f"[TABLE {t_index + 1}] {warning}")
+                    if not clear_only and not _is_row_label_only(row):
+                        is_mo_table = bool(current_source_file) and 'mo' in current_source_file.lower()
+                        directory = {name: (code, okved_to_name.get(code, name))
+                                     for name, code in name_to_okved_cleaned.items()}
+                        directory_label = 'ОКВЭД (input/mappings/okved_mapping.csv)'
+                        if is_mo_table:
+                            directory.update({name: (code, mo_to_name.get(code, name))
+                                              for name, code in mo_name_to_mo_cleaned.items()})
+                            directory_label = 'ОКВЭД и МО (okved_mapping.csv, mo.csv)'
+                        _collect_unknown_row_entry(
+                            name_check_report, table_title, continuation_number, table_source_mapping, t_index,
+                            first_cell_text, current_source_file, directory_label, directory)
                     for cell in row.cells[1:]:
                         if cell._tc is row.cells[0]._tc:
                             continue
@@ -1968,7 +1986,7 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
 # === ОТЧЁТ «ПРОВЕРЬТЕ НАЗВАНИЯ WORD И EXCEL» ===============
 # ==========================================================
 _NAME_CHECK_COLUMNS = [
-    'Что случилось', 'Таблица в Word', 'Страница начинается со строки', 'Колонка в Word',
+    'Что случилось', 'Таблица в Word', 'Страница начинается со строки', 'Строка в Word', 'Колонка в Word',
     'Excel-источник', 'Показатель в Excel', 'Колонка Excel', 'Строка в column_mapping_v2.csv',
     'Сколько страниц', 'Что сделала программа', 'Что сделать',
 ]
@@ -2129,6 +2147,76 @@ def _collect_name_check_entries(report, validation_log, table, t_index, header_i
         )
 
 
+# Название строки Word, отличное от справочника не больше, чем на столько,
+# считаем вероятной опечаткой и подсказываем правильное название.
+_UNKNOWN_ROW_SIMILAR = 0.80
+
+
+def _table_number(table_title, continuation_number):
+    if continuation_number:
+        return continuation_number
+    match = re.match(r'\s*(\d+)\s*[.)]', str(table_title or ''))
+    return int(match.group(1)) if match else None
+
+
+def _collect_unknown_row_entry(report, table_title, continuation_number, table_source_mapping, t_index,
+                               row_name, source_file, directory_label, directory):
+    """
+    Строка Word с неузнанным названием («торговля оптовая и розничная
+    транспортными средствами…» вместо «…автотранспортными…» в бюллетене
+    №3) — в отчёт для специалиста, с подсказкой ближайшего названия из
+    справочника. Одинаковые названия из разных таблиц — одна строка отчёта.
+
+    directory: нормализованное название -> (код, название как в справочнике).
+    """
+    row_name = _one_line(row_name)
+    number = _table_number(table_title, continuation_number)
+    # Не названия строк: пусто, номер, метка «Продолжение таблицы N». И
+    # таблицы без номера в маппинге (сводные таблицы в начале бюллетеня) —
+    # программа их не заполняет, совет «добавьте в справочник» там неверен.
+    if (not row_name or number is None
+            or re.fullmatch(r'[\d\s.,()-]+', row_name)
+            or not _strip_continuation_label(_normalize_text(row_name))):
+        return
+    key = ('unknown_row', row_name.lower(), directory_label)
+    entry = report.get(key)
+    if entry is None:
+        text_norm = _normalize_text(row_name)
+        best_score, best = 0.0, None
+        for name_norm, (code, display) in directory.items():
+            score = SequenceMatcher(None, text_norm, name_norm).ratio()
+            if score > best_score:
+                best_score, best = score, (code, display)
+        did = (f"Название строки «{row_name}» не найдено в справочнике {directory_label}. "
+               f"Строка не заполнена — в ней прочерки.")
+        if best and best_score >= _UNKNOWN_ROW_SIMILAR:
+            code, display = best
+            todo = (f"Похоже на «{display}» (код {code}) — скорее всего, опечатка в Word. "
+                    f"Исправьте название строки в Word (input/Бюллетень.docx) на «{display}» "
+                    f"и запустите программу снова.\n"
+                    f"Если это действительно другая строка — добавьте её в справочник: "
+                    f"строка «код;название» так, как название написано в Word.")
+        else:
+            todo = (f"Похожей строки в справочнике нет. Если эта строка есть в Excel-источнике "
+                    f"({source_file}) — добавьте её в справочник: строка «код;название», код как в "
+                    f"первой колонке Excel, название как в Word. Если в Excel её нет — прочерк "
+                    f"правильный, ничего делать не нужно.")
+        entry = report[key] = {
+            'Что случилось': 'Строка не узнана',
+            'numbers': set(),
+            'Страница начинается со строки': '',
+            'Строка в Word': row_name,
+            'Excel-источник': source_file,
+            'Сколько страниц': 0,
+            'Что сделала программа': did,
+            'Что сделать': todo,
+        }
+    entry['Сколько страниц'] += 1
+    entry['numbers'].add(number)
+    numbers = sorted(entry['numbers'])
+    entry['Таблица в Word'] = ('Таблица ' if len(numbers) == 1 else 'Таблицы ') + ', '.join(map(str, numbers))
+
+
 def _write_name_check_report(report, report_path, column_mapping_path):
     report_path = Path(report_path)
     report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -2136,11 +2224,12 @@ def _write_name_check_report(report, report_path, column_mapping_path):
     rows = []
     for entry in report.values():
         row = dict(entry)
-        line_no, csv_name = code_to_csv_line.get(row.pop('indicator'), ('', ''))
+        row.pop('numbers', None)
+        line_no, csv_name = code_to_csv_line.get(row.pop('indicator', None), ('', ''))
         row['Строка в column_mapping_v2.csv'] = line_no
         # Загрузчик маппинга хранит названия строчными — в отчёте показываем
         # название так, как оно записано в column_mapping_v2.csv.
-        loaded_name = row['Показатель в Excel']
+        loaded_name = row.get('Показатель в Excel', '')
         if csv_name and csv_name.lower() == str(loaded_name).lower():
             row['Показатель в Excel'] = csv_name
             for column in ('Что сделала программа', 'Что сделать'):
@@ -2149,8 +2238,9 @@ def _write_name_check_report(report, report_path, column_mapping_path):
     pd.DataFrame(rows, columns=_NAME_CHECK_COLUMNS).to_excel(report_path, index=False)
     print(f"📝 Отчёт «проверьте названия Word и Excel» сохранён: {report_path} ({len(rows)} строк)")
     for row in rows:
-        print(f"   • {row['Что случилось']}: {row['Таблица в Word']}, колонка «{row['Колонка в Word']}» "
-              f"← {row['Excel-источник']}, «{row['Показатель в Excel']}»")
+        where = (f"строка «{row['Строка в Word']}»" if row.get('Строка в Word')
+                 else f"колонка «{row.get('Колонка в Word', '')}» ← «{row.get('Показатель в Excel', '')}»")
+        print(f"   • {row['Что случилось']}: {row['Таблица в Word']}, {where} ({row['Excel-источник']})")
 
 
 # ==========================================================
