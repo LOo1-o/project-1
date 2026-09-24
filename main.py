@@ -9,6 +9,8 @@ import pandas as pd
 from config import (
     load_okved_map,
     load_table_source_map,
+    load_manual_table_numbers,
+    load_missing_file_table_numbers,
     normalize_dash_bold_in_document,
     autofit_tables_to_window,
 )
@@ -185,11 +187,7 @@ def main(input_template_override=None, output_file_override=None):
     # === ШАГ 4.5: Что проверить человеку ===
     # Копия готового бюллетеня с подсветкой пустых по нашей вине ячеек и
     # один файл со всем, что стоит проверить. Готовый документ не трогаем.
-    numbers_without_source = {
-        issue_number for issue_number in (
-            _leading_number(title) for title, source in _raw_table_mapping(table_mapping_file) if not source)
-        if issue_number is not None
-    }
+    numbers_without_source = set(load_manual_table_numbers(table_mapping_file))
     unknown_row_names = []
     if name_check_file.exists():
         names_frame = pd.read_excel(name_check_file)
@@ -201,6 +199,7 @@ def main(input_template_override=None, output_file_override=None):
     problems = mark_problem_cells(
         input_word_file, template_word_file, final_word_file, unfilled_tags, check_doc_file,
         numbers_without_source=numbers_without_source, unknown_row_names=unknown_row_names,
+        numbers_missing_file=load_missing_file_table_numbers(table_mapping_file, excel_dir),
     )
     check_summary = write_check_workbook(
         check_file, preflight_issues, problems, name_check_file,
@@ -229,16 +228,6 @@ def main(input_template_override=None, output_file_override=None):
           f"(подсвечены в {check_doc_file.name})")
     print(f"   • решений о названиях Word и Excel: {check_summary['names']}")
     print("=" * 70)
-
-
-def _raw_table_mapping(path):
-    from check_report import _read_table_mapping
-    return _read_table_mapping(path)
-
-
-def _leading_number(title):
-    from check_report import _title_number
-    return _title_number(title)
 
 
 if __name__ == "__main__":
