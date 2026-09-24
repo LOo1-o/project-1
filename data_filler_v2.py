@@ -863,6 +863,12 @@ def _infer_entity_key(row: pd.Series, code_col_idx: int, is_mo_file: bool,
     return candidate if candidate else None
 
 
+# Почему тег остался без числа — для отчётов специалисту.
+UNFILLED_NO_ROW = 'Этой строки нет в Excel-файле'
+UNFILLED_NO_INDICATOR = 'Этого показателя или года нет в данных Excel — проверьте column_mapping_v2.csv'
+UNFILLED_DASH_IN_EXCEL = 'В Excel у этой строки нет значения (прочерк) — это нормально'
+
+
 def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Path] = None,
                                   report_path: Optional[Path] = None,
                                   indicator_display_names: Optional[Dict[str, str]] = None) -> list:
@@ -896,6 +902,12 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
     # master_data ключи — это коды ОКВЭД, МО (с префиксом "MO_") и категорий
     # (с префиксом "OPF_"/"FS_") вперемешку в общем плоском словаре.
     known_entity_codes = set(master_data.keys())
+    # Все коды показателей, которые вообще есть в загруженных данных, — чтобы
+    # в отчёте отличать «у этой строки в Excel прочерк» (нормально) от «этого
+    # показателя или года нет в данных совсем» (ошибка маппинга).
+    known_indicator_keys = set()
+    for entity_values in master_data.values():
+        known_indicator_keys.update(entity_values.keys())
 
     def _canonicalize_entity_candidate(entity_raw: str, source_prefix: Optional[str]) -> str:
         if source_prefix == "MO":
@@ -954,7 +966,7 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
     for t_idx, table in enumerate(table_manager.iter_tables()):
         for r_idx, row in enumerate(table.rows):
             row_name = get_cleaned_cell_text(row.cells[0]) if row.cells else ""
-            for cell in row.cells:
+            for c_idx, cell in enumerate(row.cells):
                 for paragraph in cell.paragraphs:
                     text = paragraph.text
                     matches = list(tag_regex.finditer(text))
@@ -1043,13 +1055,23 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
                             log.append(f"ℹ️ Отсутствующие данные: {full_tag} → [-]")
                             display_indicator = (indicator_display_names or {}).get(indicator, indicator)
                             display_year = f"20{lookup_suffix}" if lookup_suffix else ""
+                            candidate_keys = {indicator_key} if lookup_suffix else {
+                                indicator, f"{indicator}_22", f"{indicator}_23"}
+                            if entity_code not in known_entity_codes:
+                                reason = UNFILLED_NO_ROW
+                            elif not candidate_keys & known_indicator_keys:
+                                reason = UNFILLED_NO_INDICATOR
+                            else:
+                                reason = UNFILLED_DASH_IN_EXCEL
                             unfilled_tags.append({
                                 'Таблица': t_idx + 1,
                                 'Строка': r_idx + 1,
                                 'Название строки': row_name,
                                 'Показатель': display_indicator,
                                 'Год': display_year,
+                                'Причина': reason,
                                 'Тег (для разработчика)': full_tag,
+                                'Колонка': c_idx + 1,
                             })
 
                     # Сохраняем форматирование (шрифт/размер) исходного
@@ -1075,7 +1097,8 @@ def fill_word_template_by_tags_v2(doc, master_data: Dict, log_path: Optional[Pat
     # эскалация разработчику/Claude.
     if report_path is not None:
         try:
-            columns = ['Таблица', 'Строка', 'Название строки', 'Показатель', 'Год', 'Тег (для разработчика)']
+            columns = ['Таблица', 'Строка', 'Название строки', 'Показатель', 'Год', 'Причина',
+                       'Тег (для разработчика)']
             pd.DataFrame(unfilled_tags, columns=columns).to_excel(report_path, index=False)
             print(f"📄 Отчёт по незаполненным тегам сохранён: {report_path}")
         except Exception as exc:

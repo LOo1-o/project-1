@@ -23,6 +23,9 @@ OKVED_NAME_COLUMN_INDEX = 1
 # === Конфигурируемые метрические суффиксы (загружаются из CSV) ===
 _METRIC_SUFFIXES: Set[str] = set()
 
+_METRICS_MISSING_REPORTED = False
+
+
 def _load_metric_suffixes(config_path: Optional[Path] = None) -> Set[str]:
     """Загружает конфигурацию метрических суффиксов из CSV.
     
@@ -41,8 +44,15 @@ def _load_metric_suffixes(config_path: Optional[Path] = None) -> Set[str]:
     _METRIC_SUFFIXES = set()
     
     if not config_path.exists():
-        print(f"⚠️ Файл конфигурации метрик не найден: {config_path}")
-        print("   Система будет работать без метрических суффиксов.")
+        # Файл необязательный, и функция вызывается на каждый Excel-файл:
+        # раньше это же сообщение печаталось по 20 раз подряд и заслоняло
+        # действительно важные предупреждения (например, о файлах из списка
+        # таблиц, которых нет в папке).
+        global _METRICS_MISSING_REPORTED
+        if not _METRICS_MISSING_REPORTED:
+            print(f"ℹ️ Файл конфигурации метрик не найден ({config_path.name}) — это нормально, "
+                  f"программа работает без метрических суффиксов.")
+            _METRICS_MISSING_REPORTED = True
         return _METRIC_SUFFIXES
     
     try:

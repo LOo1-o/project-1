@@ -4,6 +4,8 @@ from pathlib import Path
 from docx import Document
 import os
 
+import pandas as pd
+
 from config import (
     load_okved_map,
     load_table_source_map,
@@ -25,6 +27,7 @@ from data_filler_v2 import (
     pre_load_all_excel_data_v2,
     fill_word_template_by_tags_v2
 )
+from check_report import preflight, mark_problem_cells, write_check_workbook, IMPORTANT
 
 # Переключаем кодировку на UTF-8, если поддерживается
 if hasattr(sys.stdout, 'reconfigure'):
@@ -66,6 +69,25 @@ def main(input_template_override=None, output_file_override=None):
     cleared_word_file = output_dir / "Бюллетень_ОЧИЩЕННЫЙ.docx"
     template_word_file = output_dir / "Бюллетень_ШАБЛОН_С_ТЕГАМИ_v2.docx"
     final_word_file = Path(output_file_override) if output_file_override else output_dir / "Бюллетень_ГОТОВЫЙ.docx"
+
+    check_file = output_dir / "ЧТО_ПРОВЕРИТЬ.xlsx"
+    check_doc_file = output_dir / "Бюллетень_ПРОВЕРКА.docx"
+    name_check_file = output_dir / "проверьте_названия_Word_и_Excel.xlsx"
+
+    # === ШАГ 0: Проверка перед запуском ===
+    # Ошибки в списке таблиц и файлах раньше были видны только в консоли
+    # среди сотен строк. Теперь — первым листом ЧТО_ПРОВЕРИТЬ.xlsx.
+    print("\n=== ШАГ 0: Проверка файлов перед запуском ===")
+    preflight_issues = preflight(input_word_file, table_mapping_file, excel_dir, mo_file)
+    for issue in preflight_issues:
+        mark = "❗" if issue['Важность'] == IMPORTANT else "ℹ️"
+        print(f"{mark} {issue['Что не так']} ({issue['Где']}). {issue['Что сделать']}")
+    if not preflight_issues:
+        print("✅ Файлы и список таблиц в порядке.")
+    if not Path(input_word_file).exists() or not table_mapping_file.exists():
+        write_check_workbook(check_file, preflight_issues, [])
+        print(f"\n⛔ Без этих файлов заполнить бюллетень нельзя. Подробности: {check_file}")
+        return
 
     # === ШАГ 1: Загрузка справочников ===
     print("\n=== ШАГ 1: Загрузка справочников ===")
@@ -118,7 +140,7 @@ def main(input_template_override=None, output_file_override=None):
         group_prefix_match_report_path=output_dir / "совпадения_после_отбрасывания_префикса.xlsx",
         unused_indicator_report_path=output_dir / "неиспользованные_показатели.xlsx",
         duplicate_year_report_path=output_dir / "повторяющиеся_года_в_шапке.xlsx",
-        name_check_report_path=output_dir / "проверьте_названия_Word_и_Excel.xlsx",
+        name_check_report_path=name_check_file,
     )
     print(f"📄 Шаблон с тегами сохранен: {template_word_file}")
 
@@ -160,6 +182,31 @@ def main(input_template_override=None, output_file_override=None):
     doc.save(final_word_file)
     print(f"📘 Заполненный документ сохранён: {final_word_file}")
 
+    # === ШАГ 4.5: Что проверить человеку ===
+    # Копия готового бюллетеня с подсветкой пустых по нашей вине ячеек и
+    # один файл со всем, что стоит проверить. Готовый документ не трогаем.
+    numbers_without_source = {
+        issue_number for issue_number in (
+            _leading_number(title) for title, source in _raw_table_mapping(table_mapping_file) if not source)
+        if issue_number is not None
+    }
+    unknown_row_names = []
+    if name_check_file.exists():
+        names_frame = pd.read_excel(name_check_file)
+        if 'Строка в Word' in names_frame:
+            unknown_row_names = [
+                str(name) for name, kind in zip(names_frame['Строка в Word'], names_frame['Что случилось'])
+                if kind == 'Строка не узнана' and isinstance(name, str)
+            ]
+    problems = mark_problem_cells(
+        input_word_file, template_word_file, final_word_file, unfilled_tags, check_doc_file,
+        numbers_without_source=numbers_without_source, unknown_row_names=unknown_row_names,
+    )
+    check_summary = write_check_workbook(
+        check_file, preflight_issues, problems, name_check_file,
+        check_doc_name=check_doc_file.name, final_doc_name=Path(final_word_file).name,
+    )
+
     # === ШАГ 5: Диагностика и сверка ===
     print("\n=== ШАГ 5: Диагностика и сверка ===")
     template_codes = collect_okved_codes_from_template(template_word_file)
@@ -174,6 +221,24 @@ def main(input_template_override=None, output_file_override=None):
         print(f"🔍 Найдено {len(unfilled_tags)} тегов, для которых не нашлось данных (заменены на '—').")
         print(f"📄 Отчёт: {output_dir / 'unfilled_tags.xlsx'}")
         print(f"📝 Лог: {output_dir / 'fill_log.txt'}")
+    print()
+    print("=" * 70)
+    print(f"👉 ОТКРОЙТЕ {check_file.name} — там всё, что нужно проверить:")
+    print(f"   • перед запуском: {check_summary['important']} важных замечаний")
+    print(f"   • пустых по нашей вине ячеек: {check_summary['problems']} "
+          f"(подсвечены в {check_doc_file.name})")
+    print(f"   • решений о названиях Word и Excel: {check_summary['names']}")
+    print("=" * 70)
+
+
+def _raw_table_mapping(path):
+    from check_report import _read_table_mapping
+    return _read_table_mapping(path)
+
+
+def _leading_number(title):
+    from check_report import _title_number
+    return _title_number(title)
 
 
 if __name__ == "__main__":
