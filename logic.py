@@ -544,6 +544,27 @@ def _build_composed_header_for_column(table, base_row_idx: int, col_idx: int, de
     return " ".join(parts).strip()
 
 
+def _is_row_label_only(row) -> bool:
+    """
+    Текст есть только в колонке названий строк, все остальные ячейки пусты:
+    «в том числе:», «Городские округа:». Шапка подписывает колонки с
+    числами, а такая строка не подписывает ни одной, поэтому шапкой быть
+    не может, даже если её текст входит в названия показателей.
+
+    В бюллетене №2 показатели t03Ved14 называются «Внеоборотные активы в
+    том числе материальные…» и «…в том числе нематериальные…». Строка «в
+    том числе:» под «Всего» в таблице 6 набирала два совпадения и
+    считалась шапкой новой секции, где размечена одна колонка названий, —
+    и вся первая страница таблицы осталась без тегов.
+    """
+    cells = row.cells
+    if len(cells) < 2 or not get_cleaned_cell_text(cells[0]).strip():
+        return False
+    first_tc = cells[0]._tc
+    others = [cell for cell in cells[1:] if cell._tc is not first_tc]
+    return bool(others) and all(not get_cleaned_cell_text(cell).strip() for cell in others)
+
+
 def _find_header_rows(table, source_word_to_indicator, max_search_rows=None, entity_name_maps=None):
     """Собирает все строки заголовков таблицы (year или indicator rows).
 
@@ -573,6 +594,8 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=None, ent
     rows = table.rows[:max_search_rows]
     for row_idx in range(len(rows)):
         row = rows[row_idx]
+        if _is_row_label_only(row):
+            continue
         row_years = [get_cleaned_cell_text(cell).strip() for cell in row.cells]
         year_count = sum(1 for year in row_years if _extract_year(year))
         row_texts = [_normalize_match_text(get_cleaned_cell_text(cell)) for cell in row.cells]
@@ -595,7 +618,8 @@ def _find_header_rows(table, source_word_to_indicator, max_search_rows=None, ent
             # совпадения, в шапку уходила и строка данных под ней. Строки
             # шапки не очищаются, и в бюллетене №2 в строке «азартные игры»
             # таблицы 21 остались цифры прошлого бюллетеня.
-            if combined_score >= 2 and combined_score > indicator_score:
+            if (combined_score >= 2 and combined_score > indicator_score
+                    and not _is_row_label_only(rows[row_idx + 1])):
                 headers.append(row_idx + 1)
 
     if not entity_name_maps:
