@@ -1,5 +1,6 @@
 # confic.py
 import csv
+from pathlib import Path
 import re
 from collections import Counter
 
@@ -342,6 +343,23 @@ def load_manual_table_numbers(filepath) -> dict:
     return manual
 
 
+def load_missing_file_table_numbers(filepath, excel_dir) -> dict:
+    """Таблицы, чей Excel-файл из списка таблиц не лежит в excel_dir:
+    {номер: имя файла}. Числа в них программа стирает (см.
+    generate_word_template), а отчёт объясняет, почему ячейки пустые."""
+    excel_dir = Path(excel_dir)
+    missing = {}
+    for row in _read_csv_rows_robustly(filepath, delimiter=';'):
+        if len(row) < 2:
+            continue
+        raw_name = ' '.join(str(row[0]).strip().strip('"').split())
+        raw_src = str(row[1]).strip().strip('"').strip()
+        number = _title_number(raw_name)
+        if raw_src and number is not None and not (excel_dir / raw_src).exists():
+            missing[number] = raw_src
+    return missing
+
+
 def load_column_mapping(filepath):
     """
     Загружает column_mapping.csv и возвращает:
@@ -530,6 +548,16 @@ def get_table_name(table: Table, known_table_names, return_details: bool = False
                         score = len(known_norm) / (para_count + 1)
                         exact_matches.append((score, known_title, para_count))
 
+        elif prev_elem.tag == qn('w:tbl'):
+            # Выше — предыдущая таблица: её заголовок уже не наш. Раньше
+            # поиск шёл дальше и, если собственное название не совпало со
+            # списком (бюллетень №3, таблица 19: «…ТОВАРОВ, РАБОТ, УСЛУГ…»
+            # вместо «…ТОВАРОВ, ПРОДУКЦИИ, РАБОТ…»), находил заголовок
+            # таблицы 18 и брал её Excel-файл — строки не узнавались, в
+            # таблице вставали прочерки. Без чужого заголовка таблица либо
+            # продолжает предыдущую (над ней ничего нет), либо попадает в
+            # отчёт как таблица без источника.
+            break
         else:
             prev_elem = prev_elem.getprevious()
             para_count += 1

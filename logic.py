@@ -1318,6 +1318,19 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             validation_log.append(f"[TABLE {t_index + 1}] {warning}")
             continue
 
+        if excel_dir is not None and not (excel_dir / current_source_file).exists():
+            # Файл из списка таблиц не найден (бюллетень №3: «M25_…» вместо
+            # «S25_…», имя без «.xlsx»). Раньше тегов не ставилось и ничего
+            # не очищалось — таблица оставалась с числами прошлого периода и
+            # выглядела заполненной. Стираем их, как в таблице без файла;
+            # ошибка в имени файла — на листе «1 Перед запуском».
+            cleared = _clear_manual_table(table)
+            warning = (f"⚠️ Excel-файл «{current_source_file}» не найден в {excel_dir}: "
+                       f"стёрто чисел прошлого периода {cleared}, ячейки оставлены пустыми.")
+            print(warning)
+            validation_log.append(f"[TABLE {t_index + 1}] {warning}")
+            continue
+
         # Используем file_word_to_indicator для правильного маппирования по (файл, слово)
         all_file_entries = {
             name: indicators

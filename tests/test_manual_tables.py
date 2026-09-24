@@ -16,7 +16,7 @@ from pathlib import Path
 
 from docx import Document
 
-from config import load_manual_table_numbers
+from config import get_table_name, load_manual_table_numbers, load_missing_file_table_numbers
 from logic import generate_word_template
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -75,6 +75,46 @@ class ManualTablesTest(unittest.TestCase):
             self.assertEqual(texts[1], [['', '2025', 'Справочно: 2024*'], ['Валюта баланса', '', ''],
                                         ['в том числе:', '', ''], ['запасы', '', '']],
                              'ни прочерков, ни «узнавания» таблицы по названию показателя')
+
+    def test_missing_excel_file_clears_old_numbers(self):
+        """Бюллетень №3, таблица 20: в списке «M25_…», в папке «S25_…» —
+        таблица оставалась с числами прошлого периода."""
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = Path(tmp)
+            (tmp / 'excel').mkdir()
+            doc = Document()
+            _table(doc, '20. УРОВЕНЬ РЕНТАБЕЛЬНОСТИ АКТИВОВ', [
+                ['', '2024', '2025'],
+                ['Всего', '4,8', '-0,8'],
+            ])
+            src = tmp / 'in.docx'
+            doc.save(src)
+            mapping = tmp / 'table_source_data_mapping.csv'
+            mapping.write_text('Таблица;Источник\n"20. УРОВЕНЬ РЕНТАБЕЛЬНОСТИ АКТИВОВ";M25_t27.xlsx\n',
+                               encoding='utf-8')
+            self.assertEqual(load_missing_file_table_numbers(mapping, tmp / 'excel'), {20: 'M25_t27.xlsx'})
+            out = tmp / 'out.docx'
+            with contextlib.redirect_stdout(io.StringIO()):
+                generate_word_template(src, MAPPINGS / 'okved_mapping.csv', mapping,
+                                       MAPPINGS / 'column_mapping_v2.csv', out, excel_dir=tmp / 'excel',
+                                       clear_only=True)
+            rows = [[c.text for c in row.cells] for row in Document(out).tables[0].rows]
+            self.assertEqual(rows, [['', '2024', '2025'], ['Всего', '', '']])
+
+    def test_title_search_stops_at_previous_table(self):
+        """Бюллетень №3, таблица 19: её название в списке с ошибкой, и поиск
+        уходил выше — к заголовку таблицы 18, беря чужой Excel-файл."""
+        doc = Document()
+        _table(doc, '18. ПРИБЫЛЬ ОРГАНИЗАЦИЙ', [['', '2025']])
+        second = _table(doc, '19. РЕНТАБЕЛЬНОСТЬ ПРОДАЖ НЕ КАК В СПИСКЕ', [['', '2025']])
+        with contextlib.redirect_stdout(io.StringIO()):
+            title, saw_heading = get_table_name(second, ['18. ПРИБЫЛЬ ОРГАНИЗАЦИЙ', '19. РЕНТАБЕЛЬНОСТЬ ПРОДАЖ'],
+                                                return_details=True)
+        self.assertEqual(title, '19. РЕНТАБЕЛЬНОСТЬ ПРОДАЖ', 'своё название — частичное совпадение')
+        with contextlib.redirect_stdout(io.StringIO()):
+            title, saw_heading = get_table_name(second, ['18. ПРИБЫЛЬ ОРГАНИЗАЦИЙ', '19. УРОВЕНЬ РЕНТАБЕЛЬНОСТИ'],
+                                                return_details=True)
+        self.assertEqual((title, saw_heading), (None, True), 'заголовок таблицы 18 — не наш')
 
 
 if __name__ == '__main__':

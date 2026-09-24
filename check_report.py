@@ -200,7 +200,7 @@ def _is_label_or_header_row(cells) -> bool:
 
 
 def mark_problem_cells(input_doc_path, template_doc_path, final_doc_path, unfilled, out_path,
-                       numbers_without_source=(), unknown_row_names=()) -> list:
+                       numbers_without_source=(), unknown_row_names=(), numbers_missing_file=None) -> list:
     """Подсвечивает в копии готового бюллетеня ячейки без чисел по нашей вине
     и возвращает их список для отчёта.
 
@@ -218,6 +218,7 @@ def mark_problem_cells(input_doc_path, template_doc_path, final_doc_path, unfill
     unfilled_by_cell = {(u['Таблица'], u['Строка'], u.get('Колонка')): u for u in unfilled}
     unknown_rows = {_normalize_text(name) for name in unknown_row_names}
     numbers_without_source = set(numbers_without_source)
+    numbers_missing_file = dict(numbers_missing_file or {})
 
     problems = []
     for t_idx, (src_table, tpl_table, fin_table) in enumerate(
@@ -246,7 +247,10 @@ def mark_problem_cells(input_doc_path, template_doc_path, final_doc_path, unfill
                 elif '{{' not in tpl_cell.text and looks_like_data_value(get_cleaned_cell_text(src_cell)):
                     indicator = ''
                     color = ORANGE
-                    if number in numbers_without_source or number is None:
+                    if number in numbers_missing_file:
+                        why = (f'Excel-файл «{numbers_missing_file[number]}» не найден — исправьте имя по листу '
+                               '«1 Перед запуском» и запустите программу снова')
+                    elif number in numbers_without_source or number is None:
                         why = 'Эту таблицу программа не заполняет (в списке таблиц нет Excel-файла) — заполните вручную'
                     elif _normalize_text(row_name) in unknown_rows:
                         why = 'Название строки не узнано — см. лист «3 Названия Word и Excel»'
