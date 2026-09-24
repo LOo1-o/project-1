@@ -24,7 +24,10 @@ from docx.oxml.ns import qn
 from docx.text.paragraph import Paragraph
 from openpyxl.styles import Alignment
 
-from config import _normalize_text, _read_csv_rows_robustly, get_cleaned_cell_text, looks_like_data_value
+from config import (
+    _is_table_title, _normalize_text, _read_csv_rows_robustly, _table_numbers, _title_number,
+    get_cleaned_cell_text, looks_like_data_value,
+)
 from data_filler_v2 import UNFILLED_DASH_IN_EXCEL
 from logic import _one_letter_diff, _squish_text
 from table_manager import TableManager
@@ -33,23 +36,12 @@ IMPORTANT = 'Важно'
 FYI = 'Для сведения'
 YELLOW = 'FFF2A8'   # тег есть, но числа нет по нашей вине
 ORANGE = 'FFC58A'   # программа не поставила сюда тег вовсе
-_TITLE_RE = re.compile(r'^\s*(\d{1,2})\s*\.\s+\S')
 _YEAR_RE = re.compile(r'(19|20)\d\d')
 
 
 # ---------------------------------------------------------------------------
 # Названия таблиц в Word
 # ---------------------------------------------------------------------------
-def _is_table_title(text: str) -> bool:
-    """«6. ВНЕОБОРОТНЫЕ АКТИВЫ …» — номер и текст заглавными буквами."""
-    return bool(_TITLE_RE.match(text)) and text == text.upper() and any(ch.isalpha() for ch in text)
-
-
-def _title_number(text: str):
-    match = _TITLE_RE.match(text or '')
-    return int(match.group(1)) if match else None
-
-
 def word_table_titles(doc) -> list:
     """Заголовки таблиц бюллетеня в порядке следования: [(номер, текст)].
 
@@ -73,27 +65,6 @@ def word_table_titles(doc) -> list:
         else:
             current = None
     return [tuple(title) for title in titles]
-
-
-def _table_numbers(doc, tables) -> list:
-    """Номер таблицы бюллетеня для каждой таблицы Word (из TableManager) —
-    по ближайшему заголовку выше. Вложенная таблица получает номер внешней."""
-    number_by_top = {}
-    current = None
-    for element in doc.element.body.iterchildren():
-        if element.tag == qn('w:p'):
-            text = ' '.join(Paragraph(element, doc).text.split())
-            if _is_table_title(text):
-                current = _title_number(text)
-        elif element.tag == qn('w:tbl'):
-            number_by_top[element] = current
-    numbers = []
-    for table in tables:
-        element = table._tbl
-        while element is not None and element not in number_by_top:
-            element = element.getparent()
-        numbers.append(number_by_top.get(element))
-    return numbers
 
 
 # ---------------------------------------------------------------------------
