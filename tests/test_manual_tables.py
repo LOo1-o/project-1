@@ -101,6 +101,30 @@ class ManualTablesTest(unittest.TestCase):
             rows = [[c.text for c in row.cells] for row in Document(out).tables[0].rows]
             self.assertEqual(rows, [['', '2024', '2025'], ['Всего', '', '']])
 
+    def test_unknown_title_is_not_guessed_by_content(self):
+        """Бюллетень №3, таблица 14: название в списке с ошибкой. Файл
+        угадывался по показателю в шапке — и это был файл таблицы 19."""
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = Path(tmp)
+            doc = Document()
+            _table(doc, '14. ФОРМИРОВАНИЕ РЕЗУЛЬТАТОВ ПО ВИДАМ ДЕЯТЕЛЬНОСТИ', [
+                ['', 'Количество организаций, единиц'],
+                ['Всего', '4 982'],
+            ])
+            src = tmp / 'in.docx'
+            doc.save(src)
+            mapping = tmp / 'table_source_data_mapping.csv'
+            mapping.write_text('Таблица;Источник\n"14. РАСХОДЫ ПО ФОРМАМ СОБСТВЕННОСТИ";S25_t23.xlsx\n',
+                               encoding='utf-8')
+            out = tmp / 'out.docx'
+            log = io.StringIO()
+            with contextlib.redirect_stdout(log):
+                generate_word_template(src, MAPPINGS / 'okved_mapping.csv', mapping,
+                                       MAPPINGS / 'column_mapping_v2.csv', out, clear_only=True)
+            self.assertNotIn('Автоматически определен', log.getvalue())
+            rows = [[c.text for c in row.cells] for row in Document(out).tables[0].rows]
+            self.assertEqual(rows, [['', 'Количество организаций, единиц'], ['Всего', '']])
+
     def test_title_search_stops_at_previous_table(self):
         """Бюллетень №3, таблица 19: её название в списке с ошибкой, и поиск
         уходил выше — к заголовку таблицы 18, беря чужой Excel-файл."""

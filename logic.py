@@ -1303,7 +1303,13 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
             current_source_file = None
             continue
 
-        if not current_source_file:
+        if not current_source_file and not saw_heading_text:
+            # Угадываем файл по содержимому, только когда над таблицей нет
+            # своего заголовка. Если заголовок есть, но его нет в списке
+            # таблиц (опечатка в названии), угадывание брало первый файл,
+            # чей показатель встретился в шапке: бюллетень №3, таблица 14
+            # получила файл таблицы 19. С верным списком ни один бюллетень
+            # до угадывания не доходит.
             print(f"   → Пытаемся определить по содержимому таблицы...")
             detected = auto_detect_table_source(table, table_source_mapping, file_word_to_indicator)
             if detected:
@@ -1313,7 +1319,12 @@ def generate_word_template(input_doc_path, okved_map_path, table_source_mapping_
                 print("ℹ️ Заголовок таблицы не определён, используем предыдущий источник")
 
         if not current_source_file:
-            warning = "⚠️ Источник не определён. Пропускаем таблицу."
+            # Раньше таблица просто пропускалась — с числами прошлого
+            # периода, будто заполнена. Стираем их; название, которого нет
+            # в списке таблиц, — на листе «1 Перед запуском».
+            cleared = _clear_manual_table(table)
+            warning = (f"⚠️ Источник не определён (название таблицы не найдено в списке таблиц): "
+                       f"стёрто чисел прошлого периода {cleared}, ячейки оставлены пустыми.")
             print(warning)
             validation_log.append(f"[TABLE {t_index + 1}] {warning}")
             continue

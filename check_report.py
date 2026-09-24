@@ -224,6 +224,9 @@ def mark_problem_cells(input_doc_path, template_doc_path, final_doc_path, unfill
     for t_idx, (src_table, tpl_table, fin_table) in enumerate(
             zip(TableManager(source).iter_tables(), TableManager(template).iter_tables(), final_tables)):
         number = numbers[t_idx]
+        # Ни одного тега на странице — программа не определила для неё
+        # Excel-файл (название не совпало со списком таблиц).
+        page_has_tags = '{{' in ''.join(cell.text for row in tpl_table.rows for cell in row.cells)
         for r_idx, (src_row, tpl_row, fin_row) in enumerate(zip(src_table.rows, tpl_table.rows, fin_table.rows)):
             fin_cells = fin_row.cells
             if not fin_cells:
@@ -252,6 +255,9 @@ def mark_problem_cells(input_doc_path, template_doc_path, final_doc_path, unfill
                                '«1 Перед запуском» и запустите программу снова')
                     elif number in numbers_without_source or number is None:
                         why = 'Эту таблицу программа не заполняет (в списке таблиц нет Excel-файла) — заполните вручную'
+                    elif not page_has_tags:
+                        why = ('Программа не определила Excel-файл для этой страницы таблицы: её название не '
+                               'совпало со списком таблиц — исправьте по листу «1 Перед запуском» и запустите снова')
                     elif _normalize_text(row_name) in unknown_rows:
                         why = 'Название строки не узнано — см. лист «3 Названия Word и Excel»'
                     else:
