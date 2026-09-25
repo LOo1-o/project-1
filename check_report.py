@@ -216,7 +216,11 @@ def mark_problem_cells(input_doc_path, template_doc_path, final_doc_path, unfill
     final_tables = TableManager(final).iter_tables()
     numbers = _table_numbers(final, final_tables)
     unfilled_by_cell = {(u['Таблица'], u['Строка'], u.get('Колонка')): u for u in unfilled}
-    unknown_rows = {_normalize_text(name) for name in unknown_row_names}
+    # (номер таблицы, название) или просто название — тогда для любой таблицы.
+    unknown_rows = {
+        (item[0], _normalize_text(item[1])) if isinstance(item, tuple) else (None, _normalize_text(item))
+        for item in unknown_row_names
+    }
     numbers_without_source = set(numbers_without_source)
     numbers_missing_file = dict(numbers_missing_file or {})
 
@@ -258,7 +262,8 @@ def mark_problem_cells(input_doc_path, template_doc_path, final_doc_path, unfill
                     elif not page_has_tags:
                         why = ('Программа не определила Excel-файл для этой страницы таблицы: её название не '
                                'совпало со списком таблиц — исправьте по листу «1 Перед запуском» и запустите снова')
-                    elif _normalize_text(row_name) in unknown_rows:
+                    elif ({(number, _normalize_text(row_name)), (None, _normalize_text(row_name))}
+                          & unknown_rows):
                         why = 'Название строки не узнано — см. лист «3 Названия Word и Excel»'
                     else:
                         why = ('Колонка не узнана: её название в Word не совпало ни с одним показателем Excel — '
@@ -273,6 +278,11 @@ def mark_problem_cells(input_doc_path, template_doc_path, final_doc_path, unfill
     return problems
 
 
+# С какого числа строк Word одинаковые пропуски (та же таблица, те же
+# колонки, та же причина) сводятся в одну строку отчёта.
+_MERGE_ROWS_FROM = 3
+
+
 def _group_problems(problems) -> list:
     groups = OrderedDict()
     for p in problems:
@@ -281,18 +291,35 @@ def _group_problems(problems) -> list:
         group['cols'].append(p['Колонка'])
         if p['Показатель'] and p['Показатель'] not in group['indicators']:
             group['indicators'].append(p['Показатель'])
-    rows = []
+    # Столбец, пустой по одной причине во многих строках (не узнана колонка,
+    # таблица без файла), — одна строка отчёта, а не по строке на каждую
+    # строку Word: в бюллетене №3 так было 84 строки про одну колонку.
+    merged = OrderedDict()
     for (number, row_name, why, color), group in groups.items():
-        cols = sorted(set(group['cols']))
-        rows.append(OrderedDict([
-            ('Таблица', number if number is not None else '—'),
-            ('Строка в Word', row_name),
-            ('Колонки', ', '.join(map(str, cols))),
-            ('Сколько ячеек', len(group['cols'])),
-            ('Показатель', '; '.join(group['indicators'])),
-            ('Почему пусто', why),
-            ('Цвет в Бюллетень_ПРОВЕРКА.docx', color),
-        ]))
+        cols = ', '.join(map(str, sorted(set(group['cols']))))
+        merged.setdefault((number, cols, why, color), []).append((row_name, group))
+
+    rows = []
+    for (number, cols, why, color), members in merged.items():
+        # Только причины уровня колонки/таблицы; где дело в самой строке
+        # (не узнана, нет в Excel), важно видеть каждую.
+        column_level = color == 'оранжевый' and not why.startswith('Название строки')
+        if column_level and len(members) >= _MERGE_ROWS_FROM:
+            names = [name for name, _group in members]
+            members = [(f"{len(names)} строк: «{names[0]}», «{names[1]}» … «{names[-1]}»", {
+                'cols': [col for _name, group in members for col in group['cols']],
+                'indicators': list(dict.fromkeys(i for _name, group in members for i in group['indicators'])),
+            })]
+        for row_name, group in members:
+            rows.append(OrderedDict([
+                ('Таблица', number if number is not None else '—'),
+                ('Строка в Word', row_name),
+                ('Колонки', cols),
+                ('Сколько ячеек', len(group['cols'])),
+                ('Показатель', '; '.join(group['indicators'])),
+                ('Почему пусто', why),
+                ('Цвет в Бюллетень_ПРОВЕРКА.docx', color),
+            ]))
     return rows
 
 
