@@ -13,7 +13,8 @@ import unittest
 from pathlib import Path
 
 from check_report import _group_problems
-from logic import _match_by_word_stems, _normalize_match_text, _synonym_variants, load_name_synonyms
+from logic import (_match_by_word_stems, _normalize_match_text, _synonym_suggestion, _synonym_variants,
+                   load_name_synonyms)
 
 T26 = {
     'Количество организаций, единиц': ['KolOrgEdi'],
@@ -86,6 +87,19 @@ class SynonymsTest(unittest.TestCase):
     def test_repo_file_is_readable(self):
         path = Path(__file__).resolve().parent.parent / 'input' / 'mappings' / 'синонимы.csv'
         self.assertGreaterEqual(len(load_name_synonyms(path)), 2)
+
+
+class SynonymSuggestionTest(unittest.TestCase):
+    def test_only_differing_words(self):
+        self.assertEqual(_synonym_suggestion(UNMATCHED[1][1], _normalize_match_text('Рентабельность, убыточность (-) '
+                                                                                   'в % к выручке')),
+                         'уровень рентабельности убыточности;рентабельность убыточность')
+
+    def test_whole_names_when_difference_is_only_prepositions(self):
+        line = _synonym_suggestion('в процентах чистая прибыль убыток в ко всем активам',
+                                   'чистая прибыль убыток до налогообложения в к всем активам')
+        self.assertEqual(line, 'чистая прибыль убыток в ко всем активам;'
+                               'чистая прибыль убыток до налогообложения в к всем активам')
 
 
 class GroupProblemsTest(unittest.TestCase):

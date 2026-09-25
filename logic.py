@@ -257,6 +257,29 @@ def _word_stems(text: str) -> frozenset:
     return frozenset(w[:_STEM_LEN] for w in words if len(w) > 1 and w not in _STEM_STOP_WORDS)
 
 
+# Подписи единиц в начале заголовка колонки (строка шапки над названием).
+_LEADING_UNIT_RE = re.compile(r'^(?:на (?:конец|начало) года\s*)?(?:тысяч рублей|в процентах|процентов)\s+')
+
+
+def _synonym_suggestion(word_norm: str, excel_norm: str) -> str:
+    """Строка для синонимы.csv: только отличающиеся слова, если они
+    содержательные («уровень рентабельности убыточности;рентабельность
+    убыточность» — одна пара на все такие колонки), иначе названия целиком."""
+    word_norm = _LEADING_UNIT_RE.sub('', word_norm)
+    w, e = word_norm.split(), excel_norm.split()
+    start = 0
+    while start < min(len(w), len(e)) and w[start] == e[start]:
+        start += 1
+    end = 0
+    while end < min(len(w), len(e)) - start and w[-1 - end] == e[-1 - end]:
+        end += 1
+    w_mid, e_mid = w[start:len(w) - end], e[start:len(e) - end]
+    meaningful = [x for x in w_mid + e_mid if x not in _STEM_STOP_WORDS and len(x) > 2]
+    if w_mid and e_mid and len(meaningful) >= 2:
+        return f"{' '.join(w_mid)};{' '.join(e_mid)}"
+    return f"{word_norm};{excel_norm}"
+
+
 def _stem_similarity(a: frozenset, b: frozenset) -> float:
     union = a | b
     return len(a & b) / len(union) if union else 0.0
@@ -2411,8 +2434,8 @@ def _collect_name_check_entries(report, validation_log, table, t_index, header_i
         )
 
     synonyms_hint = ("добавьте в input/mappings/синонимы.csv строку (сначала как в Word, потом как в Excel):\n"
-                     "{word};{excel}")
-    for col_idx, _header_text, matched_name, indicator, score in stem_matches:
+                     "{line}")
+    for col_idx, header_text, matched_name, indicator, score in stem_matches:
         excel_name = all_raw_by_norm.get(matched_name, matched_name)
         add(
             'Названия похожи (совпали основы слов)', col_idx, indicator, excel_name,
@@ -2420,12 +2443,12 @@ def _collect_name_check_entries(report, validation_log, table, t_index, header_i
             f"(общих основ слов {score:.0%}), а других похожих показателей в {source_file} нет. Программа сочла "
             f"их одним показателем и поставила в колонку числа из {source_file}, колонка {excel_column(indicator)}.",
             "Проверьте числа в этой колонке. Если верные — ничего делать не нужно; чтобы строка больше не "
-            "появлялась, " + synonyms_hint.format(word='{word}', excel=excel_name) + "\n"
+            "появлялась, " + synonyms_hint.format(line=_synonym_suggestion(header_text, matched_name)) + "\n"
             "Если неверные — в Excel-источнике этого показателя нет или он назван иначе: найдите нужный "
             f"показатель в {source_file} и впишите пару названий в синонимы.csv так же.",
         )
 
-    for col_idx, _header_text, closest_name, indicator, score in unmatched_columns:
+    for col_idx, header_text, closest_name, indicator, score in unmatched_columns:
         if score < _STEM_HINT_MIN:
             continue
         excel_name = all_raw_by_norm.get(closest_name, closest_name)
@@ -2434,7 +2457,7 @@ def _collect_name_check_entries(report, validation_log, table, t_index, header_i
             f"Колонка Word «{{word}}» не совпала ни с одним показателем {source_file}. Ближе всего — "
             f"«{excel_name}» (общих основ слов {score:.0%}), но этого мало, чтобы решить самой: колонка "
             f"оставлена пустой.",
-            "Если это тот же показатель — " + synonyms_hint.format(word='{word}', excel=excel_name)
+            "Если это тот же показатель — " + synonyms_hint.format(line=_synonym_suggestion(header_text, closest_name))
             + "\nи запустите программу снова. Если в Excel такого показателя нет — ничего делать не нужно, "
             "заполните колонку вручную.",
         )
