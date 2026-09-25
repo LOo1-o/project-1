@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 from docx import Document
 import os
+import re
 
 import pandas as pd
 
@@ -66,6 +67,7 @@ def main(input_template_override=None, output_file_override=None):
     table_mapping_file = mappings_dir / "table_source_data_mapping.csv"
     column_mapping_file = mappings_dir / "column_mapping_v2.csv"
     unit_annotations_file = mappings_dir / "unit_annotations.csv"
+    synonyms_file = mappings_dir / "синонимы.csv"
 
     input_word_file = input_template_override or input_dir / "Бюллетень.docx"
     cleared_word_file = output_dir / "Бюллетень_ОЧИЩЕННЫЙ.docx"
@@ -120,6 +122,7 @@ def main(input_template_override=None, output_file_override=None):
         excel_dir=excel_dir,
         unit_annotations_path=unit_annotations_file,
         clear_only=True,
+        synonyms_path=synonyms_file,
     )
     print(f"🧹 Очищенный бланк сохранён: {cleared_word_file}")
 
@@ -143,6 +146,7 @@ def main(input_template_override=None, output_file_override=None):
         unused_indicator_report_path=output_dir / "неиспользованные_показатели.xlsx",
         duplicate_year_report_path=output_dir / "повторяющиеся_года_в_шапке.xlsx",
         name_check_report_path=name_check_file,
+        synonyms_path=synonyms_file,
     )
     print(f"📄 Шаблон с тегами сохранен: {template_word_file}")
 
@@ -192,9 +196,14 @@ def main(input_template_override=None, output_file_override=None):
     if name_check_file.exists():
         names_frame = pd.read_excel(name_check_file)
         if 'Строка в Word' in names_frame:
+            # (номер таблицы, название): «Всего», не узнанное в таблице 18,
+            # не должно объяснять пустые ячейки строки «Всего» таблицы 19.
             unknown_row_names = [
-                str(name) for name, kind in zip(names_frame['Строка в Word'], names_frame['Что случилось'])
+                (int(number), str(name))
+                for name, kind, where in zip(names_frame['Строка в Word'], names_frame['Что случилось'],
+                                             names_frame['Таблица в Word'])
                 if kind == 'Строка не узнана' and isinstance(name, str)
+                for number in re.findall(r'\d+', str(where))
             ]
     problems = mark_problem_cells(
         input_word_file, template_word_file, final_word_file, unfilled_tags, check_doc_file,
